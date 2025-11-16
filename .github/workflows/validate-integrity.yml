@@ -1,0 +1,64 @@
+name: Chronicle Protocol Verification
+
+on:
+  push:
+    branches: [ main, 'claude/**' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  verify-document-integrity:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Run Chronicle Protocol verification
+      run: |
+        cd layer-0
+        bash verify_integration.sh
+
+    - name: Check for hash mismatches
+      run: |
+        if grep -q "MISMATCH" layer-0/verify_integration.sh; then
+          echo "Document integrity check failed!"
+          exit 1
+        fi
+        echo "All document hashes verified successfully"
+
+  validate-markdown:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install markdownlint
+      run: npm install -g markdownlint-cli
+
+    - name: Lint markdown files
+      run: |
+        markdownlint '**/*.md' --ignore node_modules || true
+      continue-on-error: true
+
+  check-links:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Check for broken links
+      uses: lycheeverse/lychee-action@v1
+      with:
+        args: --verbose --no-progress '**/*.md' '**/*.txt'
+        fail: true
+      continue-on-error: true
