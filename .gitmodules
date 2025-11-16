@@ -1,0 +1,3 @@
+[submodule "protocols/antidote-protocol"]
+	path = protocols/antidote-protocol
+	url = https://github.com/starwreckntx/antidote-protocol.git
