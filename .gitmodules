@@ -1,0 +1,4 @@
+[submodule "integration/orchestrator"]
+	path = integration/orchestrator
+	url = https://github.com/starwreckntx/claude-multi-agent-orchestrator.git
+	branch = claude/lets-prove-011CUxKk3T3ZgLy5xG9QxysR
