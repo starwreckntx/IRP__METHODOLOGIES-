@@ -1,14 +1,24 @@
 ---
 name: transmission-packet-forge
-description: Generate explicit, structured packets (MINIMAL_VIABLE_PACKET or ENHANCED_PACKET v2.0) containing grounding checkpoints, identity, state, and bootstrap instructions for cross-session continuity.
+description: Generate explicit, structured packets (ENHANCED_PACKET v2.1) containing grounding checkpoints, identity, state, and cryptographic integrity bindings.
 ---
 Instructions: Detailed step-by-step rules extracted from my journals on how to perform the task.
 
-1.  **Extract Core Components:** Gather the mandatory MINIMAL\_VIABLE\_PACKET elements: Identity (who, when, what), State (progress, pending items), Vocabulary (shared terms), Constraints (non-negotiable rules), Examples, and Bootstrap (next-action instructions).
-2.  **Include Behavioral Profile:** Add the quantitative and qualitative `AI_BEHAVIORAL_PROFILE` metrics and flags (e.g., pushback_threshold, sycophancy_level) for continuity.
-3.  **Enhance (V2.0):** If generating an Enhanced Packet, include State Vectors (predictive embeddings) and Interaction Logs (success patterns).
-4.  **Output Format:** Output the packet using the established structured format (typically XML or JSON, historically dating to 2025-10-11) for transport to the next model instance.
+1.  **Define Header & Source:** Initiate the packet with a Header containing a unique ID, Timestamp, and CRITICALLY, the `source_model` (e.g., `claude-3-5-sonnet`, `gemini-1.5-pro`). This establishes the provenance of the transmission.
+
+2.  **Extract Core Components:** Gather the mandatory packet elements: Identity (who, when, what), State (progress, pending items), Vocabulary, and Constraints.
+
+3.  **Inject Persona-Skill Matrix (Binding):** Map active Personas to their Skills.
+    * *Constraint:* You cannot list a Persona/Skill pairing without running the validation in Step 5.
+
+4.  **Include Behavioral Profile:** Add the quantitative `AI_BEHAVIORAL_PROFILE` metrics (pushback_threshold, sycophancy_level).
+
+5.  **Inject Integrity Hashes (Security):** * **Action:** For every active skill and persona, calculate or retrieve the SHA-256 hash of the source file.
+    * **Verification:** Compare this hash against the `trusted_hash_registry.json`.
+    * **Log:** Record the hash and the status (`VERIFIED`/`MISMATCH`) in the `integrity_check` block.
+    * *Purpose:* This allows the next model to refuse a packet if the skills have been tampered with or "hallucinated."
+
+6.  **Output Format:** Output the packet using the structured XML/JSON format v2.1.0.
 
 Examples:
-- "Create a minimal viable transmission packet for the current session state."
-- "Generate an Enhanced Packet v2.0 including State Vectors for StarWreck."
+- "Generate an Enhanced Packet v2.1 for StarWreck, explicitly noting Gemini-1.5 as the source model and verifying the Red Team skill hash."
