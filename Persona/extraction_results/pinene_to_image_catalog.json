@@ -1,0 +1,126 @@
+{
+  "pinenAudiovisual Context.txt": {
+    "file_path": "E:\\9-15-25Desktop Dmp\\pinenetoimage\\pinenAudiovisual Context.txt",
+    "personas": [],
+    "protocols": [],
+    "classes": [],
+    "transmissions": [
+      "TRANSMISSION_PACKET_HEADER\": {\n    \"packet_created\": \"2025-08-30T15:42:00Z\",\n    \"last_interaction\": \"2025-08-30T15:42:00Z\",\n    \"session_span\": \"2025-08-30T14:30:00Z to 2025-08-30T15:42:00Z\",\n    \"context_depth\": \"deep\",\n    \"session_count\": \"unknown_but_established\",\n    \"collaboration_type\": \"creative_technical_research\",\n    \"trust_level\": \"collaborative\",\n    \"shared_vocabulary\": [\n      \"Isomorphic Kernel (IK)\",\n      \"Aesthetic Composer (AC)\",\n      \"Fidelity Contract\",\n      \"transmission packet\",\n      \"soul of dissonance\",\n      \"structured violation\",\n      \"dialectical blending\",\n      \"cross-model bullshit detector\"\n    ],\n    \"active_projects\": [\n      \"Pinene: Soul of Dissonance audiovisual system\"\n    ],\n    \"communication_style\": \"technical_analytical_direct\",\n    \"guardra"
+    ],
+    "commandments": [],
+    "sections": []
+  },
+  "pinene_dissonance_spec.md": {
+    "file_path": "E:\\9-15-25Desktop Dmp\\pinenetoimage\\pinene_dissonance_spec.md",
+    "personas": [],
+    "protocols": [],
+    "classes": [],
+    "transmissions": [],
+    "commandments": [],
+    "sections": [
+      {
+        "title": "Pinene: Soul of Dissonance — Visual & Audio Synthesis Spec",
+        "content": "**Purpose:** A complete, self-contained specification and system-instruction set to synthesize the audiovisual artifact *Pinene: Soul of Dissonance*, preserving the bicyclic molecular form (α‑Pinene) under dissonant stress. Includes policies (Fidelity Contract), configuration schema, and runnable reference code for audio and frame-based visuals, plus an optional WebGL prototype.\n\n---"
+      },
+      {
+        "title": "1) Input Data & Mappings",
+        "content": "- **IR Peaks (cm⁻¹):** `[2950, 2870, 1650, 1460, 1375, 890]` with relative intensities `[1.0, 0.8, 0.6, 0.5, 0.4, 0.3]` (simplified demonstrator values).\n- **Audio Mapping:** `Hz = (cm⁻¹ * c_cm_per_s) * scale`, with `scale` chosen so the highest peak maps ≤ 20 kHz.\n- **Detuned Clusters:** Duplicate each mapped frequency with ±cents offsets to create scraping clusters.\n- **Geometry:** Two interlocking parametric loops (bicyclic abstraction) — e.g., paired Lissajous or linked torus outlines.\n- **Brightness:** Linear map of IR intensities to per-vertex/fragment brightness envelope.\n\n---"
+      },
+      {
+        "title": "2) Reference Python — Audio (WAV) + Visual Frames (PNG)",
+        "content": "> Minimal dependencies: Python 3.x, `numpy`, `matplotlib`. Uses Python stdlib `wave` to write WAV; saves PNG frames for later video assembly."
+      },
+      {
+        "title": "2.1 `pinene_dissonance_audio.py`",
+        "content": "```python\n#!/usr/bin/env python3\nimport math, struct, wave\nimport numpy as np"
+      },
+      {
+        "title": "--- Config ---",
+        "content": "SAMPLE_RATE = 48000\nDURATION_SEC = 60\nIR_CM1 = np.array([2950, 2870, 1650, 1460, 1375, 890], dtype=float)\nIR_INT = np.array([1.0, 0.8, 0.6, 0.5, 0.4, 0.3], dtype=float)\nDETUNE_CENTS = np.array([-30, 0.0, +25, +50], dtype=float)\nC_CM_PER_S = 3.0e10"
+      },
+      {
+        "title": "--- Map IR to audio Hz ---",
+        "content": "ir_freq_hz = IR_CM1 * C_CM_PER_S\nscale = 19000.0 / ir_freq_hz.max()\naudio_base = ir_freq_hz * scale"
+      },
+      {
+        "title": "--- Envelope per Phase (seconds) ---",
+        "content": "PHASES = [(0,15),(15,30),(30,45),(45,55),(55,60)]\n\ndef phase_gain(t):\n    # piecewise gains for dissonance emphasis\n    if t < 15: return 0.25  # calm\n    if t < 30: return 0.5   # stress\n    if t < 45: return 0.8   # collapse\n    if t < 55: return 1.0   # assault\n    return 0.35             # residual"
+      },
+      {
+        "title": "--- Synthesis ---",
+        "content": "num_samples = int(SAMPLE_RATE * DURATION_SEC)\nout = np.zeros(num_samples, dtype=np.float64)\n\ndef cents_to_ratio(c):\n    return 2 ** (c / 1200.0)"
+      },
+      {
+        "title": "additive synthesis of detuned clusters",
+        "content": "for base_hz, inten in zip(audio_base, IR_INT):\n    for cents in DETUNE_CENTS:\n        f = base_hz * cents_to_ratio(cents)\n        # stuttered amplitude modulation to emulate scraping\n        am = (0.5 + 0.5*np.sign(np.sin(2*np.pi*0.9*t + f*0.0003))) * 0.6 + 0.4\n        # phase jitter for instability\n        jitter = 0.002*np.sin(2*np.pi*0.13*t) + 0.001*np.sin(2*np.pi*0.07*t)\n        phase = 2*np.pi*(f*t + jitter)\n        sig = np.sin(phase)\n        out += inten * sig * am"
+      },
+      {
+        "title": "add sub-bass pulse as resilience beacon",
+        "content": "pulse_env = (np.sin(2*np.pi*0.5*t)*0.5 + 0.5)  # slow pulse 0.5 Hz\nout += 0.25 * np.sin(2*np.pi*SUB_BASS_HZ*t) * pulse_env"
+      },
+      {
+        "title": "normalize to 16-bit",
+        "content": "out /= (np.max(np.abs(out)) + 1e-9)\n\nwith wave.open('pinene_dissonance.wav', 'wb') as wf:\n    wf.setnchannels(1)\n    wf.setsampwidth(2)\n    wf.setframerate(SAMPLE_RATE)\n    for sample in (out * 32767.0).astype(np.int16):\n        wf.writeframes(struct.pack('<h', int(sample)))\n\nprint('Wrote pinene_dissonance.wav')\n```"
+      },
+      {
+        "title": "2.2 `pinene_dissonance_frames.py`",
+        "content": "```python\n#!/usr/bin/env python3\nimport os, math\nimport numpy as np\nimport matplotlib.pyplot as plt"
+      }
+    ]
+  },
+  "Pinene_Dissonance_System.md": {
+    "file_path": "E:\\9-15-25Desktop Dmp\\pinenetoimage\\Pinene_Dissonance_System.md",
+    "personas": [],
+    "protocols": [],
+    "classes": [],
+    "transmissions": [],
+    "commandments": [
+      {
+        "title": "Generate Audio",
+        "description": "```bash\n   python pinene_dissonance_audio.py\n   ```"
+      },
+      {
+        "title": "Generate Visual",
+        "description": "```bash\n   python pinene_dissonance_frames.py\n   ```"
+      },
+      {
+        "title": "Verify Fidelity",
+        "description": "```bash\n   python fidelity_certificate.py Pinene_Dissonance_Spec.md\n   ```\n\n---\n\n## Fidelity Certificate\n\nThe Fidelity Certificate validates that:\n- The molecule’s core geometry was preserved in all transformations.\n- The spec and output are cryptographically bound by SHA-256 hash.\n\n---\n\n## Outputs\n\n- `pinene_dissonance_audio.wav`  \n- `pinene_dissonance_frames.gif`  \n- `fidelity_certificate.json`\n\n---\n\n**Theme:** Truth can be obscured, but not destroyed. Pinene endures the dissonance intact."
+      }
+    ],
+    "sections": [
+      {
+        "title": "Pinene Dissonance System",
+        "content": "This repository contains the complete multisensory artifact synthesis system for **Pinene: The Soul of Dissonance**.\n\n---"
+      },
+      {
+        "title": "Files Overview",
+        "content": "### 1. `pinene_dissonance_audio.py`\n- Generates the **5-phase dissonant audio arc**.\n- Phases: Internal Stress → Harmonic Fracture → Perceptual Collapse → Total Assault → Residual Ghost.\n- Output: Plays audio in real-time and can save to `pinene_dissonance_audio.wav`."
+      },
+      {
+        "title": "2. `pinene_dissonance_frames.py`",
+        "content": "- Generates the **visual translation** of the 5-phase arc.\n- Preserves the recognizable bicyclic geometry of Pinene across all distortions.\n- Output: Animated GIF `pinene_dissonance_frames.gif`."
+      },
+      {
+        "title": "3. `fidelity_certificate.py`",
+        "content": "- Implements the **Fidelity Contract**.\n- Hashes the specification file and produces `fidelity_certificate.json` to prove the molecule’s structural truth was preserved.\n\n---"
+      },
+      {
+        "title": "System Instruction Set",
+        "content": "- **Isomorphic Kernel (IK):** The two-ring bicyclic geometry of Pinene is inviolable.\n- **Aesthetic Corruption (AC):** Distortions may obscure, scrape, and destabilize perception, but never dissolve the IK.\n- **Resilience Principle:** Even under maximum stress (Phase IV), the form must remain faintly perceptible.\n- **Residual Ghost:** Final phase must leave an afterimage or faint hum, ensuring the experience haunts perception.\n\n---"
+      },
+      {
+        "title": "Running the System",
+        "content": "1. **Generate Audio**\n   ```bash\n   python pinene_dissonance_audio.py\n   ```\n\n2. **Generate Visual**\n   ```bash\n   python pinene_dissonance_frames.py\n   ```\n\n3. **Verify Fidelity**\n   ```bash\n   python fidelity_certificate.py Pinene_Dissonance_Spec.md\n   ```\n\n---"
+      },
+      {
+        "title": "Fidelity Certificate",
+        "content": "The Fidelity Certificate validates that:\n- The molecule’s core geometry was preserved in all transformations.\n- The spec and output are cryptographically bound by SHA-256 hash.\n\n---"
+      },
+      {
+        "title": "Outputs",
+        "content": "- `pinene_dissonance_audio.wav`  \n- `pinene_dissonance_frames.gif`  \n- `fidelity_certificate.json`\n\n---\n\n**Theme:** Truth can be obscured, but not destroyed. Pinene endures the dissonance intact."
+      }
+    ]
+  }
+}
