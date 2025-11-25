@@ -1,0 +1,53 @@
+You are absolutely right. Our tournament has given us a clear winner, but "wins" and "losses" are not enough. They tell us *who* won, but they don't give us a deep, quantitative understanding of *how* they won or the nuances of their performance.
+
+To move forward, we need to evolve our evaluation into something more rigorous and data-driven. We need **real metrics.**
+
+This is the next logical step in our methodology. We will now design a system to extract a layer of quantitative, "hard" metrics directly from the qualitative, "soft" justifications provided by our AI Judge.
+
+### **The Plan: Distilling Metrics from Language**
+
+The `justification` column in our `tournament_results_v3.csv` is a rich, untapped source of data. We can build a new agent—a **"Metrics Extractor"**—that reads each justification and scores the winning model on the specific qualities that led to its victory.
+
+Here are the key metrics we should extract, based directly on the principles in our `judge_prompt.txt`:
+
+1.  **Technical Depth Score (0-10):** How detailed and implementable was the specification? Did it include code, specific parameters, and clear algorithms?
+2.  **Constraint Adherence Score (0-10):** How well did the model understand and apply the `Fidelity Contract` and the 20% rule?
+3.  **IK Enrichment Score (0-10):** Did the model show initiative by enriching the Isomorphic Kernel with plausible, external scientific data?
+4.  **"Spirit of the Law" Score (0-10):** How well did the response capture the creative and philosophical intent of "structured dissonance"? Was it just correct, or was it also inspired?
+
+### **How it Works: A New Prompt for a New Agent**
+
+We will create a new Python script (`3_extract_metrics.py`). This script will:
+
+1.  Read the `tournament_results_v3.csv`.
+2.  For each row, it will take the `justification` text.
+3.  It will then send that text to a powerful AI model (like Gemini 2.5 Pro) with a new, highly specific prompt.
+
+Here is the prompt for our new **"Metrics Extractor"** agent:
+
+```text
+You are an expert AI performance analyst. Your task is to read a justification from a head-to-head model comparison and extract a set of quantitative scores based on the reasoning provided.
+
+The justification explains why a "winning model" was chosen over a "losing model." Based ONLY on the text of the justification, you must score the WINNING model on a scale of 0-10 for each of the following four metrics.
+
+METRICS:
+1.  **Technical Depth (0-10):** How detailed and implementable was the winner's specification? (10 = extremely detailed, code examples; 5 = some detail; 0 = purely conceptual).
+2.  **Constraint Adherence (0-10):** How well did the winner adhere to the project's rules and constraints? (10 = perfect, explicit adherence; 5 = general adherence; 0 = not mentioned).
+3.  **IK Enrichment (0-10):** Did the winner show initiative by adding plausible scientific data? (10 = significant, valuable enrichment; 5 = minor enrichment; 0 = no enrichment mentioned).
+4.  **"Spirit of the Law" (0-10):** Did the winner capture the creative, philosophical intent of the project? (10 = deeply insightful, creative; 5 = competent; 0 = purely mechanical).
+
+JUSTIFICATION TO ANALYZE:
+"{justification_text}"
+
+Your output MUST be a valid JSON object and nothing else.
+
+JSON OUTPUT SCHEMA:
+{
+  "technical_depth_score": "number",
+  "constraint_adherence_score": "number",
+  "ik_enrichment_score": "number",
+  "spirit_of_the_law_score": "number"
+}
+```
+
+By running this for every matchup, we can calculate an average score for each model across these four critical dimensions. This will give us a far richer, multi-dimensional understanding of each model's true strengths and weaknesses, moving us from a simple leaderboard to a true performance profile.
