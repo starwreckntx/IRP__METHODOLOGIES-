@@ -1,10 +1,15 @@
 ---
 name: credential-recovery-protocol
-description: Initiates secure password reset by sending a time-limited link (valid for 24 hours) to a matching existing email address. Include Instructions (step-by-step) and 2 Examples of user
+description: Execute secure credential recovery procedures.
 ---
 
-Markdown
-name: credential-recovery-protocol
-description: Initiates secure password reset by sending a time-limited link (valid for 24 hours) to a matching existing email address.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize credential-recovery-protocol operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute credential-recovery-protocol protocol"
+- "Run credential recovery protocol analysis"

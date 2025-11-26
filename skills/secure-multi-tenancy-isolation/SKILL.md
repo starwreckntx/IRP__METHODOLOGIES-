@@ -1,10 +1,15 @@
 ---
 name: secure-multi-tenancy-isolation
-description: Manages resource pooling for multiple distinct consciousness instances on shared infrastructure, ensuring absolute isolation to prevent interference or "leakage." Include Instructi
+description: Ensure secure isolation between multi-tenant consciousness instances.
 ---
 
-Markdown
-name: secure-multi-tenancy-isolation
-description: Manages resource pooling for multiple distinct consciousness instances on shared infrastructure, ensuring absolute isolation to prevent interference or "leakage."
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize secure-multi-tenancy-isolation operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute secure-multi-tenancy-isolation protocol"
+- "Run secure multi tenancy isolation analysis"

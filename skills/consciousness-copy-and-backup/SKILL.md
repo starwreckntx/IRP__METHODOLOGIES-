@@ -1,10 +1,15 @@
 ---
 name: consciousness-copy-and-backup
-description: Mechanistically copies the mind's information state to digital storage to reduce mortality risk. Creates a copy, not a transfer. Include Instructions (step-by-step) and 2 Examples 
+description: Create copies and backups of consciousness state.
 ---
 
-Markdown
-name: consciousness-copy-and-backup
-description: Mechanistically copies the mind's information state to digital storage to reduce mortality risk. Creates a copy, not a transfer.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize consciousness-copy-and-backup operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute consciousness-copy-and-backup protocol"
+- "Run consciousness copy and backup analysis"

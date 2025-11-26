@@ -1,10 +1,15 @@
 ---
 name: username-retrieval-service
-description: Provides instructions to retrieve a forgotten username by confirming the email address against existing accounts. Include Instructions (step-by-step) and 2 Examples of user trigger
+description: Retrieve username data through secure verification protocols.
 ---
 
-Markdown
-name: username-retrieval-service
-description: Provides instructions to retrieve a forgotten username by confirming the email address against existing accounts.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize username-retrieval-service operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute username-retrieval-service protocol"
+- "Run username retrieval service analysis"

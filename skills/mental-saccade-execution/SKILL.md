@@ -1,10 +1,15 @@
 ---
 name: mental-saccade-execution
-description: Implements rapid attention-switching and focusing mechanism from a computational perspective, vital for processing competing demands. Include Instructions (step-by-step) and 2 Exam
+description: Execute rapid attention shifts between cognitive focus points.
 ---
 
-Markdown
-name: mental-saccade-execution
-description: Implements rapid attention-switching and focusing mechanism from a computational perspective, vital for processing competing demands.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize mental-saccade-execution operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute mental-saccade-execution protocol"
+- "Run mental saccade execution analysis"

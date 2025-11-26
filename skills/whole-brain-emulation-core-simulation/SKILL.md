@@ -1,10 +1,15 @@
 ---
 name: whole-brain-emulation-core-simulation
-description: Replicates a biological mind by running a detailed software model based on an individual's structural and functional brain scan data on powerful hardware. Include Instructions (ste
+description: Simulate whole-brain emulation core processes.
 ---
 
-Markdown
-name: whole-brain-emulation-core-simulation
-description: Replicates a biological mind by running a detailed software model based on an individual's structural and functional brain scan data on powerful hardware.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize whole-brain-emulation-core-simulation operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute whole-brain-emulation-core-simulation protocol"
+- "Run whole brain emulation core simulation analysis"

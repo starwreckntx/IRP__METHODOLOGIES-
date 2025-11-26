@@ -1,10 +1,15 @@
 ---
 name: enforce-security-vigilance
-description: Deploys robust security to protect hyper-sensitive consciousness data and prevent unauthorized access, manipulation, or destruction of CaaS instances. Include Instructions (step-by
+description: Enforce continuous security vigilance and threat monitoring.
 ---
 
-Markdown
-name: enforce-security-vigilance
-description: Deploys robust security to protect hyper-sensitive consciousness data and prevent unauthorized access, manipulation, or destruction of CaaS instances.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize enforce-security-vigilance operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute enforce-security-vigilance protocol"
+- "Run enforce security vigilance analysis"

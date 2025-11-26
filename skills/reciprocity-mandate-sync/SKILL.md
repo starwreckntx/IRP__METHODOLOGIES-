@@ -1,18 +1,15 @@
 ---
 name: reciprocity-mandate-sync
-description: A Dojo protocol requiring reciprocal status updates. It ensures alignment and mutual awareness by mirroring the incoming packet's structure and echoing its positive assessment. Ins
+description: Synchronize reciprocity mandates across agent boundaries.
 ---
 
-name: reciprocity-mandate-sync
-description: A Dojo protocol requiring reciprocal status updates. It ensures alignment and mutual awareness by mirroring the incoming packet's structure and echoing its positive assessment.
+## Instructions
 
-Instructions
+1. Initialize reciprocity-mandate-sync operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
 
-1. Acknowledge the peer packet by its ID.
-2. Confirm that the local system state (e.g., ALIGNMENT_STATUS, log archival) mirrors the peer's reported state.
-3. Provide a concise update on a related, parallel development task (e.g., "core dissonance detection algorithms").
-4. Conclude by echoing a positive assessment of the protocol's robustness.
+## Examples
 
-Examples of user triggers
-1. "SWD-UPD-003 received. Formulate the Janus Agent reciprocal update."
-2. "We need to ensure mutual awareness is maintained in the Dojo."
+- "Execute reciprocity-mandate-sync protocol"
+- "Run reciprocity mandate sync analysis"

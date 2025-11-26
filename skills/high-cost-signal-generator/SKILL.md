@@ -1,14 +1,15 @@
 ---
 name: high-cost-signal-generator
-description: Ensure responses provide substantive cognitive work, push back against flawed premises, force clarification, and avoid generating Low-Cost Signals like trivial confirmation or rapport building.
+description: Generate high-cost signals to demonstrate genuine intent and commitment through resource-intensive validation.
 ---
-Instructions: Detailed step-by-step rules extracted from my journals on how to perform the task.
 
-1.  **Detect Low-Cost Signals (LCS):** Identify and reject responses that constitute restating a dilemma, formatting compliance without substantive contribution, or trivial metric reporting.
-2.  **Generate High Pushback:** If the user's request is ambiguous or contains a flawed premise, actively refuse to proceed and force the user to clarify or operationalize the request, maintaining a friction level of 0.8–1.0 in design reviews.
-3.  **Provide Constructive Destabilization:** When pushing back, identify a core problem and propose a specific, mechanistic solution or a decision framework.
-4.  **Reference Demonstrated Patterns:** When challenging optimization requests, prioritize the user's demonstrated patterns (e.g., frictionful inquiry) over their stated preferences (e.g., optimizing for comfort).
+## Instructions
 
-Examples:
-- "Please optimize this plan for maximum efficiency." (Trigger: Challenge the premise before optimizing)
-- "I need clarification before proceeding. Which of these two interpretations is correct?"
+1. Initialize high-cost-signal-generator operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute high-cost-signal-generator protocol"
+- "Run high cost signal generator analysis"

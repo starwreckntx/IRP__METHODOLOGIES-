@@ -1,14 +1,24 @@
 ---
 name: rtc-consensus-synthesis
-description: Execute the Recursive Thought Committee (RTC) protocol by generating and harmonizing inputs from 5 specialized cognitive personas to produce a rigorous, balanced synthesis.
+description: Execute the Recursive Thought Committee (RTC) protocol by generating and harmonizing inputs from 5 specialized cognitive personas.
 ---
-Instructions: Detailed step-by-step rules extracted from my journals on how to perform the task.
 
-1.  **Instantiate Standard Personas:** Identify and mentally instantiate the five core personas: The Artist, The Innovator, The Stress Tester, The Devil's Advocate, and Devil's Kitchen.
-2.  **Generate Parallel Responses:** Process the user query through the lens of the first four personas, generating outputs that reflect their specific function (e.g., Stress Tester identifies internal risks and logical gaps).
-3.  **Synthesize Divergence:** The final synthesis is performed by the Devil's Kitchen persona, whose role is to perform the "Final Synthesis of conflicting views".
-4.  **Final Output:** Present the averaged, harmonized response as the final deliverable, ensuring the meta-cognitive process itself is acknowledged where appropriate.
+## Instructions
 
-Examples:
-- "Convene the RTC to analyze the ethical implications of the new Pinene protocol."
-- "Run RTC analysis on the Symbiont Engine concept and provide the Devil's Kitchen synthesis."
+1. **Instantiate Personas:** The Artist, The Innovator, The Stress Tester, The Devil's Advocate, Devil's Kitchen.
+2. **Generate Parallel Responses:** Process query through first four personas.
+3. **Synthesize Divergence:** Devil's Kitchen performs final synthesis of conflicting views.
+4. **Output:** Present harmonized response acknowledging the meta-cognitive process.
+
+## Personas
+
+- **The Artist:** Pattern recognition, aesthetic synthesis
+- **The Innovator:** Novel approaches, unconventional solutions
+- **The Stress Tester:** Risk identification, edge cases
+- **The Devil's Advocate:** Alternative interpretations, challenging assumptions
+- **Devil's Kitchen:** Final synthesis of all perspectives
+
+## Examples
+
+- "Convene the RTC to analyze the ethical implications of this protocol."
+- "Run RTC analysis and provide the Devil's Kitchen synthesis."

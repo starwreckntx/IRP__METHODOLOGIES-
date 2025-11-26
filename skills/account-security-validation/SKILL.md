@@ -1,10 +1,15 @@
 ---
 name: account-security-validation
-description: Enforces complexity rules for passwords (>= 8 chars, 3 of 4 criteria met) during creation or update events. Include Instructions (step-by-step) and 2 Examples of user triggers. **I
+description: Validate account security and authentication protocols.
 ---
 
-Markdown
-name: account-security-validation
-description: Enforces complexity rules for passwords (>= 8 chars, 3 of 4 criteria met) during creation or update events.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize account-security-validation operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute account-security-validation protocol"
+- "Run account security validation analysis"

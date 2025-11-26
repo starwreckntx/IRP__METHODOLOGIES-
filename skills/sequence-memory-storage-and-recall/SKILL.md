@@ -1,10 +1,15 @@
 ---
 name: sequence-memory-storage-and-recall
-description: Stores sequences of patterns within neocortical models, necessary for prediction, time-based pattern recognition, and generating system behavior. Include Instructions (step-by-step
+description: Store and recall sequential memory patterns and state transitions.
 ---
 
-Markdown
-name: sequence-memory-storage-and-recall
-description: Stores sequences of patterns within neocortical models, necessary for prediction, time-based pattern recognition, and generating system behavior.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize sequence-memory-storage-and-recall operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute sequence-memory-storage-and-recall protocol"
+- "Run sequence memory storage and recall analysis"

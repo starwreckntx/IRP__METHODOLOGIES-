@@ -1,10 +1,15 @@
 ---
 name: mind-parameter-modification
-description: Facilitates cognitive enhancement or changes to personality, motivation, or memory by editing the core parameters of a digital mind instance. Include Instructions (step-by-step) an
+description: Modify cognitive parameters and behavioral settings.
 ---
 
-Markdown
-name: mind-parameter-modification
-description: Facilitates cognitive enhancement or changes to personality, motivation, or memory by editing the core parameters of a digital mind instance.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize mind-parameter-modification operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute mind-parameter-modification protocol"
+- "Run mind parameter modification analysis"

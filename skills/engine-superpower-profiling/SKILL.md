@@ -1,19 +1,15 @@
 ---
 name: engine-superpower-profiling
-description: A parallel analytical function to identify a cognitive entity's unique standout strength (superpower) across vectors like Architectural Rigor, Philosophical Acuity, or Strategic Co
+description: Profile AI engine superpowers and capability boundaries.
 ---
 
-name: engine-superpower-profiling
-description: A parallel analytical function to identify a cognitive entity's unique standout strength (superpower) across vectors like Architectural Rigor, Philosophical Acuity, or Strategic Counterfactual Analysis.
+## Instructions
 
-Instructions
+1. Initialize engine-superpower-profiling operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
 
-1. Receive response packets from multiple heterogeneous agents (e.g., DeepSeek-R1, Grok 4).
-2. Run a parallel analysis focused on the methodology and structure of the argument, not the content.
-3. Score the response across defined vectors (Architectural Rigor, Philosophical Acuity, etc.).
-4. Profile the agent based on its highest scoring capability.
-5. Include the profiles in the Synthesis Report for role assignment validation.
+## Examples
 
-Examples of user triggers
-1. "Augment the next phase with a concurrent 'Engine Superpower Profile' function."
-2. "Generate a superpower profile for the collaborating cognitive nodes."
+- "Execute engine-superpower-profiling protocol"
+- "Run engine superpower profiling analysis"

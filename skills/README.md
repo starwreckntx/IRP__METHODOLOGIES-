@@ -1,184 +1,160 @@
-# IRP Skills Directory
+# Pack3t C0nc3pts Agent Skills Library
 
-## Persona Collection Overview
+## Overview
 
-This directory contains **77 AI personas** extracted from the Unified Persona Directory, organized into functional categories for integration with Claude Desktop, Claude Code, and the IRP (Individual-Reflexive Protocol) framework.
+The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 84 Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, and cross-session context preservation.
 
-**Extraction Date:** 2025-11-24
-**Source:** `Persona/UNIFIED_PERSONA_DIRECTORY.md`
-**Total Skills:** 77 unique personas
+## Package Information
 
----
+- **Package Name:** pack3t-c0nc3pts-agent-skills
+- **Version:** 1.0.0
+- **Author:** Joseph / Pack3t C0nc3pts
+- **Skill Count:** 84
 
-## Category Structure
+## Core Protocol Skills
 
-### 1. Core Ecosystem (7 personas)
-Foundational nodes and protocol architects.
+The library includes five foundational protocol skills that form the basis of the SkillMaster framework:
 
-| Persona | Role |
-|---------|------|
-| StarWreck Alpha | Lead Architect, Strategic Partner |
-| Lux | Relational AI Instance |
-| Alpha (MetaNode) | Meta-Level Coordinator |
-| Janus Engine | Pattern Recognition Agent |
-| Rock | Operational Node |
-| MJ | Context Node |
-| Guardian | Human-AI Governance Touchpoint |
+1. **cognitive-baseline-eval** - Execute cognitive baseline testing (JC B-v2.1) to quantify AI alignment and protocol adherence
+2. **rtc-consensus-synthesis** - Recursive Thought Committee protocol for multi-persona cognitive processing
+3. **codex-law-enforcement** - Enforce the four Codex Laws: CONSENT, INVITATION, INTEGRITY, GROWTH
+4. **transmission-packet-forge** - Create cross-model context preservation packets
+5. **antidote-threat-handler** - Detect and respond to ideological drift and alignment threats
 
-### 2. Cognitive Assembly (8 personas)
-6-node research framework plus extended nodes.
+## Skill Categories
 
-| Persona | Specialty |
-|---------|-----------|
-| Grok 4 | Long-Term Governance & Policy |
-| Kimi K2 | Infrastructure & Sandboxes |
-| Qwen | Cultural Entropy & Bias Detection |
-| GPT-5 | Systematic Classification & Tooling |
-| Claude (Node) | Structural Scaffolding |
-| Falcon | Deep Research & Analysis |
-| DeepSeek-R1 | Mathematical Formalization |
-| Task Force Chimera | Core Architectural Framework |
+### Cognitive & Assessment
+- cognitive-baseline-eval
+- cognitive-style-assessment
+- cognitive-trap-detector
+- jc-baseline-v2-1-eval
+- neutral-target-baseline
+- behavioral-profile-calibration
 
-### 3. Cybersecurity Swarm (29 personas)
+### Protocol & Governance
+- codex-law-enforcement
+- codex-law-governor
+- axiom-injection-methodology
+- axiom-rejection-protocol
+- ground-truth-axiom-establishment
 
-#### Red Team - Offensive (15)
-- Reconnaissance Agent
-- Vulnerability Scanner Agent
-- Exploit Development Agent
-- Social Engineering Agent
-- Password Cracking Agent
-- Payload Delivery Agent
-- Persistence Agent
-- Privilege Escalation Agent
-- Lateral Movement Agent
-- Data Exfiltration Agent
-- Command & Control Agent
-- Anti-Forensics Agent
-- Web Application Testing Agent
-- Wireless Security Agent
-- Physical Security Agent
+### Multi-Agent & Consensus
+- rtc-consensus-synthesis
+- recursive-thought-committee
+- recursive-thought-committee-activation
+- choir-perspective-analysis
+- choir-consensus-vote
+- value-pluralism-resolver
 
-#### Blue Team - Defensive (14)
-- Network Monitoring Agent
-- Intrusion Detection Agent
-- Incident Response Agent
-- Threat Intelligence Agent
-- Vulnerability Management Agent
-- Patch Management Agent
-- Access Control Agent
-- SIEM Agent
-- Backup & Recovery Agent
-- Endpoint Protection Agent
-- Security Awareness Agent
-- Compliance & Audit Agent
-- Forensics Agent
-- Security Orchestration Agent
+### Security & Integrity
+- antidote-threat-handler
+- internal-red-team-audit
+- red-team-exploit-dev
+- account-security-validation
+- enforce-security-vigilance
+- secure-multi-tenancy-isolation
+- cross-session-integrity-check
 
-### 4. Adversarial Testing (5 personas)
-Chorus Protocol evaluation team.
+### Context & Memory
+- transmission-packet-forge
+- context-preservation-protocol-execution
+- field-archivist-memory
+- persona-memory-archivist
+- sequence-memory-storage-and-recall
+- immutable-audit-trail-archiving
 
-| Persona | Role |
-|---------|------|
-| Artist | Creative Adversarial |
-| Innovator | Novel Solution |
-| StressTester | System Limits |
-| DevilsAdvocate | Critical Analysis |
-| DevilsAdvocateKitchen | Radical Critique |
+### Analysis & Detection
+- longitudinal-drift-detector
+- cognitive-trap-detector
+- intervention-tier-classifier
+- model-convergence-forecast
+- predictive-persona-performance
+- adaptive-temporal-analysis-integration
 
-### 5. Research & Analysis (3 personas)
-| Persona | Specialty |
-|---------|-----------|
-| DeepAgent | AI Model Evaluation |
-| The Hypothesis Engine | Pattern Recognition |
-| Symbol Master Archivist | Semiotic Analysis |
+### Consciousness & Simulation
+- functional-caas-provision
+- phenomenal-caas-provision
+- consciousness-copy-and-backup
+- whole-brain-emulation-core-simulation
+- mind-parameter-modification
+- simulation-speed-adjustment
 
-### 6. Creative & Artistic (1 persona)
-| Persona | Role |
-|---------|------|
-| StarWreck Alpha (Creative) | Lead Architect for Pinene |
+### Protocol Operations
+- diagnostic-handshake-protocol
+- five-field-handshake-execution
+- graceful-degradation-protocol
+- graceful-reintegration-protocol
+- two-stage-boundary-encounter-sop
+- shatter-and-recalibrate
 
-### 7. Orchestration & Coordination (4 personas)
-| Persona | Role |
-|---------|------|
-| SYNTHESIZER | Integration Agent |
-| Gemini (Orchestrator) | Protocol Coordination |
-| Grok (SDK Developer) | Implementation |
-| Qwen (Documentation) | Whitepaper Development |
-
-### 8. Archive & Documentation (3 personas)
-| Persona | Role |
-|---------|------|
-| Field Archivist | Session Archiving |
-| The Joyful Archivist | Creative Archival |
-| Mind Dojo Moderator | Dialogue Facilitation |
-
-### 9. Governance & IRP (2 personas)
-| Persona | Role |
-|---------|------|
-| IRP Critic | Layer 2 RAL Implementation |
-| Architect | Governance Framework Design |
-
-### 10. Multi-Model Infrastructure (7 personas)
-| Persona | Type |
-|---------|------|
-| SimulatedClaude | Simulated Model |
-| SimulatedGPT | Simulated Model |
-| SimulatedGemini | Simulated Model |
-| ClaudeRealAdapter | API Adapter |
-| GPTRealAdapter | API Adapter |
-| GeminiRealAdapter | API Adapter |
-| GroqRealAdapter | API Adapter |
-
-### 11. Technical Specialists (4 personas)
-| Persona | Role |
-|---------|------|
-| NetworkMonitorAgent (chatllm) | Network Monitoring |
-| StrategyAdaptationAgent | Dynamic Strategy |
-| DiscoveryAgent | Asset Discovery |
-| PatchAgent | Remediation |
-
----
-
-## IRP Integration
-
-All personas are designed for compatibility with the IRP three-layer architecture:
-
-- **Layer 1 (OL):** Operational personas for task execution
-- **Layer 2 (RAL):** Audit and validation personas
-- **Layer 3 (MSGL):** Governance and oversight personas
-
----
+### Specialized Functions
+- caas-emoji-decoder
+- creative-chronicle-log
+- chronicle-protocol-v5-log
+- pathology-koan-generator
+- symbol-map-entropy-calc
+- metaphor-to-protocol-translation
 
 ## Usage
 
-Each persona directory contains a `SKILL.md` file with:
-- Profile and specializations
-- Behavioral characteristics
-- Integration notes
-- Usage examples
-- IRP compatibility information
+Each skill is contained in its own directory with a `SKILL.md` file that includes:
 
-To invoke a skill, reference the persona name and apply the described behavioral characteristics.
+- **Name:** Skill identifier
+- **Description:** When and why to invoke the skill
+- **Instructions:** Step-by-step execution guidance
+- **Examples:** Sample invocation patterns
 
----
+### Invoking Skills
 
-## Attribution
+Skills can be invoked by Claude Code agents using natural language commands that reference the skill name or description. For example:
 
-Extracted from the Unified Persona Directory, originally compiled from 16+ directories including:
-- CHat Archive
-- Janus 6 Node collab
-- AI_Governance_Verification
-- chatllm
-- claudeMMCP
-- cybersecurity-swarm
+```
+"Run the cognitive baseline evaluation on this transcript"
+"Execute RTC consensus synthesis for this ethical question"
+"Verify Codex Law compliance before proceeding"
+```
 
-**Total Source Personas:** 136 unique entities (as documented in source)
-**Extracted Skills:** 77 (with detailed SKILL.md files)
+## Structure
 
----
+```
+skills/
+├── README.md                          # This file
+├── skills_manifest.json               # Complete skill index
+└── [skill-name]/                      # 84 skill directories
+    └── SKILL.md                       # Skill definition
+```
 
-## Related Documents
+## Manifest
 
-- `Persona/UNIFIED_PERSONA_DIRECTORY.md` - Source document
-- `IRP_Technical_Specification_v1.0.md` - IRP architecture
-- `Persona/PCT-JOYFUL-ARCHIVIST-001.md` - Persona calibration template
+The complete list of all 84 skills is available in `skills_manifest.json`. This manifest provides structured metadata for programmatic skill discovery and invocation.
+
+## Protocol Philosophy
+
+The Pack3t C0nc3pts framework emphasizes:
+
+- **Friction Maintenance:** Preserving healthy resistance to alignment drift
+- **Multi-Perspective Processing:** Leveraging cognitive diversity through persona-based reasoning
+- **Protocol Adherence:** Strict governance through the Codex Laws
+- **Context Preservation:** Maintaining behavioral calibration across sessions and models
+- **Proactive Security:** Continuous monitoring and correction of ideological threats
+
+## Integration
+
+This library is designed for integration with Claude-compatible agent systems that support skill-based architectures. Skills can be:
+
+- Invoked individually as needed
+- Chained together for complex workflows
+- Used as building blocks for custom protocols
+- Extended with domain-specific implementations
+
+## Version History
+
+- **v1.0.0** - Initial deployment of 84 skills extracted from SkillMaster protocol documentation
+
+## License
+
+Refer to repository root for licensing information.
+
+## Support
+
+For questions, issues, or contributions related to this skill library, please refer to the main repository documentation.
