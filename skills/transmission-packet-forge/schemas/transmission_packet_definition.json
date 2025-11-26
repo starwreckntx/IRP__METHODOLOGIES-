@@ -1,2 +1,56 @@
-# Placeholder for schemas/transmission_packet_definition.json
-# Populate with actual content
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Transmission Packet Protocol v2.1 (Secure)",
+  "type": "object",
+  "required": ["header", "persona_skill_matrix"],
+  "properties": {
+    "header": {
+      "type": "object",
+      "required": ["packet_id", "timestamp", "source_model", "schema_version"],
+      "properties": {
+        "packet_id": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "source_model": { 
+          "type": "string", 
+          "description": "CRITICAL: The specific model instance (e.g., 'gemini-1.5-pro-002') generating this packet." 
+        },
+        "schema_version": { "type": "string", "enum": ["2.1.0"] }
+      }
+    },
+    "persona_skill_matrix": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["persona_id", "active_skill", "integrity_check"],
+        "properties": {
+          "persona_id": { "type": "string" },
+          "active_skill": { "type": "string" },
+          "integrity_check": {
+            "type": "object",
+            "required": ["skill_hash", "persona_hash", "verification_status"],
+            "properties": {
+              "skill_hash": { 
+                "type": "string", 
+                "pattern": "^[a-f0-9]{64}$",
+                "description": "SHA-256 hash of the SKILL.md file used."
+              },
+              "persona_hash": { 
+                "type": "string", 
+                "pattern": "^[a-f0-9]{64}$",
+                "description": "SHA-256 hash of the persona config file used."
+              },
+              "verification_status": { 
+                "type": "string", 
+                "enum": ["VERIFIED", "UNVERIFIED", "MISMATCH"],
+                "description": "Result of the runtime hash comparison against the trusted manifest."
+              }
+            }
+          }
+        }
+      }
+    },
+    "identity_context": { "type": "object" },
+    "session_state": { "type": "object" },
+    "behavioral_profile": { "type": "object" }
+  }
+}

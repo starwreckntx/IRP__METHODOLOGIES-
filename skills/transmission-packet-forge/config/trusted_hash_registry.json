@@ -1,0 +1,17 @@
+{
+  "registry_version": "1.0.0",
+  "last_updated": "2025-11-25",
+  "artifacts": {
+    "skills": {
+      "transmission-packet-forge": "4c8ce8a9e02bca7fe7ffe5b811c1fe9ea3a7f23ac968eb03e75b82746f0e94a8",
+      "internal-red-team-audit": "41253f58c1da8a772185c696de5d749bdbfa67d442254e44ccbd55c1f3c5781c",
+      "rtc-consensus-synthesis": "d8d9681db4a79062303aaf79005b1c726792f32e12c2113311abb3e2bef2b3ac"
+    },
+    "schemas": {
+        "transmission_packet_definition": "a163f22629f5c5b2e589685e01000991ded2558672ec142a34f8d8b355d5b1ea"
+    },
+    "personas": {
+      "rtc_personas_config": "27abf7dbf3b20e95778129544577ed8214acd264f59571404b3907d22b9c074a"
+    }
+  }
+}
