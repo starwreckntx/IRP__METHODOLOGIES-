@@ -1,10 +1,15 @@
 ---
 name: simulation-speed-adjustment
-description: Alters the clock rate of a simulated brain, enabling the digital mind to experience time subjectively faster (e.g., an hour in one real-time second). Include Instructions (step-by-
+description: Adjust simulation temporal processing speed.
 ---
 
-Markdown
-name: simulation-speed-adjustment
-description: Alters the clock rate of a simulated brain, enabling the digital mind to experience time subjectively faster (e.g., an hour in one real-time second).
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize simulation-speed-adjustment operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute simulation-speed-adjustment protocol"
+- "Run simulation speed adjustment analysis"

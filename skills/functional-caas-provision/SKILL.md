@@ -1,10 +1,15 @@
 ---
 name: functional-caas-provision
-description: Delivers Weak Artificial Consciousness (AC) services, providing access to computational models for specific, advanced cognitive functions like complex analysis or simulation of cre
+description: Provision functional consciousness-as-a-service capabilities.
 ---
 
-Markdown
-name: functional-caas-provision
-description: Delivers Weak Artificial Consciousness (AC) services, providing access to computational models for specific, advanced cognitive functions like complex analysis or simulation of creativity.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize functional-caas-provision operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute functional-caas-provision protocol"
+- "Run functional caas provision analysis"

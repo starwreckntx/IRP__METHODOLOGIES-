@@ -1,10 +1,15 @@
 ---
 name: phenomenal-caas-provision
-description: Highly speculative service aiming to deliver genuine subjective experience (qualia), requiring resolution of the Hard Problem and Strong AC. Include Instructions (step-by-step) and
+description: Provision phenomenal consciousness-as-a-service experiences.
 ---
 
-Markdown
-name: phenomenal-caas-provision
-description: Highly speculative service aiming to deliver genuine subjective experience (qualia), requiring resolution of the Hard Problem and Strong AC.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize phenomenal-caas-provision operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute phenomenal-caas-provision protocol"
+- "Run phenomenal caas provision analysis"

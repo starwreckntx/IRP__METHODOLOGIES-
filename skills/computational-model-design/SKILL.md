@@ -1,10 +1,15 @@
 ---
 name: computational-model-design
-description: Implements a physical definition of consciousness driven by managing competition between internal motivations and goals. Include Instructions (step-by-step) and 2 Examples of user 
+description: Design computational models for cognitive simulation and analysis.
 ---
 
-Markdown
-name: computational-model-design
-description: Implements a physical definition of consciousness driven by managing competition between internal motivations and goals.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize computational-model-design operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute computational-model-design protocol"
+- "Run computational model design analysis"

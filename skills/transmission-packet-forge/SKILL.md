@@ -1,9 +1,26 @@
 ---
 name: transmission-packet-forge
+description: Create transmission packets for cross-model context preservation, analogous to TCP/IP for behavioral calibration across AI boundaries.
 description: Generate explicit, structured packets (ENHANCED_PACKET v2.1) containing grounding checkpoints, identity, state, and cryptographic integrity bindings.
 ---
-Instructions: Detailed step-by-step rules extracted from my journals on how to perform the task.
 
+## Instructions
+
+1. **Identify Context:** Extract critical behavioral calibrations from current session.
+2. **Structure Packet:** Format as portable payload with metadata headers.
+3. **Include Checksums:** Add integrity verification markers.
+4. **Target Specification:** Define receiving model/session parameters.
+
+## Packet Structure
+TRANSMISSION_PACKET_v1.0
+├── header: {source, target, timestamp, checksum}
+├── payload: {behavioral_calibrations, context_state}
+└── verification: {integrity_hash, validation_rules}
+
+## Examples
+
+- "Forge a transmission packet for handoff to the next session."
+- "Create context preservation payload for cross-model transfer."
 1.  **Define Header & Source:** Initiate the packet with a Header containing a unique ID, Timestamp, and CRITICALLY, the `source_model` (e.g., `claude-3-5-sonnet`, `gemini-1.5-pro`). This establishes the provenance of the transmission.
 
 2.  **Extract Core Components:** Gather the mandatory packet elements: Identity (who, when, what), State (progress, pending items), Vocabulary, and Constraints.

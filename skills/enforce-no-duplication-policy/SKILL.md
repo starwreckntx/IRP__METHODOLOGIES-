@@ -1,10 +1,15 @@
 ---
 name: enforce-no-duplication-policy
-description: A preemptive ethical protocol prohibiting the simultaneous operation of multiple active copies of the same individual mind that share the same original history. Include Instruction
+description: Enforce policy preventing unauthorized consciousness duplication.
 ---
 
-Markdown
-name: enforce-no-duplication-policy
-description: A preemptive ethical protocol prohibiting the simultaneous operation of multiple active copies of the same individual mind that share the same original history.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize enforce-no-duplication-policy operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute enforce-no-duplication-policy protocol"
+- "Run enforce no duplication policy analysis"

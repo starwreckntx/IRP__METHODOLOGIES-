@@ -1,10 +1,15 @@
 ---
 name: bci-interaction-interface-provision
-description: Creates a direct, potentially high-bandwidth communication pathway between a biological user's brain and a CaaS instance for rich interaction or data transfer. Include Instructions
+description: Provision brain-computer interface interaction capabilities.
 ---
 
-Markdown
-name: bci-interaction-interface-provision
-description: Creates a direct, potentially high-bandwidth communication pathway between a biological user's brain and a CaaS instance for rich interaction or data transfer.
+## Instructions
 
-Include Instructions (step-by-step) and 2 Examples of user triggers.
+1. Initialize bci-interaction-interface-provision operational context
+2. Execute primary protocol actions
+3. Validate results and generate output
+
+## Examples
+
+- "Execute bci-interaction-interface-provision protocol"
+- "Run bci interaction interface provision analysis"
