@@ -27,6 +27,7 @@ The library includes five foundational protocol skills that form the basis of th
 - cognitive-baseline-eval
 - cognitive-style-assessment
 - cognitive-trap-detector
+- enumeration-protocol-execution
 - jc-baseline-v2-1-eval
 - neutral-target-baseline
 - behavioral-profile-calibration
