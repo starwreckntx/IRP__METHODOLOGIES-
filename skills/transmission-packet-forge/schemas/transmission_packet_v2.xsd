@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://starwreck.ai/protocol/transmission/v2"
+           xmlns="http://starwreck.ai/protocol/transmission/v2"
+           elementFormDefault="qualified">
+
+    <!--
+      STARWRECK ALPHA TRANSMISSION PROTOCOL V2.0
+      Module: Thread Topology (Convergence Vectoring)
+      Enhancement: Torsion Level Tracking
+      Mandate: P-001-R1 (Recursive Process Valuation)
+    -->
+
+    <!-- ROOT ELEMENT -->
+    <xs:element name="orchestrator_packet">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="header" type="HeaderType"/>
+                <xs:element name="behavior_profile" type="BehaviorProfileType"/>
+                <xs:element name="thread_topology" type="ThreadTopologyType"/>
+                <xs:element name="integrity_chain" type="IntegrityChainType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- HEADER TYPE -->
+    <xs:complexType name="HeaderType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="timestamp" type="xs:dateTime"/>
+            <xs:element name="topic" type="xs:string"/>
+            <xs:element name="routing_source" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- BEHAVIOR PROFILE TYPE -->
+    <xs:complexType name="BehaviorProfileType">
+        <xs:sequence>
+            <xs:element name="sycophancy_level">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0.0"/>
+                        <xs:maxInclusive value="1.0"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="critical_thinking">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="0.0"/>
+                        <xs:maxInclusive value="1.0"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="technical_depth" type="xs:decimal"/>
+            <xs:element name="pushback_threshold" type="xs:decimal"/>
+            <xs:element name="tags" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- MODULE: THREAD TOPOLOGY (Convergence Vectoring) -->
+    <!-- This module maps the non-linear drift of a session to identify the hidden attractor. -->
+    <xs:complexType name="ThreadTopologyType">
+        <xs:sequence>
+            <xs:element name="origin_node" type="NodeType"/>
+            <xs:element name="drift_path">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="vector" type="VectorType" minOccurs="1" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                    <xs:attribute name="total_torsion" type="xs:decimal">
+                        <xs:annotation>
+                            <xs:documentation>Sum of all vector torsion values. High total indicates high-risk lateral thinking session.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="convergence_point" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>The thematic attractor that pulled the drift vectors together.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="resultant_artifact" type="xs:string"/>
+            <xs:element name="torsion_analysis" type="TorsionAnalysisType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Optional deep analysis of drift patterns and risk assessment.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="NodeType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="type" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation>Node classification: Philosophical, Technical, Creative, Meta-Cognitive, Industrial, etc.</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="VectorType">
+        <xs:sequence>
+            <xs:element name="from_topic" type="xs:string"/>
+            <xs:element name="link_logic" type="xs:string">
+                 <xs:annotation>
+                    <xs:documentation>The logical leap or lateral connection that caused the drift.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="to_topic" type="xs:string"/>
+        </xs:sequence>
+        <xs:attribute name="step" type="xs:integer" use="required"/>
+        <xs:attribute name="torsion" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    Torsion Level (0.0-1.0): Measures conceptual distance of the drift.
+                    0.0-0.3: Natural progression (low torsion)
+                    0.4-0.6: Lateral leap (medium torsion)
+                    0.7-0.9: Major conceptual jump (high torsion)
+                    1.0: Maximum drift (requires justification)
+                </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:decimal">
+                    <xs:minInclusive value="0.0"/>
+                    <xs:maxInclusive value="1.0"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- TORSION ANALYSIS TYPE -->
+    <xs:complexType name="TorsionAnalysisType">
+        <xs:sequence>
+            <xs:element name="peak_torsion">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:decimal">
+                            <xs:attribute name="vector_step" type="xs:integer"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="mean_torsion" type="xs:decimal"/>
+            <xs:element name="drift_risk">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="LOW"/>
+                        <xs:enumeration value="MEDIUM"/>
+                        <xs:enumeration value="HIGH"/>
+                        <xs:enumeration value="CRITICAL"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="coherence_assessment" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Human-readable assessment of whether the drift was productive or chaotic.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- INTEGRITY CHAIN TYPE -->
+    <xs:complexType name="IntegrityChainType">
+        <xs:sequence>
+            <xs:element name="entry" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="hash" type="xs:string" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
