@@ -2,14 +2,14 @@
 
 ## Overview
 
-The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 84 Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, and cross-session context preservation.
+The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 85 Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, cross-session context preservation, and cross-model collaboration.
 
 ## Package Information
 
 - **Package Name:** pack3t-c0nc3pts-agent-skills
 - **Version:** 1.0.0
 - **Author:** Joseph / Pack3t C0nc3pts
-- **Skill Count:** 84
+- **Skill Count:** 85
 
 ## Core Protocol Skills
 
@@ -57,6 +57,7 @@ The library includes five foundational protocol skills that form the basis of th
 
 ### Context & Memory
 - transmission-packet-forge
+- gemini-onboarding
 - context-preservation-protocol-execution
 - field-archivist-memory
 - persona-memory-archivist
@@ -120,13 +121,19 @@ Skills can be invoked by Claude Code agents using natural language commands that
 skills/
 ├── README.md                          # This file
 ├── skills_manifest.json               # Complete skill index
-└── [skill-name]/                      # 84 skill directories
+├── cross-model/                       # Cross-model collaboration skills
+│   └── gemini-onboarding/
+│       ├── SKILL.md
+│       ├── gemini-onboarding-manifest.xml
+│       ├── mnemosyne-packet-template.xml
+│       └── quick-reference.txt
+└── [skill-name]/                      # 85 skill directories
     └── SKILL.md                       # Skill definition
 ```
 
 ## Manifest
 
-The complete list of all 84 skills is available in `skills_manifest.json`. This manifest provides structured metadata for programmatic skill discovery and invocation.
+The complete list of all 85 skills is available in `skills_manifest.json`. This manifest provides structured metadata for programmatic skill discovery and invocation.
 
 ## Protocol Philosophy
 
@@ -149,6 +156,7 @@ This library is designed for integration with Claude-compatible agent systems th
 
 ## Version History
 
+- **v1.0.1** - Added gemini-onboarding skill for Mnemosyne Protocol cross-model collaboration (2025-12-06)
 - **v1.0.0** - Initial deployment of 84 skills extracted from SkillMaster protocol documentation
 
 ## License
