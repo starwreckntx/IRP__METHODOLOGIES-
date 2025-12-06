@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ANTI-PATTERN ALERT
+  Proactive warning when friction pattern detected
+-->
+<anti_pattern_alert>
+  <alert_id><!-- APA-YYYYMMDD-XXXX --></alert_id>
+  <generated_at><!-- ISO8601 --></generated_at>
+  <severity><!-- WARNING | CAUTION | INFO --></severity>
+
+  <detection>
+    <pattern_detected><!-- What triggered this alert --></pattern_detected>
+    <detected_in><!-- Where pattern was found --></detected_in>
+    <confidence><!-- 0.0 - 1.0 --></confidence>
+  </detection>
+
+  <historical_friction>
+    <friction_entry>
+      <id></id>
+      <session><!-- Where this failed before --></session>
+      <intent><!-- What was attempted --></intent>
+      <blocker><!-- Why it failed --></blocker>
+      <resolution><!-- How it was resolved --></resolution>
+      <lesson><!-- What to learn --></lesson>
+    </friction_entry>
+  </historical_friction>
+
+  <recommendation>
+    <avoid><!-- What NOT to do --></avoid>
+    <consider><!-- Alternative approach --></consider>
+    <reference><!-- Related successful artifacts --></reference>
+  </recommendation>
+
+  <suppress_option>
+    <!-- Allow dismissal if false positive -->
+    <suppress_for_session>true</suppress_for_session>
+    <suppress_permanently><!-- Requires explicit confirmation --></suppress_permanently>
+  </suppress_option>
+</anti_pattern_alert>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CRTP/0x12 INGESTION CONFIRMATION
+  Emitted after successful Mnemosyne packet processing
+-->
+<crtp_packet type="0x12" name="MnemosyneIngestAck">
+  <header>
+    <version>1.2</version>
+    <source>Claude-Ledger-Node</source>
+    <destination><!-- Originating Gemini instance --></destination>
+    <timestamp><!-- ISO8601 --></timestamp>
+    <flags>ACK|MNE</flags>
+  </header>
+
+  <payload>
+    <ingestion_status>SUCCESS</ingestion_status>
+    <packet_received><!-- Original packet ID --></packet_received>
+
+    <processing_summary>
+      <artifacts_indexed><!-- count --></artifacts_indexed>
+      <voices_stored><!-- count --></voices_stored>
+      <friction_logged><!-- count --></friction_logged>
+      <seeds_armed><!-- count --></seeds_armed>
+      <edges_woven><!-- count --></edges_woven>
+    </processing_summary>
+
+    <ledger_state>
+      <total_entries><!-- count --></total_entries>
+      <hot_contexts><!-- count --></hot_contexts>
+      <armed_triggers><!-- count --></armed_triggers>
+      <active_threads><!-- count --></active_threads>
+    </ledger_state>
+
+    <new_entry_ids>
+      <entry_id type=""><!-- Created entry IDs --></entry_id>
+    </new_entry_ids>
+
+    <resonance_matches>
+      <!-- Existing entries that resonate with new content -->
+      <match>
+        <new_entry_id><!-- New entry --></new_entry_id>
+        <existing_entry_id><!-- Matched entry --></existing_entry_id>
+        <weight><!-- Similarity score --></weight>
+      </match>
+    </resonance_matches>
+  </payload>
+
+  <checksum><!-- Validation hash --></checksum>
+</crtp_packet>

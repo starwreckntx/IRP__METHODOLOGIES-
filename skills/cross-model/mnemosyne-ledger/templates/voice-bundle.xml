@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  VOICE BUNDLE
+  Context package surfaced on session init or trigger activation
+-->
+<voice_bundle>
+  <bundle_id><!-- VB-YYYYMMDD-HHMMSS --></bundle_id>
+  <generated_at><!-- ISO8601 --></generated_at>
+  <trigger_reason><!-- session_init | trigger_phrase | explicit_query --></trigger_reason>
+
+  <primary_voice>
+    <voice_id><!-- Most relevant Voice_to_Future --></voice_id>
+    <source_session><!-- Originating session --></source_session>
+    <source_model><!-- Gemini instance --></source_model>
+    <content><![CDATA[
+      <!-- The actual voice content, verbatim, never compressed -->
+    ]]></content>
+    <relevance_score><!-- Why this voice was selected --></relevance_score>
+  </primary_voice>
+
+  <supporting_voices>
+    <!-- Additional relevant voices, ranked by resonance -->
+    <voice>
+      <voice_id></voice_id>
+      <content><![CDATA[]]></content>
+      <resonance_weight></resonance_weight>
+    </voice>
+  </supporting_voices>
+
+  <active_artifacts>
+    <!-- Currently relevant artifacts -->
+    <artifact>
+      <id></id>
+      <type></type>
+      <description></description>
+      <resonance_tags></resonance_tags>
+    </artifact>
+  </active_artifacts>
+
+  <armed_triggers>
+    <!-- Triggers relevant to current context -->
+    <trigger>
+      <phrase></phrase>
+      <target_seed_id></target_seed_id>
+      <expected_utility></expected_utility>
+    </trigger>
+  </armed_triggers>
+
+  <relevant_friction>
+    <!-- Anti-patterns that may apply -->
+    <friction>
+      <id></id>
+      <intent></intent>
+      <blocker></blocker>
+      <lesson></lesson>
+    </friction>
+  </relevant_friction>
+
+  <topology_context>
+    <!-- Graph position of current focus -->
+    <nearby_nodes>
+      <node>
+        <id></id>
+        <type></type>
+        <edge_weight></edge_weight>
+      </node>
+    </nearby_nodes>
+  </topology_context>
+</voice_bundle>
