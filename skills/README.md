@@ -2,14 +2,14 @@
 
 ## Overview
 
-The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 86 Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, and cross-session context preservation.
+The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 87 Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, cross-session context preservation, and cross-model AI collaboration.
 
 ## Package Information
 
 - **Package Name:** pack3t-c0nc3pts-agent-skills
-- **Version:** 1.0.0
+- **Version:** 1.1.0
 - **Author:** Joseph / Pack3t C0nc3pts
-- **Skill Count:** 86
+- **Skill Count:** 87
 
 ## Core Protocol Skills
 
@@ -96,6 +96,15 @@ The library includes five foundational protocol skills that form the basis of th
 - symbol-map-entropy-calc
 - metaphor-to-protocol-translation
 
+### Cross-Model Collaboration
+- **gemini-onboarding** - Authoritative specification for Claude-Gemini collaboration via Mnemosyne Protocol
+  - Complete CRTP/0x13 onboarding manifest
+  - Mnemosyne packet schema for session-close transmissions
+  - Voice_to_the_Future soul vector protocol
+  - Dormant seed registry with trigger arming
+  - Friction logging and anti-pattern library
+  - Quick reference card for fast compliance
+
 ## Usage
 
 Each skill is contained in its own directory with a `SKILL.md` file that includes:
@@ -150,7 +159,8 @@ This library is designed for integration with Claude-compatible agent systems th
 
 ## Version History
 
-- **v1.0.0** - Initial deployment of 84 skills extracted from SkillMaster protocol documentation
+- **v1.1.0** (2025-12-06) - Added gemini-onboarding skill for Mnemosyne Protocol cross-model collaboration
+- **v1.0.0** - Initial deployment of 86 skills extracted from SkillMaster protocol documentation
 
 ## License
 
