@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  LEDGER ENTRY SCHEMA
+  Core data structure for all ledger records
+  Version: 1.0
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="LedgerEntry">
+    <xs:sequence>
+      <!-- Unique identifier -->
+      <xs:element name="id" type="xs:string">
+        <!-- Format: LE-YYYYMMDD-HHMMSS-XXXX -->
+      </xs:element>
+
+      <!-- Entry classification -->
+      <xs:element name="entry_type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="artifact"/>
+            <xs:enumeration value="voice"/>
+            <xs:enumeration value="friction"/>
+            <xs:enumeration value="seed"/>
+            <xs:enumeration value="thread"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Current state -->
+      <xs:element name="state">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="ACTIVE"/>
+            <xs:enumeration value="DORMANT"/>
+            <xs:enumeration value="COMPOST"/>
+            <xs:enumeration value="CRYSTALLIZED"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Storage class -->
+      <xs:element name="storage_class">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="HOT"/>
+            <xs:enumeration value="WARM"/>
+            <xs:enumeration value="COLD"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Timestamps -->
+      <xs:element name="created" type="xs:dateTime"/>
+      <xs:element name="modified" type="xs:dateTime"/>
+      <xs:element name="accessed" type="xs:dateTime" minOccurs="0"/>
+
+      <!-- Source tracking -->
+      <xs:element name="source">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="model" type="xs:string"/>
+            <xs:element name="session_id" type="xs:string"/>
+            <xs:element name="packet_id" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <!-- Content payload -->
+      <xs:element name="content" type="xs:string"/>
+
+      <!-- Semantic indexing -->
+      <xs:element name="resonance_tags">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="tag" type="xs:string" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <!-- Lineage tracking -->
+      <xs:element name="lineage" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="parent_id" type="xs:string" minOccurs="0"/>
+            <xs:element name="child_ids" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="child_id" type="xs:string" maxOccurs="unbounded"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+      <!-- Topology connections -->
+      <xs:element name="edges" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="edge" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="target_id" type="xs:string"/>
+                  <xs:element name="weight" type="xs:decimal"/>
+                  <xs:element name="relationship" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

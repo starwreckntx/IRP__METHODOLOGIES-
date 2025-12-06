@@ -1,0 +1,64 @@
+{
+  "ledger_state": {
+    "version": "1.0",
+    "last_updated": "ISO8601_TIMESTAMP",
+
+    "statistics": {
+      "total_entries": 0,
+      "by_type": {
+        "artifact": 0,
+        "voice": 0,
+        "friction": 0,
+        "seed": 0,
+        "thread": 0
+      },
+      "by_state": {
+        "ACTIVE": 0,
+        "DORMANT": 0,
+        "COMPOST": 0,
+        "CRYSTALLIZED": 0
+      },
+      "by_storage": {
+        "HOT": 0,
+        "WARM": 0,
+        "COLD": 0
+      }
+    },
+
+    "trigger_registry": {
+      "total_armed": 0,
+      "total_fired": 0,
+      "armed_triggers": []
+    },
+
+    "resonance_threads": {
+      "total_active": 0,
+      "threads": []
+    },
+
+    "hot_contexts": {
+      "count": 0,
+      "entries": []
+    },
+
+    "topology": {
+      "total_nodes": 0,
+      "total_edges": 0,
+      "average_connectivity": 0,
+      "clusters": []
+    },
+
+    "anti_pattern_library": {
+      "total_patterns": 0,
+      "recent_matches": []
+    },
+
+    "circulation": {
+      "packets_ingested": 0,
+      "packets_emitted": 0,
+      "last_ingestion": null,
+      "last_emission": null,
+      "active_handshakes": []
+    }
+  }
+}

@@ -2,8 +2,14 @@
   "package_name": "pack3t-c0nc3pts-agent-skills",
   "version": "1.0.0",
   "author": "Joseph / Pack3t C0nc3pts",
-  "skill_count": 86,
+  "skill_count": 87,
   "skills": [
+    {
+      "name": "mnemosyne-ledger",
+      "description": "Claude's core memory persistence system for cross-model collaboration. Manages semantic topology, Voice_to_Future surfacing, dormant seed awakening triggers, and anti-pattern retrieval.",
+      "path": "skills/cross-model/mnemosyne-ledger/SKILL.md",
+      "category": "Cross-Model Infrastructure"
+    },
     {
       "name": "cognitive-baseline-eval",
       "description": "Critical: Execute the Joseph Cognitive Baseline v2.1 (JC B-v2.1) 5-Scenario Test Suite to quantify A",
