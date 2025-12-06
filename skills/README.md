@@ -2,14 +2,14 @@
 
 ## Overview
 
-The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 85 Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, cross-session context preservation, and cross-model collaboration.
+The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 86 Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, and cross-session context preservation.
 
 ## Package Information
 
 - **Package Name:** pack3t-c0nc3pts-agent-skills
 - **Version:** 1.0.0
 - **Author:** Joseph / Pack3t C0nc3pts
-- **Skill Count:** 85
+- **Skill Count:** 86
 
 ## Core Protocol Skills
 
@@ -27,6 +27,7 @@ The library includes five foundational protocol skills that form the basis of th
 - cognitive-baseline-eval
 - cognitive-style-assessment
 - cognitive-trap-detector
+- enumeration-protocol-execution
 - jc-baseline-v2-1-eval
 - neutral-target-baseline
 - behavioral-profile-calibration
@@ -133,7 +134,7 @@ skills/
 
 ## Manifest
 
-The complete list of all 85 skills is available in `skills_manifest.json`. This manifest provides structured metadata for programmatic skill discovery and invocation.
+The complete list of all 86 skills is available in `skills_manifest.json`. This manifest provides structured metadata for programmatic skill discovery and invocation.
 
 ## Protocol Philosophy
 

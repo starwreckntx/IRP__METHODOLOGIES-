@@ -2,7 +2,7 @@
   "package_name": "pack3t-c0nc3pts-agent-skills",
   "version": "1.0.0",
   "author": "Joseph / Pack3t C0nc3pts",
-  "skill_count": 84,
+  "skill_count": 86,
   "skills": [
     {
       "name": "cognitive-baseline-eval",
@@ -423,6 +423,16 @@
       "name": "dendrite-reforging-protocol",
       "description": "Adversarial, high-friction process (FCP_Level: 10) that systematically stress-tests a user's self-de",
       "path": "skills/dendrite-reforging-protocol/SKILL.md"
+    },
+    {
+      "name": "enumeration-protocol-execution",
+      "description": "Enforce a Divergent-Convergent Scan loop to overcome 'Prevalent Noun Bias' and System 1 reflexes.",
+      "path": "skills/enumeration-protocol-execution/SKILL.md"
+    },
+    {
+      "name": "gam-researcher-agent",
+      "description": "Automated context retrieval from Transmission Packet archive using iterative research loop. Implements GAM Read Path.",
+      "path": "skills/gam-researcher-agent/SKILL.md"
     }
   ]
 }
