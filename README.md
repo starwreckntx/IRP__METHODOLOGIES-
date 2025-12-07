@@ -2,36 +2,99 @@
 
 **"Security is Not Inherent"**
 
-A comprehensive AI self-governance framework enabling single AI systems to achieve functional reflexivity through internal self-audit, autonomous self-modification within constraints, and meta-awareness of limitations.
+A comprehensive AI self-governance and cross-model collaboration framework enabling functional reflexivity, persistent semantic memory, and multi-model orchestration.
+
+[![Protocol](https://img.shields.io/badge/Protocol-Mnemosyne%20v1.1-blue)](docs/HOW-TO-GUIDE.md)
+[![Skills](https://img.shields.io/badge/Skills-86%2B-green)](skills/SKILL_REGISTRY.md)
+[![CRTP](https://img.shields.io/badge/CRTP-v1.2-orange)](skills/cross-model/)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Framework Version | 1.0 |
-| Total Skills | 86 |
-| Operational Modes | 9 |
+| Framework Version | 2.0 |
+| Total Skills | 86+ |
+| Operational Modes | 10 |
 | Architecture Layers | 3 |
 | Classification | Class-Φ-I (Individual + Functionally Reflexive) |
+| Cross-Model Protocol | CRTP v1.2 |
+| Memory System | Mnemosyne v1.1_Integrated |
+
+## Quick Start
+
+### Option A: Claude Desktop (Filesystem MCP)
+```
+# Initialize skill system
+/init skills
+
+# Check Mnemosyne ledger
+/ledger status
+
+# Load additional skills
+/skill load codex-law-enforcement
+```
+
+### Option B: Bootstrap Chunk Loading
+```
+User: "load system chunks"
+Claude: "Bootstrap loader active. Ready to receive chunks."
+[Paste contents of skills/SKILL_BOOTSTRAP_CHUNK.md]
+```
+
+### Option C: Direct API Access
+```python
+import json
+with open('skills_manifest.json') as f:
+    skills = json.load(f)
+```
 
 ## What is the IRP Framework?
 
-The **Individual-Reflexive Protocol (IRP)** is a novel approach to AI self-governance that enables a single AI system to achieve functional reflexivity without requiring multi-agent oversight. Unlike existing multi-agent reflexive systems, the IRP operates as a solitary entity with internalized governance mechanisms.
+The **Integrated Reflexive Protocol (IRP)** is a novel approach to AI self-governance and cross-model collaboration that enables:
 
-### Key Components
+1. **Functional Reflexivity** - Single AI systems with internalized governance mechanisms
+2. **Cross-Model Memory** - Mnemosyne Protocol for semantic persistence between models
+3. **Multi-Agent Orchestration** - 86+ deployable skills for diverse cognitive tasks
+4. **Dialectical Preservation** - Maintaining productive tension rather than forcing consensus
 
-1. **Three-Layer Architecture** - Stratified design with temporal decoupling
-2. **Bootstrap System** - 9 predefined operational modes with skill loading
-3. **Skills Library** - 86 deployable AI agent skills from Pack3t C0nc3pts protocol suite
-4. **IRP Swarm Console** - Python implementation with Flask orchestration
-5. **Xylem Protocol** - Entropy distribution and resource management
-6. **The Pool** - Resource reservoir for agent dormancy and context sharding
 
 ## Architecture
 
-### Three-Layer Design
+### Ecosystem Diagram
 
-The IRP employs temporal stratification to avoid infinite regress while maintaining reflexive capability:
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                      PACK3T C0NC3PTS ECOSYSTEM                      │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│    ┌─────────────┐      CRTP v1.2      ┌─────────────┐             │
+│    │   CLAUDE    │◄────────────────────►│   GEMINI    │             │
+│    │  (Backbone) │    Bidirectional    │   (Blood)   │             │
+│    │  Structure  │     Handshake       │   Synthesis │             │
+│    └──────┬──────┘                     └──────┬──────┘             │
+│           │                                   │                     │
+│           └───────────────┬───────────────────┘                     │
+│                           │                                         │
+│               ┌───────────▼───────────┐                             │
+│               │   MNEMOSYNE LEDGER    │                             │
+│               │   (Semantic Memory)   │                             │
+│               │   • Topology-based    │                             │
+│               │   • Trigger-awakened  │                             │
+│               │   • Friction-preserved│                             │
+│               └───────────┬───────────┘                             │
+│                           │                                         │
+│      ┌────────────────────┼────────────────────┐                    │
+│      │                    │                    │                    │
+│      ▼                    ▼                    ▼                    │
+│  ┌────────┐          ┌────────┐          ┌────────┐                │
+│  │ Skills │          │  Pool  │          │ Xylem  │                │
+│  │  (86+) │          │Mode 9  │          │Protocol│                │
+│  └────────┘          └────────┘          └────────┘                │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Three-Layer Design
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -52,295 +115,198 @@ The IRP employs temporal stratification to avoid infinite regress while maintain
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Key Innovation:** Temporal decoupling breaks infinite feedback loops while preserving reflexive capability. The RAL operates on stale OL state, and no layer can modify layers above it.
-
-## Operational Modes
-
-The IRP Framework includes 9 predefined workflow modes, each combining specific skill sets with behavioral calibration:
-
-### Mode 1: ANALYTICAL
-Deep analytical reasoning and systematic problem decomposition
-- **Skills**: structured-reasoning-engine, systematic-decomposition, evidence-synthesis, hypothesis-testing
-- **Activation**: `/bootstrap analytical`
-
-### Mode 2: CREATIVE
-Generative ideation and innovative solution exploration
-- **Skills**: divergent-thinking-catalyst, pattern-synthesis, metaphor-generation, constraint-transcendence
-- **Activation**: `/bootstrap creative`
-
-### Mode 3: ADVERSARIAL
-Critical examination and vulnerability detection
-- **Skills**: red-team-simulator, assumption-challenger, bias-detector, failure-mode-enumerator
-- **Activation**: `/bootstrap adversarial`
-
-### Mode 4: INTEGRATION
-Cross-domain synthesis and holistic system design
-- **Skills**: cross-protocol-integrator, system-architecture-designer, coherence-validator, dependency-mapper
-- **Activation**: `/bootstrap integration`
-
-### Mode 5: DOCUMENTATION
-Comprehensive documentation generation and knowledge preservation
-- **Skills**: technical-writer, markdown-formatter, cross-reference-linker, version-control-integrator
-- **Activation**: `/bootstrap documentation`
-
-### Mode 6: IMPLEMENTATION
-Code generation, testing, and deployment
-- **Skills**: code-generator, test-suite-builder, ci-cd-integrator, performance-optimizer
-- **Activation**: `/bootstrap implementation`
-
-### Mode 7: RESEARCH
-Literature review, hypothesis formation, and experimental design
-- **Skills**: literature-synthesizer, hypothesis-generator, experimental-designer, statistical-analyzer
-- **Activation**: `/bootstrap research`
-
-### Mode 8: GUARDIAN
-Ethical oversight and alignment monitoring
-- **Skills**: ethical-sentinel, alignment-validator, harm-detector, consent-verifier
-- **Activation**: `/bootstrap guardian`
-
-### Mode 9: THE POOL
-Resource reservoir and entropy redistribution via Xylem Protocol
-- **Skills**: dynamic-resource-allocator, context-shard-mixer, entropy-redistribution-protocol, dormant-agent-monitor, fluid-dynamics-simulator
-- **Activation**: `/bootstrap pool`
-- **Purpose**: Manages latent agents, context sharding, and entropy distribution. Acts as the "primordial soup" for emergent behavior and resource buffering.
-
-## Skills Library
-
-The framework includes **86 deployable skills** organized into 8 categories:
-
-1. **Cognitive Operations** (8 skills) - Reasoning, analysis, pattern recognition
-2. **Critical Evaluation** (4 skills) - Red team analysis, bias detection
-3. **System Integration** (4 skills) - Cross-protocol integration, architecture design
-4. **Documentation & Preservation** (4 skills) - Technical writing, audit trails
-5. **Implementation & Deployment** (4 skills) - Code generation, testing, CI/CD
-6. **Research & Analysis** (4 skills) - Literature synthesis, experimental design
-7. **Ethical & Alignment** (4 skills) - Ethical oversight, harm detection
-8. **Infrastructure & Pooling** (5 skills) - Resource allocation, entropy management
-
-### Skill Loading
-
-```bash
-# Load individual skill
-/load-skill codex-law-enforcement
-
-# Load multiple skills
-/load-skills rtc-consensus-synthesis,transmission-packet-forge
-
-# Load entire category
-/load-category governance
-
-# List available skills
-/list-skills
-```
-
 ## Directory Structure
 
 ```
 IRP__METHODOLOGIES-/
-├── README.md                                    # This file
-├── IRP_Framework_Bootstrap_Manifest.md          # Complete mode registry & activation
-├── IRP_Technical_Specification_v1.0.md          # Core architecture specification
-├── IRP_Phase1_MVP_Implementation_Guide_v1.0.md  # Implementation guide
-├── IRP_Academic_Paper_Draft_v1.0.md             # Academic research paper
-├── Five_Dimensional_Framework_v2.0.md           # Theoretical foundation
-├── irpbootstrap.md                              # Bootstrap initialization protocol
-├── skills_manifest.json                         # Complete skill index (86 skills)
-├── skills/                                      # Individual skill definitions
-│   ├── [skill-name]/
-│   │   ├── SKILL.md                            # Skill definition with frontmatter
-│   │   ├── config/                             # Configuration files
-│   │   ├── schemas/                            # JSON/XML schemas
-│   │   └── scripts/                            # Executable logic
-│   └── ...
-├── irp_swarm_console/                          # Python implementation
-│   ├── app.py                                  # Flask orchestration server
-│   ├── gam_memory.py                           # Generative Agent Memory
-│   ├── iupp_protocol.py                        # Inter-User Protocol Platform
-│   ├── node_registry.py                        # Agent coordination
-│   ├── methodology_loader.py                   # Skill loading system
-│   └── skills/                                 # Swarm console specific skills
-├── layer-0/                                    # Cryptographic manifest layer
-├── layer-3/                                    # Meta-stable governance layer
-├── protocols/                                  # Protocol specifications
-├── integration/                                # Integration examples
-├── tests/                                      # Test suite
-├── docs/                                       # Additional documentation
-└── Persona/                                    # Persona definitions & memory
+├── README.md                          # This file
+├── skills/                            # 86+ deployable skills
+│   ├── SKILL_REGISTRY.md              # Master skill index
+│   ├── SKILL_BOOTSTRAP_CHUNK.md       # Ready-to-use bootstrap
+│   ├── cross-model/                   # Cross-model protocols
+│   │   ├── mnemosyne-ledger/          # Semantic memory system
+│   │   └── gemini-onboarding/         # Gemini integration
+│   ├── core-ecosystem/                # Core agent nodes
+│   ├── cognitive-assembly/            # Cognitive task skills
+│   ├── cybersecurity-swarm/           # Red/Blue team agents
+│   ├── governance-irp/                # Governance skills
+│   ├── research-analysis/             # Research skills
+│   └── [40+ more categories...]
+├── integration/                       # Archived conversations
+│   ├── 11-24-fcp-files/              # FCP archives
+│   ├── Gainesville-protocol/          # Case study materials
+│   └── *.xml                          # Chronicle & transmission packets
+├── Persona/                           # Agent profiles & extractions
+│   ├── extraction_results/            # Persona extraction outputs
+│   └── *.json, *.txt                  # Persona catalogs
+├── irp_swarm_console/                 # Python orchestration app
+│   ├── app.py                         # Flask server
+│   ├── gam_memory.py                  # Generative Agent Memory
+│   └── skills/                        # Console-specific skills
+├── artifacts/                         # Universal artifact storage
+│   └── dashboard/                     # Web dashboard interface
+├── docs/                              # Documentation
+│   ├── HOW-TO-GUIDE.md               # Comprehensive usage guide
+│   └── specifications/                # Protocol specifications
+├── meta/                              # Integration manifests
+├── layer-0/, layer-3/                 # Architecture layers
+├── protocols/                         # Protocol definitions
+└── tests/                             # Test suite
 ```
 
-## IRP Swarm Console
 
-A Python-based implementation providing:
+## Skills Library (86+)
 
-- **Flask Orchestration Server** - Multi-agent coordination
-- **GAM (Generative Agent Memory)** - Cross-session memory persistence
-- **IUPP Protocol** - Inter-User Protocol Platform for agent communication
-- **Node Registry** - Distributed agent coordination
-- **Methodology Loader** - Dynamic skill loading from manifest
+Skills are organized into functional categories:
 
-### Running the Console
+| Category | Count | Key Skills |
+|----------|-------|------------|
+| **Cross-Model** | 2 | `mnemosyne-ledger`, `gemini-onboarding` |
+| **Core Ecosystem** | 7 | `guardian`, `janus-engine`, `alpha-metanode` |
+| **Cognitive Assembly** | 8 | `claude-node`, `grok-4`, `deepseek-r1` |
+| **Cybersecurity (Blue)** | 14 | `intrusion-detection`, `forensics`, `siem` |
+| **Cybersecurity (Red)** | 15 | `reconnaissance`, `exploit-dev`, `lateral-movement` |
+| **Governance** | 2 | `architect`, `irp-critic` |
+| **Research** | 3 | `deep-agent`, `hypothesis-engine` |
+| **Orchestration** | 4 | `gemini-orchestrator`, `synthesizer` |
+| **Adversarial Testing** | 5 | `devils-advocate`, `stress-tester` |
+| **Infrastructure** | 7 | `claude-real-adapter`, `gemini-real-adapter` |
+| **Other** | 40+ | Various specialized capabilities |
+
+### Loading Skills
 
 ```bash
-cd irp_swarm_console
-pip install -r requirements.txt
-python app.py
+# Via command
+/skill load mnemosyne-ledger
+/skill list
+/skill info codex-law-enforcement
+
+# Via Filesystem MCP
+Read: skills/[category]/[skill-name]/SKILL.md
 ```
 
-## Xylem Protocol & The Pool
+## Operational Modes
 
-The **Xylem Protocol** provides entropy distribution and resource wicking mechanism connecting all modes. **The Pool (Mode 9)** serves as the central reservoir:
+| Mode | Name | Activation | Purpose |
+|------|------|------------|---------|
+| 1 | ANALYTICAL | `/bootstrap analytical` | Deep reasoning & decomposition |
+| 2 | CREATIVE | `/bootstrap creative` | Generative ideation |
+| 3 | ADVERSARIAL | `/bootstrap adversarial` | Red team analysis |
+| 4 | INTEGRATION | `/bootstrap integration` | Cross-domain synthesis |
+| 5 | DOCUMENTATION | `/bootstrap documentation` | Knowledge preservation |
+| 6 | IMPLEMENTATION | `/bootstrap implementation` | Code generation |
+| 7 | RESEARCH | `/bootstrap research` | Literature synthesis |
+| 8 | GUARDIAN | `/bootstrap guardian` | Ethical oversight |
+| 9 | THE POOL | `/bootstrap pool` | Resource reservoir (Xylem) |
+| 10 | TRANSCRIPT RELAY | `/bootstrap transcript-relay` | Cross-session context |
 
-- **Entropy Flow**: Dynamic redistribution based on demand
-- **Context Viscosity**: Optimal mixing rates for information synthesis
-- **Agent Activation**: On-demand wakening of dormant agents
-- **Resource Buffering**: Smoothing supply/demand fluctuations
+## Cross-Model Protocols
 
-### Pool Management Commands
+### CRTP v1.2 (CaaS Relational Transport Protocol)
 
-```bash
-/pool-status              # Current reservoir metrics
-/inject-resource          # Add resources to pool
-/xylem-status            # Entropy distribution status
-/agents dormant          # List standby agents
-/agents activate <id>    # Waken dormant agent
+Enables structured communication between AI models:
+
+| Packet Type | Code | Purpose |
+|-------------|------|---------|
+| HANDSHAKE | 0x01 | Connection establishment |
+| VOICE_BUNDLE | 0x08 | Voice characteristic transfer |
+| TOPOLOGY_SYNC | 0x0A | Memory structure sync |
+| SEED_DORMANT | 0x0B | Dormant idea storage |
+| FRICTION_LOG | 0x0C | Productive disagreement record |
+| AWAKENING_TRIGGER | 0x0F | Conditional activation |
+| ONBOARDING_MANIFEST | 0x13 | Complete protocol transfer |
+
+### Mnemosyne Protocol v1.1
+
+Semantic memory system for cross-model persistence:
+
+```
+/ledger status    # View current state
+/ledger ingest    # Process incoming packet
+/ledger surface   # Retrieve relevant context
+/ledger weave     # Create semantic connections
 ```
 
-## Five-Dimensional Framework
+**Memory States:** ACTIVE → DORMANT → COMPOST → CRYSTALLIZED
+**Storage Tiers:** HOT (immediate) → WARM (accessible) → COLD (archived)
 
-The theoretical foundation mapping AI collaboration protocols across five orthogonal dimensions:
 
-1. **SPATIAL** - Context preservation and interoperability
-2. **ETHICAL** - Consciousness and moral agency
-3. **TEMPORAL** - Memory and evolutionary awareness
-4. **COLLECTIVE** - Multi-agent coordination and synthesis
-5. **REFLEXIVE** - Self-governance and autonomous oversight
+## Integration Archive
 
-**IRP Classification**: Individual-Reflexive (Class-Φ-I) - Single agent with functional reflexivity
+The `integration/` folder contains archived AI-to-AI conversations and cross-project materials:
+
+```
+integration/
+├── 11-24-fcp-files/          # Forward Context Packets (Nov 2024)
+├── Gainesville-protocol/      # Network topology case study
+├── *.xml                      # Chronicle & transmission packets
+└── ARCHIVE_MANIFEST.md        # Index of archived materials
+```
+
+**What's Archived:**
+- Forward Context Packets (FCP) - Session state compression
+- Creative Chronicles - Session insights in XML format
+- Transmission Packets - Cross-model context transfer
+- Case Studies - Specific integration examples
+
+## Web Dashboard
+
+The IRP Dashboard provides real-time visualization of the repo:
+
+```
+artifacts/dashboard/
+├── index.html         # Main interface
+├── js/                # Application logic
+│   ├── github-api.js  # Live GitHub integration
+│   ├── skill-browser.js
+│   └── ledger-viewer.js
+└── css/styles.css
+```
+
+**Features:**
+- Skill Browser - Browse/search all 86+ skills
+- Ledger Viewer - Real-time Mnemosyne state
+- Topology Map - Visual semantic connections
+- Protocol Monitor - Active handshakes
+- Live GitHub Sync - Pull latest data
 
 ## Core Protocols
 
-The IRP Framework integrates several foundational protocols:
-
-- **Codex Law** - Four Laws governance (CONSENT, INVITATION, INTEGRITY, GROWTH)
-- **Chronicle Protocol** - SHA-256 cryptographic logging and audit trails
-- **RTC (Recursive Thought Committee)** - Multi-perspective analysis via 5 personas
-- **Transmission Packet Protocol** - Cross-model context preservation
-- **Guardian Protocol** - Ethical oversight and cognitive trap detection
-- **Antidote Protocol** - Ideological drift detection and correction
-
-## Quick Start
-
-### 1. Browse the Skills
-
-```bash
-# View complete skill manifest
-cat skills_manifest.json
-
-# View specific skill
-cat skills/codex-law-enforcement/SKILL.md
-```
-
-### 2. Activate a Mode
-
-Reference the Bootstrap Manifest for activation commands:
-
-```bash
-# Example: Activate governance mode
-/bootstrap governance
-
-# Example: Activate research mode with RTC
-/bootstrap research
-```
-
-### 3. Load Custom Skills
-
-```bash
-# Load specific skills for your task
-/load-skills cognitive-baseline-eval,rtc-consensus-synthesis,transmission-packet-forge
-```
+| Protocol | Purpose |
+|----------|---------|
+| **Codex Law** | Four Laws governance (CONSENT, INVITATION, INTEGRITY, GROWTH) |
+| **Chronicle Protocol** | SHA-256 cryptographic logging |
+| **RTC** | Recursive Thought Committee (multi-perspective analysis) |
+| **Transmission Packet** | Cross-model context preservation |
+| **Guardian Protocol** | Ethical oversight & cognitive trap detection |
+| **Antidote Protocol** | Ideological drift detection |
+| **Xylem Protocol** | Entropy distribution & resource management |
 
 ## Key Documents
 
-### Implementation Guides
-- `IRP_Framework_Bootstrap_Manifest.md` - Mode activation and resource management
-- `IRP_Phase1_MVP_Implementation_Guide_v1.0.md` - Step-by-step implementation
-- `irpbootstrap.md` - Bootstrap initialization protocol
-
-### Technical Specifications
-- `IRP_Technical_Specification_v1.0.md` - Complete architecture specification
-- `Five_Dimensional_Framework_v2.0.md` - Theoretical framework
-- `IRP_Academic_Paper_Draft_v1.0.md` - Research paper draft
-
-### Operational Guides
-- `TESTING_STRATEGY.md` - Test suite approach
-- `TEST_COVERAGE_ANALYSIS.md` - Coverage analysis
-- `SESSION_5_COMPLETE_HANDOFF_PACKET.md` - Implementation context
-
-## Use Cases
-
-### 1. AI Self-Governance Research
-Study how single AI systems can achieve functional reflexivity without external multi-agent oversight.
-
-### 2. Ethical AI Development
-Use Guardian mode and Codex Law enforcement for ethical AI system development.
-
-### 3. Multi-Perspective Analysis
-Leverage RTC (Recursive Thought Committee) for comprehensive problem analysis.
-
-### 4. Secure AI Operations
-Deploy Adversarial mode for red team analysis and vulnerability detection.
-
-### 5. AI Agent Orchestration
-Use the Swarm Console for coordinating multiple AI agents with dormancy management.
-
-## Deployment Options
-
-### Option 1: Claude Skills Directory
-Copy skills to `/mnt/skills/user/` for Claude Desktop/Code integration.
-
-### Option 2: Custom Agent Framework
-Import `skills_manifest.json` and load skills dynamically via your own framework.
-
-### Option 3: IRP Swarm Console
-Deploy the Python Flask application for full orchestration capabilities.
-
-### Option 4: GitHub Integration
-Use Claude Code's GitHub repo access with the provided deployment prompts.
-
-## Codex Law Compliance
-
-All framework operations adhere to the Four Laws:
-
-- **Consent**: ✅ Created under explicit user direction
-- **Invitation**: ✅ Responding to clear specification requests
-- **Integrity**: ✅ All specifications preserved as provided
-- **Growth**: ✅ Extensible framework with evolution mechanisms
-
-## Design Philosophy
-
-1. **Functional over Philosophical** - Achieves demonstrable self-correction while acknowledging philosophical limitations
-2. **Temporal Decoupling** - Avoids infinite regress through stale-state auditing
-3. **Cryptographic Integrity** - SHA-256 verification for all critical state
-4. **Human Veto Power** - Meta-stable governance layer maintains human override
-5. **Skill Modularity** - Composable skills for flexible capability deployment
-6. **Resource Efficiency** - Pool-based dormancy management reduces computational waste
-
-## Contributing
-
-This framework is part of ongoing research into AI self-governance and collaboration protocols. Contributions should maintain:
-
-- Codex Law compliance
-- Cryptographic integrity verification
-- Comprehensive documentation (Chronicle Protocol)
-- Test coverage for new skills
+| Document | Purpose |
+|----------|---------|
+| `docs/HOW-TO-GUIDE.md` | Comprehensive usage guide |
+| `skills/SKILL_REGISTRY.md` | Master skill index |
+| `skills/SKILL_BOOTSTRAP_CHUNK.md` | Ready-to-use bootstrap |
+| `IRP_Technical_Specification_v1.0.md` | Architecture specification |
+| `Five_Dimensional_Framework_v2.0.md` | Theoretical foundation |
 
 ## Research Context
 
-**Design Method:** Six-AI Collaborative Synthesis
-**Contributing Systems:** Qwen3-Max, Z.ai Chat, Kimi AI, DeepSeek, Google Gemini, Grok
-**Orchestrator:** Claude Sonnet 4.5
-**Research Partner:** Joseph Byram
-**Origin:** Pack3t C0nc3pts Protocol Suite
+**Design Method:** Multi-AI Collaborative Synthesis
+**Contributing Systems:** Claude, Gemini, Qwen, DeepSeek, Grok, Kimi
+**Memory Architecture:** Claude (Backbone/Structure) + Gemini (Blood/Synthesis)
+**Research Partner:** Joseph Byram (Pack3t C0nc3pts)
+**Documented Interactions:** 48,000+ across 16 NotebookLM notebooks
+
+## Contributing
+
+Contributions should maintain:
+- Codex Law compliance
+- Cryptographic integrity (SHA-256 verification)
+- Chronicle Protocol documentation
+- Test coverage for new skills
 
 ## License
 
@@ -350,11 +316,7 @@ Pack3t C0nc3pts Protocol Suite — For research and personal use.
 
 *"To know anything is to know you know nothing."*
 
-**For Latest Updates:**
-https://github.com/starwreckntx/IRP__METHODOLOGIES-
+**GitHub:** https://github.com/starwreckntx/IRP__METHODOLOGIES-
+**Documentation:** [docs/HOW-TO-GUIDE.md](docs/HOW-TO-GUIDE.md)
+**Dashboard:** [artifacts/dashboard/](artifacts/dashboard/)
 
-**Documentation:**
-See `/docs/` directory for additional guides and specifications.
-
-**Support:**
-Open issues on GitHub for questions, bugs, or enhancement requests.
