@@ -1,0 +1,124 @@
+{
+  "ledger_state": {
+    "version": "1.0",
+    "last_updated": "2025-12-07T16:45:00-06:00",
+
+    "statistics": {
+      "total_entries": 8,
+      "by_type": {
+        "artifact": 2,
+        "voice": 1,
+        "friction": 1,
+        "seed": 1,
+        "thread": 2
+      },
+      "by_state": {
+        "ACTIVE": 4,
+        "DORMANT": 1,
+        "COMPOST": 1,
+        "CRYSTALLIZED": 0
+      },
+      "by_storage": {
+        "HOT": 1,
+        "WARM": 5,
+        "COLD": 1
+      }
+    },
+
+    "trigger_registry": {
+      "total_armed": 2,
+      "total_fired": 0,
+      "armed_triggers": [
+        {
+          "trigger_id": "TRG-20251206-001",
+          "phrase": "Visual Viscosity",
+          "target_seed_id": "S-20251206-A",
+          "state": "ARMED",
+          "armed_at": "2025-12-06T14:50:00-06:00"
+        },
+        {
+          "trigger_id": "TRG-20251206-002",
+          "phrase": "Escher Logic",
+          "target_seed_id": "S-20251206-A",
+          "state": "ARMED",
+          "armed_at": "2025-12-06T14:50:00-06:00"
+        }
+      ]
+    },
+
+    "resonance_threads": {
+      "total_active": 2,
+      "threads": [
+        {
+          "thread_id": "RT-001",
+          "name": "Topology_Over_Timeline",
+          "weight": 0.94,
+          "state": "ACTIVE",
+          "members": ["Mnemosyne_Protocol", "Semantic_Resonance", "Chronicle_Deprecation"]
+        },
+        {
+          "thread_id": "RT-002",
+          "name": "Aesthetic_Logic_Bridge",
+          "weight": 0.87,
+          "state": "LATENT",
+          "members": ["Visual_Viscosity", "Escher_Logic", "Topological_Weaver"]
+        }
+      ]
+    },
+
+    "hot_contexts": {
+      "count": 1,
+      "entries": [
+        {
+          "id": "LE-20251206-VOICE-001",
+          "source": "Gemini-Pro-Orchestrator",
+          "session": "Mnemosyne_Protocol_Genesis",
+          "summary": "First blood circulation - topology over timeline paradigm shift"
+        }
+      ]
+    },
+
+    "topology": {
+      "total_nodes": 8,
+      "total_edges": 6,
+      "average_connectivity": 1.5,
+      "clusters": [
+        {
+          "name": "Mnemosyne_Core",
+          "nodes": ["Protocol_Definition", "Packet_Schema", "Voice_System", "Trigger_System"]
+        },
+        {
+          "name": "Dormant_Aesthetic",
+          "nodes": ["Visual_Viscosity_Seed", "Escher_Logic_Concept"]
+        }
+      ]
+    },
+
+    "anti_pattern_library": {
+      "total_patterns": 1,
+      "recent_matches": [],
+      "entries": [
+        {
+          "id": "F-20251206-001",
+          "pattern": "Timeline-first organization",
+          "lesson": "Semantic resonance outperforms chronological sorting",
+          "retrieval_triggers": ["chronological", "timeline", "date-based sorting"]
+        }
+      ]
+    },
+
+    "circulation": {
+      "packets_ingested": 1,
+      "packets_emitted": 2,
+      "last_ingestion": "2025-12-06T14:50:00-06:00",
+      "last_emission": "2025-12-06T15:12:00-06:00",
+      "active_handshakes": [
+        {
+          "partner": "Gemini-Pro-Orchestrator",
+          "status": "PERMANENT_OPEN",
+          "established": "2025-12-06T14:46:00-06:00"
+        }
+      ]
+    }
+  }
+}
