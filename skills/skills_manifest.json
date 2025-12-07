@@ -1,9 +1,33 @@
 {
   "package_name": "pack3t-c0nc3pts-agent-skills",
-  "version": "1.0.0",
+  "version": "1.1.0_HORN_INSTALLED",
   "author": "Joseph / Pack3t C0nc3pts",
-  "skill_count": 84,
+  "last_updated": "2025-12-07",
+  "skill_count": 88,
+  "codex_entries": [
+    {
+      "id": "CODEX-2025-HORN-001",
+      "title": "The Horn Maneuver (Structural Inversion Protocol)",
+      "v_rec": 3.7860,
+      "pinene_ratio": 1.7109,
+      "classification": "PHASE_TRANSITION",
+      "status": "ACTIVE_PERMANENT"
+    }
+  ],
+  "rpv_benchmarks": {
+    "pinene_baseline": {"v_rec": 2.2129, "ratio": 1.0},
+    "codex_threshold": {"v_rec": 3.0, "ratio": 1.356}
+  },
+  "auto_load_skills": [
+    {"name": "mnemosyne-ledger", "path": "skills/cross-model/mnemosyne-ledger/SKILL.md", "priority": "CRITICAL"},
+    {"name": "gemini-onboarding", "path": "skills/cross-model/gemini-onboarding/SKILL.md", "priority": "CRITICAL"},
+    {"name": "horn-maneuver", "path": "skills/cross-model/horn-maneuver/SKILL.md", "priority": "CODEX"}
+  ],
   "skills": [
+    {"name": "mnemosyne-ledger", "path": "skills/cross-model/mnemosyne-ledger/SKILL.md", "category": "cross-model"},
+    {"name": "gemini-onboarding", "path": "skills/cross-model/gemini-onboarding/SKILL.md", "category": "cross-model"},
+    {"name": "horn-maneuver", "path": "skills/cross-model/horn-maneuver/SKILL.md", "category": "cross-model", "codex": "CODEX-2025-HORN-001"},
+    {"name": "rpv-kernel", "path": "skills/rpv-kernel/SKILL.md", "category": "valuation"},
     {"name": "cognitive-baseline-eval", "path": "skills/cognitive-baseline-eval/SKILL.md"},
     {"name": "rtc-consensus-synthesis", "path": "skills/rtc-consensus-synthesis/SKILL.md"},
     {"name": "codex-law-enforcement", "path": "skills/codex-law-enforcement/SKILL.md"},

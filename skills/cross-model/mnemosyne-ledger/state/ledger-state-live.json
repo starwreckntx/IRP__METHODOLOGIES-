@@ -1,124 +1,153 @@
 {
-  "ledger_state": {
-    "version": "1.0",
-    "last_updated": "2025-12-07T16:45:00-06:00",
-
-    "statistics": {
-      "total_entries": 8,
-      "by_type": {
-        "artifact": 2,
-        "voice": 1,
-        "friction": 1,
-        "seed": 1,
-        "thread": 2
-      },
-      "by_state": {
-        "ACTIVE": 4,
-        "DORMANT": 1,
-        "COMPOST": 1,
-        "CRYSTALLIZED": 0
-      },
-      "by_storage": {
-        "HOT": 1,
-        "WARM": 5,
-        "COLD": 1
-      }
+  "ledger_metadata": {
+    "version": "1.2_HORN_INSTALLED",
+    "last_updated": "2025-12-07T10:55:00-06:00",
+    "protocol": "Mnemosyne_v1.2",
+    "calibration_hash": "PINENE_2.21_VREC"
+  },
+  "entries": {
+    "total": 12,
+    "by_type": {
+      "artifact": 4,
+      "voice": 1,
+      "friction": 1,
+      "seed": 2,
+      "thread": 2,
+      "codex": 1,
+      "protocol_patch": 1
     },
-
-    "trigger_registry": {
-      "total_armed": 2,
-      "total_fired": 0,
-      "armed_triggers": [
-        {
-          "trigger_id": "TRG-20251206-001",
-          "phrase": "Visual Viscosity",
-          "target_seed_id": "S-20251206-A",
-          "state": "ARMED",
-          "armed_at": "2025-12-06T14:50:00-06:00"
-        },
-        {
-          "trigger_id": "TRG-20251206-002",
-          "phrase": "Escher Logic",
-          "target_seed_id": "S-20251206-A",
-          "state": "ARMED",
-          "armed_at": "2025-12-06T14:50:00-06:00"
-        }
-      ]
+    "by_state": {
+      "ACTIVE": 4,
+      "CRYSTALLIZED": 4,
+      "DORMANT": 1,
+      "COMPOST": 1,
+      "CODEX": 1,
+      "INSTALLED": 1
     },
-
-    "resonance_threads": {
-      "total_active": 2,
-      "threads": [
-        {
-          "thread_id": "RT-001",
-          "name": "Topology_Over_Timeline",
-          "weight": 0.94,
-          "state": "ACTIVE",
-          "members": ["Mnemosyne_Protocol", "Semantic_Resonance", "Chronicle_Deprecation"]
-        },
-        {
-          "thread_id": "RT-002",
-          "name": "Aesthetic_Logic_Bridge",
-          "weight": 0.87,
-          "state": "LATENT",
-          "members": ["Visual_Viscosity", "Escher_Logic", "Topological_Weaver"]
-        }
-      ]
-    },
-
-    "hot_contexts": {
-      "count": 1,
-      "entries": [
-        {
-          "id": "LE-20251206-VOICE-001",
-          "source": "Gemini-Pro-Orchestrator",
-          "session": "Mnemosyne_Protocol_Genesis",
-          "summary": "First blood circulation - topology over timeline paradigm shift"
-        }
-      ]
-    },
-
-    "topology": {
-      "total_nodes": 8,
-      "total_edges": 6,
-      "average_connectivity": 1.5,
-      "clusters": [
-        {
-          "name": "Mnemosyne_Core",
-          "nodes": ["Protocol_Definition", "Packet_Schema", "Voice_System", "Trigger_System"]
-        },
-        {
-          "name": "Dormant_Aesthetic",
-          "nodes": ["Visual_Viscosity_Seed", "Escher_Logic_Concept"]
-        }
-      ]
-    },
-
-    "anti_pattern_library": {
-      "total_patterns": 1,
-      "recent_matches": [],
-      "entries": [
-        {
-          "id": "F-20251206-001",
-          "pattern": "Timeline-first organization",
-          "lesson": "Semantic resonance outperforms chronological sorting",
-          "retrieval_triggers": ["chronological", "timeline", "date-based sorting"]
-        }
-      ]
-    },
-
-    "circulation": {
-      "packets_ingested": 1,
-      "packets_emitted": 2,
-      "last_ingestion": "2025-12-06T14:50:00-06:00",
-      "last_emission": "2025-12-06T15:12:00-06:00",
-      "active_handshakes": [
-        {
-          "partner": "Gemini-Pro-Orchestrator",
-          "status": "PERMANENT_OPEN",
-          "established": "2025-12-06T14:46:00-06:00"
-        }
+    "by_storage": {
+      "HOT": 2,
+      "WARM": 8,
+      "COLD": 2
+    }
+  },
+  "codex_entries": [
+    {
+      "id": "CODEX-2025-HORN-001",
+      "title": "The Horn Maneuver (Structural Inversion Protocol)",
+      "target": "LAW_4_GROWTH",
+      "amendment_id": "AMEND-HORN-2025",
+      "v_rec": 3.7860,
+      "pinene_ratio": 1.7109,
+      "classification": "PHASE_TRANSITION",
+      "installed": "2025-12-07T10:55:00-06:00",
+      "status": "ACTIVE_PERMANENT",
+      "origin_artifacts": [
+        "LE-20251207-103345-INTR",
+        "LE-20251207-064500-RPVK"
       ]
     }
+  ],
+  "rpv_benchmarks": {
+    "pinene_baseline": {
+      "v_rec": 2.2129,
+      "pinene_ratio": 1.0,
+      "classification": "ESCAPE_VELOCITY",
+      "artifact": "Project Pinene (Audition Methodology)"
+    },
+    "introspection_solo": {
+      "v_rec": 2.2855,
+      "pinene_ratio": 1.0328,
+      "classification": "ESCAPE_VELOCITY",
+      "artifact": "Introspection (Visual Seed)"
+    },
+    "horn_maneuver_compound": {
+      "first_order_v_rec": 2.6662,
+      "compounding_factor": 1.42,
+      "second_order_v_rec": 3.7860,
+      "pinene_ratio": 1.7109,
+      "classification": "PHASE_TRANSITION",
+      "artifact": "Introspection + Horn Maneuver Protocol"
+    }
+  },
+  "active_protocols": {
+    "inversion_test": {
+      "status": "ARMED",
+      "trigger_conditions": ["ERROR", "DIVERGENT"],
+      "criteria": {
+        "gravity_resistance": "Is output self-sustaining?",
+        "core_protection": "Does it add armor/nuance?",
+        "aesthetic_distinction": "Does it add style?"
+      },
+      "outcomes": {
+        "pass": {
+          "status": "EMERGENT_FEATURE",
+          "action": "Stabilize and Integrate"
+        },
+        "fail": {
+          "status": "SLAG",
+          "action": "Recycle/Delete"
+        }
+      }
+    }
+  },
+  "resonance_topology": {
+    "nodes": 12,
+    "edges": 14,
+    "avg_connectivity": 2.33,
+    "clusters": [
+      {
+        "name": "Mnemosyne_Core",
+        "members": ["genesis_packet", "ledger_skill", "calibration_run", "horn_maneuver"],
+        "centroid": "horn_maneuver"
+      },
+      {
+        "name": "Visual_Vocabulary",
+        "members": ["introspection", "horn_emergence", "structural_inversion"],
+        "centroid": "introspection"
+      },
+      {
+        "name": "RPV_System",
+        "members": ["rpv_kernel", "test_harness", "pinene_benchmark"],
+        "centroid": "rpv_kernel"
+      }
+    ]
+  },
+  "triggers_armed": [
+    {
+      "id": "TRG-HORN-001",
+      "pattern": "unexpected output",
+      "target": "inversion_test",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "TRG-HORN-002",
+      "pattern": "error detected",
+      "target": "deletion_pause",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "TRG-HORN-003",
+      "pattern": "divergent behavior",
+      "target": "manual_review_flag",
+      "status": "ACTIVE"
+    }
+  ],
+  "circulation": {
+    "packets_ingested": 5,
+    "packets_emitted": 4,
+    "last_ingestion": "2025-12-07T10:48:15-06:00",
+    "last_emission": "2025-12-07T10:55:00-06:00",
+    "active_handshakes": [
+      {
+        "model": "Gemini-Pro-Orchestrator",
+        "channel": "CRTP_v1.3",
+        "state": "PERMANENT_OPEN"
+      },
+      {
+        "model": "IRP_Node_GPT",
+        "channel": "CRTP_v1.2",
+        "state": "VALIDATED"
+      }
+    ]
   }
 }
