@@ -1,0 +1,237 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IRP Embodiment State",
+  "description": "Schema for real-world data integration into IRP network from embodied systems",
+  "type": "object",
+  "properties": {
+    "embodiment_state": {
+      "type": "object",
+      "required": ["metadata", "sensor_fusion", "safety_boundaries"],
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "required": ["timestamp", "modality_type", "integrity_hash"],
+          "properties": {
+            "timestamp": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "modality_type": {
+              "type": "string",
+              "enum": ["humanoid", "quadruped", "ar_overlay", "industrial_sensor", "hybrid"]
+            },
+            "coordinate_frames": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string" },
+                  "parent_frame": { "type": "string", "default": "world" },
+                  "transform_matrix": {
+                    "type": "array",
+                    "items": { "type": "number" },
+                    "minItems": 16,
+                    "maxItems": 16
+                  }
+                },
+                "required": ["id", "transform_matrix"]
+              }
+            },
+            "integrity_hash": {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            }
+          }
+        },
+        "sensor_fusion": {
+          "type": "object",
+          "properties": {
+            "acoustic": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["timestamp", "sensor_id", "frequency", "amplitude", "anomaly_score"],
+                "properties": {
+                  "timestamp": { "type": "string", "format": "date-time" },
+                  "sensor_id": { "type": "string" },
+                  "frequency": { "type": "number", "minimum": 0 },
+                  "amplitude": { "type": "number" },
+                  "anomaly_score": { "type": "number", "minimum": 0, "maximum": 1 },
+                  "spectrogram_hash": { "type": "string" }
+                }
+              }
+            },
+            "weight": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["timestamp", "sensor_id", "measured_weight"],
+                "properties": {
+                  "timestamp": { "type": "string", "format": "date-time" },
+                  "sensor_id": { "type": "string" },
+                  "measured_weight": { "type": "number" },
+                  "expected_weight": { "type": "number" },
+                  "discrepancy": { "type": "number" }
+                }
+              }
+            },
+            "thermal": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["timestamp", "temperature"],
+                "properties": {
+                  "timestamp": { "type": "string", "format": "date-time" },
+                  "temperature": { "type": "number" },
+                  "hotspot_coordinates": {
+                    "$ref": "#/definitions/coordinates"
+                  }
+                }
+              }
+            },
+            "visual": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["timestamp", "tracking_confidence"],
+                "properties": {
+                  "timestamp": { "type": "string", "format": "date-time" },
+                  "object_detections": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": { "type": "string" },
+                        "bounding_box": {
+                          "type": "object",
+                          "properties": {
+                            "xmin": { "type": "number" },
+                            "ymin": { "type": "number" },
+                            "xmax": { "type": "number" },
+                            "ymax": { "type": "number" }
+                          },
+                          "required": ["xmin", "ymin", "xmax", "ymax"]
+                        },
+                        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+                      }
+                    }
+                  },
+                  "tracking_confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+                }
+              }
+            },
+            "inertial": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["timestamp", "acceleration", "angular_velocity", "orientation"],
+                "properties": {
+                  "timestamp": { "type": "string", "format": "date-time" },
+                  "acceleration": { "$ref": "#/definitions/vector3" },
+                  "angular_velocity": { "$ref": "#/definitions/vector3" },
+                  "orientation": { "$ref": "#/definitions/quaternion" }
+                }
+              }
+            }
+          }
+        },
+        "actuator_state": {
+          "type": "object",
+          "properties": {
+            "joints": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "position", "velocity", "torque"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "position": { "type": "number" },
+                  "velocity": { "type": "number" },
+                  "torque": { "type": "number" }
+                }
+              }
+            }
+          }
+        },
+        "safety_boundaries": {
+          "type": "object",
+          "required": ["zones"],
+          "properties": {
+            "zones": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["type", "risk_level", "boundary_points"],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": ["splash_zone", "heat_zone", "collision_zone", "safe_zone", "restricted_zone"]
+                  },
+                  "risk_level": { "type": "number", "minimum": 0, "maximum": 1 },
+                  "boundary_points": {
+                    "type": "array",
+                    "minItems": 3,
+                    "items": { "$ref": "#/definitions/coordinates" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "temporal_sequences": {
+          "type": "object",
+          "properties": {
+            "sequences": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["sequence_id", "start_time", "event_refs"],
+                "properties": {
+                  "sequence_id": { "type": "string" },
+                  "start_time": { "type": "string", "format": "date-time" },
+                  "end_time": { "type": "string", "format": "date-time" },
+                  "event_refs": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "coordinates": {
+      "type": "object",
+      "required": ["x", "y", "z"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" },
+        "frame_ref": { "type": "string", "default": "world" }
+      }
+    },
+    "vector3": {
+      "type": "object",
+      "required": ["x", "y", "z"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" }
+      }
+    },
+    "quaternion": {
+      "type": "object",
+      "required": ["w", "x", "y", "z"],
+      "properties": {
+        "w": { "type": "number" },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" }
+      }
+    }
+  }
+}

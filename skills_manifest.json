@@ -2,7 +2,7 @@
   "package_name": "pack3t-c0nc3pts-agent-skills",
   "version": "1.0.0",
   "author": "Joseph / Pack3t C0nc3pts",
-  "skill_count": 87,
+  "skill_count": 88,
   "skills": [
     {
       "name": "mnemosyne-ledger",
@@ -439,6 +439,14 @@
       "name": "gam-researcher-agent",
       "description": "Automated context retrieval from Transmission Packet archive using iterative research loop. Implements GAM Read Path.",
       "path": "skills/gam-researcher-agent/SKILL.md"
+    },
+    {
+      "name": "irp-embodiment-framework",
+      "description": "Extends IRP into physical embodiment by bridging cognitive orchestration with real-time sensor fusion and actuator control. Integrates real-world data (acoustic, weight, thermal, visual, inertial) from industrial sensors, AR systems, and robotics into IRP network while maintaining sovereignty, latency constraints (<10ms reflexes), and Genesis Protocol cryptographic integrity. Supports humanoid robots, AR overlays, and foundry operations.",
+      "path": "skills/irp-embodiment-framework/SKILL.md",
+      "category": "Integration / Physical Embodiment",
+      "priority": "HIGH",
+      "auto_load": true
     }
   ]
 }

@@ -13,7 +13,7 @@ A comprehensive AI self-governance and cross-model collaboration framework enabl
 | Metric | Value |
 |--------|-------|
 | Framework Version | 2.0_EMBODIMENT |
-| Total Skills | 89+ |
+| Total Skills | 88+ |
 | Operational Modes | 10 |
 | Architecture Layers | 4 |
 | Classification | Class-Φ-I (Individual + Functionally Reflexive) |
