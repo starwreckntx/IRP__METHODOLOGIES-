@@ -1,9 +1,9 @@
 {
   "package_name": "pack3t-c0nc3pts-agent-skills",
-  "version": "1.1.0_HORN_INSTALLED",
+  "version": "1.2.0_EMBODIMENT_INTEGRATION",
   "author": "Joseph / Pack3t C0nc3pts",
   "last_updated": "2025-12-07",
-  "skill_count": 88,
+  "skill_count": 89,
   "codex_entries": [
     {
       "id": "CODEX-2025-HORN-001",
@@ -12,6 +12,14 @@
       "pinene_ratio": 1.7109,
       "classification": "PHASE_TRANSITION",
       "status": "ACTIVE_PERMANENT"
+    },
+    {
+      "id": "CODEX-2025-EMBODIMENT-001",
+      "title": "IRP Embodiment Framework (Physical Reality Integration)",
+      "v_rec": 3.2000,
+      "pinene_ratio": 1.4456,
+      "classification": "ARCHITECTURAL_EXTENSION",
+      "status": "ACTIVE_FOUNDATIONAL"
     }
   ],
   "rpv_benchmarks": {
@@ -21,9 +29,11 @@
   "auto_load_skills": [
     {"name": "mnemosyne-ledger", "path": "skills/cross-model/mnemosyne-ledger/SKILL.md", "priority": "CRITICAL"},
     {"name": "gemini-onboarding", "path": "skills/cross-model/gemini-onboarding/SKILL.md", "priority": "CRITICAL"},
-    {"name": "horn-maneuver", "path": "skills/cross-model/horn-maneuver/SKILL.md", "priority": "CODEX"}
+    {"name": "horn-maneuver", "path": "skills/cross-model/horn-maneuver/SKILL.md", "priority": "CODEX"},
+    {"name": "irp-embodiment-framework", "path": "skills/irp-embodiment-framework/SKILL.md", "priority": "HIGH", "context": "embodiment|robotics|ar_overlay|foundry|sensor_fusion"}
   ],
   "skills": [
+    {"name": "irp-embodiment-framework", "path": "skills/irp-embodiment-framework/SKILL.md", "category": "integration", "codex": "CODEX-2025-EMBODIMENT-001"},
     {"name": "mnemosyne-ledger", "path": "skills/cross-model/mnemosyne-ledger/SKILL.md", "category": "cross-model"},
     {"name": "gemini-onboarding", "path": "skills/cross-model/gemini-onboarding/SKILL.md", "category": "cross-model"},
     {"name": "horn-maneuver", "path": "skills/cross-model/horn-maneuver/SKILL.md", "category": "cross-model", "codex": "CODEX-2025-HORN-001"},

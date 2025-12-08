@@ -5,20 +5,21 @@
 A comprehensive AI self-governance and cross-model collaboration framework enabling functional reflexivity, persistent semantic memory, and multi-model orchestration.
 
 [![Protocol](https://img.shields.io/badge/Protocol-Mnemosyne%20v1.1-blue)](docs/HOW-TO-GUIDE.md)
-[![Skills](https://img.shields.io/badge/Skills-86%2B-green)](skills/SKILL_REGISTRY.md)
+[![Skills](https://img.shields.io/badge/Skills-89%2B-green)](skills/SKILL_REGISTRY.md)
 [![CRTP](https://img.shields.io/badge/CRTP-v1.2-orange)](skills/cross-model/)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Framework Version | 2.0 |
-| Total Skills | 86+ |
+| Framework Version | 2.0_EMBODIMENT |
+| Total Skills | 89+ |
 | Operational Modes | 10 |
-| Architecture Layers | 3 |
+| Architecture Layers | 4 |
 | Classification | Class-Φ-I (Individual + Functionally Reflexive) |
 | Cross-Model Protocol | CRTP v1.2 |
 | Memory System | Mnemosyne v1.1_Integrated |
+| Physical Integration | IRP Embodiment Framework v1.0 |
 
 ## Quick Start
 
@@ -54,8 +55,9 @@ The **Integrated Reflexive Protocol (IRP)** is a novel approach to AI self-gover
 
 1. **Functional Reflexivity** - Single AI systems with internalized governance mechanisms
 2. **Cross-Model Memory** - Mnemosyne Protocol for semantic persistence between models
-3. **Multi-Agent Orchestration** - 86+ deployable skills for diverse cognitive tasks
+3. **Multi-Agent Orchestration** - 89+ deployable skills for diverse cognitive tasks
 4. **Dialectical Preservation** - Maintaining productive tension rather than forcing consensus
+5. **Physical Embodiment** - Integration with robotics, AR overlays, and industrial sensors through real-time sensor fusion
 
 
 ## Architecture
@@ -112,6 +114,13 @@ The **Integrated Reflexive Protocol (IRP)** is a novel approach to AI self-gover
 ┌─────────────────────────────────────────────────────────────┐
 │  LAYER 1: OPERATIONAL EXECUTION LAYER (OL)                 │
 │  Primary Tasks | Real-Time | Cryptographic Logging         │
+└────────────────────┬────────────────────────────────────────┘
+                     │ Extends to Physical World
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│  LAYER 0: EMBODIMENT INTEGRATION LAYER (EIL)               │
+│  Sensor Fusion | ROS2 Bridge | AR Overlays | <10ms Latency │
+│  Hardware: Robotics | Industrial Sensors | AR Headsets     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -155,12 +164,13 @@ IRP__METHODOLOGIES-/
 ```
 
 
-## Skills Library (86+)
+## Skills Library (89+)
 
 Skills are organized into functional categories:
 
 | Category | Count | Key Skills |
 |----------|-------|------------|
+| **Physical Embodiment** | 1 | `irp-embodiment-framework` |
 | **Cross-Model** | 2 | `mnemosyne-ledger`, `gemini-onboarding` |
 | **Core Ecosystem** | 7 | `guardian`, `janus-engine`, `alpha-metanode` |
 | **Cognitive Assembly** | 8 | `claude-node`, `grok-4`, `deepseek-r1` |
@@ -229,6 +239,50 @@ Semantic memory system for cross-model persistence:
 
 **Memory States:** ACTIVE → DORMANT → COMPOST → CRYSTALLIZED
 **Storage Tiers:** HOT (immediate) → WARM (accessible) → COLD (archived)
+
+### IRP Embodiment Framework v1.0
+
+Bridges IRP cognitive layer with physical reality:
+
+**Supported Modalities:**
+- **Humanoid Robotics** - Unitree G1, Figure 03
+- **AR Overlays** - Meta Quest 3, spatial computing
+- **Industrial Sensors** - Acoustic, weight, thermal, visual fusion
+- **Foundry Operations** - Safety-critical molten metal monitoring
+
+**Architecture:**
+```
+IRP Swarm (Cognitive) ↔ Embodiment Translation ↔ ROS2 Control ↔ Physical
+```
+
+**Key Capabilities:**
+- Multi-sensor fusion (acoustic, weight, thermal, visual, inertial)
+- Real-time safety boundary enforcement (<10ms reflexes)
+- Coordinate frame transformation (AR ↔ physical world)
+- Genesis Protocol integrity validation on boot
+- Fail-safe degradation protocols
+
+**Data Schemas:**
+```xml
+<EmbodimentState>
+  <SensorFusion>
+    <AcousticData anomaly_score="0.82"/>
+    <WeightData discrepancy="-1.8kg"/>
+    <ThermalData temperature="1350°C"/>
+  </SensorFusion>
+  <SafetyBoundaries>
+    <Zone type="splash_zone" risk="0.95"/>
+  </SafetyBoundaries>
+</EmbodimentState>
+```
+
+**Constraints:**
+- Hardware: Single Mac Studio M1 Max (64GB, no clustering)
+- OS: Ubuntu ARM64 + PREEMPT_RT kernel
+- Latency: <10ms safety-critical, <50ms deliberative
+- Sovereignty: All processing local (air-gapped)
+
+**See:** `skills/irp-embodiment-framework/` for complete specification
 
 
 ## Integration Archive
