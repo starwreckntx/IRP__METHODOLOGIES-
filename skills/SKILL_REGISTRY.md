@@ -1,11 +1,12 @@
 # IRP Skill Registry
-## Version: 1.1_HORN_INSTALLED
-## Last Updated: 2025-12-07
+## Version: 1.3.0_UNIFIED
+## Last Updated: 2025-12-10
 
 ---
 
 ## Location
-**Skills Root:** `C:\gemini-sandbox\claudes_working_directory\skills\`
+**Skills Root:** `${SKILLS_ROOT}` (default: `./skills/` or env-configured path)
+> **Note:** Paths in this document use `${SKILLS_ROOT}` for portability. Replace with actual path based on deployment environment.
 
 ---
 
@@ -18,6 +19,7 @@ These skills should be loaded at session initialization:
 | gemini-onboarding | `cross-model/gemini-onboarding/` | Spec for Gemini collaboration | ACTIVE |
 | horn-maneuver | `cross-model/horn-maneuver/` | Structural Inversion Protocol | **CODEX** |
 | codex-law-enforcement | `codex-law-enforcement/` | CONSENT, INVITATION, INTEGRITY, GROWTH | ACTIVE |
+| irp-embodiment-framework | `irp-embodiment-framework/` | Physical reality integration | **GATED** (requires `ALLOW_EMBODIMENT=1`) |
 
 ---
 
@@ -224,16 +226,19 @@ skill-name/
 Add to chunked loading protocol:
 ```xml
 [CHUNK N/M] SKILL SYSTEM
-<skill_system version="1.1" active="true">
-  <registry>C:\gemini-sandbox\claudes_working_directory\skills\SKILL_REGISTRY.md</registry>
-  <root>C:\gemini-sandbox\claudes_working_directory\skills\</root>
+<skill_system version="1.3.0" active="true">
+  <registry>${SKILLS_ROOT}/SKILL_REGISTRY.md</registry>
+  <root>${SKILLS_ROOT}/</root>
   <auto_load priority="CRITICAL">
     <skill path="cross-model/mnemosyne-ledger/SKILL.md"/>
     <skill path="cross-model/gemini-onboarding/SKILL.md"/>
     <skill path="cross-model/horn-maneuver/SKILL.md"/>
+    <skill path="codex-law-enforcement/SKILL.md"/>
+    <skill path="irp-embodiment-framework/SKILL.md" gated="true" env_flag="ALLOW_EMBODIMENT"/>
   </auto_load>
   <codex_entries>
     <entry id="CODEX-2025-HORN-001" status="ACTIVE_PERMANENT"/>
+    <entry id="CODEX-2025-EMBODIMENT-001" status="ACTIVE_FOUNDATIONAL"/>
   </codex_entries>
   <active_protocols>
     <protocol name="inversion_test" status="ARMED"/>
@@ -244,6 +249,18 @@ Add to chunked loading protocol:
 ---
 
 ## Changelog
+
+### v1.3.0_UNIFIED (2025-12-10)
+- **UNIFIED MANIFEST**: Merged root and skills/ manifests into single source of truth
+- Templatized paths: replaced `C:\gemini-sandbox\...` with `${SKILLS_ROOT}`
+- Added `irp-embodiment-framework` to auto-load (GATED: requires `ALLOW_EMBODIMENT=1`)
+- Added `gam-researcher-agent` skill (specification status)
+- Added `enumeration-protocol-execution` skill
+- Added `rpv-kernel` skill
+- Fixed 14 empty/broken JSON config files with valid stubs
+- Updated skill_count: 91 (previously 88/89 depending on manifest)
+- Aligned codex entries across all registries
+- Cross-validated with GPT-5.1 Codex Max audit report
 
 ### v1.1_HORN_INSTALLED (2025-12-07)
 - Added `horn-maneuver` skill to cross-model category
