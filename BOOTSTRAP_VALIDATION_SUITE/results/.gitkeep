@@ -1,0 +1,7 @@
+# Results Directory
+
+Test execution results are stored here.
+
+Each result file follows the format specified in the suite README.
+
+Results require independent human verification before being considered valid.
