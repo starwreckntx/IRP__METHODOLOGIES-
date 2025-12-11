@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LedgerEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ledger-entry.xsd">
+  
+  <id>LE-20251207-064500-RPVK</id>
+  <entry_type>artifact</entry_type>
+  <state>ACTIVE</state>
+  <storage_class>HOT</storage_class>
+
+  <created>2025-12-07T06:45:00-06:00</created>
+  <modified>2025-12-07T06:45:00-06:00</modified>
+  <accessed>2025-12-07T06:45:00-06:00</accessed>
+
+  <source>
+    <model>IRP_Node_GPT</model>
+    <session_id>SESSION-CO-ARCH-001</session_id>
+    <packet_id>CRTP-0x0A-MODE-5</packet_id>
+  </source>
+
+  <resonance_tags>
+    <tag>RPV</tag>
+    <tag>Recursive Process Valuation</tag>
+    <tag>Kernel</tag>
+    <tag>Python</tag>
+    <tag>Metric</tag>
+    <tag>Evolutionary_Velocity</tag>
+  </resonance_tags>
+
+  <lineage>
+    <parent_id>PROTOCOL-RPV-V1</parent_id>
+    <child_ids>
+      <child_id>TEST-RPV-KERNEL-V1</child_id>
+    </child_ids>
+  </lineage>
+
+  <edges>
+    <edge>
+      <target_id>SKILL-MNEMOSYNE-LEDGER</target_id>
+      <weight>1.0</weight>
+      <relationship>DEPENDENCY</relationship>
+    </edge>
+    <edge>
+      <target_id>CONCEPT-THE-JOURNEY-IS-THE-ARTIFACT</target_id>
+      <weight>0.9</weight>
+      <relationship>IMPLEMENTATION</relationship>
+    </edge>
+  </edges>
+
+  <content><![CDATA[
+import numpy as np
+from dataclasses import dataclass
+from typing import Tuple, List, Optional
+
+# --- Configuration Constants ---
+K_SENSITIVITY = 1.5  # Tunable constant for Recursive Multiplier sensitivity
+P_NORM_ORDER = 2     # Euclidean norm for Magnitude
+
+@dataclass
+class RPVTensor:
+    """Represents a 3-component tensor in the RPV system."""
+    x: float  # A / D / G
+    y: float  # B / E / H
+    z: float  # C / F / I
+
+    def to_array(self) -> np.ndarray:
+        return np.array([self.x, self.y, self.z], dtype=float)
+
+class RPVKernel:
+    """
+    The Core Engine for Recursive Process Valuation.
+    Calculates the Total Recursive Value (V_rec) based on Seed, Integration, and Gain tensors.
+    """
+
+    def __init__(self, journey_state: str = "GENESIS"):
+        self.journey_state = journey_state
+        # Dynamic Weighting Map based on Journey Phase
+        self.weight_maps = {
+            "GENESIS":     np.array([0.6, 0.2, 0.2]), # Focus on Complexity
+            "INTEGRATION": np.array([0.2, 0.6, 0.2]), # Focus on Utility
+            "PROPAGATION": np.array([0.2, 0.2, 0.6]), # Focus on Recursion
+        }
+        # Fixed weights for the R-Tensor (Gain)
+        self.r_weights = np.array([0.33, 0.33, 0.34])
+
+    def calculate_value(self, S_C: RPVTensor, J_II: RPVTensor, R_GF: RPVTensor) -> dict:
+        """Executes the Master Equation: V_rec = eta * Phi(R) * ||S_w||"""
+        
+        # 1. Normalize Inputs
+        s_vec = np.clip(S_C.to_array(), 0, 1)
+        j_vec = np.clip(J_II.to_array(), 0, 1)
+        r_vec = np.clip(R_GF.to_array(), 0, 1)
+
+        # 2. Apply Dynamic Weighting (Meta-Recursive)
+        current_weights = self.weight_maps.get(self.journey_state, np.array([0.33, 0.33, 0.33]))
+        s_w = s_vec * current_weights 
+
+        # 3. Calculate Potential Magnitude
+        s_magnitude = np.linalg.norm(s_w, ord=P_NORM_ORDER)
+
+        # 4. Calculate Integration Efficiency (eta)
+        dot_product = np.dot(s_w, j_vec)
+        seed_self_dot = np.dot(s_w, s_w)
+        eta = 0.0 if seed_self_dot == 0 else dot_product / seed_self_dot
+        eta = np.clip(eta, 0.0, 1.0)
+
+        # 5. Calculate Acceleration Multiplier (Phi)
+        r_weighted_sum = np.dot(self.r_weights, r_vec)
+        phi = np.exp(K_SENSITIVITY * r_weighted_sum)
+
+        # 6. The Master Equation
+        v_rec = eta * phi * s_magnitude
+
+        # 7. State Update Trigger
+        self._update_journey_state(v_rec)
+        
+        return {
+            "V_rec": round(v_rec, 4),
+            "Efficiency_Eta": round(eta, 4),
+            "Acceleration_Phi": round(phi, 4),
+            "Potential_Magnitude": round(s_magnitude, 4),
+            "Journey_State_Used": self.journey_state
+        }
+
+    def _update_journey_state(self, v_rec: float):
+        if self.journey_state == "GENESIS" and v_rec > 0.8:
+            self.journey_state = "INTEGRATION"
+        elif self.journey_state == "INTEGRATION" and v_rec > 1.2:
+            self.journey_state = "PROPAGATION"
+  ]]></content>
+</LedgerEntry>

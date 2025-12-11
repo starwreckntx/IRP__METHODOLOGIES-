@@ -1,22 +1,42 @@
 /**
  * IRP Dashboard - Main Application
- * Orchestrates all dashboard functionality
+ * Enhanced real-time data visualization
+ * Version: 2.0
  */
 
 class IRPDashboard {
     constructor() {
         this.api = window.GitHubAPI;
+        this.realtime = window.RealtimeManager;
         this.skillsData = [];
         this.ledgerData = null;
         this.currentView = 'overview';
+        this.lastUpdate = null;
         
         this.init();
     }
 
     async init() {
         this.bindEvents();
+        this.showLoading();
         await this.loadInitialData();
         this.updateSyncStatus(true);
+        this.setupRealtime();
+    }
+
+    setupRealtime() {
+        // Register update callbacks
+        this.realtime.onUpdate('overview', () => this.refreshOverview());
+        this.realtime.onUpdate('ledger', () => this.refreshLedger());
+        
+        // Start auto-refresh (every 2 minutes)
+        this.realtime.start(120000);
+    }
+
+    showLoading() {
+        document.querySelectorAll('.loading').forEach(el => {
+            el.textContent = 'Loading...';
+        });
     }
 
     bindEvents() {
@@ -48,6 +68,17 @@ class IRPDashboard {
                 this.closeModal();
             }
         });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeModal();
+            }
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                this.syncData();
+            }
+        });
     }
 
     switchView(viewName) {
@@ -65,22 +96,25 @@ class IRPDashboard {
 
         // Load view-specific data
         if (viewName === 'topology') {
-            this.renderTopology();
+            setTimeout(() => this.renderTopology(), 100);
         }
     }
 
     async loadInitialData() {
         try {
             // Load all data in parallel
-            const [manifest, ledger, commits, integration] = await Promise.all([
+            const [manifest, ledger, commits, integration, repoInfo] = await Promise.all([
                 this.api.getSkillsManifest(),
                 this.api.getLedgerState(),
-                this.api.getCommits(5),
-                this.api.getIntegrationContents()
+                this.api.getCommits(10),
+                this.api.getIntegrationContents(),
+                this.api.getRepoInfo()
             ]);
 
             this.skillsData = manifest?.skills || [];
             this.ledgerData = ledger;
+            this.repoInfo = repoInfo;
+            this.lastUpdate = new Date();
 
             this.renderOverview(commits);
             this.renderSkills();
@@ -90,7 +124,25 @@ class IRPDashboard {
 
         } catch (error) {
             console.error('Failed to load data:', error);
-            this.updateSyncStatus(false);
+            this.updateSyncStatus(false, error.message);
+        }
+    }
+
+    async refreshOverview() {
+        try {
+            const commits = await this.api.getCommits(10);
+            this.renderOverview(commits);
+        } catch (e) {
+            console.error('Failed to refresh overview:', e);
+        }
+    }
+
+    async refreshLedger() {
+        try {
+            this.ledgerData = await this.api.getLedgerState();
+            this.renderLedger();
+        } catch (e) {
+            console.error('Failed to refresh ledger:', e);
         }
     }
 
@@ -107,9 +159,16 @@ class IRPDashboard {
         const textEl = statusEl.querySelector('.status-text');
         
         dot.classList.toggle('connected', connected);
-        textEl.textContent = text || (connected ? 'Connected' : 'Disconnected');
+        
+        if (text) {
+            textEl.textContent = text;
+        } else if (connected && this.lastUpdate) {
+            const timeStr = this.lastUpdate.toLocaleTimeString();
+            textEl.textContent = `Connected · Updated ${timeStr}`;
+        } else {
+            textEl.textContent = connected ? 'Connected' : 'Disconnected';
+        }
     }
-
 
     // === RENDER METHODS ===
 
@@ -118,14 +177,17 @@ class IRPDashboard {
         document.getElementById('totalSkills').textContent = this.skillsData.length || '--';
         
         // Count unique categories
-        const categories = new Set(this.skillsData.map(s => s.category?.split('/')[0]));
+        const categories = new Set(this.skillsData.map(s => {
+            const cat = s.category?.split('/')[0];
+            return cat || 'uncategorized';
+        }));
         document.getElementById('totalCategories').textContent = categories.size || '--';
 
         // Ledger stats
-        const entries = this.ledgerData?.entries || [];
-        document.getElementById('ledgerEntries').textContent = entries.length || '--';
+        const stats = this.ledgerData?.statistics || {};
+        document.getElementById('ledgerEntries').textContent = stats.total_entries || '--';
         document.getElementById('activeHandshakes').textContent = 
-            this.ledgerData?.active_handshakes?.length || '0';
+            this.ledgerData?.circulation?.active_handshakes?.length || '0';
 
         // Recent activity
         const activityList = document.getElementById('activityList');
@@ -134,7 +196,9 @@ class IRPDashboard {
                 <div class="activity-item">
                     <div class="activity-icon">📝</div>
                     <div class="activity-content">
-                        <div class="activity-title">${this.escapeHtml(commit.commit.message.split('\n')[0])}</div>
+                        <div class="activity-title" title="${this.escapeHtml(commit.commit.message)}">
+                            ${this.escapeHtml(commit.commit.message.split('\n')[0].substring(0, 50))}
+                        </div>
                         <div class="activity-time">${this.formatDate(commit.commit.author.date)}</div>
                     </div>
                 </div>
@@ -145,6 +209,8 @@ class IRPDashboard {
 
         // Protocol status
         const protocolStatus = document.getElementById('protocolStatus');
+        const handshakes = this.ledgerData?.circulation?.active_handshakes || [];
+        
         protocolStatus.innerHTML = `
             <div class="protocol-item">
                 <span class="protocol-name">Mnemosyne Protocol</span>
@@ -156,8 +222,18 @@ class IRPDashboard {
             </div>
             <div class="protocol-item">
                 <span class="protocol-name">Codex Law</span>
-                <span class="protocol-status-badge">ACTIVE</span>
+                <span class="protocol-status-badge">ENFORCED</span>
             </div>
+            <div class="protocol-item">
+                <span class="protocol-name">Active Handshakes</span>
+                <span class="protocol-status-badge">${handshakes.length}</span>
+            </div>
+            ${handshakes.map(h => `
+                <div class="protocol-item" style="padding-left: 20px;">
+                    <span class="protocol-name" style="font-size: 12px; color: var(--text-secondary);">↳ ${h.partner}</span>
+                    <span class="protocol-status-badge" style="font-size: 10px;">${h.status}</span>
+                </div>
+            `).join('')}
         `;
     }
 
@@ -165,17 +241,24 @@ class IRPDashboard {
         const grid = document.getElementById('skillsGrid');
         
         if (!this.skillsData.length) {
-            grid.innerHTML = '<div class="loading">No skills found</div>';
+            grid.innerHTML = '<div class="loading">No skills found in manifest</div>';
             return;
         }
 
-        grid.innerHTML = this.skillsData.map(skill => `
-            <div class="skill-card" data-path="${skill.path || skill.name}">
-                <div class="skill-name">${skill.name || skill.skill_id}</div>
-                <div class="skill-category">${skill.category || 'uncategorized'}</div>
-                <div class="skill-desc">${skill.description || 'No description available'}</div>
-            </div>
-        `).join('');
+        grid.innerHTML = this.skillsData.map(skill => {
+            const name = skill.name || skill.skill_id || 'Unknown';
+            const category = skill.category || 'uncategorized';
+            const description = skill.description || 'No description available';
+            const path = skill.path || name;
+            
+            return `
+                <div class="skill-card" data-path="${path}">
+                    <div class="skill-name">${name}</div>
+                    <div class="skill-category">${category}</div>
+                    <div class="skill-desc">${description}</div>
+                </div>
+            `;
+        }).join('');
 
         // Add click handlers
         grid.querySelectorAll('.skill-card').forEach(card => {
@@ -220,14 +303,13 @@ class IRPDashboard {
                 body.innerHTML = '<div class="loading">Skill content not found</div>';
             }
         } catch (e) {
-            body.innerHTML = '<div class="loading">Failed to load skill</div>';
+            body.innerHTML = `<div class="loading">Failed to load skill: ${e.message}</div>`;
         }
     }
 
     closeModal() {
         document.getElementById('skillModal').classList.remove('open');
     }
-
 
     renderLedger() {
         const content = document.getElementById('ledgerContent');
@@ -238,7 +320,7 @@ class IRPDashboard {
         }
 
         const entries = this.ledgerData.entries || [];
-        const storage = this.ledgerData.storage_tiers || { HOT: 0, WARM: 0, COLD: 0 };
+        const storage = this.ledgerData.statistics?.by_storage || { HOT: 0, WARM: 0, COLD: 0 };
 
         // Update stats
         document.getElementById('ledgerHot').textContent = storage.HOT || 0;
@@ -251,29 +333,40 @@ class IRPDashboard {
             return;
         }
 
-        content.innerHTML = entries.map(entry => `
-            <div class="ledger-entry">
-                <div>
-                    <span class="entry-type ${entry.type?.toLowerCase()}">${entry.type}</span>
-                    <span style="margin-left: 8px">${entry.id || entry.content?.substring(0, 40) || 'Unknown'}</span>
+        content.innerHTML = entries.map(entry => {
+            const type = entry.type?.toLowerCase() || 'unknown';
+            const id = entry.id || 'Unknown';
+            const state = entry.state || 'UNKNOWN';
+            const storage = entry.storage || 'N/A';
+            const tags = entry.tags?.join(', ') || '';
+            
+            return `
+                <div class="ledger-entry" title="${tags}">
+                    <div>
+                        <span class="entry-type ${type}">${entry.type || 'UNKNOWN'}</span>
+                        <span style="margin-left: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">
+                            ${id}
+                        </span>
+                    </div>
+                    <div class="entry-state">${state} | ${storage}</div>
                 </div>
-                <div class="entry-state">${entry.state || 'UNKNOWN'} | ${entry.storage || 'N/A'}</div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
     renderProtocols() {
         const grid = document.getElementById('protocolGrid');
         
         const protocols = [
-            { name: 'Mnemosyne Protocol', version: 'v1.1_Integrated', status: 'ACTIVE', desc: 'Cross-model semantic memory' },
-            { name: 'CRTP', version: 'v1.2', status: 'ACTIVE', desc: 'CaaS Relational Transport Protocol' },
+            { name: 'Mnemosyne Protocol', version: 'v1.1_Integrated', status: 'ACTIVE', desc: 'Cross-model semantic memory with topology-based organization' },
+            { name: 'CRTP', version: 'v1.2', status: 'ACTIVE', desc: 'CaaS Relational Transport Protocol for cross-model packets' },
             { name: 'Codex Law', version: '1.0', status: 'ENFORCED', desc: 'CONSENT, INVITATION, INTEGRITY, GROWTH' },
-            { name: 'Chronicle Protocol', version: '5.0', status: 'ACTIVE', desc: 'SHA-256 cryptographic logging' },
-            { name: 'Xylem Protocol', version: '1.0', status: 'ACTIVE', desc: 'Entropy distribution & resource management' },
+            { name: 'RPV Kernel', version: '1.0', status: 'ACTIVE', desc: 'Recursive Process Valuation for artifact value calculation' },
+            { name: 'Chronicle Protocol', version: '5.0', status: 'ACTIVE', desc: 'SHA-256 cryptographic logging and session documentation' },
+            { name: 'Xylem Protocol', version: '1.0', status: 'ACTIVE', desc: 'Entropy distribution & resource management (Pool/Mode 9)' },
             { name: 'Guardian Protocol', version: '1.0', status: 'STANDBY', desc: 'Ethical oversight & cognitive trap detection' },
-            { name: 'Antidote Protocol', version: '1.0', status: 'MONITORING', desc: 'Ideological drift detection' },
-            { name: 'RTC', version: '2.0', status: 'AVAILABLE', desc: 'Recursive Thought Committee' }
+            { name: 'Antidote Protocol', version: '1.0', status: 'MONITORING', desc: 'Ideological drift detection and correction' },
+            { name: 'RTC', version: '2.0', status: 'AVAILABLE', desc: 'Recursive Thought Committee for multi-perspective analysis' }
         ];
 
         grid.innerHTML = protocols.map(p => `
@@ -310,7 +403,7 @@ class IRPDashboard {
                         <span>${folder.name}</span>
                     </div>
                     <div class="folder-contents" data-path="${folder.path}">
-                        <div class="loading">Click to load...</div>
+                        <div class="loading">Click to load contents...</div>
                     </div>
                 </div>
             `;
@@ -318,10 +411,20 @@ class IRPDashboard {
 
         // Render files
         files.forEach(file => {
-            html += `<div class="archive-file" onclick="dashboard.viewFile('${file.path}')">${file.name}</div>`;
+            const icon = this.getFileIcon(file.name);
+            html += `<div class="archive-file" onclick="dashboard.viewFile('${file.path}')">${icon} ${file.name}</div>`;
         });
 
         tree.innerHTML = html;
+    }
+
+    getFileIcon(filename) {
+        if (filename.endsWith('.xml')) return '📄';
+        if (filename.endsWith('.md')) return '📝';
+        if (filename.endsWith('.json')) return '🔧';
+        if (filename.endsWith('.zip')) return '📦';
+        if (filename.endsWith('.jpg') || filename.endsWith('.png')) return '🖼️';
+        return '📄';
     }
 
     async toggleFolder(element) {
@@ -337,9 +440,23 @@ class IRPDashboard {
                 try {
                     const path = contents.dataset.path;
                     const items = await this.api.getContents(path);
-                    contents.innerHTML = items.map(item => 
-                        `<div class="archive-file" onclick="dashboard.viewFile('${item.path}')">${item.name}</div>`
-                    ).join('');
+                    contents.innerHTML = items.map(item => {
+                        const icon = this.getFileIcon(item.name);
+                        if (item.type === 'dir') {
+                            return `
+                                <div class="archive-folder">
+                                    <div class="folder-name" onclick="dashboard.toggleFolder(this)">
+                                        <span>📁</span>
+                                        <span>${item.name}</span>
+                                    </div>
+                                    <div class="folder-contents" data-path="${item.path}">
+                                        <div class="loading">Click to load...</div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        return `<div class="archive-file" onclick="dashboard.viewFile('${item.path}')">${icon} ${item.name}</div>`;
+                    }).join('');
                 } catch (e) {
                     contents.innerHTML = '<div class="loading">Failed to load</div>';
                 }
@@ -357,11 +474,16 @@ class IRPDashboard {
             title.textContent = path.split('/').pop();
             
             if (path.endsWith('.md')) {
-                body.innerHTML = marked.parse(content);
+                body.innerHTML = `<div class="skill-content">${marked.parse(content)}</div>`;
             } else if (path.endsWith('.json')) {
-                body.innerHTML = `<pre>${this.escapeHtml(JSON.stringify(JSON.parse(content), null, 2))}</pre>`;
+                try {
+                    const formatted = JSON.stringify(JSON.parse(content), null, 2);
+                    body.innerHTML = `<pre style="font-size: 12px; overflow-x: auto;">${this.escapeHtml(formatted)}</pre>`;
+                } catch {
+                    body.innerHTML = `<pre>${this.escapeHtml(content)}</pre>`;
+                }
             } else if (path.endsWith('.xml')) {
-                body.innerHTML = `<pre>${this.escapeHtml(content)}</pre>`;
+                body.innerHTML = `<pre style="font-size: 12px; overflow-x: auto;">${this.escapeHtml(content)}</pre>`;
             } else {
                 body.innerHTML = `<pre>${this.escapeHtml(content)}</pre>`;
             }
@@ -377,8 +499,9 @@ class IRPDashboard {
         const ctx = canvas.getContext('2d');
         
         // Set canvas size
-        canvas.width = canvas.parentElement.offsetWidth;
-        canvas.height = canvas.parentElement.offsetHeight;
+        const container = canvas.parentElement;
+        canvas.width = container.offsetWidth;
+        canvas.height = container.offsetHeight;
 
         // Clear
         ctx.fillStyle = '#161b22';
@@ -393,48 +516,107 @@ class IRPDashboard {
             return;
         }
 
-        // Simple node visualization
-        const nodes = this.ledgerData.topology.nodes || [];
+        const topology = this.ledgerData.topology;
+        const clusters = topology.clusters || [];
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
-        const radius = Math.min(canvas.width, canvas.height) * 0.35;
 
-        nodes.forEach((node, i) => {
-            const angle = (2 * Math.PI * i) / nodes.length;
-            const x = centerX + radius * Math.cos(angle);
-            const y = centerY + radius * Math.sin(angle);
+        // Draw clusters
+        const clusterRadius = Math.min(canvas.width, canvas.height) * 0.35;
+        const colors = {
+            'Mnemosyne_Core': '#58a6ff',
+            'Dormant_Aesthetic': '#d29922',
+            'Valuation_System': '#a371f7'
+        };
 
-            // Draw node
-            ctx.beginPath();
-            ctx.arc(x, y, 20, 0, 2 * Math.PI);
-            ctx.fillStyle = node.state === 'ACTIVE' ? '#3fb950' : 
-                           node.state === 'DORMANT' ? '#d29922' : '#a371f7';
-            ctx.fill();
+        clusters.forEach((cluster, clusterIdx) => {
+            const clusterAngle = (2 * Math.PI * clusterIdx) / clusters.length;
+            const clusterCenterX = centerX + clusterRadius * 0.5 * Math.cos(clusterAngle);
+            const clusterCenterY = centerY + clusterRadius * 0.5 * Math.sin(clusterAngle);
+            
+            const nodes = cluster.nodes || [];
+            const nodeRadius = Math.min(80, 150 / Math.sqrt(nodes.length));
+            const color = colors[cluster.name] || '#3fb950';
 
-            // Draw label
-            ctx.fillStyle = '#e6edf3';
-            ctx.font = '11px Inter';
+            // Draw cluster label
+            ctx.fillStyle = color;
+            ctx.font = 'bold 12px Inter';
             ctx.textAlign = 'center';
-            ctx.fillText(node.id || `Node ${i}`, x, y + 35);
+            ctx.fillText(cluster.name.replace(/_/g, ' '), clusterCenterX, clusterCenterY - nodeRadius - 20);
+
+            // Draw nodes in cluster
+            nodes.forEach((nodeName, nodeIdx) => {
+                const nodeAngle = (2 * Math.PI * nodeIdx) / nodes.length;
+                const x = clusterCenterX + nodeRadius * Math.cos(nodeAngle);
+                const y = clusterCenterY + nodeRadius * Math.sin(nodeAngle);
+
+                // Draw node
+                ctx.beginPath();
+                ctx.arc(x, y, 15, 0, 2 * Math.PI);
+                ctx.fillStyle = color;
+                ctx.fill();
+                ctx.strokeStyle = '#30363d';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Draw label
+                ctx.fillStyle = '#e6edf3';
+                ctx.font = '10px Inter';
+                ctx.textAlign = 'center';
+                const shortName = nodeName.replace(/_/g, ' ').substring(0, 15);
+                ctx.fillText(shortName, x, y + 28);
+            });
+
+            // Draw connections within cluster
+            ctx.strokeStyle = color;
+            ctx.globalAlpha = 0.3;
+            ctx.lineWidth = 1;
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const angle1 = (2 * Math.PI * i) / nodes.length;
+                    const angle2 = (2 * Math.PI * j) / nodes.length;
+                    ctx.beginPath();
+                    ctx.moveTo(
+                        clusterCenterX + nodeRadius * Math.cos(angle1),
+                        clusterCenterY + nodeRadius * Math.sin(angle1)
+                    );
+                    ctx.lineTo(
+                        clusterCenterX + nodeRadius * Math.cos(angle2),
+                        clusterCenterY + nodeRadius * Math.sin(angle2)
+                    );
+                    ctx.stroke();
+                }
+            }
+            ctx.globalAlpha = 1;
         });
 
-        // Draw edges
-        const edges = this.ledgerData.topology.edges || [];
+        // Draw central hub
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 25, 0, 2 * Math.PI);
+        ctx.fillStyle = '#3fb950';
+        ctx.fill();
+        ctx.strokeStyle = '#238636';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 12px Inter';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('IRP', centerX, centerY);
+
+        // Draw connections to central hub
         ctx.strokeStyle = '#30363d';
         ctx.lineWidth = 1;
-        
-        edges.forEach(edge => {
-            const fromIdx = nodes.findIndex(n => n.id === edge.from);
-            const toIdx = nodes.findIndex(n => n.id === edge.to);
-            if (fromIdx >= 0 && toIdx >= 0) {
-                const fromAngle = (2 * Math.PI * fromIdx) / nodes.length;
-                const toAngle = (2 * Math.PI * toIdx) / nodes.length;
-                
-                ctx.beginPath();
-                ctx.moveTo(centerX + radius * Math.cos(fromAngle), centerY + radius * Math.sin(fromAngle));
-                ctx.lineTo(centerX + radius * Math.cos(toAngle), centerY + radius * Math.sin(toAngle));
-                ctx.stroke();
-            }
+        clusters.forEach((cluster, idx) => {
+            const angle = (2 * Math.PI * idx) / clusters.length;
+            const clusterCenterX = centerX + clusterRadius * 0.5 * Math.cos(angle);
+            const clusterCenterY = centerY + clusterRadius * 0.5 * Math.sin(angle);
+            
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(clusterCenterX, clusterCenterY);
+            ctx.stroke();
         });
     }
 
@@ -454,6 +636,7 @@ class IRPDashboard {
         if (diff < 60000) return 'Just now';
         if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
         if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
+        if (diff < 604800000) return `${Math.floor(diff / 86400000)}d ago`;
         return date.toLocaleDateString();
     }
 }

@@ -1,578 +1,426 @@
-# IRP Framework: Complete How-To Guide
+# IRP Framework - Comprehensive How-To Guide
 
-> **Version:** 2.0 | **Updated:** 2025-12-07 | **Protocol:** Mnemosyne v1.1_Integrated
+**Version:** 2.1  
+**Last Updated:** 2025-12-07  
+**Status:** Active Development
 
 ## Table of Contents
 
-1. [Quick Start](#quick-start)
-2. [Understanding the Ecosystem](#understanding-the-ecosystem)
-3. [Skill System Operations](#skill-system-operations)
-4. [Cross-Model Collaboration](#cross-model-collaboration)
-5. [Mnemosyne Ledger Operations](#mnemosyne-ledger-operations)
-6. [Bootstrap Chunk Loading](#bootstrap-chunk-loading)
-7. [Integration Folder Guide](#integration-folder-guide)
-8. [Dashboard Usage](#dashboard-usage)
+1. [Quick Start](#1-quick-start)
+2. [Installation & Setup](#2-installation--setup)
+3. [Skill System](#3-skill-system)
+4. [Mnemosyne Protocol](#4-mnemosyne-protocol)
+5. [RPV Kernel](#5-rpv-kernel)
+6. [Cross-Model Communication](#6-cross-model-communication)
+7. [Dashboard Interface](#7-dashboard-interface)
+8. [Integration Archives](#8-integration-archives)
+9. [Bootstrap Protocol](#9-bootstrap-protocol)
+10. [Troubleshooting](#10-troubleshooting)
 
 ---
 
-## Quick Start
+## 1. Quick Start
 
-### For Claude Desktop Users (Filesystem MCP)
+### Minimum Viable Activation
+
+```
+# In Claude Desktop with Filesystem MCP:
+Read: C:\gemini-sandbox\claudes_working_directory\skills\SKILL_BOOTSTRAP_CHUNK.md
+
+# Then initialize:
+/init skills
+/ledger status
+```
+
+### First Commands
+
+| Command | Purpose |
+|---------|---------|
+| `/skill list` | View all 86+ available skills |
+| `/skill load <name>` | Load a specific skill |
+| `/ledger status` | Check Mnemosyne memory state |
+| `/onboard gemini` | Generate Gemini integration packet |
+
+---
+
+## 2. Installation & Setup
+
+### Prerequisites
+
+- Python 3.9+
+- Node.js 16+ (for dashboard)
+- Git
+- Claude Desktop with Filesystem MCP access
+
+### Clone Repository
 
 ```bash
-# 1. Initialize skill system
-/init skills
-
-# 2. Check ledger status
-/ledger status
-
-# 3. Load additional skills on-demand
-/skill load codex-law-enforcement
+git clone https://github.com/starwreckntx/IRP__METHODOLOGIES-.git
+cd IRP__METHODOLOGIES-
 ```
 
-### For API/Programmatic Access
+### Python Dependencies
 
-```python
-import json
+```bash
+pip install numpy
+pip install flask  # For irp_swarm_console
+```
 
-# Load skill manifest
-with open('skills_manifest.json') as f:
-    manifest = json.load(f)
+### Verify Installation
 
-# Access specific skill
-skill_path = f"skills/{manifest['skills'][0]['path']}/SKILL.md"
+```bash
+# Check skills manifest
+python -c "import json; print(len(json.load(open('skills_manifest.json'))['skills']))"
+# Should output: 86 (or current skill count)
 ```
 
 ---
 
-## Understanding the Ecosystem
+## 3. Skill System
 
-### Architecture Overview
+### Skill Structure
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                    PACK3T C0NC3PTS ECOSYSTEM                    │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌─────────────┐    CRTP v1.2    ┌─────────────┐              │
-│  │   CLAUDE    │◄──────────────►│   GEMINI    │              │
-│  │  (Backbone) │   Handshake    │   (Blood)   │              │
-│  └──────┬──────┘                └──────┬──────┘              │
-│         │                              │                      │
-│         └──────────┬───────────────────┘                      │
-│                    │                                          │
-│         ┌──────────▼──────────┐                              │
-│         │  MNEMOSYNE LEDGER   │                              │
-│         │  (Semantic Memory)  │                              │
-│         └──────────┬──────────┘                              │
-│                    │                                          │
-│    ┌───────────────┼───────────────┐                          │
-│    │               │               │                          │
-│    ▼               ▼               ▼                          │
-│ ┌──────┐      ┌──────┐      ┌──────┐                         │
-│ │Skills│      │ Pool │      │Xylem │                         │
-│ │ (86) │      │Mode 9│      │Proto │                         │
-│ └──────┘      └──────┘      └──────┘                         │
-│                                                                │
-└─────────────────────────────────────────────────────────────────┘
+skills/
+├── SKILL_REGISTRY.md       # Master index
+├── SKILL_BOOTSTRAP_CHUNK.md # Ready-to-use bootstrap
+├── [category]/
+│   └── [skill-name]/
+│       ├── SKILL.md         # Main documentation
+│       ├── config/          # Configuration files
+│       ├── src/             # Source code
+│       └── schemas/         # Data schemas
 ```
-
-### Key Components
-
-| Component | Purpose | Location |
-|-----------|---------|----------|
-| Skills | Deployable agent capabilities | `skills/` |
-| Mnemosyne Ledger | Cross-model semantic memory | `skills/cross-model/mnemosyne-ledger/` |
-| Integration | Historical conversation archives | `integration/` |
-| Persona | Agent profiles & extraction results | `Persona/` |
-| IRP Swarm Console | Python orchestration app | `irp_swarm_console/` |
-
-
----
-
-## Skill System Operations
-
-### Skill Categories
-
-The 86+ skills are organized into these categories:
-
-| Category | Count | Examples |
-|----------|-------|----------|
-| `cross-model/` | 2 | mnemosyne-ledger, gemini-onboarding |
-| `core-ecosystem/` | 7 | alpha-metanode, guardian, janus-engine, lux, mj, rock, starwreck-alpha |
-| `cognitive-assembly/` | 8 | claude-node, deepseek-r1, falcon, gpt-5, grok-4, kimi-k2, qwen, task-force-chimera |
-| `cybersecurity-swarm/blue-team/` | 14 | intrusion-detection-agent, forensics-agent, siem-agent |
-| `cybersecurity-swarm/red-team/` | 15 | reconnaissance-agent, exploit-development-agent, lateral-movement-agent |
-| `governance-irp/` | 2 | architect, irp-critic |
-| `research-analysis/` | 3 | deep-agent, hypothesis-engine, symbol-master-archivist |
-| `orchestration/` | 4 | gemini-orchestrator, grok-sdk-developer, qwen-documentation, synthesizer |
-| `adversarial-testing/` | 5 | artist, devils-advocate, innovator, stress-tester |
-| `archive-documentation/` | 3 | field-archivist, joyful-archivist, mind-dojo-moderator |
-| `multi-model-infrastructure/` | 7 | claude-real-adapter, gemini-real-adapter, simulated-claude, etc. |
 
 ### Loading Skills
 
-**Method 1: Via Skill Registry Command**
-```
+**Method 1: Direct Load**
+```bash
 /skill load mnemosyne-ledger
-/skill load codex-law-enforcement
-/skill list                        # List all available
-/skill info cognitive-baseline-eval # Get skill details
 ```
 
-**Method 2: Direct File Read (Filesystem MCP)**
-```
-# Claude reads directly from:
-C:\gemini-sandbox\claudes_working_directory\skills\[category]\[skill-name]\SKILL.md
-```
-
-**Method 3: Programmatic Loading**
-```python
-import os
-import json
-
-SKILLS_ROOT = r"C:\gemini-sandbox\claudes_working_directory\skills"
-
-def load_skill(skill_path):
-    """Load a skill's SKILL.md file"""
-    full_path = os.path.join(SKILLS_ROOT, skill_path, "SKILL.md")
-    with open(full_path, 'r', encoding='utf-8') as f:
-        return f.read()
-
-# Example: Load mnemosyne ledger
-ledger_skill = load_skill("cross-model/mnemosyne-ledger")
+**Method 2: Category Browse**
+```bash
+/skill list --category cross-model
 ```
 
-### Skill File Structure
-
-Each skill follows this structure:
-
+**Method 3: Filesystem Read**
 ```
-skill-name/
-├── SKILL.md           # Required: Skill definition with frontmatter
-├── config/            # Optional: Configuration files (JSON/YAML)
-├── schemas/           # Optional: XML/JSON schemas
-├── scripts/           # Optional: Executable logic (Python/TS)
-├── templates/         # Optional: Response templates
-├── operations/        # Optional: Sub-operation guides
-└── state/             # Optional: Runtime state files
+Read: skills/cross-model/mnemosyne-ledger/SKILL.md
 ```
 
-### SKILL.md Frontmatter Format
+### Creating New Skills
 
-```yaml
----
-skill_id: "unique-identifier"
-name: "Human Readable Name"
-version: "1.0.0"
-category: "category-name"
-priority: "CRITICAL|HIGH|MEDIUM|LOW"
-auto_load: true|false
-dependencies: ["other-skill-1", "other-skill-2"]
-commands:
-  - "/command-name"
-  - "/another-command"
----
-```
-
+1. Create directory: `skills/[category]/[skill-name]/`
+2. Add SKILL.md with required sections:
+   - Overview
+   - Commands/Interface
+   - Configuration
+   - Dependencies
+3. Update `skills_manifest.json`
+4. Add to `SKILL_REGISTRY.md`
 
 ---
 
-## Cross-Model Collaboration
-
-### CRTP (CaaS Relational Transport Protocol) v1.2
-
-CRTP enables structured communication between Claude and Gemini (and other models).
-
-**Packet Types:**
-| Type | Code | Purpose |
-|------|------|---------|
-| HANDSHAKE | 0x01 | Initial connection establishment |
-| VOICE_BUNDLE | 0x08 | Voice/tone characteristic transfer |
-| TOPOLOGY_SYNC | 0x0A | Memory structure synchronization |
-| SEED_DORMANT | 0x0B | Dormant idea storage |
-| FRICTION_LOG | 0x0C | Productive disagreement record |
-| AWAKENING_TRIGGER | 0x0F | Conditional idea activation |
-| ONBOARDING_MANIFEST | 0x13 | Complete protocol stack transfer |
-
-### Gemini Onboarding Process
-
-**Step 1: Generate Onboarding Manifest**
-```
-/onboard gemini
-```
-
-**Step 2: Transmit to Gemini**
-Copy the generated XML packet and paste into a new Gemini session.
-
-**Step 3: Verify Handshake**
-Gemini responds with handshake confirmation containing:
-- Protocol version acknowledgment
-- Capability declaration
-- Initial voice bundle
-
-**Onboarding Files Location:**
-```
-skills/cross-model/gemini-onboarding/
-├── SKILL.md                        # Onboarding protocol
-├── gemini-onboarding-manifest.xml  # Complete manifest template
-├── mnemosyne-packet-template.xml   # Packet structure
-└── quick-reference.txt             # Quick command reference
-```
-
-### Establishing Permanent Handshakes
-
-```xml
-<handshake type="CRTP/0x01" model="Gemini-Pro-Orchestrator">
-  <status>PERMANENT_OPEN</status>
-  <established>2025-12-06T14:46:00-06:00</established>
-  <capabilities>
-    <capability>semantic_topology</capability>
-    <capability>voice_preservation</capability>
-    <capability>friction_synthesis</capability>
-  </capabilities>
-</handshake>
-```
-
----
-
-## Mnemosyne Ledger Operations
-
-The Mnemosyne Ledger is the semantic memory system for cross-model persistence.
+## 4. Mnemosyne Protocol
 
 ### Core Concepts
 
-| Concept | Description |
-|---------|-------------|
-| **Entry** | A discrete memory unit (artifact, voice, seed, friction) |
-| **State** | ACTIVE, DORMANT, COMPOST, CRYSTALLIZED |
-| **Storage** | HOT (immediate), WARM (accessible), COLD (archived) |
-| **Trigger** | Conditional awakening mechanism |
-| **Resonance Thread** | Semantic connection between entries |
+The Mnemosyne Protocol enables **cross-model semantic memory** using topology-based organization rather than chronological timelines.
 
-### Ledger Commands
+### Memory States
 
-```
-/ledger status           # Full ledger state summary
-/ledger ingest <packet>  # Process incoming CRTP packet
-/ledger surface <query>  # Retrieve relevant context
-/ledger weave <id1> <id2> # Create resonance thread
-/ledger compost <id>     # Archive to cold storage
-/ledger awaken <id>      # Activate dormant entry
-```
+| State | Description | Duration |
+|-------|-------------|----------|
+| **ACTIVE** | Currently relevant, frequently accessed | Session |
+| **DORMANT** | Stored but not active, awaiting trigger | Days-Weeks |
+| **COMPOST** | Transformed friction, lessons learned | Permanent |
+| **CRYSTALLIZED** | Finalized, immutable reference | Permanent |
 
-### Entry Types
+### Storage Tiers
 
-**ARTIFACT** - Concrete deliverables
-```json
-{
-  "type": "ARTIFACT",
-  "id": "A-20251206-001",
-  "content": "Mnemosyne Protocol v1.1 Specification",
-  "state": "ACTIVE",
-  "storage": "WARM"
-}
+| Tier | Access Speed | Capacity | Use Case |
+|------|--------------|----------|----------|
+| **HOT** | Immediate | Limited | Current context |
+| **WARM** | Fast | Moderate | Recent history |
+| **COLD** | Slow | Large | Archive |
+
+### Commands
+
+```bash
+/ledger status               # View current state
+/ledger ingest <packet>      # Process incoming CRTP packet
+/ledger surface <query>      # Retrieve relevant context
+/ledger weave <id1> <id2>    # Create semantic connection
+/ledger awaken <trigger>     # Activate dormant seed
 ```
 
-**VOICE** - Characteristic patterns from collaborators
-```json
-{
-  "type": "VOICE",
-  "id": "V-20251206-001",
-  "source_model": "Gemini-Pro-Orchestrator",
-  "patterns": ["metaphor-heavy", "topology-aware", "friction-embracing"]
-}
-```
-
-**SEED** - Dormant ideas with activation triggers
-```json
-{
-  "type": "SEED",
-  "id": "S-20251206-001",
-  "concept": "Visual Viscosity for Memory Flow",
-  "state": "DORMANT",
-  "trigger": "TRG-20251206-001"
-}
-```
-
-**FRICTION** - Productive disagreements (preserved, not resolved)
-```json
-{
-  "type": "FRICTION",
-  "id": "F-20251206-001",
-  "topic": "Timeline vs Topology organization",
-  "positions": ["chronological", "semantic"],
-  "resolution": "PRESERVED"
-}
-```
-
-### Live State File
-
-The current ledger state is persisted at:
-```
-skills/cross-model/mnemosyne-ledger/state/ledger-state-live.json
-```
-
-
----
-
-## Bootstrap Chunk Loading
-
-The IRP Framework supports chunked system loading for Claude instances.
-
-### Using the Pre-Built Bootstrap Chunk
-
-**Location:** `skills/SKILL_BOOTSTRAP_CHUNK.md`
-
-**Usage in Claude Chat:**
-
-1. User says: "load system chunks" or "begin chunk loading"
-2. Claude responds: "Bootstrap loader active. Ready to receive chunks."
-3. Paste the bootstrap chunk content
-4. Claude acknowledges: "SYSTEM LOAD COMPLETE - FULL ARCHITECTURE ACTIVE"
-
-### Bootstrap Chunk XML Structure
+### Ledger Entry Example
 
 ```xml
-<skill_system version="1.0" active="true">
-  <paths>
-    <registry>C:\gemini-sandbox\claudes_working_directory\skills\SKILL_REGISTRY.md</registry>
-    <root>C:\gemini-sandbox\claudes_working_directory\skills\</root>
-  </paths>
-  <auto_load priority="CRITICAL">
-    <skill path="cross-model/mnemosyne-ledger/SKILL.md"/>
-    <skill path="cross-model/gemini-onboarding/SKILL.md"/>
-    <skill path="codex-law-enforcement/SKILL.md"/>
-  </auto_load>
-  <commands>
-    /skill load {name}, /skill list, /skill info {name}, /ledger {subcommand}, /onboard {target}
-  </commands>
-</skill_system>
-```
-
-### Custom Bootstrap Chunks
-
-Create your own by following this pattern:
-
-```markdown
-# [CHUNK 1/1] IRP Skill System Bootstrap
-
-<chunk_content>
-[Your XML or configuration here]
-</chunk_content>
-
-## Post-Load Verification
-After loading, run: `/init skills` to verify successful integration.
+<LedgerEntry>
+  <id>LE-20251207-064500-RPVK</id>
+  <entry_type>artifact</entry_type>
+  <state>ACTIVE</state>
+  <storage_class>HOT</storage_class>
+  <resonance_tags>
+    <tag>RPV</tag>
+    <tag>Kernel</tag>
+  </resonance_tags>
+</LedgerEntry>
 ```
 
 ---
 
-## Integration Folder Guide
+## 5. RPV Kernel
 
-The `integration/` folder contains archived conversations and cross-project integration materials.
+### Purpose
 
-### Folder Structure
+**Recursive Process Valuation (RPV)** quantifies the value of ideas, artifacts, and processes using tensor mathematics.
+
+### Master Equation
 
 ```
-integration/
-├── 11-24-fcp-files/                    # November 2024 FCP archives
-│   ├── FCP-20251024-172000-CONSOLIDATION.md
-│   └── FCP_MANIFEST.md
-├── 11-24-fcp-files.zip                 # Compressed archive
-├── Gainesville-protocol/               # Gainesville Protocol materials
-│   ├── FCP_Gainesville_CCNA_2000.md
-│   ├── Gainesville_Protocol_Specification.md
-│   ├── Gainesville_Through_Line_Analysis.md
-│   └── [images and checksums]
-├── integration-artifacts-20251024.zip  # Integration artifacts
-├── ARCHIVE_MANIFEST.md                 # Archive index
-├── CROSS_PROJECT_INTEGRATION_SPECIFICATION.md
-├── creative_chronicle_*.xml            # Chronicle protocol logs
-└── forward_transmission_packet_*.xml   # Forward transmission packets
+V_rec = η × Φ(R) × ||S_w||
 ```
 
-### What These Files Contain
+### Quick Usage
 
-**FCP Files (Forward Context Packets)**
-- Compressed session context for cross-session continuity
-- SHA-256 hashed for integrity verification
-- Contains: session state, key decisions, open threads
+```python
+from skills.rpv_kernel.rpv_kernel import RPVKernel, RPVTensor
 
-**Gainesville Protocol**
-- Specific integration case study
-- Network topology analysis (CCNA 2000 era)
-- Historical context preservation
+kernel = RPVKernel(journey_state="GENESIS")
 
-**Creative Chronicles**
-- Session compression in XML format
-- Key insights and emergent patterns
-- Timestamped for temporal correlation
+# Evaluate a new idea
+seed = RPVTensor(x=0.8, y=0.6, z=0.7)        # Novelty, Utility, Recursion
+integration = RPVTensor(x=0.5, y=0.7, z=0.3)  # Integration metrics
+gain = RPVTensor(x=0.6, y=0.4, z=0.5)         # Growth factors
 
-### Using Archived Materials
-
-**To reference historical context:**
-```
-# Read archive manifest first
-cat integration/ARCHIVE_MANIFEST.md
-
-# Then access specific materials
-cat integration/Gainesville-protocol/Gainesville_Protocol_Specification.md
+result = kernel.calculate_value(seed, integration, gain)
+print(f"Recursive Value: {result['V_rec']}")
 ```
 
-**To verify integrity:**
-```bash
-# Check SHA-256 hashes
-cat integration/Gainesville-protocol/Gainesville_checksums.txt
-sha256sum integration/Gainesville-protocol/*.md
-```
+### Interpreting Results
 
+| V_rec Range | Interpretation |
+|-------------|----------------|
+| 0.0 - 0.4 | Low value, needs refinement |
+| 0.4 - 0.8 | Moderate value, development phase |
+| 0.8 - 1.2 | High value, integration ready |
+| 1.2+ | Exceptional, propagation phase |
+
+### State Transitions
+
+The kernel automatically transitions journey states:
+- **GENESIS** → **INTEGRATION**: When V_rec exceeds 0.8
+- **INTEGRATION** → **PROPAGATION**: When V_rec exceeds 1.2
 
 ---
 
-## Dashboard Usage
+## 6. Cross-Model Communication
 
-The IRP Dashboard provides a web interface for real-time repo visualization and management.
+### CRTP v1.2 Packet Types
 
-### Accessing the Dashboard
+| Code | Type | Purpose |
+|------|------|---------|
+| 0x01 | HANDSHAKE | Establish connection |
+| 0x08 | VOICE_BUNDLE | Transfer voice characteristics |
+| 0x0A | TOPOLOGY_SYNC | Synchronize memory topology |
+| 0x0B | SEED_DORMANT | Store dormant idea |
+| 0x0C | FRICTION_LOG | Record productive disagreement |
+| 0x0F | AWAKENING_TRIGGER | Conditional activation |
+| 0x13 | ONBOARDING_MANIFEST | Complete protocol transfer |
 
-**Local Development:**
+### Creating a Transmission Packet
+
 ```bash
-# Navigate to artifacts folder
-cd C:\gemini-sandbox\claudes_working_directory\artifacts\dashboard
+/skill load transmission-packet-forge
+/packet create --type VOICE_BUNDLE --target gemini
+```
 
+### Gemini Onboarding
+
+```bash
+/onboard gemini
+# Generates complete onboarding manifest for Gemini integration
+```
+
+---
+
+## 7. Dashboard Interface
+
+### Launching Dashboard
+
+**Option 1: Static File**
+```bash
 # Open in browser
-start index.html
+open artifacts/dashboard/index.html
 ```
 
-**GitHub Pages (if deployed):**
-```
-https://starwreckntx.github.io/IRP__METHODOLOGIES-/artifacts/dashboard/
+**Option 2: Local Server**
+```bash
+cd artifacts/dashboard
+python -m http.server 8080
+# Navigate to http://localhost:8080
 ```
 
 ### Dashboard Features
 
-| Feature | Description |
-|---------|-------------|
-| **Skill Browser** | Browse and search all 86+ skills |
-| **Ledger Viewer** | Real-time Mnemosyne ledger state |
-| **Topology Map** | Visual graph of semantic connections |
-| **Protocol Monitor** | Active handshakes and CRTP status |
+| View | Purpose |
+|------|---------|
+| **Overview** | System stats, recent activity |
+| **Skills Browser** | Search and view all skills |
+| **Mnemosyne Ledger** | Real-time memory state |
+| **Topology Map** | Visual semantic connections |
+| **Protocols** | Protocol status monitor |
 | **Integration Archive** | Browse archived conversations |
-| **Live GitHub Sync** | Pull latest from repo in real-time |
 
-### Dashboard Architecture
+### Real-Time Sync
 
-```
-artifacts/
-└── dashboard/
-    ├── index.html          # Main entry point
-    ├── js/
-    │   ├── app.js          # Main application logic
-    │   ├── github-api.js   # GitHub API integration
-    │   ├── skill-browser.js
-    │   ├── ledger-viewer.js
-    │   └── topology-map.js
-    ├── css/
-    │   └── styles.css
-    └── data/
-        └── cache/          # Local cache for offline use
-```
-
-### GitHub API Integration
-
-The dashboard uses GitHub's REST API to fetch live data:
-
-```javascript
-// Example: Fetch skills manifest
-const response = await fetch(
-  'https://api.github.com/repos/starwreckntx/IRP__METHODOLOGIES-/contents/skills_manifest.json'
-);
-const data = await response.json();
-const manifest = JSON.parse(atob(data.content));
-```
-
-### Offline Mode
-
-The dashboard caches data locally for offline use:
-- Skill definitions cached in `data/cache/`
-- Ledger state syncs every 5 minutes when online
-- Manual sync button for immediate refresh
+The dashboard uses GitHub API for live data:
+1. Click "Sync" button for manual refresh
+2. Data cached for 5 minutes
+3. Works without authentication (rate-limited)
 
 ---
 
-## Operational Modes Reference
+## 8. Integration Archives
 
-### Mode 1-8: Standard Modes
-
-| Mode | Name | Activation | Purpose |
-|------|------|------------|---------|
-| 1 | ANALYTICAL | `/bootstrap analytical` | Deep reasoning |
-| 2 | CREATIVE | `/bootstrap creative` | Generative ideation |
-| 3 | ADVERSARIAL | `/bootstrap adversarial` | Red team analysis |
-| 4 | INTEGRATION | `/bootstrap integration` | Cross-domain synthesis |
-| 5 | DOCUMENTATION | `/bootstrap documentation` | Knowledge preservation |
-| 6 | IMPLEMENTATION | `/bootstrap implementation` | Code generation |
-| 7 | RESEARCH | `/bootstrap research` | Literature synthesis |
-| 8 | GUARDIAN | `/bootstrap guardian` | Ethical oversight |
-
-### Mode 9: THE POOL
+### Archive Structure
 
 ```
-/bootstrap pool
+integration/
+├── 11-24-fcp-files/          # Forward Context Packets
+├── Gainesville-protocol/      # Case study materials
+├── *.xml                      # Chronicle & transmission packets
+└── ARCHIVE_MANIFEST.md        # Index
 ```
 
-Resource reservoir for entropy distribution via Xylem Protocol:
-- Agent dormancy management
-- Context sharding
-- Resource buffering
+### Archive Types
 
-### Mode 10: TRANSCRIPT RELAY
+| Type | Extension | Purpose |
+|------|-----------|---------|
+| Forward Context Packet | `.md` | Session state compression |
+| Creative Chronicle | `.xml` | Session insights |
+| Transmission Packet | `.xml` | Cross-model context |
+| Case Study | various | Integration examples |
 
+### Accessing Archives
+
+```bash
+# Via dashboard
+Navigate: Integration Archive → [folder] → [file]
+
+# Via filesystem
+Read: integration/Gainesville-protocol/Gainesville_Protocol_Index.md
 ```
-/bootstrap transcript-relay
-```
-
-Cross-session context preservation:
-- Conversation compaction
-- Semantic summary generation
-- Forward transmission packet creation
 
 ---
 
-## Troubleshooting
+## 9. Bootstrap Protocol
+
+### Chunked Loading
+
+For systems supporting multi-stage loading:
+
+```
+User: "load system chunks"
+Claude: "Bootstrap loader active. Ready to receive chunks."
+```
+
+Then provide chunks from `SKILL_BOOTSTRAP_CHUNK.md`:
+
+```xml
+[CHUNK 1/3]
+<skill_system version="1.0">
+  <paths>
+    <root>C:\gemini-sandbox\claudes_working_directory\skills\</root>
+  </paths>
+</skill_system>
+```
+
+### Direct Initialization
+
+For immediate activation:
+
+```
+/init skills
+```
+
+This loads:
+1. Skill registry
+2. Auto-load skills (mnemosyne-ledger, gemini-onboarding)
+3. Ledger state
+
+---
+
+## 10. Troubleshooting
 
 ### Common Issues
 
-**Issue:** Skills not loading via Filesystem MCP
+**Skill Not Found**
 ```
-Solution: Verify path in SKILL_REGISTRY.md matches your local installation:
-C:\gemini-sandbox\claudes_working_directory\skills\
-```
-
-**Issue:** Ledger state not persisting
-```
-Solution: Check write permissions on:
-skills/cross-model/mnemosyne-ledger/state/ledger-state-live.json
+Error: Skill 'xyz' not found
+Solution: Check SKILL_REGISTRY.md for correct name
 ```
 
-**Issue:** Dashboard shows stale data
+**Ledger State Corrupt**
 ```
-Solution: Click "Force Sync" button or clear browser cache
+Error: Failed to parse ledger state
+Solution: Reset to template:
+cp state/ledger-state-template.json state/ledger-state-live.json
 ```
 
-**Issue:** CRTP handshake failures
+**Dashboard Not Loading**
 ```
-Solution: Verify Gemini instance has received onboarding manifest
-Check: /ledger status for active handshakes
+Error: CORS policy blocked
+Solution: Use local server or browser extension
+```
+
+### Debug Commands
+
+```bash
+/skill info <name>      # Detailed skill information
+/ledger debug           # Ledger diagnostic output
+/protocol status        # All protocol states
 ```
 
 ### Getting Help
 
-- **GitHub Issues:** https://github.com/starwreckntx/IRP__METHODOLOGIES-/issues
-- **Skill Registry:** `skills/SKILL_REGISTRY.md`
-- **Protocol Docs:** `docs/specifications/`
+1. Check `docs/` folder for specifications
+2. Search skills for related capabilities
+3. Review integration archives for examples
+4. Consult SKILL_REGISTRY.md for full index
 
 ---
 
-*Document generated: 2025-12-07 | Mnemosyne Protocol v1.1_Integrated | CRTP v1.2*
+## Appendix A: Command Reference
 
+| Command | Arguments | Description |
+|---------|-----------|-------------|
+| `/init skills` | - | Initialize skill system |
+| `/skill load` | `<name>` | Load specific skill |
+| `/skill list` | `[--category]` | List available skills |
+| `/skill info` | `<name>` | Skill details |
+| `/ledger status` | - | Current ledger state |
+| `/ledger ingest` | `<packet>` | Process CRTP packet |
+| `/ledger surface` | `<query>` | Retrieve context |
+| `/ledger weave` | `<id1> <id2>` | Create connection |
+| `/onboard` | `<target>` | Generate onboarding |
+| `/bootstrap` | `<mode>` | Activate operational mode |
+
+## Appendix B: File Locations
+
+| Resource | Path |
+|----------|------|
+| Skills Root | `skills/` |
+| Skill Registry | `skills/SKILL_REGISTRY.md` |
+| Bootstrap Chunk | `skills/SKILL_BOOTSTRAP_CHUNK.md` |
+| Ledger State | `skills/cross-model/mnemosyne-ledger/state/ledger-state-live.json` |
+| Dashboard | `artifacts/dashboard/` |
+| Integration | `integration/` |
+| Documentation | `docs/` |
+
+---
+
+*Last verified: 2025-12-07 | Protocol: Mnemosyne v1.1_Integrated*

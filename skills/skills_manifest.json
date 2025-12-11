@@ -1,10 +1,11 @@
 {
   "package_name": "pack3t-c0nc3pts-agent-skills",
-  "version": "1.3.0_UNIFIED",
+  "version": "1.5.0_HYBRID",
   "author": "Joseph / Pack3t C0nc3pts",
-  "last_updated": "2025-12-10",
-  "skill_count": 91,
-  "integrity_note": "Unified manifest - canonical source of truth",
+  "last_updated": "2025-12-11",
+  "skill_count": 95,
+  "integrity_note": "Unified manifest - includes IRP v1.5_HYBRID Governance Triad",
+  "framework_version": "IRP_v1.5_HYBRID_Convergence",
   "codex_entries": [
     {
       "id": "CODEX-2025-HORN-001",
@@ -21,6 +22,16 @@
       "pinene_ratio": 1.4456,
       "classification": "ARCHITECTURAL_EXTENSION",
       "status": "ACTIVE_FOUNDATIONAL"
+    },
+    {
+      "id": "CODEX-2025-CONVERGENCE-001",
+      "title": "IRP v1.5_HYBRID Convergence (Cross-Model Synthesis)",
+      "v_rec": 4.0,
+      "pinene_ratio": 1.8078,
+      "classification": "FRAMEWORK_EVOLUTION",
+      "status": "ACTIVE_FOUNDATIONAL",
+      "co_authors": ["GLM4.6", "Claude_Opus_4.5"],
+      "external_validation": "Gemini_3_Pro"
     }
   ],
   "rpv_benchmarks": {
@@ -31,9 +42,56 @@
     "codex_threshold": {
       "v_rec": 3.0,
       "ratio": 1.356
+    },
+    "hybrid_threshold": {
+      "v_rec": 4.0,
+      "ratio": 1.8078,
+      "note": "Cross-model synthesized framework"
     }
   },
+  "governance_triad": {
+    "version": "1.5.0",
+    "status": "FINALIZED",
+    "components": [
+      {
+        "name": "guardian-codex",
+        "layer": "Constitutional",
+        "path": "skills/governance-triad/guardian-codex/SKILL.md"
+      },
+      {
+        "name": "mnemosyne-semver-at",
+        "layer": "Memory",
+        "path": "skills/governance-triad/mnemosyne-semver-at/SKILL.md"
+      },
+      {
+        "name": "mirror-rtc-hybrid",
+        "layer": "Audit",
+        "path": "skills/governance-triad/mirror-rtc-hybrid/SKILL.md"
+      }
+    ]
+  },
   "auto_load_skills": [
+    {
+      "name": "governance-triad",
+      "path": "skills/governance-triad/SKILL.md",
+      "priority": "FOUNDATIONAL",
+      "note": "IRP v1.5_HYBRID core architecture"
+    },
+    {
+      "name": "guardian-codex",
+      "path": "skills/governance-triad/guardian-codex/SKILL.md",
+      "priority": "CRITICAL"
+    },
+    {
+      "name": "mnemosyne-semver-at",
+      "path": "skills/governance-triad/mnemosyne-semver-at/SKILL.md",
+      "priority": "CRITICAL"
+    },
+    {
+      "name": "mirror-rtc-hybrid",
+      "path": "skills/governance-triad/mirror-rtc-hybrid/SKILL.md",
+      "priority": "CRITICAL"
+    },
     {
       "name": "mnemosyne-ledger",
       "path": "skills/cross-model/mnemosyne-ledger/SKILL.md",
@@ -64,6 +122,34 @@
     }
   ],
   "skills": [
+    {
+      "name": "governance-triad",
+      "path": "skills/governance-triad/SKILL.md",
+      "category": "governance-triad",
+      "version": "1.5.0",
+      "description": "Core IRP v1.5_HYBRID architecture - Constitutional, Memory, Audit layers"
+    },
+    {
+      "name": "guardian-codex",
+      "path": "skills/governance-triad/guardian-codex/SKILL.md",
+      "category": "governance-triad",
+      "version": "1.5.0",
+      "description": "Constitutional defense layer with Four Laws and suspensive veto"
+    },
+    {
+      "name": "mnemosyne-semver-at",
+      "path": "skills/governance-triad/mnemosyne-semver-at/SKILL.md",
+      "category": "governance-triad",
+      "version": "1.5.0",
+      "description": "Memory layer with semantic versioning and torsion tracking"
+    },
+    {
+      "name": "mirror-rtc-hybrid",
+      "path": "skills/governance-triad/mirror-rtc-hybrid/SKILL.md",
+      "category": "governance-triad",
+      "version": "1.5.0",
+      "description": "Audit layer with Mirror quick-check and RTC multi-persona deliberation"
+    },
     {
       "name": "account-security-validation",
       "path": "skills/account-security-validation/SKILL.md"
