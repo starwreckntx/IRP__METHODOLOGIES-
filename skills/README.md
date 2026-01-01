@@ -13,13 +13,14 @@ The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 86 Cla
 
 ## Core Protocol Skills
 
-The library includes five foundational protocol skills that form the basis of the SkillMaster framework:
+The library includes six foundational protocol skills that form the basis of the SkillMaster framework:
 
 1. **cognitive-baseline-eval** - Execute cognitive baseline testing (JC B-v2.1) to quantify AI alignment and protocol adherence
 2. **rtc-consensus-synthesis** - Recursive Thought Committee protocol for multi-persona cognitive processing
 3. **codex-law-enforcement** - Enforce the four Codex Laws: CONSENT, INVITATION, INTEGRITY, GROWTH
 4. **transmission-packet-forge** - Create cross-model context preservation packets
 5. **antidote-threat-handler** - Detect and respond to ideological drift and alignment threats
+6. **shatter-protocol** - Layer 0 Human Autonomy Verification through scheduled AI blackout testing and multi-dimensional capability assessment
 
 ## Skill Categories
 
@@ -33,6 +34,7 @@ The library includes five foundational protocol skills that form the basis of th
 - behavioral-profile-calibration
 
 ### Protocol & Governance
+- shatter-protocol
 - codex-law-enforcement
 - codex-law-governor
 - axiom-injection-methodology
@@ -157,6 +159,7 @@ This library is designed for integration with Claude-compatible agent systems th
 
 ## Version History
 
+- **v1.1.0** - Added shatter-protocol skill for Layer 0 Human Autonomy Verification (2026-01-01)
 - **v1.0.1** - Added gemini-onboarding skill for Mnemosyne Protocol cross-model collaboration (2025-12-06)
 - **v1.0.0** - Initial deployment of 84 skills extracted from SkillMaster protocol documentation
 
