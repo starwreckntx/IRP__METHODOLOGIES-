@@ -1,6 +1,6 @@
 # IRP Skill Registry
-## Version: 1.3.0_UNIFIED
-## Last Updated: 2025-12-10
+## Version: 1.4.0_SHATTER
+## Last Updated: 2026-01-01
 
 ---
 
@@ -20,6 +20,7 @@ These skills should be loaded at session initialization:
 | horn-maneuver | `cross-model/horn-maneuver/` | Structural Inversion Protocol | **CODEX** |
 | codex-law-enforcement | `codex-law-enforcement/` | CONSENT, INVITATION, INTEGRITY, GROWTH | ACTIVE |
 | irp-embodiment-framework | `irp-embodiment-framework/` | Physical reality integration | **GATED** (requires `ALLOW_EMBODIMENT=1`) |
+| shatter-protocol | `shatter-protocol/` | Human Autonomy Verification (Layer 0) | ACTIVE |
 
 ---
 
@@ -235,6 +236,7 @@ Add to chunked loading protocol:
     <skill path="cross-model/horn-maneuver/SKILL.md"/>
     <skill path="codex-law-enforcement/SKILL.md"/>
     <skill path="irp-embodiment-framework/SKILL.md" gated="true" env_flag="ALLOW_EMBODIMENT"/>
+    <skill path="shatter-protocol/SKILL.md" layer="0" codex_alignment="98%"/>
   </auto_load>
   <codex_entries>
     <entry id="CODEX-2025-HORN-001" status="ACTIVE_PERMANENT"/>
@@ -249,6 +251,16 @@ Add to chunked loading protocol:
 ---
 
 ## Changelog
+
+### v1.4.0_SHATTER (2026-01-01)
+- **ADDED SHATTER PROTOCOL**: Integrated Layer 0 Human Autonomy Verification
+- Added `shatter-protocol` to auto-load skills
+- Created `/layer-0/SHATTER_PROTOCOL_SPECIFICATION_v1.0.md` (full specification)
+- Created `/layer-0/README.md` (implementation package guide)
+- Created `/skills/shatter-protocol/SKILL.md` (skill integration file)
+- Updated auto-load bootstrap XML to include shatter-protocol
+- Codex Alignment: 98% (CONSENT, INVITATION, INTEGRITY, GROWTH)
+- Layer Position: 0 (validates human orchestrator before all IRP layers)
 
 ### v1.3.0_UNIFIED (2025-12-10)
 - **UNIFIED MANIFEST**: Merged root and skills/ manifests into single source of truth
