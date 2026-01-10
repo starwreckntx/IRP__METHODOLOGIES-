@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://pack3tconcepts.com/irp-embodiment"
+           xmlns:irpe="http://pack3tconcepts.com/irp-embodiment"
+           elementFormDefault="qualified">
+
+  <!-- Root: EmbodimentState -->
+  <xs:element name="EmbodimentState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Metadata" type="irpe:MetadataType" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="SensorFusion" type="irpe:SensorFusionType"/>
+        <xs:element name="ActuatorState" type="irpe:ActuatorStateType" minOccurs="0"/>
+        <xs:element name="SafetyBoundaries" type="irpe:SafetyBoundariesType"/>
+        <xs:element name="TemporalSequences" type="irpe:TemporalSequencesType" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Metadata -->
+  <xs:complexType name="MetadataType">
+    <xs:sequence>
+      <xs:element name="Timestamp" type="xs:dateTime"/>
+      <xs:element name="ModalityType" type="irpe:ModalityEnum"/>
+      <xs:element name="CoordinateFrames" type="irpe:CoordinateFramesType"/>
+      <xs:element name="IntegrityHash" type="xs:string"/> <!-- Genesis Protocol validation -->
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Sensor Fusion -->
+  <xs:complexType name="SensorFusionType">
+    <xs:sequence>
+      <xs:element name="AcousticData" type="irpe:AcousticDataType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="WeightData" type="irpe:WeightDataType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ThermalData" type="irpe:ThermalDataType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="VisualData" type="irpe:VisualDataType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="InertialData" type="irpe:InertialDataType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Acoustic (Foundry monitoring) -->
+  <xs:complexType name="AcousticDataType">
+    <xs:sequence>
+      <xs:element name="Frequency" type="xs:decimal"/> <!-- Hz -->
+      <xs:element name="Amplitude" type="xs:decimal"/> <!-- dB -->
+      <xs:element name="AnomalyScore" type="xs:decimal"/> <!-- 0.0-1.0 -->
+      <xs:element name="SpectrogramHash" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="timestamp" type="xs:dateTime" use="required"/>
+    <xs:attribute name="sensorID" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- Weight (Foundry pour verification) -->
+  <xs:complexType name="WeightDataType">
+    <xs:sequence>
+      <xs:element name="MeasuredWeight" type="xs:decimal"/> <!-- kg -->
+      <xs:element name="ExpectedWeight" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="Discrepancy" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="timestamp" type="xs:dateTime" use="required"/>
+    <xs:attribute name="sensorID" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- Thermal (Molten metal safety) -->
+  <xs:complexType name="ThermalDataType">
+    <xs:sequence>
+      <xs:element name="Temperature" type="xs:decimal"/> <!-- Celsius -->
+      <xs:element name="HotspotCoordinates" type="irpe:CoordinatesType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="timestamp" type="xs:dateTime" use="required"/>
+  </xs:complexType>
+
+  <!-- Visual (AR tracking, CV) -->
+  <xs:complexType name="VisualDataType">
+    <xs:sequence>
+      <xs:element name="ObjectDetections" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Label" type="xs:string"/>
+            <xs:element name="BoundingBox" type="irpe:BoundingBoxType"/>
+            <xs:element name="Confidence" type="xs:decimal"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TrackingConfidence" type="xs:decimal"/> <!-- AR tracking quality 0-1 -->
+    </xs:sequence>
+    <xs:attribute name="timestamp" type="xs:dateTime" use="required"/>
+  </xs:complexType>
+
+  <!-- Inertial (Humanoid balance) -->
+  <xs:complexType name="InertialDataType">
+    <xs:sequence>
+      <xs:element name="Acceleration" type="irpe:Vector3Type"/> <!-- m/s² -->
+      <xs:element name="AngularVelocity" type="irpe:Vector3Type"/> <!-- rad/s -->
+      <xs:element name="Orientation" type="irpe:QuaternionType"/>
+    </xs:sequence>
+    <xs:attribute name="timestamp" type="xs:dateTime" use="required"/>
+  </xs:complexType>
+
+  <!-- Actuator State (for feedback) -->
+  <xs:complexType name="ActuatorStateType">
+    <xs:sequence>
+      <xs:element name="Joint" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Position" type="xs:decimal"/> <!-- radians or meters -->
+            <xs:element name="Velocity" type="xs:decimal"/>
+            <xs:element name="Torque" type="xs:decimal"/>
+          </xs:sequence>
+          <xs:attribute name="name" type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Safety Boundaries (Volumetric zones) -->
+  <xs:complexType name="SafetyBoundariesType">
+    <xs:sequence>
+      <xs:element name="Zone" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Type" type="irpe:ZoneTypeEnum"/>
+            <xs:element name="RiskLevel" type="xs:decimal"/> <!-- 0-1 -->
+            <xs:element name="BoundaryPoints" type="irpe:CoordinatesType" minOccurs="3" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Temporal Sequences (Pour progressions, trajectories) -->
+  <xs:complexType name="TemporalSequencesType">
+    <xs:sequence>
+      <xs:element name="Sequence" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SequenceID" type="xs:string"/>
+            <xs:element name="StartTime" type="xs:dateTime"/>
+            <xs:element name="EndTime" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="EventRef" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Coordinate Frames (AR device vs foundry fixed) -->
+  <xs:complexType name="CoordinateFramesType">
+    <xs:sequence>
+      <xs:element name="Frame" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="TransformMatrix" type="irpe:Matrix4x4Type"/>
+          </xs:sequence>
+          <xs:attribute name="id" type="xs:string" use="required"/>
+          <xs:attribute name="parentFrame" type="xs:string" default="world"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Supporting Types -->
+  <xs:complexType name="CoordinatesType">
+    <xs:attribute name="x" type="xs:decimal" use="required"/>
+    <xs:attribute name="y" type="xs:decimal" use="required"/>
+    <xs:attribute name="z" type="xs:decimal" use="required"/>
+    <xs:attribute name="frameRef" type="xs:string" default="world"/>
+  </xs:complexType>
+
+  <xs:complexType name="Vector3Type">
+    <xs:attribute name="x" type="xs:decimal" use="required"/>
+    <xs:attribute name="y" type="xs:decimal" use="required"/>
+    <xs:attribute name="z" type="xs:decimal" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="QuaternionType">
+    <xs:attribute name="w" type="xs:decimal" use="required"/>
+    <xs:attribute name="x" type="xs:decimal" use="required"/>
+    <xs:attribute name="y" type="xs:decimal" use="required"/>
+    <xs:attribute name="z" type="xs:decimal" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="Matrix4x4Type">
+    <xs:simpleContent>
+      <xs:extension base="xs:string"> <!-- 16 comma-separated values -->
+        <xs:attribute name="format" type="xs:string" default="row-major"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="BoundingBoxType">
+    <xs:attribute name="xmin" type="xs:decimal" use="required"/>
+    <xs:attribute name="ymin" type="xs:decimal" use="required"/>
+    <xs:attribute name="xmax" type="xs:decimal" use="required"/>
+    <xs:attribute name="ymax" type="xs:decimal" use="required"/>
+  </xs:complexType>
+
+  <!-- Enumerations -->
+  <xs:simpleType name="ModalityEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="humanoid"/>
+      <xs:enumeration value="quadruped"/>
+      <xs:enumeration value="ar_overlay"/>
+      <xs:enumeration value="industrial_sensor"/>
+      <xs:enumeration value="hybrid"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ZoneTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="splash_zone"/>
+      <xs:enumeration value="heat_zone"/>
+      <xs:enumeration value="collision_zone"/>
+      <xs:enumeration value="safe_zone"/>
+      <xs:enumeration value="restricted_zone"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

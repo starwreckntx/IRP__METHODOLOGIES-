@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TRIGGER REGISTRY SCHEMA
+  Armed awakening triggers for dormant seeds
+  Version: 1.0
+-->
+<trigger_registry>
+  <registry_id><!-- TR-YYYYMMDD --></registry_id>
+  <last_updated><!-- ISO8601 --></last_updated>
+
+  <armed_triggers>
+    <trigger>
+      <trigger_id><!-- TRG-YYYYMMDD-XXXX --></trigger_id>
+      <state><!-- ARMED | FIRED | DISABLED --></state>
+
+      <!-- Activation conditions -->
+      <phrases>
+        <phrase match_type="exact"><!-- Exact match phrase --></phrase>
+        <phrase match_type="fuzzy"><!-- Fuzzy match phrase --></phrase>
+        <phrase match_type="semantic"><!-- Semantic similarity phrase --></phrase>
+      </phrases>
+
+      <!-- What gets awakened -->
+      <target_seed_id><!-- Dormant seed to resurrect --></target_seed_id>
+
+      <!-- Context bundle on activation -->
+      <context_bundle>
+        <voice_id><!-- Associated Voice_to_Future --></voice_id>
+        <compost_ids>
+          <compost_id><!-- Related anti-patterns --></compost_id>
+        </compost_ids>
+        <artifact_ids>
+          <artifact_id><!-- Related artifacts --></artifact_id>
+        </artifact_ids>
+      </context_bundle>
+
+      <!-- Metadata -->
+      <armed_at><!-- ISO8601 --></armed_at>
+      <armed_by><!-- Session/packet that created this --></armed_by>
+      <fire_count><!-- How many times triggered --></fire_count>
+      <last_fired><!-- ISO8601 or null --></last_fired>
+    </trigger>
+  </armed_triggers>
+
+  <statistics>
+    <total_armed><!-- count --></total_armed>
+    <total_fired><!-- count --></total_fired>
+    <total_disabled><!-- count --></total_disabled>
+  </statistics>
+</trigger_registry>

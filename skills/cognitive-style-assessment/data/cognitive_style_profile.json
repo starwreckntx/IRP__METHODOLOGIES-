@@ -1,2 +1,7 @@
-# Placeholder for data/cognitive_style_profile.json
-# Populate with actual content
+{
+  "_placeholder": true,
+  "_reason": "Schema pending implementation",
+  "_created": "2025-12-10T02:31:08.669404",
+  "_version": "0.0.1",
+  "_file": "cognitive_style_profile.json"
+}

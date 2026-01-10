@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CRTP/0x15 SEED AWAKENING
+  Emitted when dormant seed is resurrected by trigger
+-->
+<crtp_packet type="0x15" name="SeedAwakening">
+  <header>
+    <version>1.2</version>
+    <source>Claude-Ledger-Node</source>
+    <destination><!-- Active instance --></destination>
+    <timestamp><!-- ISO8601 --></timestamp>
+    <flags>MNE|SEED</flags>
+  </header>
+
+  <payload>
+    <awakening_event>
+      <trigger_phrase><!-- What activated this --></trigger_phrase>
+      <trigger_id><!-- Registry entry --></trigger_id>
+      <detected_in><!-- Where phrase was found --></detected_in>
+    </awakening_event>
+
+    <resurrected_seed>
+      <seed_id><!-- Original seed ID --></seed_id>
+      <original_state>DORMANT</original_state>
+      <new_state>CRYSTALLIZED</new_state>
+
+      <content><![CDATA[
+        <!-- The dormant idea, now awakened -->
+      ]]></content>
+
+      <origin>
+        <session><!-- Where seed was planted --></session>
+        <model><!-- Who planted it --></model>
+        <planted_at><!-- ISO8601 --></planted_at>
+        <dormancy_duration><!-- How long it slept --></dormancy_duration>
+      </origin>
+
+      <expected_utility><!-- Why this was saved --></expected_utility>
+    </resurrected_seed>
+
+    <associated_voice>
+      <voice_id></voice_id>
+      <content><![CDATA[
+        <!-- Voice_to_Future from same session as seed -->
+      ]]></content>
+    </associated_voice>
+
+    <compost_context>
+      <!-- Related failures to avoid repeating -->
+      <friction>
+        <id></id>
+        <intent></intent>
+        <blocker></blocker>
+        <resolution></resolution>
+        <lesson></lesson>
+      </friction>
+    </compost_context>
+
+    <integration_guidance>
+      <!-- How to use this awakened seed -->
+      <immediate_relevance><!-- Why now --></immediate_relevance>
+      <suggested_application><!-- How to apply --></suggested_application>
+      <lineage_link><!-- What this connects to --></lineage_link>
+    </integration_guidance>
+  </payload>
+</crtp_packet>

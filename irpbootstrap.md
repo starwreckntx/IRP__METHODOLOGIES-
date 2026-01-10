@@ -29,7 +29,7 @@ This document defines the **bootstrap initialization protocol** for activating t
 │  Phase 1: MANIFEST LOAD                                         │
 │    ↓                                                             │
 │    Fetch skills_manifest.json                                   │
-│    Parse 85 skill definitions                                   │
+│    Parse skill definitions                                   │
 │    Build skill registry                                         │
 │                                                                  │
 │  Phase 2: SKILL SELECTION                                       │

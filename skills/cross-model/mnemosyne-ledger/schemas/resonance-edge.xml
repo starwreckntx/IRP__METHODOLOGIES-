@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  RESONANCE EDGE SCHEMA
+  Semantic link between topology nodes
+  Version: 1.0
+-->
+<resonance_edge>
+  <edge_id><!-- RE-YYYYMMDD-XXXX --></edge_id>
+
+  <source>
+    <node_id><!-- Origin node --></node_id>
+    <entry_type><!-- artifact | voice | seed | friction --></entry_type>
+  </source>
+
+  <target>
+    <node_id><!-- Destination node --></node_id>
+    <entry_type><!-- artifact | voice | seed | friction --></entry_type>
+  </target>
+
+  <relationship>
+    <type><!-- isomorphic | causal | contradicts | extends | refines --></type>
+    <description><!-- Why these are linked --></description>
+  </relationship>
+
+  <weight><!-- 0.0 - 1.0 --></weight>
+
+  <provenance>
+    <created_by><!-- auto | manual | gemini_suggestion --></created_by>
+    <created_at><!-- ISO8601 --></created_at>
+    <basis><!-- resonance_tags | lineage | explicit_link | semantic_similarity --></basis>
+  </provenance>
+
+  <state><!-- ACTIVE | LATENT | SEVERED --></state>
+</resonance_edge>

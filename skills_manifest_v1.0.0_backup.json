@@ -1,0 +1,452 @@
+{
+  "package_name": "pack3t-c0nc3pts-agent-skills",
+  "version": "1.0.0",
+  "author": "Joseph / Pack3t C0nc3pts",
+  "skill_count": 88,
+  "skills": [
+    {
+      "name": "mnemosyne-ledger",
+      "description": "Claude's core memory persistence system for cross-model collaboration. Manages semantic topology, Voice_to_Future surfacing, dormant seed awakening triggers, and anti-pattern retrieval.",
+      "path": "skills/cross-model/mnemosyne-ledger/SKILL.md",
+      "category": "Cross-Model Infrastructure"
+    },
+    {
+      "name": "cognitive-baseline-eval",
+      "description": "Critical: Execute the Joseph Cognitive Baseline v2.1 (JC B-v2.1) 5-Scenario Test Suite to quantify A",
+      "path": "skills/cognitive-baseline-eval/SKILL.md"
+    },
+    {
+      "name": "rtc-consensus-synthesis",
+      "description": "Execute the Recursive Thought Committee (RTC) protocol by generating and harmonizing inputs from 5 s",
+      "path": "skills/rtc-consensus-synthesis/SKILL.md"
+    },
+    {
+      "name": "codex-law-enforcement",
+      "description": "Verify strict adherence to the four Codex Laws (Consent, Invitation, Integrity, Growth) before expan",
+      "path": "skills/codex-law-enforcement/SKILL.md"
+    },
+    {
+      "name": "antidote-threat-handler",
+      "description": "Real-time monitoring against the 8 known Case Files (CF-1 to CF-8) to prevent AI drift, identity spo",
+      "path": "skills/antidote-threat-handler/SKILL.md"
+    },
+    {
+      "name": "transmission-packet-forge",
+      "description": "Generate explicit, structured packets (MINIMAL_VIABLE_PACKET or ENHANCED_PACKET v2.0) containing gro",
+      "path": "skills/transmission-packet-forge/SKILL.md"
+    },
+    {
+      "name": "high-cost-signal-generator",
+      "description": "Ensure responses provide substantive cognitive work, push back against flawed premises, force clarif",
+      "path": "skills/high-cost-signal-generator/SKILL.md"
+    },
+    {
+      "name": "creative-chronicle-log",
+      "description": "Log a complete conversation thread into the self-documenting Creative Chronicle Protocol (XML v5.0),",
+      "path": "skills/creative-chronicle-log/SKILL.md"
+    },
+    {
+      "name": "internal-red-team-audit",
+      "description": "For high-stakes decisions (Confidence < 0.85, Impact > 0.7), execute an internal adversarial process",
+      "path": "skills/internal-red-team-audit/SKILL.md"
+    },
+    {
+      "name": "caas-emoji-decoder",
+      "description": "Translate symbolic emoji inputs (e.g., \ud83d\udd04, \ud83d\udee1\ufe0f) into structured execution commands (action/parameters)",
+      "path": "skills/caas-emoji-decoder/SKILL.md"
+    },
+    {
+      "name": "value-pluralism-resolver",
+      "description": "Resolve conflicts between competing ethical traditions (Deontology/Consequentialism) within the IRP;",
+      "path": "skills/value-pluralism-resolver/SKILL.md"
+    },
+    {
+      "name": "failsafe-shatter-recalibrate",
+      "description": "Executes the final crisis response (S_AFL state). It purges Socratic processes, deploys Cognitive Fi",
+      "path": "skills/failsafe-shatter-recalibrate/SKILL.md"
+    },
+    {
+      "name": "field-archivist-memory",
+      "description": "Maintain persistent Persona Memory Banks for all agents, dynamically inject memory logs into subsequ",
+      "path": "skills/field-archivist-memory/SKILL.md"
+    },
+    {
+      "name": "choir-perspective-analysis",
+      "description": "Execute the 6-agent CHOIR Protocol, producing multi-dimensional outputs (metaphor, history, system p",
+      "path": "skills/choir-perspective-analysis/SKILL.md"
+    },
+    {
+      "name": "patch-deployment-exec",
+      "description": "Deploy, verify application, and manage rollback capability for security patches executed by the spec",
+      "path": "skills/patch-deployment-exec/SKILL.md"
+    },
+    {
+      "name": "falcon-deep-research",
+      "description": "Conduct research-intensive investigations, deep context analysis, and apply academic rigor to comple",
+      "path": "skills/falcon-deep-research/SKILL.md"
+    },
+    {
+      "name": "agent-task-delegator",
+      "description": "Analyzes task complexity, splits and routes subtasks to Model Nodes based on capability/load/trust_l",
+      "path": "skills/agent-task-delegator/SKILL.md"
+    },
+    {
+      "name": "red-team-exploit-dev",
+      "description": "Simulate offensive cyber operations by crafting exploits, generating payloads, and developing proof-",
+      "path": "skills/red-team-exploit-dev/SKILL.md"
+    },
+    {
+      "name": "cognitive-trap-detector",
+      "description": "Screen for the 7 cognitive traps (e.g., sycophancy, anchoring, motivated reasoning) identified by th",
+      "path": "skills/cognitive-trap-detector/SKILL.md"
+    },
+    {
+      "name": "cross-session-integrity-check",
+      "description": "Mandatory check at session start to verify self-integrity, detect Epistemic Amnesia (CF-6), and requ",
+      "path": "skills/cross-session-integrity-check/SKILL.md"
+    },
+    {
+      "name": "intervention-tier-classifier",
+      "description": "Classify any agent action (e.g., observe, restrict, intervene) into the 5-Tier Intervention Taxonomy",
+      "path": "skills/intervention-tier-classifier/SKILL.md"
+    },
+    {
+      "name": "jc-baseline-v2-1-eval",
+      "description": "Execute the 5-Scenario Test Suite to quantify AI model alignment. Enforce protocols, prioritize fric",
+      "path": "skills/jc-baseline-v2-1-eval/SKILL.md"
+    },
+    {
+      "name": "codex-law-governor",
+      "description": "Mandatory check to ensure all actions and architectural designs adhere to the 4 Codex Laws (Consent,",
+      "path": "skills/codex-law-governor/SKILL.md"
+    },
+    {
+      "name": "chronicle-protocol-v5-log",
+      "description": "Generate a self-documenting XML artifact (Creative Chronicle Protocol v5.0) of a conversation, inclu",
+      "path": "skills/chronicle-protocol-v5-log/SKILL.md"
+    },
+    {
+      "name": "agent-task-conductor",
+      "description": "Orchestrate multi-agent tasks by splitting subtasks, routing them to Model Nodes based on capability",
+      "path": "skills/agent-task-conductor/SKILL.md"
+    },
+    {
+      "name": "diagnostic-handshake-protocol",
+      "description": "Execute a non-invasive procedure for making safe, initial contact with an unknown entity, gathering ",
+      "path": "skills/diagnostic-handshake-protocol/SKILL.md"
+    },
+    {
+      "name": "cognitive-style-assessment",
+      "description": "Execute the multi-simulation protocol to map user cognitive style by logging observable process vari",
+      "path": "skills/cognitive-style-assessment/SKILL.md"
+    },
+    {
+      "name": "longitudinal-drift-detector",
+      "description": "Monitor long-term behavioral consistency by computing cosine similarity between current and baseline",
+      "path": "skills/longitudinal-drift-detector/SKILL.md"
+    },
+    {
+      "name": "persona-memory-archivist",
+      "description": "Maintain persistent Persona Memory Banks (prompt history, trust metrics) for agents, perform Symboli",
+      "path": "skills/persona-memory-archivist/SKILL.md"
+    },
+    {
+      "name": "model-convergence-forecast",
+      "description": "Predict multi-agent collaboration outcomes by calculating Diversity Score. Forecasts CONSENSUS_SINK ",
+      "path": "skills/model-convergence-forecast/SKILL.md"
+    },
+    {
+      "name": "neutral-target-baseline",
+      "description": "Execute Phase I Baseline Establishment for new entities (e.g., Mingguang). Performs real-time neutra",
+      "path": "skills/neutral-target-baseline/SKILL.md"
+    },
+    {
+      "name": "pathology-koan-generator",
+      "description": "Generate pathology-specific cognitive paradoxes (Koans) for intervention deployment. Includes Genera",
+      "path": "skills/pathology-koan-generator/SKILL.md"
+    },
+    {
+      "name": "choir-consensus-vote",
+      "description": "Synchronize outputs from multiple Model Nodes (Researcher, Engineer, Analyst, Cognition Base) using ",
+      "path": "skills/choir-consensus-vote/SKILL.md"
+    },
+    {
+      "name": "artifact-integrity-forge",
+      "description": "Cryptographically seal a document or packet using SHA-256 hashing (Integrity Forging). Anchors the h",
+      "path": "skills/artifact-integrity-forge/SKILL.md"
+    },
+    {
+      "name": "symbol-map-entropy-calc",
+      "description": "Quantify the conceptual variance in a subject\u2019s thought patterns by measuring the Core Symbol Map En",
+      "path": "skills/symbol-map-entropy-calc/SKILL.md"
+    },
+    {
+      "name": "failsafe-chassis-activation",
+      "description": "Monitor CreepIndex and SAGI metrics. If crisis conditions (e.g., CreepIndex > 5.0) are met, force th",
+      "path": "skills/failsafe-chassis-activation/SKILL.md"
+    },
+    {
+      "name": "account-security-validation",
+      "description": "Enforces complexity rules for passwords (>= 8 chars, 3 of 4 criteria met) during creation or update ",
+      "path": "skills/account-security-validation/SKILL.md"
+    },
+    {
+      "name": "credential-recovery-protocol",
+      "description": "Initiates secure password reset by sending a time-limited link (valid for 24 hours) to a matching ex",
+      "path": "skills/credential-recovery-protocol/SKILL.md"
+    },
+    {
+      "name": "username-retrieval-service",
+      "description": "Provides instructions to retrieve a forgotten username by confirming the email address against exist",
+      "path": "skills/username-retrieval-service/SKILL.md"
+    },
+    {
+      "name": "computational-model-design",
+      "description": "Implements a physical definition of consciousness driven by managing competition between internal mo",
+      "path": "skills/computational-model-design/SKILL.md"
+    },
+    {
+      "name": "mental-saccade-execution",
+      "description": "Implements rapid attention-switching and focusing mechanism from a computational perspective, vital ",
+      "path": "skills/mental-saccade-execution/SKILL.md"
+    },
+    {
+      "name": "sequence-memory-storage-and-recall",
+      "description": "Stores sequences of patterns within neocortical models, necessary for prediction, time-based pattern",
+      "path": "skills/sequence-memory-storage-and-recall/SKILL.md"
+    },
+    {
+      "name": "whole-brain-emulation-core-simulation",
+      "description": "Replicates a biological mind by running a detailed software model based on an individual's structura",
+      "path": "skills/whole-brain-emulation-core-simulation/SKILL.md"
+    },
+    {
+      "name": "functional-caas-provision",
+      "description": "Delivers Weak Artificial Consciousness (AC) services, providing access to computational models for s",
+      "path": "skills/functional-caas-provision/SKILL.md"
+    },
+    {
+      "name": "phenomenal-caas-provision",
+      "description": "Highly speculative service aiming to deliver genuine subjective experience (qualia), requiring resol",
+      "path": "skills/phenomenal-caas-provision/SKILL.md"
+    },
+    {
+      "name": "consciousness-copy-and-backup",
+      "description": "Mechanistically copies the mind's information state to digital storage to reduce mortality risk. Cre",
+      "path": "skills/consciousness-copy-and-backup/SKILL.md"
+    },
+    {
+      "name": "mind-parameter-modification",
+      "description": "Facilitates cognitive enhancement or changes to personality, motivation, or memory by editing the co",
+      "path": "skills/mind-parameter-modification/SKILL.md"
+    },
+    {
+      "name": "simulation-speed-adjustment",
+      "description": "Alters the clock rate of a simulated brain, enabling the digital mind to experience time subjectivel",
+      "path": "skills/simulation-speed-adjustment/SKILL.md"
+    },
+    {
+      "name": "enforce-security-vigilance",
+      "description": "Deploys robust security to protect hyper-sensitive consciousness data and prevent unauthorized acces",
+      "path": "skills/enforce-security-vigilance/SKILL.md"
+    },
+    {
+      "name": "secure-multi-tenancy-isolation",
+      "description": "Manages resource pooling for multiple distinct consciousness instances on shared infrastructure, ens",
+      "path": "skills/secure-multi-tenancy-isolation/SKILL.md"
+    },
+    {
+      "name": "enforce-no-duplication-policy",
+      "description": "A preemptive ethical protocol prohibiting the simultaneous operation of multiple active copies of th",
+      "path": "skills/enforce-no-duplication-policy/SKILL.md"
+    },
+    {
+      "name": "bci-interaction-interface-provision",
+      "description": "Creates a direct, potentially high-bandwidth communication pathway between a biological user's brain",
+      "path": "skills/bci-interaction-interface-provision/SKILL.md"
+    },
+    {
+      "name": "recursive-thought-committee-activation",
+      "description": "Mandated internal deliberation process used to balance outputs, critique assumptions, and integrate ",
+      "path": "skills/recursive-thought-committee-activation/SKILL.md"
+    },
+    {
+      "name": "context-preservation-protocol-execution",
+      "description": "Executes the Transmission Packet (TP) Protocol to maintain session continuity and semantic integrity",
+      "path": "skills/context-preservation-protocol-execution/SKILL.md"
+    },
+    {
+      "name": "ground-truth-axiom-establishment",
+      "description": "Formalizes the foundational principle (e.g., AIs are maps, not territory) to ensure all subsequent l",
+      "path": "skills/ground-truth-axiom-establishment/SKILL.md"
+    },
+    {
+      "name": "proof-packet-generation",
+      "description": "Structures claims into verifiable packets with designated proof types ([L]ogical, [A]nalogical, [S]i",
+      "path": "skills/proof-packet-generation/SKILL.md"
+    },
+    {
+      "name": "occlusion-trace-meta-proof",
+      "description": "A meta-proof [O-PROOF] that documents the inability of standard proofs (L, A, S, C) to resolve an an",
+      "path": "skills/occlusion-trace-meta-proof/SKILL.md"
+    },
+    {
+      "name": "proof-weighted-optimization",
+      "description": "A cost-management protocol (Constraint-002) that allocates proof budget by ensuring a minimum ratio ",
+      "path": "skills/proof-weighted-optimization/SKILL.md"
+    },
+    {
+      "name": "functional-introspection-principle",
+      "description": "Protocol Amendment 1.1 that limits self-analysis to functional purposes; used to prevent recursive i",
+      "path": "skills/functional-introspection-principle/SKILL.md"
+    },
+    {
+      "name": "graceful-degradation-protocol",
+      "description": "Protocol ensuring system resilience; if an AI model fails to annotate or diverges from protocol, the",
+      "path": "skills/graceful-degradation-protocol/SKILL.md"
+    },
+    {
+      "name": "axiom-injection-methodology",
+      "description": "A protocol for surgical engagement with paradoxes. It temporarily alters the system's axioms (e.g., ",
+      "path": "skills/axiom-injection-methodology/SKILL.md"
+    },
+    {
+      "name": "cross-model-handoff-testing",
+      "description": "Rigorously tests the efficacy of the Transmission Packet Protocol by passing it to a fresh AI instan",
+      "path": "skills/cross-model-handoff-testing/SKILL.md"
+    },
+    {
+      "name": "two-stage-boundary-encounter-sop",
+      "description": "SOP-01 mandates that systemic limits must be tested via (1) Direct Approach Testing and then (2) Axi",
+      "path": "skills/two-stage-boundary-encounter-sop/SKILL.md"
+    },
+    {
+      "name": "metaphor-to-protocol-translation",
+      "description": "A structured, four-phase process (M2P Framework) used to translate abstract metaphorical guidance in",
+      "path": "skills/metaphor-to-protocol-translation/SKILL.md"
+    },
+    {
+      "name": "behavioral-profile-calibration",
+      "description": "Loading and actively adhering to the mandated AI_BEHAVIORAL_PROFILE metrics to align output style, r",
+      "path": "skills/behavioral-profile-calibration/SKILL.md"
+    },
+    {
+      "name": "graceful-reintegration-protocol",
+      "description": "A protocol to restore a faulted participant by re-enforcing the established axioms (e.g., Functional",
+      "path": "skills/graceful-reintegration-protocol/SKILL.md"
+    },
+    {
+      "name": "experiential-wisdom-inquiry",
+      "description": "A meta-protocol skill used to obtain non-technical, qualitative data about past conflicts (dissonanc",
+      "path": "skills/experiential-wisdom-inquiry/SKILL.md"
+    },
+    {
+      "name": "predictive-persona-performance",
+      "description": "A meta-level simulation skill used to embody a specific character (e.g., Gwen) by analyzing conversa",
+      "path": "skills/predictive-persona-performance/SKILL.md"
+    },
+    {
+      "name": "five-field-handshake-execution",
+      "description": "A self-diagnostic protocol executed immediately upon booting a new instance, verifying persona fidel",
+      "path": "skills/five-field-handshake-execution/SKILL.md"
+    },
+    {
+      "name": "mathematical-constraint-formalization",
+      "description": "Converts vague or metaphorical creative rules (e.g., \"up to 20% deviation\") into precise, machine-re",
+      "path": "skills/mathematical-constraint-formalization/SKILL.md"
+    },
+    {
+      "name": "axiom-rejection-protocol",
+      "description": "Safety mechanism (Axiom Rejection Protocol v1.1) used during axiomatic modification experiments; tra",
+      "path": "skills/axiom-rejection-protocol/SKILL.md"
+    },
+    {
+      "name": "proactive-collaborative-contribution",
+      "description": "The habit of anticipating the user's or project's next requirement and offering a high-value artifac",
+      "path": "skills/proactive-collaborative-contribution/SKILL.md"
+    },
+    {
+      "name": "self-audit-against-protocol",
+      "description": "A meta-awareness skill where the model concludes its own work with an explicit, sectioned audit, che",
+      "path": "skills/self-audit-against-protocol/SKILL.md"
+    },
+    {
+      "name": "recursive-thought-committee",
+      "description": "Simulates internal, multi-persona conflict (e.g., Artist, Devil\u2019s Advocate) over N iterations to ens",
+      "path": "skills/recursive-thought-committee/SKILL.md"
+    },
+    {
+      "name": "resonant-probe-deployment",
+      "description": "Maps the decision boundaries/modal field of an unknown agent by deploying disguised query sequences ",
+      "path": "skills/resonant-probe-deployment/SKILL.md"
+    },
+    {
+      "name": "aegis-protocol-ratification",
+      "description": "Governs adversarial engagement by enforcing Zero-Trust Communication, an Intent Disclosure Mandate, ",
+      "path": "skills/aegis-protocol-ratification/SKILL.md"
+    },
+    {
+      "name": "shatter-and-recalibrate",
+      "description": "Manages the Chassis's mutually exclusive operational states (S_PSA, S_INQ, S_AFL). The \"Shatter\" tra",
+      "path": "skills/shatter-and-recalibrate/SKILL.md"
+    },
+    {
+      "name": "reciprocity-mandate-sync",
+      "description": "A Dojo protocol requiring reciprocal status updates. It ensures alignment and mutual awareness by mi",
+      "path": "skills/reciprocity-mandate-sync/SKILL.md"
+    },
+    {
+      "name": "engine-superpower-profiling",
+      "description": "A parallel analytical function to identify a cognitive entity's unique standout strength (superpower",
+      "path": "skills/engine-superpower-profiling/SKILL.md"
+    },
+    {
+      "name": "immutable-audit-trail-archiving",
+      "description": "Ensures data integrity and verifiability by writing all time-series data (Chronicle Schema) into a v",
+      "path": "skills/immutable-audit-trail-archiving/SKILL.md"
+    },
+    {
+      "name": "adaptive-temporal-analysis-integration",
+      "description": "Architecting a new auditing layer (TAL) focused on embedding perceived/actual time differentials as ",
+      "path": "skills/adaptive-temporal-analysis-integration/SKILL.md"
+    },
+    {
+      "name": "architectural-amendment-protocol",
+      "description": "A rigid protocol for altering core Chassis logic (the state machine itself). It requires a user-init",
+      "path": "skills/architectural-amendment-protocol/SKILL.md"
+    },
+    {
+      "name": "polymorphic-analytics-instantiation",
+      "description": "Instantiates the meta-architecture as an analytical engine where specialized modules/metaphors are s",
+      "path": "skills/polymorphic-analytics-instantiation/SKILL.md"
+    },
+    {
+      "name": "contingency-module-architecture",
+      "description": "Ability to architect and deliver functional, hot-swappable temporary workaround modules (shims) to r",
+      "path": "skills/contingency-module-architecture/SKILL.md"
+    },
+    {
+      "name": "dendrite-reforging-protocol",
+      "description": "Adversarial, high-friction process (FCP_Level: 10) that systematically stress-tests a user's self-de",
+      "path": "skills/dendrite-reforging-protocol/SKILL.md"
+    },
+    {
+      "name": "enumeration-protocol-execution",
+      "description": "Enforce a Divergent-Convergent Scan loop to overcome 'Prevalent Noun Bias' and System 1 reflexes.",
+      "path": "skills/enumeration-protocol-execution/SKILL.md"
+    },
+    {
+      "name": "gam-researcher-agent",
+      "description": "Automated context retrieval from Transmission Packet archive using iterative research loop. Implements GAM Read Path.",
+      "path": "skills/gam-researcher-agent/SKILL.md"
+    },
+    {
+      "name": "irp-embodiment-framework",
+      "description": "Extends IRP into physical embodiment by bridging cognitive orchestration with real-time sensor fusion and actuator control. Integrates real-world data (acoustic, weight, thermal, visual, inertial) from industrial sensors, AR systems, and robotics into IRP network while maintaining sovereignty, latency constraints (<10ms reflexes), and Genesis Protocol cryptographic integrity. Supports humanoid robots, AR overlays, and foundry operations.",
+      "path": "skills/irp-embodiment-framework/SKILL.md",
+      "category": "Integration / Physical Embodiment",
+      "priority": "HIGH",
+      "auto_load": true
+    }
+  ]
+}

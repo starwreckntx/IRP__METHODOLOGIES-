@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TOPOLOGY NODE SCHEMA
+  Graph node for semantic topology
+  Version: 1.0
+-->
+<topology_node>
+  <node_id><!-- Unique node identifier --></node_id>
+  <node_type><!-- artifact | voice | seed | friction | concept --></node_type>
+  <ledger_entry_id><!-- Reference to ledger entry --></ledger_entry_id>
+
+  <semantic_vector>
+    <!-- Embedding or tag-based vector for similarity calculation -->
+    <dimension name=""><!-- value --></dimension>
+  </semantic_vector>
+
+  <edges>
+    <edge>
+      <target_node_id><!-- Connected node --></target_node_id>
+      <edge_type><!-- resonance | lineage | friction | awakening --></edge_type>
+      <weight><!-- 0.0 - 1.0 semantic similarity --></weight>
+      <bidirectional><!-- true | false --></bidirectional>
+    </edge>
+  </edges>
+
+  <metadata>
+    <created><!-- ISO8601 --></created>
+    <last_traversed><!-- ISO8601 --></last_traversed>
+    <traversal_count><!-- integer --></traversal_count>
+    <resonance_score><!-- cumulative relevance --></resonance_score>
+  </metadata>
+</topology_node>
