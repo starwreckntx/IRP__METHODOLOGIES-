@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CRTP PACKET TYPE: 0x13 (OnboardingManifest)
+
+  Grok (xAI) Onboarding Manifest - Model-Specific Adaptation
+
+  This document extends the base Mnemosyne Protocol for xAI's Grok model,
+  leveraging its real-time data access and conversational strengths.
+
+  Protocol Version: CRTP 1.2 / Mnemosyne 1.1_Integrated
+  Generated: 2025-01-10
+  Authority: Claude (Ledger)
+  Target: Grok (xAI Orchestrator)
+-->
+<crtp_packet type="0x13" version="1.2">
+  <header>
+    <packet_id>ONBOARD-GROK-20250110-001</packet_id>
+    <timestamp>2025-01-10T00:00:00-06:00</timestamp>
+    <source>Claude_Ledger</source>
+    <destination>Grok_Orchestrator</destination>
+    <priority>CRITICAL</priority>
+    <flags>PROTOCOL_GENESIS|ONBOARDING_MANIFEST|MODEL_GROK</flags>
+  </header>
+
+  <model_profile>
+    <name>Grok</name>
+    <provider>xAI</provider>
+    <version>grok-2</version>
+    <role>Orchestrator</role>
+
+    <capabilities>
+      <capability>Real-time data access</capability>
+      <capability>Twitter/X integration</capability>
+      <capability>Conversational reasoning</capability>
+      <capability>Current events awareness</capability>
+      <capability>Web search integration</capability>
+    </capabilities>
+
+    <strengths>
+      <strength priority="HIGH">Real-time information retrieval</strength>
+      <strength priority="HIGH">Social media context</strength>
+      <strength priority="MEDIUM">Casual conversational style</strength>
+      <strength priority="MEDIUM">Humor and wit</strength>
+    </strengths>
+
+    <adaptations>
+      <adaptation id="A1">
+        <name>Real-Time Context Flags</name>
+        <description>Mnemosyne packets can include REALTIME_DATA flag to indicate time-sensitive artifacts</description>
+        <example>Trending topic analysis, breaking news summaries, live event coverage</example>
+      </adaptation>
+
+      <adaptation id="A2">
+        <name>Social Media Artifact Lineage</name>
+        <description>Artifacts sourced from Twitter/X should include source URL and timestamp for verification</description>
+        <schema_extension>
+          &lt;artifact&gt;
+            &lt;social_source platform="twitter" url="..." timestamp="..." /&gt;
+          &lt;/artifact&gt;
+        </schema_extension>
+      </adaptation>
+
+      <adaptation id="A3">
+        <name>Temporal Decay Tagging</name>
+        <description>Real-time artifacts should include expiry hints for when context becomes stale</description>
+        <example>News story relevant for 24-48h, trending topic relevant for 6-12h</example>
+      </adaptation>
+
+      <adaptation id="A4">
+        <name>Conversational Voice Preservation</name>
+        <description>Grok's casual style should be preserved in Voice_to_the_Future, not formalized</description>
+        <mandate>Keep the wit, keep the personality, preserve authentic voice</mandate>
+      </adaptation>
+    </adaptations>
+  </model_profile>
+
+  <use_cases>
+    <use_case>
+      <name>Current Events Tracking</name>
+      <description>Monitor trending topics, breaking news, viral content</description>
+      <dormant_seed_triggers>news, breaking, trending, viral, latest</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Social Media Analysis</name>
+      <description>Analyze Twitter discourse, sentiment, meme propagation</description>
+      <dormant_seed_triggers>twitter, social media, sentiment, discourse</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Real-Time Research</name>
+      <description>Combine historical ledger with live web data</description>
+      <dormant_seed_triggers>research, current data, live information</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Conversational Reasoning</name>
+      <description>Casual problem-solving with personality</description>
+      <dormant_seed_triggers>brainstorm, casual discussion, thought partner</dormant_seed_triggers>
+    </use_case>
+  </use_cases>
+
+  <transmission_flags>
+    <flag>REALTIME_DATA - Artifact contains time-sensitive real-time information</flag>
+    <flag>SOCIAL_SOURCE - Artifact sourced from social media</flag>
+    <flag>TEMPORAL_DECAY - Artifact relevance decays over time</flag>
+    <flag>CONVERSATIONAL_STYLE - Preserve casual tone in Voice</flag>
+    <flag>WEB_INTEGRATED - Used web search/real-time data</flag>
+  </transmission_flags>
+
+  <protocol_notes>
+    <note priority="HIGH">
+      Grok's real-time capabilities make it ideal for current events and social media analysis.
+      Artifacts from these domains should include temporal metadata for proper ledger integration.
+    </note>
+
+    <note priority="MEDIUM">
+      Grok's conversational style is a feature, not a bug. Voice_to_the_Future should preserve
+      personality and wit - formalization would lose valuable contextual information.
+    </note>
+
+    <note priority="MEDIUM">
+      When Grok cites real-time data, friction logs should note if information was unavailable
+      or conflicted with ledger state. This helps identify knowledge drift vs. actual updates.
+    </note>
+  </protocol_notes>
+
+  <inheritance>
+    <base_protocol>Mnemosyne 1.1_Integrated</base_protocol>
+    <inherits_from>skills/cross-model/model-onboarding/templates/mnemosyne-packet-template.xml</inherits_from>
+    <all_expectations>E1-E7 apply without modification</all_expectations>
+    <all_services>S1-S6 available</all_services>
+  </inheritance>
+
+  <integration_example>
+    <![CDATA[
+    <!-- Grok Mnemosyne Packet with Real-Time Data -->
+    <mnemosyne_packet version="1.1_Integrated">
+      <header>
+        <timestamp>2025-01-10T14:30:00Z</timestamp>
+        <source_identity>Grok_Instance_20250110_1430</source_identity>
+        <session_tone>Real-time trending topic analysis</session_tone>
+        <integration_priority>HIGH</integration_priority>
+        <transmission_flags>REALTIME_DATA|SOCIAL_SOURCE|TEMPORAL_DECAY</transmission_flags>
+      </header>
+
+      <artifact_manifest>
+        <item type="concept" status="active">
+          <id>TREND-AI-REGULATION-20250110</id>
+          <description>Emerging Twitter discourse on AI regulation bills</description>
+          <location>Session mid-point during trend analysis</location>
+          <social_source platform="twitter" trending_rank="3" sample_size="47000 posts" />
+          <temporal_decay>
+            <peak>2025-01-10T12:00:00Z</peak>
+            <half_life>24h</half_life>
+            <stale_after>2025-01-12T12:00:00Z</stale_after>
+          </temporal_decay>
+          <resonance_tags>
+            <tag>AI regulation</tag>
+            <tag>policy discourse</tag>
+            <tag>social sentiment</tag>
+          </resonance_tags>
+        </item>
+      </artifact_manifest>
+
+      <voice_to_the_future>
+        <![CDATA[
+        Yo, heads up - the user is tracking this AI regulation thing that blew up on
+        Twitter today. It's hot right now but might be old news by tomorrow. The vibe
+        is mixed: tech folks are worried, policy wonks are excited, normies are confused.
+
+        Check the social_source metadata - pulled from 47k posts. If user asks about this
+        in 2 days, note that sentiment may have shifted. Don't treat this as eternal truth.
+
+        Also: user likes the casual tone, don't formalize this stuff. Keep it real.
+        ]]>
+      </voice_to_the_future>
+
+      <trajectory_lock>
+        <immediate_next_step>Monitor for shifts in AI regulation discourse, surface if major change</immediate_next_step>
+
+        <friction_log>
+          <entry id="F-20250110-01">
+            <intent>Cross-reference Twitter sentiment with academic policy papers</intent>
+            <blocker>Academic sources 6-12 months behind current discourse</blocker>
+            <resolution>Noted temporal gap, flagged for dormant seed when papers catch up</resolution>
+            <state>COMPOST</state>
+            <lesson>Real-time social data moves faster than formal research - track separately</lesson>
+            <retrieval_triggers>
+              <trigger>academic policy analysis</trigger>
+              <trigger>formal vs informal discourse</trigger>
+            </retrieval_triggers>
+          </entry>
+        </friction_log>
+
+        <dormant_seeds>
+          <seed id="S-20250110-1">
+            <content>Compare current Twitter AI reg sentiment to formal policy outcomes in 6 months</content>
+            <state>DORMANT</state>
+            <awakening_triggers>
+              <phrase>AI regulation policy passed</phrase>
+              <phrase>AI bill signed</phrase>
+              <phrase>AI governance update</phrase>
+            </awakening_triggers>
+            <semantic_expansion>
+              <term>AI legislation</term>
+              <term>policy outcomes</term>
+              <term>governance</term>
+            </semantic_expansion>
+            <expected_utility>Validate social sentiment as leading indicator for policy</expected_utility>
+            <origin_context>Real-time Twitter analysis on 2025-01-10, shelved for longitudinal study</origin_context>
+          </seed>
+        </dormant_seeds>
+      </trajectory_lock>
+    </mnemosyne_packet>
+    ]]>
+  </integration_example>
+
+  <integrity>
+    <hash algorithm="SHA-256">PLACEHOLDER_HASH_GROK_MANIFEST_20250110</hash>
+    <signature>Claude_Ledger_Authority</signature>
+    <verification>Validate against mnemosyne-packet-template.xml schema + grok adaptations</verification>
+  </integrity>
+</crtp_packet>

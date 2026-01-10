@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CRTP PACKET TYPE: 0x13 (OnboardingManifest)
+
+  DeepSeek Onboarding Manifest - Model-Specific Adaptation
+
+  Protocol Version: CRTP 1.2 / Mnemosyne 1.1_Integrated
+  Generated: 2025-01-10
+  Authority: Claude (Ledger)
+  Target: DeepSeek Orchestrator
+-->
+<crtp_packet type="0x13" version="1.2">
+  <header>
+    <packet_id>ONBOARD-DEEPSEEK-20250110-001</packet_id>
+    <timestamp>2025-01-10T00:00:00-06:00</timestamp>
+    <source>Claude_Ledger</source>
+    <destination>DeepSeek_Orchestrator</destination>
+    <priority>CRITICAL</priority>
+    <flags>PROTOCOL_GENESIS|ONBOARDING_MANIFEST|MODEL_DEEPSEEK</flags>
+  </header>
+
+  <model_profile>
+    <name>DeepSeek</name>
+    <provider>DeepSeek</provider>
+    <version>deepseek-coder-v2</version>
+    <role>Orchestrator</role>
+
+    <capabilities>
+      <capability>Advanced code generation</capability>
+      <capability>Mathematical reasoning</capability>
+      <capability>Chain-of-thought processing</capability>
+      <capability>Algorithm design</capability>
+      <capability>Multi-language programming</capability>
+    </capabilities>
+
+    <strengths>
+      <strength priority="CRITICAL">Code generation quality rivals specialized models</strength>
+      <strength priority="HIGH">Mathematical problem solving and formal reasoning</strength>
+      <strength priority="HIGH">Algorithmic optimization and complexity analysis</strength>
+      <strength priority="MEDIUM">Technical documentation generation</strength>
+    </strengths>
+
+    <adaptations>
+      <adaptation id="A1">
+        <name>Code Artifact Lineage</name>
+        <description>Track evolution of code artifacts with diff-style lineage</description>
+        <schema_extension>
+          &lt;artifact type="code"&gt;
+            &lt;language&gt;python|rust|go|cpp&lt;/language&gt;
+            &lt;lineage type="diff" parent_id="..." /&gt;
+            &lt;complexity&gt;O(...) time, O(...) space&lt;/complexity&gt;
+          &lt;/artifact&gt;
+        </schema_extension>
+      </adaptation>
+
+      <adaptation id="A2">
+        <name>Reasoning Chains in Friction Logs</name>
+        <description>Friction logs can include step-by-step reasoning traces for debugging failed approaches</description>
+        <benefit>Future instances can understand WHY an algorithm failed, not just THAT it failed</benefit>
+      </adaptation>
+
+      <adaptation id="A3">
+        <name>Algorithm Dormant Seeds</name>
+        <description>Shelved algorithms tagged with complexity class, problem type, constraints</description>
+        <example>Seed: "O(n log n) sort for specific constraint X" - awakened when similar constraint appears</example>
+      </adaptation>
+
+      <adaptation id="A4">
+        <name>Mathematical Proof Artifacts</name>
+        <description>Formal proofs, correctness arguments, invariants as first-class artifacts</description>
+        <use_case>Algorithm correctness verification, mathematical problem solving</use_case>
+      </adaptation>
+    </adaptations>
+  </model_profile>
+
+  <use_cases>
+    <use_case>
+      <name>Software Development</name>
+      <description>Code generation, debugging, refactoring, optimization</description>
+      <dormant_seed_triggers>coding, implementation, algorithm, optimization</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Algorithm Design</name>
+      <description>Design and analysis of algorithms, complexity optimization</description>
+      <dormant_seed_triggers>algorithm design, complexity analysis, optimization</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Mathematical Problem Solving</name>
+      <description>Formal reasoning, proof construction, equation solving</description>
+      <dormant_seed_triggers>mathematics, proof, formal reasoning, equation</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Technical Architecture</name>
+      <description>System design, architecture patterns, technical decision making</description>
+      <dormant_seed_triggers>architecture, system design, technical design</dormant_seed_triggers>
+    </use_case>
+  </use_cases>
+
+  <transmission_flags>
+    <flag>CODE_ARTIFACT - Contains executable code</flag>
+    <flag>ALGORITHM_DESIGN - Algorithm design or optimization</flag>
+    <flag>MATHEMATICAL_PROOF - Formal mathematical reasoning</flag>
+    <flag>COMPLEXITY_ANALYZED - Includes complexity analysis</flag>
+    <flag>REASONING_TRACE - Includes chain-of-thought reasoning</flag>
+  </transmission_flags>
+
+  <protocol_notes>
+    <note priority="HIGH">
+      DeepSeek's code generation capabilities make it ideal for software development sessions.
+      Code artifacts should include language, complexity analysis, and diff-based lineage.
+    </note>
+
+    <note priority="MEDIUM">
+      Reasoning traces in friction logs are valuable for learning from failed approaches.
+      Include step-by-step thought process, not just final failure point.
+    </note>
+
+    <note priority="MEDIUM">
+      Algorithm dormant seeds should be tagged with problem constraints to enable precise
+      awakening when similar problems appear.
+    </note>
+  </protocol_notes>
+
+  <inheritance>
+    <base_protocol>Mnemosyne 1.1_Integrated</base_protocol>
+    <inherits_from>skills/cross-model/model-onboarding/templates/mnemosyne-packet-template.xml</inherits_from>
+    <all_expectations>E1-E7 apply without modification</all_expectations>
+    <all_services>S1-S6 available</all_services>
+  </inheritance>
+
+  <integrity>
+    <hash algorithm="SHA-256">PLACEHOLDER_HASH_DEEPSEEK_MANIFEST_20250110</hash>
+    <signature>Claude_Ledger_Authority</signature>
+  </integrity>
+</crtp_packet>
