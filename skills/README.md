@@ -58,7 +58,7 @@ The library includes five foundational protocol skills that form the basis of th
 
 ### Context & Memory
 - transmission-packet-forge
-- gemini-onboarding
+- model-onboarding
 - context-preservation-protocol-execution
 - field-archivist-memory
 - persona-memory-archivist
@@ -123,12 +123,22 @@ skills/
 ├── README.md                          # This file
 ├── skills_manifest.json               # Complete skill index
 ├── cross-model/                       # Cross-model collaboration skills
-│   └── gemini-onboarding/
-│       ├── SKILL.md
-│       ├── gemini-onboarding-manifest.xml
-│       ├── mnemosyne-packet-template.xml
+│   └── model-onboarding/              # Multi-model onboarding (Mnemosyne Protocol)
+│       ├── SKILL.md                   # Generic model-onboarding skill
+│       ├── registry/                  # Model-specific manifests
+│       │   ├── gemini.xml             # Google Gemini
+│       │   ├── grok.xml               # xAI Grok
+│       │   ├── kimi.xml               # Moonshot Kimi
+│       │   ├── deepseek.xml           # DeepSeek
+│       │   ├── qwen.xml               # Alibaba Qwen
+│       │   └── glm.xml                # Zhipu GLM
+│       ├── templates/
+│       │   └── mnemosyne-packet-template.xml
+│       ├── docs/
+│       │   ├── PROTOCOL_SPECIFICATION.md
+│       │   └── MODEL_INTEGRATION_GUIDE.md
 │       └── quick-reference.txt
-└── [skill-name]/                      # 85 skill directories
+└── [skill-name]/                      # 86 skill directories
     └── SKILL.md                       # Skill definition
 ```
 
@@ -157,6 +167,7 @@ This library is designed for integration with Claude-compatible agent systems th
 
 ## Version History
 
+- **v1.1.0** - Refactored to model-independent onboarding system with 6 supported models: Gemini, Grok, Kimi, DeepSeek, Qwen, GLM (2025-01-10)
 - **v1.0.1** - Added gemini-onboarding skill for Mnemosyne Protocol cross-model collaboration (2025-12-06)
 - **v1.0.0** - Initial deployment of 84 skills extracted from SkillMaster protocol documentation
 

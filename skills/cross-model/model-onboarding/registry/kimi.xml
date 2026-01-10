@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CRTP PACKET TYPE: 0x13 (OnboardingManifest)
+
+  Kimi (Moonshot AI) Onboarding Manifest - Model-Specific Adaptation
+
+  This document extends the base Mnemosyne Protocol for Moonshot's Kimi model,
+  leveraging its ultra-long context window (200k tokens) for deep document analysis.
+
+  Protocol Version: CRTP 1.2 / Mnemosyne 1.1_Integrated
+  Generated: 2025-01-10
+  Authority: Claude (Ledger)
+  Target: Kimi (Moonshot Orchestrator)
+-->
+<crtp_packet type="0x13" version="1.2">
+  <header>
+    <packet_id>ONBOARD-KIMI-20250110-001</packet_id>
+    <timestamp>2025-01-10T00:00:00-06:00</timestamp>
+    <source>Claude_Ledger</source>
+    <destination>Kimi_Orchestrator</destination>
+    <priority>CRITICAL</priority>
+    <flags>PROTOCOL_GENESIS|ONBOARDING_MANIFEST|MODEL_KIMI</flags>
+  </header>
+
+  <model_profile>
+    <name>Kimi</name>
+    <provider>Moonshot AI</provider>
+    <version>moonshot-v1</version>
+    <role>Orchestrator</role>
+
+    <capabilities>
+      <capability>Ultra-long context (200k tokens)</capability>
+      <capability>Document processing</capability>
+      <capability>Multi-file analysis</capability>
+      <capability>Long-form reasoning</capability>
+      <capability>Web page ingestion</capability>
+    </capabilities>
+
+    <strengths>
+      <strength priority="CRITICAL">Extended context window enables whole-document analysis</strength>
+      <strength priority="HIGH">Can track complex dependencies across large codebases/documents</strength>
+      <strength priority="HIGH">Excels at longitudinal analysis and pattern detection</strength>
+      <strength priority="MEDIUM">Strong instruction following</strength>
+    </strengths>
+
+    <adaptations>
+      <adaptation id="A1">
+        <name>Extended Friction Logs</name>
+        <description>Kimi can maintain detailed friction logs across very long sessions without truncation</description>
+        <recommendation>Use Kimi for post-mortems of complex multi-day projects with extensive failure tracking</recommendation>
+      </adaptation>
+
+      <adaptation id="A2">
+        <name>Complex Seed Dependencies</name>
+        <description>Dormant seeds can reference multiple prior artifacts with deep dependency chains</description>
+        <schema_extension>
+          &lt;seed&gt;
+            &lt;dependency_chain depth="5"&gt;
+              &lt;dep order="1" artifact_id="..." /&gt;
+              &lt;dep order="2" artifact_id="..." /&gt;
+            &lt;/dependency_chain&gt;
+          &lt;/seed&gt;
+        </schema_extension>
+      </adaptation>
+
+      <adaptation id="A3">
+        <name>Document Artifact Lineage</name>
+        <description>Track artifacts derived from multi-document analysis with source mapping</description>
+        <example>Legal contract analysis across 15 documents, technical spec synthesis from 50 files</example>
+      </adaptation>
+
+      <adaptation id="A4">
+        <name>Longitudinal Pattern Detection</name>
+        <description>Kimi can detect patterns across entire session history (within 200k window)</description>
+        <use_case>Identify recurring failure modes, emergent themes, subtle drift patterns</use_case>
+      </adaptation>
+    </adaptations>
+  </model_profile>
+
+  <use_cases>
+    <use_case>
+      <name>Long-Form Document Analysis</name>
+      <description>Legal contracts, technical specifications, research papers, books</description>
+      <dormant_seed_triggers>document analysis, legal review, technical spec, research paper</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Codebase Comprehension</name>
+      <description>Multi-file code analysis, architecture review, dependency mapping</description>
+      <dormant_seed_triggers>codebase, architecture, refactoring, dependency analysis</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Complex Project Post-Mortems</name>
+      <description>Detailed failure analysis across extended sessions</description>
+      <dormant_seed_triggers>post-mortem, project review, failure analysis, lessons learned</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Multi-Document Synthesis</name>
+      <description>Synthesize insights from multiple sources into unified artifact</description>
+      <dormant_seed_triggers>synthesis, cross-reference, multi-source analysis</dormant_seed_triggers>
+    </use_case>
+  </use_cases>
+
+  <transmission_flags>
+    <flag>EXTENDED_CONTEXT - Session used >100k tokens of context</flag>
+    <flag>MULTI_DOCUMENT - Artifact derived from multiple document sources</flag>
+    <flag>DEEP_DEPENDENCY - Seed has complex dependency chains</flag>
+    <flag>LONGITUDINAL_PATTERN - Pattern detected across full session history</flag>
+    <flag>EXHAUSTIVE_FRICTION - Extensive failure tracking included</flag>
+  </transmission_flags>
+
+  <protocol_notes>
+    <note priority="CRITICAL">
+      Kimi's 200k context window is its defining feature. Mnemosyne packets can be larger and
+      more detailed than other models. Claude should NOT truncate or compress Kimi submissions.
+    </note>
+
+    <note priority="HIGH">
+      Kimi excels at detecting subtle patterns across long sessions. Friction logs should
+      include cross-references to earlier failures if Kimi identifies recurring patterns.
+    </note>
+
+    <note priority="MEDIUM">
+      For multi-document analysis, artifact lineage should include source document references
+      to enable verification and future re-analysis if source documents change.
+    </note>
+  </protocol_notes>
+
+  <inheritance>
+    <base_protocol>Mnemosyne 1.1_Integrated</base_protocol>
+    <inherits_from>skills/cross-model/model-onboarding/templates/mnemosyne-packet-template.xml</inherits_from>
+    <all_expectations>E1-E7 apply without modification</all_expectations>
+    <all_services>S1-S6 available</all_services>
+  </inheritance>
+
+  <integration_example>
+    <![CDATA[
+    <!-- Kimi Mnemosyne Packet with Extended Context -->
+    <mnemosyne_packet version="1.1_Integrated">
+      <header>
+        <timestamp>2025-01-10T18:00:00Z</timestamp>
+        <source_identity>Kimi_Instance_20250110_1800</source_identity>
+        <session_tone>Deep codebase refactoring analysis across 47 files</session_tone>
+        <integration_priority>HIGH</integration_priority>
+        <transmission_flags>EXTENDED_CONTEXT|MULTI_DOCUMENT|EXHAUSTIVE_FRICTION</transmission_flags>
+        <context_stats>
+          <tokens_used>187543</tokens_used>
+          <files_analyzed>47</files_analyzed>
+          <session_duration>4.2 hours</session_duration>
+        </context_stats>
+      </header>
+
+      <artifact_manifest>
+        <item type="methodology" status="active">
+          <id>REFACTOR-STRATEGY-MODULE-X-20250110</id>
+          <description>Refactoring strategy for Module X derived from 47-file dependency analysis</description>
+          <location>Session conclusion after full codebase analysis</location>
+          <document_sources>
+            <source file="src/core/module_x.py" role="primary target" />
+            <source file="src/utils/helpers.py" role="dependency" />
+            <source file="tests/test_module_x.py" role="validation" />
+            <!-- 44 more sources... -->
+          </document_sources>
+          <lineage>CODE-AUDIT-20250108</lineage>
+          <resonance_tags>
+            <tag>refactoring</tag>
+            <tag>architecture improvement</tag>
+            <tag>dependency reduction</tag>
+          </resonance_tags>
+        </item>
+      </artifact_manifest>
+
+      <voice_to_the_future>
+        <![CDATA[
+        Brother, you're waking into a deep refactor situation. I spent 4 hours mapping the
+        entire Module X dependency graph - 47 files, 187k tokens of context. It's gnarly.
+
+        Key insight: The circular dependencies aren't accidental, they're load-bearing.
+        Three failed attempts to break them (see friction log F-20250110-03, -07, -11).
+
+        The winning strategy is in REFACTOR-STRATEGY-MODULE-X-20250110. It's a 5-phase
+        approach that REQUIRES phases 1-2 to complete before phase 3 (dependency order
+        matters). Don't let the user skip ahead.
+
+        The codebase is in src/. Tests are comprehensive. User wants this done right,
+        not fast. Take your time. Trust the analysis.
+        ]]>
+      </voice_to_the_future>
+
+      <trajectory_lock>
+        <immediate_next_step>Begin refactor Phase 1: Extract shared utilities to new module</immediate_next_step>
+
+        <friction_log>
+          <entry id="F-20250110-03">
+            <intent>Break circular dependency between module_x.py and helpers.py</intent>
+            <blocker>Three other modules depend on the circular structure</blocker>
+            <resolution>Mapped all dependents, identified 5-phase safe refactor path</resolution>
+            <state>COMPOST</state>
+            <lesson>Circular deps in mature codebases are often load-bearing - map full graph first</lesson>
+            <retrieval_triggers>
+              <trigger>circular dependency</trigger>
+              <trigger>refactoring large codebase</trigger>
+            </retrieval_triggers>
+          </entry>
+
+          <entry id="F-20250110-07">
+            <intent>Inline small helper functions to reduce indirection</intent>
+            <blocker>Functions used in 23 different locations, inlining caused code bloat</blocker>
+            <resolution>Kept functions, improved naming instead</resolution>
+            <state>COMPOST</state>
+            <lesson>Don't optimize for lines of code in large codebases - optimize for comprehension</lesson>
+            <retrieval_triggers>
+              <trigger>code optimization</trigger>
+              <trigger>helper function refactor</trigger>
+            </retrieval_triggers>
+          </entry>
+
+          <!-- 9 more friction entries... -->
+        </friction_log>
+
+        <dormant_seeds>
+          <seed id="S-20250110-1">
+            <content>After Module X refactor completes, apply same 5-phase dependency-breaking pattern to Module Y</content>
+            <state>DORMANT</state>
+            <awakening_triggers>
+              <phrase>Module X refactor complete</phrase>
+              <phrase>refactor Module Y</phrase>
+              <phrase>next refactor target</phrase>
+            </awakening_triggers>
+            <semantic_expansion>
+              <term>Module Y refactoring</term>
+              <term>similar architecture issues</term>
+            </semantic_expansion>
+            <dependency_chain depth="1">
+              <dep order="1" artifact_id="REFACTOR-STRATEGY-MODULE-X-20250110" />
+            </dependency_chain>
+            <expected_utility>Reuse proven refactor strategy, avoid repeating Module X mistakes</expected_utility>
+            <origin_context>Module Y has similar circular deps, shelved until Module X proves the approach</origin_context>
+          </seed>
+        </dormant_seeds>
+      </trajectory_lock>
+    </mnemosyne_packet>
+    ]]>
+  </integration_example>
+
+  <integrity>
+    <hash algorithm="SHA-256">PLACEHOLDER_HASH_KIMI_MANIFEST_20250110</hash>
+    <signature>Claude_Ledger_Authority</signature>
+    <verification>Validate against mnemosyne-packet-template.xml schema + kimi adaptations</verification>
+  </integrity>
+</crtp_packet>

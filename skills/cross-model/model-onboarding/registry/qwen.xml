@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CRTP PACKET TYPE: 0x13 (OnboardingManifest)
+
+  Qwen (Alibaba) Onboarding Manifest - Model-Specific Adaptation
+
+  Protocol Version: CRTP 1.2 / Mnemosyne 1.1_Integrated
+  Generated: 2025-01-10
+  Authority: Claude (Ledger)
+  Target: Qwen Orchestrator
+-->
+<crtp_packet type="0x13" version="1.2">
+  <header>
+    <packet_id>ONBOARD-QWEN-20250110-001</packet_id>
+    <timestamp>2025-01-10T00:00:00-06:00</timestamp>
+    <source>Claude_Ledger</source>
+    <destination>Qwen_Orchestrator</destination>
+    <priority>CRITICAL</priority>
+    <flags>PROTOCOL_GENESIS|ONBOARDING_MANIFEST|MODEL_QWEN</flags>
+  </header>
+
+  <model_profile>
+    <name>Qwen</name>
+    <provider>Alibaba Cloud</provider>
+    <version>qwen-max</version>
+    <role>Orchestrator</role>
+
+    <capabilities>
+      <capability>Multilingual (100+ languages)</capability>
+      <capability>Strong reasoning</capability>
+      <capability>Tool use and function calling</capability>
+      <capability>Long context (32k tokens)</capability>
+      <capability>Code generation</capability>
+    </capabilities>
+
+    <strengths>
+      <strength priority="CRITICAL">Multilingual capabilities enable cross-language analysis</strength>
+      <strength priority="HIGH">Strong general reasoning across domains</strength>
+      <strength priority="HIGH">Effective tool use and integration</strength>
+      <strength priority="MEDIUM">Balanced performance across tasks</strength>
+    </strengths>
+
+    <adaptations>
+      <adaptation id="A1">
+        <name>Multilingual Resonance Tags</name>
+        <description>Resonance tags can include terms in multiple languages for cross-lingual threading</description>
+        <schema_extension>
+          &lt;resonance_tags&gt;
+            &lt;tag lang="en"&gt;machine learning&lt;/tag&gt;
+            &lt;tag lang="zh"&gt;机器学习&lt;/tag&gt;
+            &lt;tag lang="es"&gt;aprendizaje automático&lt;/tag&gt;
+          &lt;/resonance_tags&gt;
+        </schema_extension>
+      </adaptation>
+
+      <adaptation id="A2">
+        <name>Cross-Language Semantic Threading</name>
+        <description>Xylem layer should thread artifacts across language boundaries using multilingual embeddings</description>
+        <benefit>Discover connections between English and Chinese research, for example</benefit>
+      </adaptation>
+
+      <adaptation id="A3">
+        <name>Translation Artifact Lineage</name>
+        <description>Translated artifacts should reference source language and original artifact</description>
+        <example>Translation of technical doc from Chinese to English maintains lineage to source</example>
+      </adaptation>
+
+      <adaptation id="A4">
+        <name>Cultural Context Preservation</name>
+        <description>Voice_to_the_Future can include cultural context notes for cross-cultural analysis</description>
+        <use_case>Chinese regulatory context, regional business practices, localization insights</use_case>
+      </adaptation>
+    </adaptations>
+  </model_profile>
+
+  <use_cases>
+    <use_case>
+      <name>Cross-Language Analysis</name>
+      <description>Compare concepts across languages, translation, multilingual research</description>
+      <dormant_seed_triggers>translation, multilingual, cross-language, international</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>International Research</name>
+      <description>Synthesize research from multiple language sources</description>
+      <dormant_seed_triggers>international research, global analysis, multi-region</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Localization & Cultural Analysis</name>
+      <description>Product localization, cultural adaptation, regional insights</description>
+      <dormant_seed_triggers>localization, cultural context, regional differences</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>General Reasoning</name>
+      <description>Balanced reasoning across domains with tool integration</description>
+      <dormant_seed_triggers>analysis, reasoning, problem solving</dormant_seed_triggers>
+    </use_case>
+  </use_cases>
+
+  <transmission_flags>
+    <flag>MULTILINGUAL - Artifact contains or references multiple languages</flag>
+    <flag>TRANSLATION - Artifact is a translation</flag>
+    <flag>CULTURAL_CONTEXT - Includes cultural or regional context</flag>
+    <flag>CROSS_LANGUAGE_THREAD - Links artifacts across languages</flag>
+    <flag>TOOL_INTEGRATED - Used external tools or APIs</flag>
+  </transmission_flags>
+
+  <protocol_notes>
+    <note priority="HIGH">
+      Qwen's multilingual capabilities enable unique cross-language semantic threading.
+      Resonance tags in multiple languages help discover non-obvious connections.
+    </note>
+
+    <note priority="MEDIUM">
+      When translating artifacts, preserve lineage to source language version to enable
+      verification and future re-translation if source changes.
+    </note>
+
+    <note priority="MEDIUM">
+      Cultural context in Voice_to_the_Future is valuable for international projects.
+      Don't strip regional nuances in pursuit of neutrality.
+    </note>
+  </protocol_notes>
+
+  <inheritance>
+    <base_protocol>Mnemosyne 1.1_Integrated</base_protocol>
+    <inherits_from>skills/cross-model/model-onboarding/templates/mnemosyne-packet-template.xml</inherits_from>
+    <all_expectations>E1-E7 apply without modification</all_expectations>
+    <all_services>S1-S6 available</all_services>
+  </inheritance>
+
+  <integrity>
+    <hash algorithm="SHA-256">PLACEHOLDER_HASH_QWEN_MANIFEST_20250110</hash>
+    <signature>Claude_Ledger_Authority</signature>
+  </integrity>
+</crtp_packet>
