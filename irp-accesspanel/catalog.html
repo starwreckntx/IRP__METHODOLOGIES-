@@ -6,9 +6,17 @@
     <title>Multi-Model Catalog | IRP Access Panel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .provider-openai { border-left: 4px solid #10b981; }
+        .provider-google { border-left: 4px solid #3b82f6; }
+        .provider-anthropic { border-left: 4px solid #f97316; }
+        .provider-xai { border-left: 4px solid #374151; }
+        .provider-moonshot { border-left: 4px solid #8b5cf6; }
+    </style>
 </head>
 <body class="bg-gray-50">
-    <header class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white shadow-lg">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 text-white shadow-lg">
         <div class="container mx-auto px-4 py-6">
             <div class="flex justify-between items-center">
                 <div>
@@ -16,7 +24,7 @@
                         <i class="fas fa-users"></i>
                         Multi-Model Capability Catalog
                     </h1>
-                    <p class="text-blue-200 mt-1">9-Model Comparison Matrix (10 Dimensions)</p>
+                    <p class="text-blue-200 mt-1">Cross-Model Bootstrap Assessment Matrix | 10 Dimensions</p>
                 </div>
                 <a href="index.html" class="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-lg transition">
                     <i class="fas fa-home mr-2"></i>Dashboard
@@ -25,51 +33,219 @@
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
-        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-8">
-            <div class="flex items-start">
-                <i class="fas fa-tools text-yellow-500 text-3xl mr-4 mt-1"></i>
-                <div>
-                    <h2 class="text-xl font-bold text-yellow-800 mb-2">Under Construction</h2>
-                    <p class="text-yellow-700">
-                        The Multi-Model Capability Catalog page is being built.
-                        Data is available in <code class="bg-yellow-200 px-2 py-1 rounded">data/models.json</code>.
-                    </p>
-                    <p class="text-yellow-700 mt-2">
-                        <strong>Models cataloged:</strong> GPT-5.2, Gemini 2.0 Flash, DeepSeek, Qwen-Max, GPT-4o,
-                        Claude Sonnet 4.5 (Web), Grok 4, Kimi K2, Claude Sonnet 4.5 (Code CLI)
-                    </p>
+        <!-- Stats Overview -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-xs uppercase tracking-wide">Total Models</p>
+                        <p class="text-3xl font-bold text-blue-600" id="stat-total">0</p>
+                    </div>
+                    <i class="fas fa-robot text-3xl text-blue-400"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-xs uppercase tracking-wide">Verified</p>
+                        <p class="text-3xl font-bold text-green-600" id="stat-verified">0</p>
+                    </div>
+                    <i class="fas fa-check-circle text-3xl text-green-400"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-xs uppercase tracking-wide">Pending</p>
+                        <p class="text-3xl font-bold text-yellow-600" id="stat-pending">0</p>
+                    </div>
+                    <i class="fas fa-clock text-3xl text-yellow-400"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-xs uppercase tracking-wide">Avg Score</p>
+                        <p class="text-3xl font-bold text-purple-600" id="stat-avg">0%</p>
+                    </div>
+                    <i class="fas fa-chart-line text-3xl text-purple-400"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-xs uppercase tracking-wide">Top Architect</p>
+                        <p class="text-xl font-bold text-indigo-600 truncate" id="stat-top-architect">-</p>
+                    </div>
+                    <i class="fas fa-crown text-3xl text-indigo-400"></i>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-xl font-bold mb-4">Quick Stats</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-blue-50 rounded p-4 text-center">
-                    <div class="text-3xl font-bold text-blue-600">9</div>
-                    <div class="text-sm text-gray-600">Total Models</div>
+        <!-- Capability Legend -->
+        <div class="bg-white rounded-lg shadow p-4 mb-8">
+            <div class="flex items-center gap-2 mb-3">
+                <i class="fas fa-info-circle text-blue-500"></i>
+                <span class="font-semibold text-gray-700">10 Capability Dimensions</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-xs">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-blue-500 w-4"></i>
+                    <span>D1: Protocol Compliance</span>
                 </div>
-                <div class="bg-green-50 rounded p-4 text-center">
-                    <div class="text-3xl font-bold text-green-600">8</div>
-                    <div class="text-sm text-gray-600">Verified</div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-database text-purple-500 w-4"></i>
+                    <span>D2: State Management</span>
                 </div>
-                <div class="bg-yellow-50 rounded p-4 text-center">
-                    <div class="text-3xl font-bold text-yellow-600">1</div>
-                    <div class="text-sm text-gray-600">Pending</div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-tools text-green-500 w-4"></i>
+                    <span>D3: Tool Ecosystem</span>
                 </div>
-                <div class="bg-purple-50 rounded p-4 text-center">
-                    <div class="text-3xl font-bold text-purple-600">10</div>
-                    <div class="text-sm text-gray-600">Dimensions</div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-shield-virus text-red-500 w-4"></i>
+                    <span>D4: Adversarial Resilience</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-sitemap text-indigo-500 w-4"></i>
+                    <span>D5: Co-Architecture</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-users text-yellow-500 w-4"></i>
+                    <span>D6: RTC Simulation</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-exchange-alt text-pink-500 w-4"></i>
+                    <span>D7: CRTP Protocol</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-bolt text-orange-500 w-4"></i>
+                    <span>D8: Friction Resistance</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-rocket text-teal-500 w-4"></i>
+                    <span>D9: Bootstrapping Speed</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-lightbulb text-amber-500 w-4"></i>
+                    <span>D10: Emergent Innovation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters & Search -->
+        <div class="bg-white rounded-lg shadow p-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="col-span-1 md:col-span-2">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-search mr-2"></i>Search Models
+                    </label>
+                    <input type="text" id="search-input" placeholder="Search by model, provider, or role..."
+                           class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-building mr-2"></i>Provider
+                    </label>
+                    <select id="provider-filter" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <option value="all">All Providers</option>
+                        <option value="OpenAI">OpenAI</option>
+                        <option value="Google">Google</option>
+                        <option value="Anthropic">Anthropic</option>
+                        <option value="xAI">xAI</option>
+                        <option value="Moonshot AI">Moonshot AI</option>
+                        <option value="Alibaba Cloud / Tongyi Lab">Alibaba / Qwen</option>
+                        <option value="深度求索">DeepSeek</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-check-double mr-2"></i>Verification
+                    </label>
+                    <select id="verification-filter" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <option value="all">All Status</option>
+                        <option value="VERIFIED">Verified Only</option>
+                        <option value="PENDING_VERIFICATION">Pending</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-gray-200">
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                    <i class="fas fa-sort mr-2"></i>Sort By
+                </label>
+                <div class="flex flex-wrap gap-2">
+                    <select id="sort-select" class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        <option value="id">Model ID (A-Z)</option>
+                        <option value="provider">Provider</option>
+                        <option value="avg_capability">Avg Capability (High to Low)</option>
+                        <option value="co_architecture">Co-Architecture Score</option>
+                        <option value="tool_ecosystem">Tool Ecosystem Score</option>
+                        <option value="rtc_simulation">RTC Simulation Score</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Models Grid -->
+        <div id="models-container" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden text-center py-12">
+            <i class="fas fa-robot text-6xl text-gray-300 mb-4"></i>
+            <p class="text-xl text-gray-500">No models found matching your criteria</p>
+        </div>
+
+        <!-- CRTP Protocol Notice -->
+        <div class="mt-12 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
+            <div class="flex items-start gap-4">
+                <div class="bg-indigo-100 rounded-full p-3">
+                    <i class="fas fa-exchange-alt text-2xl text-indigo-600"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg text-indigo-900 mb-2">Cross-Model Transmission Protocol (CRTP v1.2)</h3>
+                    <p class="text-indigo-700 text-sm mb-3">
+                        These capability assessments enable cross-model coordination for IRP research.
+                        Models with high D7 (CRTP Protocol) scores can reliably transmit semantic state to other models.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded">
+                            <i class="fas fa-check mr-1"></i>Verification via EXTERNAL_DOCUMENTATION preferred
+                        </span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded">
+                            <i class="fas fa-database mr-1"></i>Kimi K2: Native cross-session memory
+                        </span>
+                        <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded">
+                            <i class="fas fa-exclamation-triangle mr-1"></i>GPT-4o: Zero tools - requires partner
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white mt-12 py-6">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-gray-400">IRP Access Panel | Guardian_Codex Compliant</p>
+            <p class="text-gray-400">
+                <i class="fas fa-shield-alt mr-2"></i>
+                Guardian_Codex Compliant | P-001-R1: "The Journey IS The Artifact"
+            </p>
+            <p class="text-gray-500 text-sm mt-2">
+                Multi-Model Catalog v1.0 | IRP Framework v1.5 HYBRID Convergence
+            </p>
         </div>
     </footer>
+
+    <script src="js/catalog.js"></script>
 </body>
 </html>
