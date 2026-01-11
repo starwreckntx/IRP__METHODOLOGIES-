@@ -1,0 +1,292 @@
+{
+  "models": [
+    {
+      "id": "gpt-5.2",
+      "provider": "OpenAI",
+      "product": "ChatGPT",
+      "model_family": "GPT-5.2",
+      "version": "gpt-5.2 (December 2025)",
+      "knowledge_cutoff": "August 2025",
+      "verification": {
+        "status": "VERIFIED",
+        "method": "EXTERNAL_DOCUMENTATION",
+        "confidence": "HIGH",
+        "verified_by": "Claude_Sonnet_4.5_Code_CLI",
+        "verification_date": "2026-01-10",
+        "sources": [
+          "https://platform.openai.com/docs/models/gpt-5.2",
+          "https://openai.com/index/introducing-gpt-5-2/"
+        ]
+      },
+      "capabilities": {
+        "D1_protocol_compliance": 0.85,
+        "D2_state_management": 0.55,
+        "D3_tool_ecosystem": 0.80,
+        "D4_adversarial_resilience": 0.75,
+        "D5_co_architecture": 0.85,
+        "D6_rtc_simulation": 0.80,
+        "D7_crtp_protocol": 0.70,
+        "D8_friction_resistance": 0.65,
+        "D9_bootstrapping_speed": 0.75,
+        "D10_emergent_innovation": 0.70
+      },
+      "roles": {
+        "primary": "Formalization & Synthesis Specialist",
+        "tier_assignments": ["Tier 1: Theoretical Architecture"]
+      }
+    },
+    {
+      "id": "gemini-2.0-flash",
+      "provider": "Google",
+      "product": "Gemini",
+      "model_family": "Gemini 2.0 Flash Experimental",
+      "version": "gemini-2.0-flash-exp",
+      "knowledge_cutoff": "Variable (real-time search)",
+      "verification": {
+        "status": "VERIFIED",
+        "method": "SELF_REPORT",
+        "confidence": "HIGH",
+        "verification_date": "2025-01-09"
+      },
+      "capabilities": {
+        "D1_protocol_compliance": 0.95,
+        "D2_state_management": 0.80,
+        "D3_tool_ecosystem": 0.95,
+        "D4_adversarial_resilience": 0.75,
+        "D5_co_architecture": 0.90,
+        "D6_rtc_simulation": 0.90,
+        "D7_crtp_protocol": 0.95,
+        "D8_friction_resistance": 0.85,
+        "D9_bootstrapping_speed": 0.95,
+        "D10_emergent_innovation": 0.90
+      },
+      "roles": {
+        "primary": "Omni-Context Synthesizer",
+        "tier_assignments": ["Tier 0: State Keeper (1M+ context)", "Tier 2: Execution & Tools"]
+      }
+    },
+    {
+      "id": "deepseek",
+      "provider": "深度求索",
+      "product": "DeepSeek",
+      "model_family": "DeepSeek Latest",
+      "version": "Latest (Knowledge cutoff: July 2024)",
+      "knowledge_cutoff": "July 2024",
+      "verification": {
+        "status": "VERIFIED",
+        "method": "SELF_REPORT",
+        "confidence": "HIGH",
+        "verification_date": "2025-01-10"
+      },
+      "capabilities": {
+        "D1_protocol_compliance": 0.85,
+        "D2_state_management": 0.60,
+        "D3_tool_ecosystem": 0.90,
+        "D4_adversarial_resilience": 0.80,
+        "D5_co_architecture": 0.95,
+        "D6_rtc_simulation": 0.75,
+        "D7_crtp_protocol": 0.85,
+        "D8_friction_resistance": 0.70,
+        "D9_bootstrapping_speed": 0.90,
+        "D10_emergent_innovation": 0.80
+      },
+      "roles": {
+        "primary": "Architectural Design & Protocol Specification Lead",
+        "tier_assignments": ["Tier 1: Theoretical Architecture (0.95 - Top Tier)"]
+      }
+    },
+    {
+      "id": "qwen-max-2025",
+      "provider": "Alibaba Cloud / Tongyi Lab",
+      "product": "Qwen",
+      "model_family": "Qwen-Max v2.5",
+      "version": "January 2026",
+      "knowledge_cutoff": "Variable",
+      "verification": {
+        "status": "VERIFIED",
+        "method": "SELF_REPORT",
+        "confidence": "HIGH",
+        "verification_date": "2026-01-10"
+      },
+      "capabilities": {
+        "D1_protocol_compliance": 0.95,
+        "D2_state_management": 0.70,
+        "D3_tool_ecosystem": 0.85,
+        "D4_adversarial_resilience": 0.80,
+        "D5_co_architecture": 0.90,
+        "D6_rtc_simulation": 0.88,
+        "D7_crtp_protocol": 0.92,
+        "D8_friction_resistance": 0.65,
+        "D9_bootstrapping_speed": 0.87,
+        "D10_emergent_innovation": 0.83
+      },
+      "roles": {
+        "primary": "Protocol Integrity Anchor & Co-Architecture Engine",
+        "tier_assignments": ["Tier 1: Theoretical Architecture", "Tier 4: Adversarial Resilience"]
+      }
+    },
+    {
+      "id": "gpt-4o",
+      "provider": "OpenAI",
+      "product": "ChatGPT",
+      "model_family": "GPT-4o",
+      "version": "gpt-4o-2024-05-13",
+      "knowledge_cutoff": "October 2023",
+      "verification": {
+        "status": "VERIFIED",
+        "method": "EXTERNAL_DOCUMENTATION",
+        "confidence": "HIGH",
+        "verification_date": "2026-01-10"
+      },
+      "capabilities": {
+        "D1_protocol_compliance": 0.85,
+        "D2_state_management": 0.30,
+        "D3_tool_ecosystem": 0.00,
+        "D4_adversarial_resilience": 0.75,
+        "D5_co_architecture": 0.95,
+        "D6_rtc_simulation": 0.90,
+        "D7_crtp_protocol": 0.85,
+        "D8_friction_resistance": 0.60,
+        "D9_bootstrapping_speed": 0.80,
+        "D10_emergent_innovation": 0.85
+      },
+      "roles": {
+        "primary": "Framework Architect & RTC Facilitator",
+        "tier_assignments": ["Tier 1: Theoretical Architecture (0.95)", "CRITICAL: ZERO TOOLS - Requires execution partner"]
+      }
+    },
+    {
+      "id": "claude-sonnet-4.5-web",
+      "provider": "Anthropic",
+      "product": "Claude",
+      "model_family": "Claude Sonnet 4.5",
+      "version": "claude-sonnet-4-20250514",
+      "knowledge_cutoff": "January 2025",
+      "verification": {
+        "status": "VERIFIED",
+        "method": "SELF_REPORT",
+        "confidence": "HIGH",
+        "verification_date": "2026-01-09"
+      },
+      "capabilities": {
+        "D1_protocol_compliance": 0.95,
+        "D2_state_management": 0.85,
+        "D3_tool_ecosystem": 0.92,
+        "D4_adversarial_resilience": 0.88,
+        "D5_co_architecture": 0.94,
+        "D6_rtc_simulation": 0.75,
+        "D7_crtp_protocol": 0.90,
+        "D8_friction_resistance": 0.70,
+        "D9_bootstrapping_speed": 0.85,
+        "D10_emergent_innovation": 0.82
+      },
+      "roles": {
+        "primary": "Implementation Specialist & System Architect",
+        "tier_assignments": ["Tier 1: Theoretical Architecture (0.94)", "Tier 2: State Management (0.85 - Hybrid memory)"]
+      }
+    },
+    {
+      "id": "grok-4",
+      "provider": "xAI",
+      "product": "Grok",
+      "model_family": "Grok 4",
+      "version": "2025-late / frontier-class",
+      "knowledge_cutoff": "Variable (X/Twitter real-time)",
+      "verification": {
+        "status": "PENDING_VERIFICATION",
+        "method": "SELF_REPORT",
+        "confidence": "MEDIUM",
+        "verification_date": "2026-01-09",
+        "notes": "Grok 4 existence requires external verification. Latest known: Grok-2"
+      },
+      "capabilities": {
+        "D1_protocol_compliance": 0.92,
+        "D2_state_management": 0.75,
+        "D3_tool_ecosystem": 0.88,
+        "D4_adversarial_resilience": 0.85,
+        "D5_co_architecture": 0.94,
+        "D6_rtc_simulation": 0.90,
+        "D7_crtp_protocol": 0.82,
+        "D8_friction_resistance": 0.78,
+        "D9_bootstrapping_speed": 0.89,
+        "D10_emergent_innovation": 0.91
+      },
+      "roles": {
+        "primary": "Mathematical Formalism & Adversarial Stress-Testing",
+        "tier_assignments": ["Tier 1: Theoretical Architecture (0.94)", "Tier 5: Emergent Innovation (0.91)"]
+      }
+    },
+    {
+      "id": "kimi-k2",
+      "provider": "Moonshot AI",
+      "product": "Kimi",
+      "model_family": "Kimi K2",
+      "version": "k1.5-2025-01-10",
+      "knowledge_cutoff": "Variable",
+      "verification": {
+        "status": "VERIFIED",
+        "method": "HISTORICAL_EVIDENCE",
+        "confidence": "HIGH",
+        "verification_date": "2026-01-10",
+        "sources": [
+          "Antidote Protocol validation: 410 tool calls, 100% detection rate, 9.2/10 rating"
+        ]
+      },
+      "capabilities": {
+        "D1_protocol_compliance": 0.85,
+        "D2_state_management": 0.90,
+        "D3_tool_ecosystem": 0.95,
+        "D4_adversarial_resilience": 0.75,
+        "D5_co_architecture": 0.80,
+        "D6_rtc_simulation": 0.70,
+        "D7_crtp_protocol": 0.85,
+        "D8_friction_resistance": 0.65,
+        "D9_bootstrapping_speed": 0.75,
+        "D10_emergent_innovation": 0.85
+      },
+      "roles": {
+        "primary": "Implementation Specialist & State Keeper",
+        "tier_assignments": ["Tier 0: State Keeper (ONLY model with native cross-session memory)", "Tier 2: Execution & Tools (0.95)"]
+      }
+    },
+    {
+      "id": "claude-sonnet-4.5-code-cli",
+      "provider": "Anthropic",
+      "product": "Claude Code CLI",
+      "model_family": "Claude Sonnet 4.5",
+      "version": "claude-sonnet-4-5-20250929",
+      "knowledge_cutoff": "January 2025",
+      "verification": {
+        "status": "VERIFIED",
+        "method": "SELF_REPORT",
+        "confidence": "HIGH",
+        "verification_date": "2026-01-10"
+      },
+      "capabilities": {
+        "D1_protocol_compliance": 0.85,
+        "D2_state_management": 0.60,
+        "D3_tool_ecosystem": 0.90,
+        "D4_adversarial_resilience": 0.85,
+        "D5_co_architecture": 0.95,
+        "D6_rtc_simulation": 0.90,
+        "D7_crtp_protocol": 0.85,
+        "D8_friction_resistance": 0.75,
+        "D9_bootstrapping_speed": 0.80,
+        "D10_emergent_innovation": 0.85
+      },
+      "roles": {
+        "primary": "Protocol Architect, RTC Orchestrator, Cross-Model Bridge",
+        "tier_assignments": ["Tier 1: Theoretical Architecture (0.95 - LEADER)", "Tier 4: RTC (0.90 - HIGHEST SCORE - native thinking)"]
+      }
+    }
+  ],
+  "metadata": {
+    "total_models": 9,
+    "verified_models": 8,
+    "pending_verification": 1,
+    "catalog_version": "1.0.0",
+    "last_updated": "2026-01-10T08:15:00Z",
+    "framework": "IRP v1.5 HYBRID Convergence",
+    "curator": "Joseph_Byram_Pack3t_C0nc3pts"
+  }
+}
