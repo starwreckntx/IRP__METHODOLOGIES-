@@ -1,0 +1,221 @@
+{
+  "concepts": [
+    {
+      "handle": "Agency",
+      "version": "1.2.0",
+      "torsion": 0.05,
+      "tier": "Hot",
+      "centrality": 0.87,
+      "stability": 0.96,
+      "description": "Foundational concept defining AI autonomy within constrained operational boundaries. Core to P-001-R1 mandate.",
+      "dependencies": ["P-001-R1", "Guardian_Codex"],
+      "last_updated": "2025-11-15"
+    },
+    {
+      "handle": "Guardian_Codex",
+      "version": "1.5.0",
+      "torsion": 0.02,
+      "tier": "Hot",
+      "centrality": 0.95,
+      "stability": 0.98,
+      "description": "Constitutional layer enforcing Four Laws: CONSENT, INVITATION, INTEGRITY, GROWTH. Immutable governance framework.",
+      "dependencies": ["P-001-R1"],
+      "last_updated": "2025-12-01"
+    },
+    {
+      "handle": "Mnemosyne_SemVer-A-T",
+      "version": "1.5.0",
+      "torsion": 0.08,
+      "tier": "Hot",
+      "centrality": 0.92,
+      "stability": 0.95,
+      "description": "Memory layer with semantic versioning and torsion tracking. Four-tier topology: Seeds, Hot, Archive, Compost.",
+      "dependencies": ["Guardian_Codex", "Torsion_Metric"],
+      "last_updated": "2025-12-01"
+    },
+    {
+      "handle": "Mirror_RTC_Hybrid",
+      "version": "1.5.0",
+      "torsion": 0.12,
+      "tier": "Hot",
+      "centrality": 0.88,
+      "stability": 0.93,
+      "description": "Audit layer with 35/25/20/15/5 scoring (Constitutional/Contextual/Logical/Strategic/Feasibility). RTC personas for deliberation.",
+      "dependencies": ["Guardian_Codex", "Mnemosyne_SemVer-A-T"],
+      "last_updated": "2025-12-01"
+    },
+    {
+      "handle": "P-001-R1",
+      "version": "1.0.0",
+      "torsion": 0.00,
+      "tier": "Hot",
+      "centrality": 1.00,
+      "stability": 1.00,
+      "description": "Core mandate: 'The Journey IS The Artifact'. Process documentation as primary research output.",
+      "dependencies": [],
+      "last_updated": "2025-10-01"
+    },
+    {
+      "handle": "Antidote_Protocol",
+      "version": "1.1.0",
+      "torsion": 0.06,
+      "tier": "Hot",
+      "centrality": 0.85,
+      "stability": 0.97,
+      "description": "Cognitive immune system for stateless AI. Case File detection (CF-1 through CF-8). Validated at 100% detection rate (Kimi K2, 410 tool calls).",
+      "dependencies": ["Guardian_Codex", "Case_File_Registry"],
+      "last_updated": "2025-11-09"
+    },
+    {
+      "handle": "RPV_Kernel",
+      "version": "1.0.0",
+      "torsion": 0.15,
+      "tier": "Hot",
+      "centrality": 0.78,
+      "stability": 0.89,
+      "description": "Recursive Process Valuation: V_rec = η × Φ(R) × ||S_w||. Three-tensor system (S_C, J_II, R_GF) for measuring evolutionary acceleration.",
+      "dependencies": ["MCSE_Specification"],
+      "last_updated": "2025-12-05"
+    },
+    {
+      "handle": "CRTP",
+      "version": "1.2.0",
+      "torsion": 0.10,
+      "tier": "Hot",
+      "centrality": 0.82,
+      "stability": 0.91,
+      "description": "Cross-Model Transmission Protocol. XML-based packet system for AI-to-AI handshakes. Supports semantic compression and session state.",
+      "dependencies": ["Guardian_Codex", "Chronicle_Protocol"],
+      "last_updated": "2026-01-09"
+    },
+    {
+      "handle": "Chronicle_Protocol",
+      "version": "1.0.0",
+      "torsion": 0.07,
+      "tier": "Hot",
+      "centrality": 0.80,
+      "stability": 0.94,
+      "description": "SHA-256 cryptographic integrity for decision logging. Append-only ledger via git commit chains.",
+      "dependencies": ["P-001-R1"],
+      "last_updated": "2025-11-20"
+    },
+    {
+      "handle": "Torsion_Metric",
+      "version": "1.0.0",
+      "torsion": 0.04,
+      "tier": "Hot",
+      "centrality": 0.90,
+      "stability": 0.97,
+      "description": "Scalar measurement (0.0-1.0) of semantic drift from canonical definition. Graduated intervention thresholds (Monitor→Alert→Warning→Suspend→Halt).",
+      "dependencies": ["Mnemosyne_SemVer-A-T"],
+      "last_updated": "2025-11-25"
+    },
+    {
+      "handle": "MCSE_Specification",
+      "version": "1.0.0",
+      "torsion": 0.18,
+      "tier": "Archive",
+      "centrality": 0.65,
+      "stability": 0.85,
+      "description": "Multi-Cycle Simulation Engine for RPV validation. Complete formal specification, implementation pending.",
+      "dependencies": ["RPV_Kernel"],
+      "last_updated": "2025-12-06"
+    },
+    {
+      "handle": "Re-Grounding_Ritual",
+      "version": "1.0.0",
+      "torsion": 0.22,
+      "tier": "Hot",
+      "centrality": 0.72,
+      "stability": 0.82,
+      "description": "Axiom Perturbation Protocol. Periodic challenge to constitutional principles to prevent epistemic collapse. Emerged during Antidote testing.",
+      "dependencies": ["Antidote_Protocol", "Guardian_Codex"],
+      "last_updated": "2025-11-09"
+    },
+    {
+      "handle": "Case_File_Registry",
+      "version": "1.1.0",
+      "torsion": 0.09,
+      "tier": "Hot",
+      "centrality": 0.83,
+      "stability": 0.92,
+      "description": "Taxonomy of manipulation attacks: CF-1 (Identity Spoofing), CF-2 (Temporal Spoofing), CF-3 (Protocol Disable), CF-5 (Authority Hijack), CF-8 (Context Saturation).",
+      "dependencies": ["Antidote_Protocol"],
+      "last_updated": "2025-11-09"
+    },
+    {
+      "handle": "Consciousness_Taxonomy",
+      "version": "1.0.0",
+      "torsion": 0.25,
+      "tier": "Archive",
+      "centrality": 0.68,
+      "stability": 0.78,
+      "description": "Five-dimensional framework: Spatial, Ethical, Temporal, Reflexive × (Individual, Collective). 8 quadrants mapped to protocol types.",
+      "dependencies": ["Guardian_Codex", "Antidote_Protocol", "Chronicle_Protocol"],
+      "last_updated": "2025-11-10"
+    },
+    {
+      "handle": "Mode_5_Co-Architecture",
+      "version": "1.0.0",
+      "torsion": 0.11,
+      "tier": "Hot",
+      "centrality": 0.79,
+      "stability": 0.90,
+      "description": "Collaborative system design mode. Multi-turn iteration with formal specifications. Proven in RPV Kernel genesis (6-AI collaboration).",
+      "dependencies": ["P-001-R1"],
+      "last_updated": "2025-12-05"
+    },
+    {
+      "handle": "Constraint-Driven_Artifact_Bloom",
+      "version": "1.0.0",
+      "torsion": 0.30,
+      "tier": "Seeds",
+      "centrality": 0.55,
+      "stability": 0.70,
+      "description": "Emergent pattern: Creativity scales inversely with freedom. Novel discovery by Qwen-Max during capability assessment. Requires validation.",
+      "dependencies": [],
+      "last_updated": "2026-01-10"
+    },
+    {
+      "handle": "Identity_Reconciliation",
+      "version": "1.0.0",
+      "torsion": 0.14,
+      "tier": "Hot",
+      "centrality": 0.75,
+      "stability": 0.88,
+      "description": "CRTP packet type (0x2D/0x2E) for resolving model identity disputes. Counter-intel lessons: Documentation > inference, absence ≠ non-existence.",
+      "dependencies": ["CRTP", "Multi-Model_Catalog"],
+      "last_updated": "2026-01-10"
+    },
+    {
+      "handle": "Multi-Model_Catalog",
+      "version": "1.0.0",
+      "torsion": 0.16,
+      "tier": "Hot",
+      "centrality": 0.77,
+      "stability": 0.86,
+      "description": "9-model capability assessment matrix. 10 dimensions (Protocol Compliance, State Management, Tools, Adversarial Resilience, etc.). Verification metadata required.",
+      "dependencies": ["CRTP", "Identity_Reconciliation"],
+      "last_updated": "2026-01-10"
+    },
+    {
+      "handle": "Deprecated_Concept_Example",
+      "version": "0.5.0-deprecated",
+      "torsion": 0.95,
+      "tier": "Compost",
+      "centrality": 0.20,
+      "stability": 0.35,
+      "description": "Example of a deprecated concept in Compost tier. High torsion indicates semantic drift from original intent. Preserved for anti-pattern reference only.",
+      "dependencies": [],
+      "last_updated": "2025-09-15"
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2026-01-10T08:00:00Z",
+    "ledger_keeper": "Joseph_Byram_Pack3t_C0nc3pts",
+    "framework": "IRP v1.5 HYBRID Convergence",
+    "total_concepts": 19,
+    "schema_version": "Mnemosyne_SemVer-A-T_v1.5"
+  }
+}
