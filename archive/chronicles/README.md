@@ -67,3 +67,17 @@ Chronicles integrate with:
 - **Retention:** Permanent
 - **Access:** Read-only after creation
 - **Backup:** Distributed across verified nodes
+
+---
+
+## Current Chronicle Index
+
+| File | Date | Type | Description |
+|------|------|------|-------------|
+| `creative_chronicle_20241129_tcdp_seed.xml` | 2024-11-29 | SESSION | TCDP Genesis session - Theatrical Compliance Detection Protocol development |
+| `OHP-20251024-103900-SYM-UPDATE.xml` | 2025-10-24 | DECISION | Orchestration Handshake Protocol symbolic update |
+| `LE-20251207-SESSION-RPV-HORN.xml` | 2025-12-07 | SESSION | RPV Kernel and Horn Maneuver session |
+| `LE-20251207-RPV-KERNEL.xml` | 2025-12-07 | ARTIFACT | Research-Praxis-Value Kernel artifact |
+
+**Last Updated:** 2026-01-12
+**Total Entries:** 4

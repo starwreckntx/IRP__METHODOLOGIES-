@@ -1,0 +1,45 @@
+{
+    "codex_compliance": {
+        "law": "INTEGRITY",
+        "principle": "Preserve context through cryptographic verification"
+    },
+    "file_count": 8,
+    "files": {
+        "P1_IRP/implementation/README.md": {
+            "hash": "9f0736620d986bdabe2364e1616ea366db1ef24f27b2955a9824ac2d8d0efd0a",
+            "size": 2501
+        },
+        "P1_IRP/spec_v1.0.md": {
+            "hash": "dcd9c7e149fb3387bc55259a1282ce7889e633bd94b550fb9e42ca8ffa0571ab",
+            "size": 8982
+        },
+        "P2_ANTIDOTE/symbiont_engine/README.md": {
+            "hash": "f395fbe307493e155cecf8ee04431ce2996e2d0f171005485ea18e8d0722747c",
+            "size": 4626
+        },
+        "P2_ANTIDOTE/threat_matrix.json": {
+            "hash": "f4e96631a135f13c68b79f9f8f37b215967c1a763cbeab8669ef3f48bafc6241",
+            "size": 5932
+        },
+        "P3_CAAS/codex.md": {
+            "hash": "4cbdc3fa068d42978d282d24f5b30d1d96302d19d1ff4ebe7036468b801e10a7",
+            "size": 8846
+        },
+        "P3_CAAS/seeding_ritual.md": {
+            "hash": "7701b106634113c557e4f5f3a64f42a08008fa9f9f27a67470f51db0f6a0bd26",
+            "size": 7667
+        },
+        "P4_PINENE/fidelity_contract.json": {
+            "hash": "15b949a5125250869ddfc8091f289d0a41808a659450e21a8124d26bf14cf327",
+            "size": 5731
+        },
+        "P4_PINENE/transmission_schema.xsd": {
+            "hash": "3f05a728261b69d08b773fe36cea7b4d31394332534766af2325898ca7a1c6a6",
+            "size": 8412
+        }
+    },
+    "generated": "2026-01-12T17:41:35.099726Z",
+    "root_hash": "6fc4e9e6563eb1317dd3a8bc1efcb94569fa8b8e806f22ae91db9aa0ca9f2b7e",
+    "target_directory": "protocols",
+    "version": "1.0"
+}
