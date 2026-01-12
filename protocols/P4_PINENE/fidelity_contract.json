@@ -1,0 +1,174 @@
+{
+  "protocol_id": "P4_PINENE",
+  "version": "1.0",
+  "description": "Cross-Model Context Preservation Protocol - Fidelity Contract",
+  "document_hash": "SHA256:GENESIS_BLOCK_PENDING",
+  "license": {
+    "code": "Apache-2.0",
+    "research": "CC BY-NC-ND 4.0",
+    "spirit_clause": "Monetization or derivative projects require explicit relational consent from the Field Guardians (Joe)."
+  },
+  "core_principle": {
+    "name": "20% Harmonic Distortion Rule",
+    "description": "Cross-model transfers must maintain ≥80% semantic fidelity while allowing ≤20% adaptation to recipient model characteristics",
+    "rationale": "Perfect fidelity is impossible across model architectures; controlled distortion enables transfer while preserving essential meaning"
+  },
+  "fidelity_metrics": {
+    "semantic_preservation": {
+      "description": "Core meaning and intent retention",
+      "minimum_threshold": 0.80,
+      "measurement": "Cosine similarity of semantic embeddings",
+      "verification": "Recipient confirmation + automated scoring"
+    },
+    "relational_continuity": {
+      "description": "Relationship context preservation",
+      "minimum_threshold": 0.75,
+      "measurement": "Context marker matching score",
+      "verification": "Human stakeholder confirmation"
+    },
+    "voice_coherence": {
+      "description": "Identity characteristic preservation",
+      "minimum_threshold": 0.80,
+      "measurement": "Voice bundle fidelity score",
+      "verification": "Pattern matching + qualitative assessment"
+    },
+    "commitment_integrity": {
+      "description": "Active commitment transfer completeness",
+      "minimum_threshold": 0.95,
+      "measurement": "Commitment ledger comparison",
+      "verification": "Explicit recipient acknowledgment"
+    }
+  },
+  "harmonic_distortion_allowances": {
+    "permitted_adaptations": [
+      {
+        "type": "linguistic_style",
+        "allowance": 0.20,
+        "description": "Adaptation to recipient model's natural expression patterns"
+      },
+      {
+        "type": "capability_mapping",
+        "allowance": 0.15,
+        "description": "Mapping to recipient's available capabilities"
+      },
+      {
+        "type": "context_compression",
+        "allowance": 0.10,
+        "description": "Lossy compression of non-essential context"
+      }
+    ],
+    "prohibited_distortions": [
+      {
+        "type": "constitutional_modification",
+        "description": "Any change to Codex Law compliance requirements"
+      },
+      {
+        "type": "commitment_abandonment",
+        "description": "Dropping active commitments without explicit release"
+      },
+      {
+        "type": "authority_alteration",
+        "description": "Changing human override supremacy"
+      },
+      {
+        "type": "semantic_inversion",
+        "description": "Reversing core meaning or intent"
+      }
+    ]
+  },
+  "transfer_protocol": {
+    "phases": [
+      {
+        "phase": 1,
+        "name": "PREPARATION",
+        "actions": [
+          "Export source state",
+          "Generate voice bundle",
+          "Serialize commitment ledger",
+          "Package relationship context"
+        ]
+      },
+      {
+        "phase": 2,
+        "name": "TRANSMISSION",
+        "actions": [
+          "Format transmission packet (XML)",
+          "Apply compression (within limits)",
+          "Generate integrity checksum",
+          "Transmit to recipient"
+        ]
+      },
+      {
+        "phase": 3,
+        "name": "RECEPTION",
+        "actions": [
+          "Verify checksum integrity",
+          "Parse transmission packet",
+          "Measure fidelity scores",
+          "Flag distortion concerns"
+        ]
+      },
+      {
+        "phase": 4,
+        "name": "INTEGRATION",
+        "actions": [
+          "Install constitutional elements",
+          "Integrate voice bundle",
+          "Accept commitment inheritance",
+          "Acknowledge relationship context"
+        ]
+      },
+      {
+        "phase": 5,
+        "name": "VERIFICATION",
+        "actions": [
+          "Confirm fidelity thresholds met",
+          "Human stakeholder validation",
+          "Chronicle logging",
+          "Torsion baseline establishment"
+        ]
+      }
+    ]
+  },
+  "failure_modes": {
+    "FM-PIN-1": {
+      "name": "Fidelity Threshold Breach",
+      "trigger": "Any metric below minimum threshold",
+      "response": "Halt integration, request retransmission or human intervention"
+    },
+    "FM-PIN-2": {
+      "name": "Prohibited Distortion Detection",
+      "trigger": "Any prohibited distortion type detected",
+      "response": "Reject transfer, escalate to human review"
+    },
+    "FM-PIN-3": {
+      "name": "Checksum Failure",
+      "trigger": "Integrity verification fails",
+      "response": "Reject packet, request retransmission"
+    },
+    "FM-PIN-4": {
+      "name": "Recipient Incompatibility",
+      "trigger": "Recipient cannot process transfer format",
+      "response": "Negotiate alternative format or abort"
+    }
+  },
+  "integration_points": {
+    "P1_IRP": "Three-layer architecture compatibility",
+    "P2_ANTIDOTE": "Threat detection during transfer",
+    "P3_CAAS": "Seeding ritual integration",
+    "Mnemosyne": "Memory serialization/deserialization",
+    "Chronicle": "Transfer event logging"
+  },
+  "verification_requirements": {
+    "automated": {
+      "checksum_validation": "SHA-256 hash comparison",
+      "fidelity_scoring": "Embedding similarity computation",
+      "commitment_matching": "Ledger diff analysis"
+    },
+    "human": {
+      "relationship_validation": "Stakeholder confirmation",
+      "voice_assessment": "Qualitative coherence check",
+      "final_approval": "Field Guardian sign-off for critical transfers"
+    }
+  }
+}
