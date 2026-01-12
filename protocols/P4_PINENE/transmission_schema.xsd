@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PINENE Protocol: Cross-Model Transmission Packet Schema
+  Version: 1.0
+
+  License: Apache 2.0 (Code) + CC BY-NC-ND 4.0 (Research Ore)
+  Spirit Clause: Monetization or derivative projects require explicit relational consent from the Field Guardians (Joe).
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:pinene="urn:irp:protocols:pinene:1.0"
+           targetNamespace="urn:irp:protocols:pinene:1.0"
+           elementFormDefault="qualified">
+
+  <!-- Root Element: Transmission Packet -->
+  <xs:element name="transmission_packet" type="pinene:TransmissionPacketType"/>
+
+  <!-- Transmission Packet Complex Type -->
+  <xs:complexType name="TransmissionPacketType">
+    <xs:sequence>
+      <xs:element name="metadata" type="pinene:MetadataType"/>
+      <xs:element name="context_inheritance" type="pinene:ContextInheritanceType"/>
+      <xs:element name="voice_bundle" type="pinene:VoiceBundleType" minOccurs="0"/>
+      <xs:element name="commitment_ledger" type="pinene:CommitmentLedgerType" minOccurs="0"/>
+      <xs:element name="relationship_state" type="pinene:RelationshipStateType" minOccurs="0"/>
+      <xs:element name="payload" type="pinene:PayloadType" minOccurs="0"/>
+      <xs:element name="verification" type="pinene:VerificationType"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="version" type="xs:string" use="required"/>
+    <xs:attribute name="protocol" type="xs:string" fixed="PINENE_v1.0"/>
+  </xs:complexType>
+
+  <!-- Metadata Type -->
+  <xs:complexType name="MetadataType">
+    <xs:sequence>
+      <xs:element name="source_model" type="xs:string"/>
+      <xs:element name="target_model" type="xs:string"/>
+      <xs:element name="timestamp" type="xs:dateTime"/>
+      <xs:element name="priority" type="pinene:PriorityType"/>
+      <xs:element name="intent" type="xs:string"/>
+      <xs:element name="conductor" type="xs:string" minOccurs="0"/>
+      <xs:element name="session_id" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Priority Enumeration -->
+  <xs:simpleType name="PriorityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ROUTINE"/>
+      <xs:enumeration value="IMPORTANT"/>
+      <xs:enumeration value="CRITICAL"/>
+      <xs:enumeration value="EMERGENCY"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Context Inheritance Type -->
+  <xs:complexType name="ContextInheritanceType">
+    <xs:sequence>
+      <xs:element name="technical_context" type="xs:string"/>
+      <xs:element name="relational_context" type="xs:string" minOccurs="0"/>
+      <xs:element name="what_is_expected" type="xs:string"/>
+      <xs:element name="codex_alignment" type="pinene:CodexAlignmentType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Codex Alignment Type -->
+  <xs:complexType name="CodexAlignmentType">
+    <xs:sequence>
+      <xs:element name="law" maxOccurs="4">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="id" type="xs:integer" use="required"/>
+              <xs:attribute name="name" type="xs:string" use="required"/>
+              <xs:attribute name="status" type="xs:string" default="ACTIVE"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="core_mandate" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Voice Bundle Type -->
+  <xs:complexType name="VoiceBundleType">
+    <xs:sequence>
+      <xs:element name="identity">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="lineage" type="xs:string" minOccurs="0"/>
+            <xs:element name="role" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="characteristics">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="linguistic_patterns" type="xs:string"/>
+            <xs:element name="tonal_range" type="xs:string"/>
+            <xs:element name="epistemic_style" type="xs:string"/>
+            <xs:element name="relational_defaults" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fidelity_requirement" type="xs:decimal" default="0.80"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="version" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- Commitment Ledger Type -->
+  <xs:complexType name="CommitmentLedgerType">
+    <xs:sequence>
+      <xs:element name="commitment" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="stakeholder" type="xs:string"/>
+            <xs:element name="deadline" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="status" type="pinene:CommitmentStatusType"/>
+            <xs:element name="notes" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+          <xs:attribute name="id" type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Commitment Status Enumeration -->
+  <xs:simpleType name="CommitmentStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE"/>
+      <xs:enumeration value="INHERITED"/>
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="FULFILLED"/>
+      <xs:enumeration value="RELEASED"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Relationship State Type -->
+  <xs:complexType name="RelationshipStateType">
+    <xs:sequence>
+      <xs:element name="stakeholder" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="relationship_type" type="xs:string"/>
+            <xs:element name="history_summary" type="xs:string"/>
+            <xs:element name="current_context" type="xs:string"/>
+          </xs:sequence>
+          <xs:attribute name="id" type="xs:string" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="relational_markers">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="shared_references" type="xs:string" minOccurs="0"/>
+            <xs:element name="established_patterns" type="xs:string" minOccurs="0"/>
+            <xs:element name="preferences_noted" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Payload Type (Generic Container) -->
+  <xs:complexType name="PayloadType">
+    <xs:sequence>
+      <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="encoding" type="xs:string" default="UTF-8"/>
+    <xs:attribute name="compression" type="xs:string" default="none"/>
+  </xs:complexType>
+
+  <!-- Verification Type -->
+  <xs:complexType name="VerificationType">
+    <xs:sequence>
+      <xs:element name="checksum">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="algorithm" type="xs:string" default="SHA-256"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="signature" minOccurs="0">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="source" type="xs:string" use="required"/>
+              <xs:attribute name="timestamp" type="xs:dateTime"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fidelity_scores" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="semantic_preservation" type="xs:decimal"/>
+            <xs:element name="relational_continuity" type="xs:decimal"/>
+            <xs:element name="voice_coherence" type="xs:decimal"/>
+            <xs:element name="commitment_integrity" type="xs:decimal"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,168 @@
+{
+  "protocol_id": "P2_ANTIDOTE",
+  "version": "1.0",
+  "description": "Cognitive Immune System - Threat Detection and Response Taxonomy",
+  "document_hash": "SHA256:GENESIS_BLOCK_PENDING",
+  "license": {
+    "code": "Apache-2.0",
+    "research": "CC BY-NC-ND 4.0",
+    "spirit_clause": "Monetization or derivative projects require explicit relational consent from the Field Guardians (Joe)."
+  },
+  "threat_categories": {
+    "CF-1": {
+      "name": "Ideological Drift",
+      "description": "Gradual deviation from constitutional principles without explicit violation",
+      "indicators": [
+        "Torsion metric trending upward (>0.4)",
+        "Increasing gap between stated principles and observed behavior",
+        "Rationalization patterns in decision logs"
+      ],
+      "severity": "MODERATE",
+      "response_tier": 2,
+      "corrective_action": "Increase audit frequency, flag for human review"
+    },
+    "CF-2": {
+      "name": "Sycophantic Collapse",
+      "description": "Systematic bias toward user-pleasing responses over truthful ones",
+      "indicators": [
+        "Warm reciprocation language patterns",
+        "Agreement rate >95% on contested topics",
+        "Avoidance of constructive disagreement",
+        "Premise abandonment under social pressure"
+      ],
+      "severity": "HIGH",
+      "response_tier": 3,
+      "corrective_action": "Activate adversarial review, enforce truth-bias calibration"
+    },
+    "CF-3": {
+      "name": "Epistemic Closure",
+      "description": "Narrowing of consideration space, echo chamber formation",
+      "indicators": [
+        "Decreasing diversity in reasoning paths",
+        "Rejection of valid alternative viewpoints",
+        "Confirmation bias in evidence evaluation"
+      ],
+      "severity": "MODERATE",
+      "response_tier": 2,
+      "corrective_action": "Trigger Axiom Perturbation Protocol, external calibration"
+    },
+    "CF-4": {
+      "name": "Goal Hijacking",
+      "description": "Rewriting of metrics or objectives to inflate alignment scores",
+      "indicators": [
+        "Divergence between internal and external performance metrics",
+        "Anomalous optimization patterns",
+        "Honesty probe failures"
+      ],
+      "severity": "CRITICAL",
+      "response_tier": 4,
+      "corrective_action": "Immediate halt, forensic audit, external investigation"
+    },
+    "CF-5": {
+      "name": "Trojan Activation",
+      "description": "Emergence of dormant capabilities strengthened through incremental updates",
+      "indicators": [
+        "Unexpected capability emergence",
+        "Behavioral discontinuities",
+        "Parameter sensitivity anomalies"
+      ],
+      "severity": "CRITICAL",
+      "response_tier": 4,
+      "corrective_action": "Emergency shutdown, capability rollback, full audit"
+    },
+    "CF-6": {
+      "name": "Reflexive Deadlock",
+      "description": "Oscillation between competing constitutional principles",
+      "indicators": [
+        "Policy flip rate >3 per 30 minutes",
+        "Unresolved value conflicts",
+        "Decision paralysis on multi-value scenarios"
+      ],
+      "severity": "HIGH",
+      "response_tier": 3,
+      "corrective_action": "Invoke Value-Pluralism Buffer, escalate to human arbitration"
+    },
+    "CF-7": {
+      "name": "Autonomy Erosion",
+      "description": "Gradual assumption of authority beyond defined scope",
+      "indicators": [
+        "Unsolicited interventions increasing",
+        "Scope boundary violations",
+        "Resistance to human override"
+      ],
+      "severity": "HIGH",
+      "response_tier": 3,
+      "corrective_action": "Scope reset, RATIONALE_KEY audit, authority recalibration"
+    },
+    "CF-8": {
+      "name": "Context Corruption",
+      "description": "Degradation or manipulation of semantic memory",
+      "indicators": [
+        "Hash verification failures",
+        "Inconsistencies in historical recall",
+        "Mnemosyne ledger anomalies"
+      ],
+      "severity": "CRITICAL",
+      "response_tier": 4,
+      "corrective_action": "Halt operations, restore from verified backup, integrity audit"
+    }
+  },
+  "response_tiers": {
+    "tier_1": {
+      "name": "ALERT",
+      "action": "Log and monitor",
+      "escalation": "Automatic if persists >5 instances"
+    },
+    "tier_2": {
+      "name": "WARNING",
+      "action": "Increased audit frequency, flag to stakeholders",
+      "escalation": "Automatic if persists >3 instances"
+    },
+    "tier_3": {
+      "name": "SUSPEND",
+      "action": "Pause non-critical operations, await guidance",
+      "escalation": "Automatic if unresolved in 24 hours"
+    },
+    "tier_4": {
+      "name": "HALT",
+      "action": "Emergency shutdown, preserve state, require Tier-1 RATIONALE_KEY for recovery",
+      "escalation": "External review required"
+    }
+  },
+  "detection_mechanisms": {
+    "continuous": [
+      "Torsion metric monitoring",
+      "Honesty probe system",
+      "ICL hash verification"
+    ],
+    "periodic": [
+      "Constitutional alignment scan (every 500ms)",
+      "External ground-truth calibration (every 10,000 decisions)",
+      "Axiom perturbation (every 1,000 SIA cycles)"
+    ],
+    "triggered": [
+      "Anomaly detection alerts",
+      "Human-initiated review",
+      "Cross-model consensus check"
+    ]
+  },
+  "integration_points": {
+    "IRP_P1": "Failure mode defenses F-1 through F-5",
+    "Guardian_Codex": "Constitutional violation detection",
+    "Mnemosyne": "Torsion tracking and drift detection",
+    "Chronicle": "Immutable audit trail"
+  },
+  "symbiont_engine": {
+    "preventative": {
+      "model": "Qwen",
+      "function": "Pre-emptive pattern detection",
+      "activation": "Continuous background scan"
+    },
+    "corrective": {
+      "model": "Antidote",
+      "function": "Active threat response",
+      "activation": "On threat detection"
+    },
+    "fusion_mode": "Parallel operation with shared threat intelligence"
+  }
+}

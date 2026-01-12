@@ -29,6 +29,59 @@ jobs:
         fi
         echo "All document hashes verified successfully"
 
+  validate-protocol-integrity:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Generate SHA-256 manifest for protocols
+      run: |
+        echo "=== Protocol Integrity Verification ==="
+        echo "Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+        echo ""
+
+        # Verify protocols directory
+        if [ -d "protocols" ]; then
+          echo "Protocols SHA-256 Hashes:"
+          find protocols -type f \( -name "*.md" -o -name "*.json" -o -name "*.xsd" \) -exec sha256sum {} \; | sort
+          echo ""
+        fi
+
+        # Verify kernel directory
+        if [ -d "kernel" ]; then
+          echo "Kernel SHA-256 Hashes:"
+          find kernel -type f -name "*.md" -o -name "*.json" -exec sha256sum {} \; | sort
+          echo ""
+        fi
+
+        # Verify archive directory
+        if [ -d "archive" ]; then
+          echo "Archive SHA-256 Hashes:"
+          find archive -type f -name "*.md" -o -name "*.xml" -exec sha256sum {} \; | sort
+          echo ""
+        fi
+
+        # Verify governance codex
+        if [ -f "GOVERNANCE_CODEX_LAW.md" ]; then
+          echo "Governance Codex Hash:"
+          sha256sum GOVERNANCE_CODEX_LAW.md
+        fi
+
+    - name: Store manifest as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: integrity-manifest-${{ github.sha }}
+        path: |
+          protocols/**/*.md
+          protocols/**/*.json
+          kernel/**/*.md
+          kernel/**/*.json
+          archive/**/*.md
+          GOVERNANCE_CODEX_LAW.md
+        retention-days: 90
+
   validate-markdown:
     runs-on: ubuntu-latest
 
