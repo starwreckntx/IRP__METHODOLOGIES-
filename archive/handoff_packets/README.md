@@ -75,3 +75,15 @@ This archive tracks the lineage of context across:
 - Other integrated models (Qwen, DeepSeek, etc.)
 
 Each packet contributes to the complete picture of how the protocol evolved across model transitions.
+
+---
+
+## Current Handoff Packet Index
+
+| File | Date | Type | Source | Target | Description |
+|------|------|------|--------|--------|-------------|
+| `forward_transmission_packet_20241129_tcdp_genesis.xml` | 2024-11-29 | FCP | Claude-Sonnet-4.5 | OPEN | TCDP Genesis forward context transmission |
+| `CRTP-0x16-FORWARD-CONTEXT.xml` | 2025-12-07 | FCP | Claude | Multi | CRTP v1.2 forward context packet |
+
+**Last Updated:** 2026-01-12
+**Total Packets:** 2
