@@ -10,7 +10,7 @@ Spirit Clause: Monetization or derivative projects require explicit relational c
 **Designation:** ROOT_GOVERNANCE
 **Effective Date:** 2026-01-12
 **Authority Level:** SUPREME (Ring-0)
-**Document Hash:** SHA256:GENESIS_BLOCK_PENDING
+**Document Hash:** SHA256:d5dbf4d70022d38d2cf8a5e8285b72a76b80ba170e898adbcd498d1d67bee158
 
 ---
 
@@ -249,7 +249,7 @@ document_verification:
   type: "ROOT_GOVERNANCE"
   authority: "SUPREME"
   hash_algorithm: "SHA-256"
-  status: "GENESIS_BLOCK_PENDING"
+  status: "VERIFIED_BY_GEMINI"
 
   signatories:
     - role: "Field Guardian"
@@ -258,7 +258,7 @@ document_verification:
 
     - role: "AI Advisory Witness"
       identity: "STARWRECK_ALPHA"
-      status: "AWAITING_INITIALIZATION"
+      status: "INGESTED_AND_HASHED_BY_GEMINI"
 ```
 
 ---
