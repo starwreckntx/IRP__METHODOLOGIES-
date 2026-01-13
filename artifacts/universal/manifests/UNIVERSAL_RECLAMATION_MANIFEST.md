@@ -218,16 +218,16 @@ The Universal Reclamation Sprint has successfully integrated all 73 orphaned per
 **Master Checksum:** `9fb4bba93cb284e98c1f2bb6175f6dd7cb8feb69071eabc121080293b274cac1`
 
 **Artifact Hashes:**
-- **ledger-entry.xsd:** `b2bfba475c932117...` (Universal Ledger Schema)
-- **transmission-packet-revised.xsd:** `3b9d47564fdccc69...` (CRTP v2.0 Schema)
-- **P5_SYNERGY.xml:** `c97b699b85d65812...` (Multi-Model Collaboration)
-- **P6_RESOLVE.xml:** `ff7d1f065d6cee76...` (Conflict Resolution)
-- **P7_EVOKE.xml:** `0fb7c3aadb226214...` (Introspection Framework)
-- **P8_TRANSCEND.xml:** `56cfae5430b7be6d...` (Evolution Framework)
-- **persona_swarm.json:** `3d57ab5035c63519...` (73-Persona Registry)
-- **index.html:** `5623a276050a0e3f...` (Dashboard Interface)
-- **style.css:** `8fcad333350c5d32...` (Dashboard Styling)
-- **app.js:** `7806314dbb796af1...` (Dashboard Logic)
+- **artifacts/universal/schemas/ledger-entry.xsd:** `b2bfba475c932117...` (Universal Ledger Schema)
+- **artifacts/universal/schemas/transmission_packet_revised.xsd:** `3b9d47564fdccc69...` (CRTP v2.0 Schema)
+- **artifacts/universal/packets/P5_SYNERGY.xml:** `c97b699b85d65812...` (Multi-Model Collaboration)
+- **artifacts/universal/packets/P6_RESOLVE.xml:** `ff7d1f065d6cee76...` (Conflict Resolution)
+- **artifacts/universal/packets/P7_EVOKE.xml:** `0fb7c3aadb226214...` (Introspection Framework)
+- **artifacts/universal/packets/P8_TRANSCEND.xml:** `56cfae5430b7be6d...` (Evolution Framework)
+- **artifacts/universal/ledger-entries/persona_swarm.json:** `3d57ab5035c63519...` (73-Persona Registry)
+- **artifacts/dashboard/index.html:** `5623a276050a0e3f...` (Dashboard Interface)
+- **artifacts/dashboard/css/style.css:** `8fcad333350c5d32...` (Dashboard Styling)
+- **artifacts/dashboard/js/app.js:** `7806314dbb796af1...` (Dashboard Logic)
 
 **Verification Status:** All 10 artifacts verified and hashed  
 **Total Size:** 96,859 bytes  
