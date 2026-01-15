@@ -3,8 +3,12 @@
         "law": "INTEGRITY",
         "principle": "Preserve context through cryptographic verification"
     },
-    "file_count": 8,
+    "file_count": 9,
     "files": {
+        "P1_IRP/README.md": {
+            "hash": "cdbabe8d57f80ec24f75d714566fc1336990322b7a484da84347bfd949553724",
+            "size": 2105
+        },
         "P1_IRP/implementation/README.md": {
             "hash": "9f0736620d986bdabe2364e1616ea366db1ef24f27b2955a9824ac2d8d0efd0a",
             "size": 2501
@@ -38,8 +42,8 @@
             "size": 8412
         }
     },
-    "generated": "2026-01-12T17:41:35.099726Z",
-    "root_hash": "6fc4e9e6563eb1317dd3a8bc1efcb94569fa8b8e806f22ae91db9aa0ca9f2b7e",
+    "generated": "2026-01-13T21:02:44.970716Z",
+    "root_hash": "e3e5c8e746f1fe4b549bcda906eeb42f78b7226e761321afa1ac4b6a07d9a883",
     "target_directory": "protocols",
     "version": "1.0"
 }
