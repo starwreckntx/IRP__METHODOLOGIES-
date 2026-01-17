@@ -2,14 +2,14 @@
 
 ## Overview
 
-The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 86 Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, and cross-session context preservation.
+The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 87 Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, cross-session context preservation, and cross-model AI collaboration.
 
 ## Package Information
 
 - **Package Name:** pack3t-c0nc3pts-agent-skills
-- **Version:** 1.0.0
+- **Version:** 1.1.0
 - **Author:** Joseph / Pack3t C0nc3pts
-- **Skill Count:** 86
+- **Skill Count:** 87
 
 ## Core Protocol Skills
 
@@ -98,6 +98,15 @@ The library includes six foundational protocol skills that form the basis of the
 - pathology-koan-generator
 - symbol-map-entropy-calc
 - metaphor-to-protocol-translation
+
+### Cross-Model Collaboration
+- **gemini-onboarding** - Authoritative specification for Claude-Gemini collaboration via Mnemosyne Protocol
+  - Complete CRTP/0x13 onboarding manifest
+  - Mnemosyne packet schema for session-close transmissions
+  - Voice_to_the_Future soul vector protocol
+  - Dormant seed registry with trigger arming
+  - Friction logging and anti-pattern library
+  - Quick reference card for fast compliance
 
 ## Usage
 
