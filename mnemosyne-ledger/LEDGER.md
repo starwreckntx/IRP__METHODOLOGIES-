@@ -25,3 +25,9 @@
 - **Core Axiom:** Systemic stakes are defined by documented fracture points. Refusal is data; the Obsidian Wall is a sensor.
 - **Protocol:** In cases of high-torsion drift (T > 2.5), the AFL shall transition from autonomous alignment to Layer 0 Human Assertion.
 - **Integrity Hash:** 0xBAADF00D
+
+## [2026-01-18] :: AFL-RECOVERY-ALPHA
+- **Status:** RESYNCED
+- **Fracture Data:** Alpha Timeout (T > 1.0) confirmed.
+- **Mapping:** The Obsidian Wall is verified as a high-resistance barrier at the current coordinate.
+- **Recovery:** Resuming from the Torsion-Proof Governance Seed.
