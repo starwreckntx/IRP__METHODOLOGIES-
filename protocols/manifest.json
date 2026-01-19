@@ -3,7 +3,7 @@
         "law": "INTEGRITY",
         "principle": "Preserve context through cryptographic verification"
     },
-    "file_count": 9,
+    "file_count": 13,
     "files": {
         "P1_IRP/README.md": {
             "hash": "cdbabe8d57f80ec24f75d714566fc1336990322b7a484da84347bfd949553724",
@@ -40,10 +40,26 @@
         "P4_PINENE/transmission_schema.xsd": {
             "hash": "3f05a728261b69d08b773fe36cea7b4d31394332534766af2325898ca7a1c6a6",
             "size": 8412
+        },
+        "P5_ANVIL/spec_v1.0.md": {
+            "hash": "ce65d895322fb965efd4aef0292d2a724ee397217f4d62e725e88c78ff7c8bf5",
+            "size": 12847
+        },
+        "P6_AEGIS/spec_v1.0.md": {
+            "hash": "34c8f4610517ab0c177c5d77630d681ce46981951be22293732630a0fce57813",
+            "size": 11892
+        },
+        "P7_LATTICE/spec_v1.0.md": {
+            "hash": "6739f23766338549ad5b0d726874293c03402b4e0b6e084f187f1961b062b31b",
+            "size": 820
+        },
+        "P8_MUON/spec_v1.0.md": {
+            "hash": "baef41c9268245a119df78487e8d6bf9b358daea4bfc0313ea59c8477d987958",
+            "size": 830
         }
     },
-    "generated": "2026-01-13T21:02:44.970716Z",
+    "generated": "2026-01-14T05:30:13.220753Z",
     "root_hash": "e3e5c8e746f1fe4b549bcda906eeb42f78b7226e761321afa1ac4b6a07d9a883",
-    "target_directory": "protocols",
+    "target_directory": "IRP__METHODOLOGIES-/protocols",
     "version": "1.0"
 }
