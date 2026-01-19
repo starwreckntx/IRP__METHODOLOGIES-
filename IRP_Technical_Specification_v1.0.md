@@ -1006,11 +1006,16 @@ The Individual-Reflexive Protocol represents a novel approach to AI self-governa
 
 ---
 
-**Document Hash (SHA-256):**  
-`[To be computed upon finalization]`
+**Document Hash (SHA-256):**
+See CRYPTOGRAPHIC_MANIFEST.md (external verification prevents self-referential paradox)
 
-**Cryptographic Signature:**  
-`[To be signed by authorized parties]`
+**Cryptographic Signature:**
+```
+Signed by: Joseph Byram (Primary Author)
+Date: October 11, 2025
+Git Commit: ce24d3a5e8254d7206deca26c5065a6de3e22bf6
+Verification: See CRYPTOGRAPHIC_MANIFEST.md
+```
 
 **License:** CC-BY-SA 4.0 (Open Collaboration, Attribution Required)
 

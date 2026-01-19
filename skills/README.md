@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 99+ Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, cross-session context preservation, and large-context processing via RLM.
+The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 99+ Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, cross-session context preservation, cross-model AI collaboration, and large-context processing via RLM.
 
 ## Package Information
 
@@ -100,6 +100,16 @@ The library includes six foundational protocol skills that form the basis of the
 - symbol-map-entropy-calc
 - metaphor-to-protocol-translation
 
+### Cross-Model Collaboration
+- **gemini-onboarding** - Authoritative specification for Claude-Gemini collaboration via Mnemosyne Protocol
+  - Complete CRTP/0x13 onboarding manifest
+  - Mnemosyne packet schema for session-close transmissions
+  - Voice_to_the_Future soul vector protocol
+  - Dormant seed registry with trigger arming
+  - Friction logging and anti-pattern library
+  - Quick reference card for fast compliance
+- **rlm-context-manager** - Enables Gemini-parity large context processing via chunking and sub-LLM delegation
+
 ## Usage
 
 Each skill is contained in its own directory with a `SKILL.md` file that includes:
@@ -141,13 +151,17 @@ skills/
 │       │   ├── PROTOCOL_SPECIFICATION.md
 │       │   └── MODEL_INTEGRATION_GUIDE.md
 │       └── quick-reference.txt
-└── [skill-name]/                      # 86 skill directories
+├── rlm-context-manager/               # RLM large context processing
+│   ├── SKILL.md
+│   ├── scripts/rlm_repl.py
+│   └── agents/rlm-subcall.md
+└── [skill-name]/                      # 99+ skill directories
     └── SKILL.md                       # Skill definition
 ```
 
 ## Manifest
 
-The complete list of all 86 skills is available in `skills_manifest.json`. This manifest provides structured metadata for programmatic skill discovery and invocation.
+The complete list of all skills is available in `skills_manifest.json`. This manifest provides structured metadata for programmatic skill discovery and invocation.
 
 ## Protocol Philosophy
 
