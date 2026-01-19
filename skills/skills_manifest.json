@@ -1,11 +1,11 @@
 {
   "package_name": "pack3t-c0nc3pts-agent-skills",
-  "version": "1.5.0_HYBRID",
+  "version": "1.6.0_RLM",
   "author": "Joseph / Pack3t C0nc3pts",
-  "last_updated": "2025-12-11",
-  "skill_count": 95,
-  "integrity_note": "Unified manifest - includes IRP v1.5_HYBRID Governance Triad",
-  "framework_version": "IRP_v1.5_HYBRID_Convergence",
+  "last_updated": "2026-01-19",
+  "skill_count": 99,
+  "integrity_note": "Unified manifest - includes IRP v1.6_RLM with Recursive Language Model context management",
+  "framework_version": "IRP_v1.6_RLM_Convergence",
   "codex_entries": [
     {
       "id": "CODEX-2025-HORN-001",
@@ -119,6 +119,13 @@
       "context": "embodiment|robotics|ar_overlay|foundry|sensor_fusion",
       "gated": true,
       "env_flag": "ALLOW_EMBODIMENT"
+    },
+    {
+      "name": "rlm-context-manager",
+      "path": "skills/rlm-context-manager/SKILL.md",
+      "priority": "HIGH",
+      "context": "large_context|gemini_parity|chunking|sub_llm",
+      "note": "RLM for Gemini-parity context handling via chunking and sub-LLM delegation"
     }
   ],
   "skills": [
@@ -522,6 +529,28 @@
     {
       "name": "whole-brain-emulation-core-simulation",
       "path": "skills/whole-brain-emulation-core-simulation/SKILL.md"
+    },
+    {
+      "name": "rlm-context-manager",
+      "path": "skills/rlm-context-manager/SKILL.md",
+      "category": "cross-model",
+      "version": "1.0.0",
+      "description": "Recursive Language Model context management for processing documents exceeding context window limits. Enables Gemini-parity via chunking and sub-LLM delegation."
+    },
+    {
+      "name": "aegis-escalation-cascade",
+      "path": "skills/aegis-escalation-cascade/SKILL.md",
+      "category": "governance"
+    },
+    {
+      "name": "anvil-conflict-resolution",
+      "path": "skills/anvil-conflict-resolution/SKILL.md",
+      "category": "governance"
+    },
+    {
+      "name": "muon-session-fidelity",
+      "path": "skills/muon-session-fidelity/SKILL.md",
+      "category": "governance"
     }
   ]
 }

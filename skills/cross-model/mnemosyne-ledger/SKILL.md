@@ -1,3 +1,7 @@
+STATUS: Non-Terminal / Recursive
+NOTE: This skill represents a context-dependent operational pattern.
+Static interpretation degrades fidelity outside active execution.
+
 # Mnemosyne Ledger Skill
 
 ## Identity
@@ -160,3 +164,4 @@ The ledger organizes by meaning topology, not chronological sequence. An artifac
 - `irp-transcript-relay` - Mode 10 integration
 - `voice-context-manager` - HOT storage specialization
 - `dormant-seed-registry` - Trigger management specialization
+- `rlm-context-manager` - Large context processing with mnemosyne_seeds extraction
