@@ -75,8 +75,8 @@
   "operational_parameters": {
     "audit_frequency": "CONTINUOUS",
     "report_frequency": "ON_CHANGE",
-    "torsion_threshold_alert": 0.4,
-    "torsion_threshold_warning": 0.6,
+    "torsion_threshold_alert": 0.2,
+    "torsion_threshold_warning": 0.5,
     "integrity_check_depth": "FULL",
     "advisory_confidence_threshold": 0.75
   },
