@@ -6,6 +6,7 @@ Part of the IRP v2.0 'DIFFUSE' protocol.
 """
 
 import logging
+import json
 from typing import Dict, List, Set, Any, Optional
 
 # --- Configuration ---

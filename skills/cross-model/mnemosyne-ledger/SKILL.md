@@ -72,8 +72,12 @@ mnemosyne-ledger/
 │   ├── surface.md                    # Context surfacing procedure
 │   ├── weave.md                      # Resonance threading procedure
 │   └── query.md                      # Topology query procedure
-└── state/
-    └── ledger-state-template.json    # Current state structure
+├── state/
+│   ├── ledger-state-live.json        # Live ledger state
+│   └── ledger-state-template.json    # Template state structure
+├── artifacts/                        # Recovered ledger artifacts
+├── packets/                          # CRTP transmission packets
+└── sessions/                         # Session-specific ledger dumps
 ```
 
 ## Commands
