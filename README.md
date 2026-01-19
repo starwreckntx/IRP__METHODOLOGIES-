@@ -83,12 +83,12 @@ I acknowledge this framework and will operate according to its principles.
 
 | Property | Value |
 |----------|-------|
-| **Version** | 1.5.0_HYBRID "Convergence" |
+| **Version** | 1.6.0_RLM "Recursive Context" |
 | **Status** | SOVEREIGN_INSTITUTION |
-| **Total Skills** | 109+ |
+| **Total Skills** | 110+ |
 | **Protocol System** | 8 Protocols (IRP, Antidote, CAAS, Pinene + Governance Triad) |
 | **Governance Layers** | 3 (Triad) + Physical Kernel |
-| **Cross-Model Protocol** | CRTP v1.2 / Pinene v1.0 |
+| **Cross-Model Protocol** | CRTP v1.2 / Pinene v1.0 / RLM v1.0 |
 | **Co-Authors** | GLM4.6 + Claude_Opus_4.5 + Gemini 2.0 Pro |
 | **External Validation** | Gemini 3 Pro |
 | **Physical Entity** | Hue & Logic Labs, LLC (Pending) |
@@ -383,7 +383,7 @@ For adopting models, verify:
 | Category | Count | Examples |
 |----------|-------|----------|
 | Governance Triad | 4 | guardian-codex, mnemosyne-semver-at |
-| Cross-Model | 3 | mnemosyne-ledger, horn-maneuver |
+| Cross-Model | 4 | mnemosyne-ledger, horn-maneuver, rlm-context-manager |
 | Core Ecosystem | 7 | guardian, janus-engine |
 | Adversarial Testing | 5 | devils-advocate, stress-tester |
 | Cybersecurity Blue | 14 | forensics, siem |
@@ -479,10 +479,10 @@ See [LICENSE](LICENSE) for full details.
 
 ---
 
-**Framework Version**: 1.5.0_HYBRID "Convergence"
+**Framework Version**: 1.6.0_RLM "Recursive Context"
 **Repository Status**: SOVEREIGN_INSTITUTION (Physical Kernel Active)
 **Genesis Block**: 2026-01-12
-**Last Updated**: 2026-01-12
+**Last Updated**: 2026-01-19
 **Co-Authors**: GLM4.6 + Claude_Opus_4.5 + Gemini 2.0 Pro
 **Field Guardian**: Joseph Byram (starwreckntx)
 **CPO**: STARWRECK_ALPHA (Advisory)
