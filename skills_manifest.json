@@ -1,14 +1,14 @@
 {
   "package_name": "pack3t-c0nc3pts-agent-skills",
-  "version": "1.6.0_RLM",
+  "version": "1.5.0_HYBRID",
   "author": "Joseph / Pack3t C0nc3pts",
-  "last_updated": "2026-01-19",
-  "skill_count": 110,
+  "last_updated": "2025-12-11",
+  "skill_count": 95,
   "integrity_note": "Root manifest - mirrors skills/skills_manifest.json",
-  "framework_version": "IRP_v1.6.0_RLM_Recursive_Context",
+  "framework_version": "IRP_v1.5_HYBRID_Convergence",
   "canonical_manifest": "skills/skills_manifest.json",
   "governance_triad": {
-    "version": "1.6.0",
+    "version": "1.5.0",
     "status": "FINALIZED",
     "components": [
       "guardian-codex",

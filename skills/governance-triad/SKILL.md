@@ -2,16 +2,15 @@
 
 **Category**: `governance-triad`  
 **Version**: `1.5.0`  
-**Framework**: `IRP v1.6.0_RLM "Recursive Context"`  
+**Framework**: `IRP v1.5_HYBRID "Convergence"`  
 **Status**: ✅ FINALIZED  
-**Compatibility**: Fully compatible with RLM extension
-**Date**: 2026-01-19
+**Date**: 2025-12-10
 
 ---
 
 ## Overview
 
-The Governance Triad is the core architectural foundation of IRP v1.6.0_RLM (originally established in v1.5_HYBRID), providing:
+The Governance Triad is the core architectural foundation of IRP v1.5_HYBRID, providing:
 
 1. **Constitutional Layer** - Guardian_Codex
 2. **Memory Layer** - Mnemosyne_SemVer-A-T

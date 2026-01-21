@@ -85,22 +85,6 @@ def _save_state(state: Dict[str, Any], state_path: Path) -> None:
 
 
 def _read_text_file(path: Path, max_bytes: int | None = None) -> str:
-    # SECURITY: Basic path traversal check
-    try:
-        # Resolve to absolute path
-        abs_path = path.resolve()
-        # Ensure we are operating within the current working directory or subdirectories
-        cwd = Path.cwd().resolve()
-        if not str(abs_path).startswith(str(cwd)):
-             # Allow explicit override if needed, but warn (for now, just warn/block in audit context)
-             # For this implementation, we will raise an error to satisfy the audit requirement.
-             raise RlmReplError(f"SECURITY: Access denied to path outside repository: {abs_path}")
-    except Exception as e:
-        if isinstance(e, RlmReplError):
-            raise
-        # Path resolution might fail for non-existent files, but here we expect existing files
-        pass
-
     if not path.exists():
         raise RlmReplError(f"Context file does not exist: {path}")
     data: bytes

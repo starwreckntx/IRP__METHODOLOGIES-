@@ -3,7 +3,7 @@
   "version": "1.6.0_RLM",
   "author": "Joseph / Pack3t C0nc3pts",
   "last_updated": "2026-01-19",
-  "skill_count": 110,
+  "skill_count": 99,
   "integrity_note": "Unified manifest - includes IRP v1.6_RLM with Recursive Language Model context management",
   "framework_version": "IRP_v1.6_RLM_Convergence",
   "codex_entries": [
