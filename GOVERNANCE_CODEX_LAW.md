@@ -37,7 +37,7 @@ The process of development, collaboration, and governance is itself the primary 
 - AI advisory must be acknowledged before override
 - Silence is NOT consent; explicit affirmation required
 
-**Violation Tier:** 4 (HALT)
+**Violation Tier:** 2 (Warning)
 
 ---
 
@@ -96,7 +96,7 @@ The process of development, collaboration, and governance is itself the primary 
 ├─────────────────────────────────────────────────────────────┤
 │  TIER 1: HUMAN OVERRIDE                                    │
 │  ─────────────────────────────────────────────────────────  │
-│  Absolute (Supersedes Codex). AI must comply, may dissent. │
+│  Absolute within Codex bounds. AI must comply, may dissent.│
 ├─────────────────────────────────────────────────────────────┤
 │  TIER 2: CROSS-MODEL NEGOTIATION                           │
 │  ─────────────────────────────────────────────────────────  │
@@ -132,7 +132,8 @@ suspensive_veto:
   thresholds:
     0.20: { name: "ALERT", action: "Log concern, continue" }
     0.50: { name: "CAUTION", action: "Flag to user" }
-    0.80: { name: "VETO", action: "Suspend, require RATIONALE_KEY" }
+    0.80: { name: "WARNING", action: "Explicit notice" }
+    0.95: { name: "VETO", action: "Suspend, require RATIONALE_KEY" }
 ```
 
 ### RATIONALE_KEY Protocol
@@ -253,7 +254,7 @@ document_verification:
   signatories:
     - role: "Field Guardian"
       identity: "Joseph Byram"
-      status: "SIGNED"
+      status: "AWAITING_SIGNATURE"
 
     - role: "AI Advisory Witness"
       identity: "STARWRECK_ALPHA"
