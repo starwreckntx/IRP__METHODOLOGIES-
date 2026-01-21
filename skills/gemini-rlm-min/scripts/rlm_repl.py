@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
-"""Persistent mini-REPL for RLM-style workflows in IRP Methodologies.
+"""Persistent mini-REPL for RLM-style workflows.
 
 This script provides a *stateful* Python environment across invocations by
 saving a pickle file to disk. It is intentionally small and dependency-free.
-
-Adapted for IRP Methodologies from the Claude Code RLM implementation.
-Original: https://github.com/Brainqub3/claude_code_RLM
-Paper: arXiv:2512.24601 - Recursive Language Models (Zhang, Kraska, Khattab)
 
 Typical flow:
   1) Initialise context:
@@ -51,8 +47,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 
-# IRP-adapted default state path
-DEFAULT_STATE_PATH = Path("skills/rlm-context-manager/state/state.pkl")
+DEFAULT_STATE_PATH = Path(".gemini_rlm_state/state.pkl")
 DEFAULT_MAX_OUTPUT_CHARS = 8000
 
 
@@ -85,22 +80,6 @@ def _save_state(state: Dict[str, Any], state_path: Path) -> None:
 
 
 def _read_text_file(path: Path, max_bytes: int | None = None) -> str:
-    # SECURITY: Basic path traversal check
-    try:
-        # Resolve to absolute path
-        abs_path = path.resolve()
-        # Ensure we are operating within the current working directory or subdirectories
-        cwd = Path.cwd().resolve()
-        if not str(abs_path).startswith(str(cwd)):
-             # Allow explicit override if needed, but warn (for now, just warn/block in audit context)
-             # For this implementation, we will raise an error to satisfy the audit requirement.
-             raise RlmReplError(f"SECURITY: Access denied to path outside repository: {abs_path}")
-    except Exception as e:
-        if isinstance(e, RlmReplError):
-            raise
-        # Path resolution might fail for non-existent files, but here we expect existing files
-        pass
-
     if not path.exists():
         raise RlmReplError(f"Context file does not exist: {path}")
     data: bytes
@@ -367,13 +346,12 @@ def build_parser() -> argparse.ArgumentParser:
         prog="rlm_repl",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=textwrap.dedent(
-            """\
-            Persistent mini-REPL for RLM-style workflows (IRP Methodologies).
+            """\n            Persistent mini-REPL for RLM-style workflows.
 
             Examples:
               python rlm_repl.py init context.txt
               python rlm_repl.py status
-              python rlm_repl.py exec -c "print(len(content))"
+              python rlm_repl.py exec -c \"print(len(content))\"
               python rlm_repl.py exec <<'PY'
               print(peek(0, 2000))
               PY
