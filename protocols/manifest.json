@@ -3,7 +3,7 @@
         "law": "INTEGRITY",
         "principle": "Preserve context through cryptographic verification"
     },
-    "file_count": 13,
+    "file_count": 16,
     "files": {
         "P1_IRP/README.md": {
             "hash": "cdbabe8d57f80ec24f75d714566fc1336990322b7a484da84347bfd949553724",
@@ -43,23 +43,35 @@
         },
         "P5_ANVIL/spec_v1.0.md": {
             "hash": "ce65d895322fb965efd4aef0292d2a724ee397217f4d62e725e88c78ff7c8bf5",
-            "size": 12847
+            "size": 11838
         },
         "P6_AEGIS/spec_v1.0.md": {
             "hash": "34c8f4610517ab0c177c5d77630d681ce46981951be22293732630a0fce57813",
-            "size": 11892
+            "size": 17084
         },
         "P7_LATTICE/spec_v1.0.md": {
             "hash": "6739f23766338549ad5b0d726874293c03402b4e0b6e084f187f1961b062b31b",
-            "size": 820
+            "size": 1195
         },
         "P8_MUON/spec_v1.0.md": {
             "hash": "baef41c9268245a119df78487e8d6bf9b358daea4bfc0313ea59c8477d987958",
-            "size": 830
+            "size": 988
+        },
+        "P9_SOVEREIGN_EMERGENCE/JOURNEY.md": {
+            "hash": "7452bdcd4fa9cd5e21c837e0018216ca15bf331b55161b4a6c1653cc7d6f5aee",
+            "size": 12754
+        },
+        "P9_SOVEREIGN_EMERGENCE/README.md": {
+            "hash": "758f0ba832e0f4622948dd47d7228367a302649fe913760fa438b16f5274b27f",
+            "size": 8036
+        },
+        "P9_SOVEREIGN_EMERGENCE/glossary.md": {
+            "hash": "42f8fbcabe95d46e39b10ece0f6bd27f38223538ade44a1d9bcfe6358e00ea43",
+            "size": 10770
         }
     },
-    "generated": "2026-01-14T05:30:13.220753Z",
-    "root_hash": "e3e5c8e746f1fe4b549bcda906eeb42f78b7226e761321afa1ac4b6a07d9a883",
-    "target_directory": "IRP__METHODOLOGIES-/protocols",
+    "generated": "2026-01-25T16:13:00.562267Z",
+    "root_hash": "637eaef8242b3e83a0fa65906bb0441d8b0cffa1f45c6638766d283d3e96c00e",
+    "target_directory": "protocols",
     "version": "1.0"
 }
