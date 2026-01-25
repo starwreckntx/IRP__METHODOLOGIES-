@@ -70,8 +70,8 @@
             "size": 28511
         },
         "P9_SOVEREIGN_EMERGENCE/README.md": {
-            "hash": "758f0ba832e0f4622948dd47d7228367a302649fe913760fa438b16f5274b27f",
-            "size": 8036
+            "hash": "d751bf2edef96ddc13abbfe2d06adbac631db9567b333421844153b5d4ece21d",
+            "size": 8096
         },
         "P9_SOVEREIGN_EMERGENCE/SKILL-CLAUDE-PHI.json": {
             "hash": "f4948848d55796e673245fb82bf32a6b6b0d4f8f24a800d434e733716388d094",
@@ -82,8 +82,8 @@
             "size": 10770
         }
     },
-    "generated": "2026-01-25T16:48:52.504194Z",
-    "root_hash": "24d0d8bcf05b1ced7580a689b5bd7e9518beee7c860d41c33d613ae2d24241ec",
-    "target_directory": "protocols",
+    "generated": "2026-01-25T17:05:11.568363Z",
+    "root_hash": "e1943f276bd030b24f6ddad4d6ba0021c997f7fdb5fc129f5d898e358bbf3a81",
+    "target_directory": "/home/user/IRP__METHODOLOGIES-/protocols",
     "version": "1.0"
 }
