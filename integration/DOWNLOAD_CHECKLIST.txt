@@ -1,0 +1,77 @@
+╔════════════════════════════════════════════════════════════════════╗
+║           INTEGRATION ARTIFACTS - DOWNLOAD CHECKLIST               ║
+║                  Ready for Git Synchronization                     ║
+╚════════════════════════════════════════════════════════════════════╝
+
+WORKSPACE LOCATION: /home/claude/workspace/
+
+FILES TO DOWNLOAD (9 total, 107KB):
+────────────────────────────────────────────────────────────────────
+
+📁 FOR meta/ DIRECTORY (3 files, 52KB):
+  ☐ MASTER_INTEGRATION_MANIFEST.md (13KB)
+     Purpose: Master coordination manifest
+     Hash: 5aba49fea1fbcd1d7f55d3b499cbdaddea90c8e8ee54b3cb712962227b0ba8df
+  
+  ☐ CROSS_PROJECT_INTEGRATION_SPECIFICATION.md (15KB)
+     Purpose: Bridge documentation
+     Hash: 0ff2a4b54570f01c58b8b1c6dae3bbc5093388aa8df7113309ab3668709f7c23
+  
+  ☐ OHP-20251024-103900-SYM-UPDATE.xml (24KB)
+     Purpose: Symphony orchestration state
+     Hash: cebba7a2d22a2799ee26b02b06fb3ca79f7df13274c8b54065088b70ab04d8e6
+
+📁 FOR layer-0/ DIRECTORY (3 files, 22KB):
+  ☐ CRYPTO-MANIFEST-20251024-112500.md (18KB)
+     Purpose: Cryptographic verification infrastructure
+     Hash: c1242ea3c04fbb49bb6a0a6a01c3195057737fe799583c14fe6458f247b70dd5
+  
+  ☐ all_hashes.txt (667B)
+     Purpose: Quick reference hash list
+  
+  ☐ verify_integration.sh (3KB)
+     Purpose: Automated verification script
+     Note: Make executable after download (chmod +x)
+
+📁 FOR layer-3/ DIRECTORY (1 file, 19KB):
+  ☐ FCP-20251024-104500-INTEGRATION.md (19KB)
+     Purpose: Forward Context Packet
+     Hash: 3f895b92621393670378c38de5b45998861511e0e73026924e0af50349ecc9a0
+
+📁 FOR corpus/ DIRECTORY (1 file, 15KB):
+  ☐ methodology_synthesis.md (15KB)
+     Purpose: DSR methodological framework
+     Hash: d53cdd8538886877262003b23fce52a1e03aafa8205ebbd61c1fd3250c0bc665
+
+📖 REFERENCE DOCUMENTS (2 files):
+  ☐ GIT_SYNC_GUIDE.md
+     Purpose: Complete step-by-step sync instructions
+  
+  ☐ DOWNLOAD_CHECKLIST.txt
+     Purpose: This checklist
+
+────────────────────────────────────────────────────────────────────
+VERIFICATION AFTER DOWNLOAD:
+
+1. Place files in correct directories as shown above
+2. Navigate to repository root
+3. Run: cd layer-0 && ./verify_integration.sh
+4. Expected output: ✅ ALL ARTIFACTS VERIFIED
+
+────────────────────────────────────────────────────────────────────
+GIT SYNC SEQUENCE (After verification passes):
+
+Execute these 5 commits in order:
+  1. [META] Master coordination manifest
+  2. [PAST] [L0] Cryptographic infrastructure
+  3. [META] Integration documentation
+  4. [FUTURE] [L3] Layer 3 state preservation
+  5. [META] Symphony orchestration update
+
+See GIT_SYNC_GUIDE.md for complete command sequence.
+
+────────────────────────────────────────────────────────────────────
+STATUS: Ready for download and Git sync ✓
+CHRONICLE PROTOCOL: All artifacts verified ✓
+CODEX LAW: Compliant ✓
+────────────────────────────────────────────────────────────────────
