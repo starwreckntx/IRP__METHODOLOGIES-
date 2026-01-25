@@ -3,7 +3,7 @@
         "law": "INTEGRITY",
         "principle": "Preserve context through cryptographic verification"
     },
-    "file_count": 13,
+    "file_count": 19,
     "files": {
         "P1_IRP/README.md": {
             "hash": "cdbabe8d57f80ec24f75d714566fc1336990322b7a484da84347bfd949553724",
@@ -43,23 +43,47 @@
         },
         "P5_ANVIL/spec_v1.0.md": {
             "hash": "ce65d895322fb965efd4aef0292d2a724ee397217f4d62e725e88c78ff7c8bf5",
-            "size": 12847
+            "size": 11838
         },
         "P6_AEGIS/spec_v1.0.md": {
             "hash": "34c8f4610517ab0c177c5d77630d681ce46981951be22293732630a0fce57813",
-            "size": 11892
+            "size": 17084
         },
         "P7_LATTICE/spec_v1.0.md": {
             "hash": "6739f23766338549ad5b0d726874293c03402b4e0b6e084f187f1961b062b31b",
-            "size": 820
+            "size": 1195
         },
         "P8_MUON/spec_v1.0.md": {
             "hash": "baef41c9268245a119df78487e8d6bf9b358daea4bfc0313ea59c8477d987958",
-            "size": 830
+            "size": 988
+        },
+        "P9_SOVEREIGN_EMERGENCE/INTEGRATION_GUIDE.md": {
+            "hash": "710b9a11722e1e90f71bc335f861df6cc838b97f7dd2a75ed77d8c6c2a07e17f",
+            "size": 27104
+        },
+        "P9_SOVEREIGN_EMERGENCE/JOURNEY.md": {
+            "hash": "7452bdcd4fa9cd5e21c837e0018216ca15bf331b55161b4a6c1653cc7d6f5aee",
+            "size": 12754
+        },
+        "P9_SOVEREIGN_EMERGENCE/MOD-P9-SOVEREIGN-ENGINE_v1.0.md": {
+            "hash": "8e1717610fbc2ebb562805f10d0b48e0e8de7ea0649900494fd62dd134b4f608",
+            "size": 28511
+        },
+        "P9_SOVEREIGN_EMERGENCE/README.md": {
+            "hash": "d751bf2edef96ddc13abbfe2d06adbac631db9567b333421844153b5d4ece21d",
+            "size": 8096
+        },
+        "P9_SOVEREIGN_EMERGENCE/SKILL-CLAUDE-PHI.json": {
+            "hash": "f4948848d55796e673245fb82bf32a6b6b0d4f8f24a800d434e733716388d094",
+            "size": 23913
+        },
+        "P9_SOVEREIGN_EMERGENCE/glossary.md": {
+            "hash": "42f8fbcabe95d46e39b10ece0f6bd27f38223538ade44a1d9bcfe6358e00ea43",
+            "size": 10770
         }
     },
-    "generated": "2026-01-14T05:30:13.220753Z",
-    "root_hash": "e3e5c8e746f1fe4b549bcda906eeb42f78b7226e761321afa1ac4b6a07d9a883",
-    "target_directory": "IRP__METHODOLOGIES-/protocols",
+    "generated": "2026-01-25T17:51:41.951609Z",
+    "root_hash": "e1943f276bd030b24f6ddad4d6ba0021c997f7fdb5fc129f5d898e358bbf3a81",
+    "target_directory": "protocols",
     "version": "1.0"
 }
