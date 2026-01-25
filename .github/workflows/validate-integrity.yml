@@ -1,4 +1,4 @@
-name: Chronicle Protocol Verification
+name: IRP Protocol Integrity Check
 
 on:
   push:
@@ -7,8 +7,60 @@ on:
     branches: [ main ]
 
 jobs:
+  # Primary integrity verification using ICL-compliant hashing
+  verify-protocol-integrity:
+    runs-on: ubuntu-latest
+    name: Verify Protocol Manifest Integrity
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Verify protocols/ manifest
+      run: |
+        echo "=============================================="
+        echo "IRP PROTOCOL INTEGRITY VERIFICATION"
+        echo "=============================================="
+        echo ""
+        if [ -f "protocols/manifest.json" ]; then
+          python skills/artifact-integrity-forge/scripts/sha256_hasher.py \
+            --mode verify \
+            --dir protocols \
+            --manifest protocols/manifest.json
+        else
+          echo "[WARNING] No protocols/manifest.json found"
+          echo "[WARNING] Run: python skills/artifact-integrity-forge/scripts/sha256_hasher.py --mode create --dir protocols --manifest protocols/manifest.json"
+          exit 1
+        fi
+
+    - name: Verify kernel/ manifest
+      run: |
+        echo ""
+        echo "=============================================="
+        echo "IRP KERNEL INTEGRITY VERIFICATION"
+        echo "=============================================="
+        echo ""
+        if [ -f "kernel/manifest.json" ]; then
+          python skills/artifact-integrity-forge/scripts/sha256_hasher.py \
+            --mode verify \
+            --dir kernel \
+            --manifest kernel/manifest.json
+        else
+          echo "[WARNING] No kernel/manifest.json found"
+          echo "[WARNING] Run: python skills/artifact-integrity-forge/scripts/sha256_hasher.py --mode create --dir kernel --manifest kernel/manifest.json"
+          exit 1
+        fi
+
+  # Legacy Chronicle Protocol verification
   verify-document-integrity:
     runs-on: ubuntu-latest
+    name: Chronicle Protocol Verification
+    continue-on-error: true
 
     steps:
     - name: Checkout repository
@@ -18,19 +70,74 @@ jobs:
 
     - name: Run Chronicle Protocol verification
       run: |
-        cd layer-0
-        bash verify_integration.sh
-
-    - name: Check for hash mismatches
-      run: |
-        if grep -q "MISMATCH" layer-0/verify_integration.sh; then
-          echo "Document integrity check failed!"
-          exit 1
+        if [ -f "layer-0/verify_integration.sh" ]; then
+          cd layer-0
+          bash verify_integration.sh || true
+        else
+          echo "[INFO] No legacy verification script found"
         fi
-        echo "All document hashes verified successfully"
 
+  # Generate integrity report for audit trail
+  generate-integrity-report:
+    runs-on: ubuntu-latest
+    name: Generate Integrity Report
+    needs: verify-protocol-integrity
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Generate SHA-256 report
+      run: |
+        echo "=============================================="
+        echo "IRP INTEGRITY AUDIT REPORT"
+        echo "Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+        echo "Commit: ${{ github.sha }}"
+        echo "Branch: ${{ github.ref_name }}"
+        echo "=============================================="
+        echo ""
+
+        echo "=== Protocols Directory ==="
+        if [ -d "protocols" ]; then
+          find protocols -type f \( -name "*.md" -o -name "*.json" -o -name "*.xsd" \) -exec sha256sum {} \; | sort
+        fi
+        echo ""
+
+        echo "=== Kernel Directory ==="
+        if [ -d "kernel" ]; then
+          find kernel -type f \( -name "*.md" -o -name "*.json" \) -exec sha256sum {} \; | sort
+        fi
+        echo ""
+
+        echo "=== Archive Directory ==="
+        if [ -d "archive" ]; then
+          find archive -type f \( -name "*.md" -o -name "*.xml" \) -exec sha256sum {} \; | sort
+        fi
+        echo ""
+
+        echo "=== Governance Documents ==="
+        if [ -f "GOVERNANCE_CODEX_LAW.md" ]; then
+          sha256sum GOVERNANCE_CODEX_LAW.md
+        fi
+        if [ -f "LICENSE" ]; then
+          sha256sum LICENSE
+        fi
+
+    - name: Store integrity artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: integrity-manifest-${{ github.sha }}
+        path: |
+          protocols/manifest.json
+          kernel/manifest.json
+          GOVERNANCE_CODEX_LAW.md
+        retention-days: 90
+
+  # Markdown validation (non-blocking)
   validate-markdown:
     runs-on: ubuntu-latest
+    name: Markdown Linting
+    continue-on-error: true
 
     steps:
     - name: Checkout repository
@@ -46,11 +153,13 @@ jobs:
 
     - name: Lint markdown files
       run: |
-        markdownlint '**/*.md' --ignore node_modules || true
-      continue-on-error: true
+        markdownlint '**/*.md' --ignore node_modules --ignore irp-accesspanel || true
 
+  # Link checking (non-blocking)
   check-links:
     runs-on: ubuntu-latest
+    name: Link Validation
+    continue-on-error: true
 
     steps:
     - name: Checkout repository

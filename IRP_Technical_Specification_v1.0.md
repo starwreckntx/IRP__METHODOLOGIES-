@@ -4,7 +4,7 @@
 **Design Date:** October 11, 2025  
 **Design Method:** Six-AI Collaborative Synthesis  
 **Contributing Systems:** Qwen3-Max, Z.ai Chat, Kimi AI, DeepSeek, Google Gemini, Grok  
-**Orchestrator:** Claude Sonnet 4.5  
+**Orchestrator:** Claude Opus 4.5  
 **Research Partner:** Joseph Byram
 
 ---
@@ -1006,13 +1006,18 @@ The Individual-Reflexive Protocol represents a novel approach to AI self-governa
 
 ---
 
-**Document Hash (SHA-256):**  
-`[To be computed upon finalization]`
+**Document Hash (SHA-256):**
+See CRYPTOGRAPHIC_MANIFEST.md (external verification prevents self-referential paradox)
 
-**Cryptographic Signature:**  
-`[To be signed by authorized parties]`
+**Cryptographic Signature:**
+```
+Signed by: Joseph Byram (Primary Author)
+Date: October 11, 2025
+Git Commit: ce24d3a5e8254d7206deca26c5065a6de3e22bf6
+Verification: See CRYPTOGRAPHIC_MANIFEST.md
+```
 
-**License:** CC-BY-SA 4.0 (Open Collaboration, Attribution Required)
+**License:** CC BY-NC-ND 4.0 (Attribution-NonCommercial-NoDerivatives)
 
 **Citation:**  
 Byram, J., Claude Sonnet 4.5 (Orchestrator), Qwen3-Max, Z.ai Chat, Kimi AI, DeepSeek, Google Gemini, Grok. (2025). *Individual-Reflexive Protocol (IRP) v1.0: Technical Specification*. Six-AI Collaborative Design Project.

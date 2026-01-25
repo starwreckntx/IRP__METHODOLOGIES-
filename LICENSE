@@ -1,0 +1,111 @@
+# DUAL LICENSE NOTICE
+
+This repository contains two types of content, each governed by different licenses:
+
+## 1. CODE LICENSE: Apache License 2.0
+
+All code, scripts, implementations, and technical artifacts in this repository are licensed under the Apache License, Version 2.0.
+
+### Apache License 2.0 (Summary)
+
+- You may use, copy, modify, and distribute the code
+- You may use the code for commercial purposes
+- You must include the original copyright and license notice
+- You must state significant changes made to the code
+- The software is provided "as is" without warranty
+
+Full Apache 2.0 license text: https://www.apache.org/licenses/LICENSE-2.0
+
+---
+
+## 2. RESEARCH ORE LICENSE: CC BY-NC-ND 4.0
+
+All research content, specifications, protocols, academic papers, and creative artifacts (collectively "Research Ore") are licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International.
+
+### CC BY-NC-ND 4.0 (Summary)
+
+- **Attribution (BY)**: You must give appropriate credit
+- **NonCommercial (NC)**: You may not use for commercial purposes
+- **NoDerivatives (ND)**: You may not distribute modified material
+
+Full CC BY-NC-ND 4.0 license text: https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+---
+
+## 3. SPIRIT CLAUSE (Binding)
+
+**In addition to the above licenses, the following Spirit Clause applies to ALL content in this repository:**
+
+> Monetization or derivative projects require explicit relational consent from the Field Guardians.
+
+**Field Guardian:** Joseph Byram (starwreckntx)
+
+This clause embodies the CONSENT principle of Codex Law and ensures that:
+- Commercial use requires explicit permission
+- Derivative works require explicit permission
+- The relational context of this work is preserved
+
+To request consent for commercial use or derivative works, contact the Field Guardian through the repository's issue tracker or designated communication channels.
+
+---
+
+## 4. CONTENT CLASSIFICATION
+
+### Code (Apache 2.0)
+- `*.py`, `*.js`, `*.ts`, `*.sh`, `*.yml`, `*.yaml` files
+- `/irp_swarm_console/` directory
+- `/irp-accesspanel/js/` directory
+- `/.github/workflows/` directory
+- Implementation scaffolding in `/protocols/*/implementation/`
+
+### Research Ore (CC BY-NC-ND 4.0 + Spirit Clause)
+- `*.md` files (except README files explaining code)
+- `*.xml` files (protocol packets, schemas)
+- `*.json` files (specifications, configurations)
+- `/protocols/` directory (specifications)
+- `/kernel/` directory (governance documents)
+- `/archive/` directory (chronicles, handoff packets)
+- `/docs/` directory (documentation, papers)
+- `/skills/` directory (skill specifications)
+- `GOVERNANCE_CODEX_LAW.md`
+
+---
+
+## 5. ATTRIBUTION REQUIREMENTS
+
+When using content from this repository, please include:
+
+```
+IRP Framework (Individual-Reflexive Protocol)
+Copyright (c) 2025-2026 Joseph Byram and Contributors
+Repository: https://github.com/starwreckntx/IRP__METHODOLOGIES-
+
+Code: Licensed under Apache License 2.0
+Research: Licensed under CC BY-NC-ND 4.0 with Spirit Clause
+```
+
+---
+
+## 6. CONTRIBUTING
+
+By contributing to this repository, you agree that:
+- Code contributions are licensed under Apache 2.0
+- Research contributions are licensed under CC BY-NC-ND 4.0 + Spirit Clause
+- You have the right to make such contributions
+- You understand and accept the Spirit Clause
+
+---
+
+## 7. MANDATE COMPLIANCE
+
+This license structure complies with Core Mandate P-001-R1 ("The Journey IS the Artifact") by:
+- Enabling open research collaboration
+- Protecting the integrity of the protocol corpus
+- Preserving relational consent requirements
+- Balancing openness with responsible stewardship
+
+---
+
+**Document Version:** 1.0
+**Effective Date:** 2026-01-12
+**Last Updated:** 2026-01-12

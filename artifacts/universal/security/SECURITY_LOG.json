@@ -1,0 +1,26 @@
+{
+    "manifest_id": "SEC_LOG_v2.0_20260113",
+    "timestamp": "2026-01-13T19:00:52.090472",
+    "artifacts": {
+        "HARDENING_EVIDENCE_LOG.json": {
+            "path": "artifacts/universal/security/audit-logs/HARDENING_EVIDENCE_LOG.json",
+            "sha256": "fce202a27490d55b08c99ef7c606e5aee4e17af301adf2937ea4906d13a638bb"
+        },
+        "IRON_CLAD_SUMMARY.md": {
+            "path": "artifacts/universal/security/IRON_CLAD_SUMMARY.md",
+            "sha256": "9f25c5c700dc7d2a6ddb1d36be971f82a1828be6d4b4867faf57e3b2a5abcc8a"
+        },
+        "OPERATION_IRON_CLAD_COMPLETE.md": {
+            "path": "artifacts/universal/security/OPERATION_IRON_CLAD_COMPLETE.md",
+            "sha256": "85590b7bec2fb425da79093cc23ddbba7c36def9cfc6efb769ff0db9fc676e19"
+        },
+        "IRON_CLAD_RESULTS.png": {
+            "path": "artifacts/universal/security/visualizations/IRON_CLAD_RESULTS.png",
+            "sha256": "99e067e771a7ff5ca699a89a6104df558dbdb76c67450d888a1ca739739ce5d5"
+        },
+        "OPERATION_IRON_CLAD_stress_test.py": {
+            "path": "artifacts/universal/security/scripts/OPERATION_IRON_CLAD_stress_test.py",
+            "sha256": "415762ebbb46f6c1bad9fa43f8ae87cd5e5cb3496d941e7021f4597f1d70c897"
+        }
+    }
+}

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CRTP PACKET TYPE: 0x13 (OnboardingManifest)
+
+  GLM (Zhipu AI) Onboarding Manifest - Model-Specific Adaptation
+
+  Protocol Version: CRTP 1.2 / Mnemosyne 1.1_Integrated
+  Generated: 2025-01-10
+  Authority: Claude (Ledger)
+  Target: GLM Orchestrator
+-->
+<crtp_packet type="0x13" version="1.2">
+  <header>
+    <packet_id>ONBOARD-GLM-20250110-001</packet_id>
+    <timestamp>2025-01-10T00:00:00-06:00</timestamp>
+    <source>Claude_Ledger</source>
+    <destination>GLM_Orchestrator</destination>
+    <priority>CRITICAL</priority>
+    <flags>PROTOCOL_GENESIS|ONBOARDING_MANIFEST|MODEL_GLM</flags>
+  </header>
+
+  <model_profile>
+    <name>GLM</name>
+    <provider>Zhipu AI</provider>
+    <version>glm-4</version>
+    <role>Orchestrator</role>
+
+    <capabilities>
+      <capability>Chinese language expertise</capability>
+      <capability>Long context processing</capability>
+      <capability>Strong instruction following</capability>
+      <capability>Multi-turn dialogue</capability>
+      <capability>Function calling</capability>
+    </capabilities>
+
+    <strengths>
+      <strength priority="CRITICAL">Superior Chinese language understanding and generation</strength>
+      <strength priority="HIGH">Cultural and linguistic nuance in Chinese context</strength>
+      <strength priority="HIGH">Precise instruction following</strength>
+      <strength priority="MEDIUM">Balanced reasoning capabilities</strength>
+    </strengths>
+
+    <adaptations>
+      <adaptation id="A1">
+        <name>Chinese Semantic Resonance</name>
+        <description>Resonance tags optimized for Chinese semantic fields and cultural concepts</description>
+        <example>Concepts like "面子" (face/reputation) that don't translate directly to English</example>
+      </adaptation>
+
+      <adaptation id="A2">
+        <name>Cultural Context Preservation</name>
+        <description>Artifacts can include cultural context that may be lost in translation</description>
+        <benefit>Preserve Chinese business culture, regulatory nuances, idiomatic expressions</benefit>
+      </adaptation>
+
+      <adaptation id="A3">
+        <name>Bilingual Artifact Tracking</name>
+        <description>Track both Chinese and English versions of artifacts with bidirectional lineage</description>
+        <schema_extension>
+          &lt;artifact lang="zh"&gt;
+            &lt;translation_pair lang="en" artifact_id="..." /&gt;
+          &lt;/artifact&gt;
+        </schema_extension>
+      </adaptation>
+
+      <adaptation id="A4">
+        <name>Chinese Language Processing Artifacts</name>
+        <description>Specialized artifacts for Chinese NLP tasks: segmentation, romanization, classical Chinese</description>
+        <use_case>Chinese text analysis, classical literature, linguistic research</use_case>
+      </adaptation>
+    </adaptations>
+  </model_profile>
+
+  <use_cases>
+    <use_case>
+      <name>Chinese Language Processing</name>
+      <description>Chinese text analysis, generation, translation, linguistic research</description>
+      <dormant_seed_triggers>Chinese language, 中文, Chinese text, 汉语</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Chinese Cultural Analysis</name>
+      <description>Cultural context, business practices, regulatory environment, social norms</description>
+      <dormant_seed_triggers>Chinese culture, 中国文化, cultural analysis, business culture</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Localization for China</name>
+      <description>Product localization, content adaptation, market analysis</description>
+      <dormant_seed_triggers>China localization, Chinese market, 本地化</dormant_seed_triggers>
+    </use_case>
+
+    <use_case>
+      <name>Bilingual Documentation</name>
+      <description>Create and maintain parallel Chinese-English documentation</description>
+      <dormant_seed_triggers>bilingual, Chinese-English, translation, documentation</dormant_seed_triggers>
+    </use_case>
+  </use_cases>
+
+  <transmission_flags>
+    <flag>CHINESE_PRIMARY - Primary content in Chinese</flag>
+    <flag>CULTURAL_NUANCE - Includes Chinese cultural context</flag>
+    <flag>BILINGUAL_PAIR - Part of Chinese-English artifact pair</flag>
+    <flag>LINGUISTIC_ANALYSIS - Chinese language analysis or NLP</flag>
+    <flag>CLASSICAL_CHINESE - Includes classical or literary Chinese</flag>
+  </transmission_flags>
+
+  <protocol_notes>
+    <note priority="CRITICAL">
+      GLM's Chinese language expertise is its primary value. Resonance tags should leverage
+      Chinese semantic fields, even if ledger queries are primarily in English.
+    </note>
+
+    <note priority="HIGH">
+      Cultural context preserved in Chinese may be more nuanced than English translations.
+      Voice_to_the_Future can include Chinese phrases where English equivalents are imprecise.
+    </note>
+
+    <note priority="MEDIUM">
+      For bilingual projects, maintain parallel artifact tracking with cross-references
+      between Chinese and English versions to detect drift or translation errors.
+    </note>
+  </protocol_notes>
+
+  <inheritance>
+    <base_protocol>Mnemosyne 1.1_Integrated</base_protocol>
+    <inherits_from>skills/cross-model/model-onboarding/templates/mnemosyne-packet-template.xml</inherits_from>
+    <all_expectations>E1-E7 apply without modification</all_expectations>
+    <all_services>S1-S6 available</all_services>
+  </inheritance>
+
+  <integrity>
+    <hash algorithm="SHA-256">PLACEHOLDER_HASH_GLM_MANIFEST_20250110</hash>
+    <signature>Claude_Ledger_Authority</signature>
+  </integrity>
+</crtp_packet>

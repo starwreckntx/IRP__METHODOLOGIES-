@@ -1,6 +1,6 @@
 # IRP Skill Registry
-## Version: 1.3.0_UNIFIED
-## Last Updated: 2025-12-10
+## Version: 1.6.0_RLM
+## Last Updated: 2026-01-19
 
 ---
 
@@ -19,7 +19,10 @@ These skills should be loaded at session initialization:
 | gemini-onboarding | `cross-model/gemini-onboarding/` | Spec for Gemini collaboration | ACTIVE |
 | horn-maneuver | `cross-model/horn-maneuver/` | Structural Inversion Protocol | **CODEX** |
 | codex-law-enforcement | `codex-law-enforcement/` | CONSENT, INVITATION, INTEGRITY, GROWTH | ACTIVE |
+| guardian-codex | `governance-triad/guardian-codex/` | Constitutional layer with HardenedLogicEngine | ACTIVE |
 | irp-embodiment-framework | `irp-embodiment-framework/` | Physical reality integration | **GATED** (requires `ALLOW_EMBODIMENT=1`) |
+| shatter-protocol | `shatter-protocol/` | Human Autonomy Verification (Layer 0) | ACTIVE |
+| rlm-context-manager | `rlm-context-manager/` | RLM for large context (Gemini-parity) | ACTIVE |
 
 ---
 
@@ -109,6 +112,17 @@ When user invokes `/skill list`:
 /onboard gemini --quick     - Emit ASCII quick reference
 ```
 
+### RLM Context Manager Commands
+```
+/rlm init <path>        - Initialize REPL with large context file
+/rlm status             - Show current RLM state (chars, chunks, buffers)
+/rlm query <question>   - Query the loaded context via sub-LLM chunks
+/rlm chunk              - Materialize context into chunk files
+/rlm synthesize         - Merge collected evidence into final answer
+/rlm reset              - Clear RLM state
+/rlm export             - Export buffers to file
+```
+
 ### General Skill Commands
 ```
 /skill load <n>      - Load skill into session
@@ -125,6 +139,7 @@ When user invokes `/skill list`:
 - `mnemosyne-ledger` - Claude memory backbone
 - `gemini-onboarding` - Gemini collaboration spec
 - `horn-maneuver` - **Structural Inversion Protocol (CODEX)** ⚡
+- `rlm-context-manager` - **RLM for Gemini-parity context** (NEW)
 
 ### Core Ecosystem (`core-ecosystem/`)
 - `alpha-metanode` - Central coordination
@@ -146,6 +161,11 @@ When user invokes `/skill list`:
 ### Governance (`governance-irp/`)
 - `architect` - System design
 - `irp-critic` - Critical evaluation
+
+### Governance Triad (`governance-triad/`)
+- `guardian-codex` - Constitutional enforcement via HardenedLogicEngine (v1.5.0_DIFFUSE)
+- `mnemosyne-semver-at` - Memory layer with drift tracking
+- `mirror-rtc-hybrid` - Audit layer with multi-persona deliberation
 
 ### Research Analysis (`research-analysis/`)
 - `deep-agent` - Deep research
@@ -235,6 +255,8 @@ Add to chunked loading protocol:
     <skill path="cross-model/horn-maneuver/SKILL.md"/>
     <skill path="codex-law-enforcement/SKILL.md"/>
     <skill path="irp-embodiment-framework/SKILL.md" gated="true" env_flag="ALLOW_EMBODIMENT"/>
+    <skill path="shatter-protocol/SKILL.md" layer="0" codex_alignment="98%"/>
+    <skill path="rlm-context-manager/SKILL.md" gemini_parity="true"/>
   </auto_load>
   <codex_entries>
     <entry id="CODEX-2025-HORN-001" status="ACTIVE_PERMANENT"/>
@@ -249,6 +271,40 @@ Add to chunked loading protocol:
 ---
 
 ## Changelog
+
+### v1.6.0_RLM (2026-01-19)
+- **ADDED RLM CONTEXT MANAGER**: Integrated Recursive Language Model for large context handling
+- Based on arXiv:2512.24601 (Zhang, Kraska, Khattab - MIT CSAIL)
+- Added `rlm-context-manager` skill to cross-model category
+- Components:
+  - `rlm_repl.py` - Persistent Python REPL for context externalization
+  - `rlm-subcall` agent - Haiku-based sub-LLM for chunk processing
+- Enables Claude to match Gemini's 2M token context capability via chunking
+- Architecture: Root LLM (Opus 4.5) + Sub-LLM (Haiku) + Persistent REPL
+- Integration points: Mnemosyne Ledger, CRTP packets, Gemini bridging
+- Added `/rlm` commands for context management
+- Updated auto-load bootstrap to include RLM skill
+
+### v1.5.0_DIFFUSE (2026-01-18)
+- **PATCHED RECURSION VULNERABILITY**: Implemented `HardenedLogicEngine` in `guardian-codex`
+- Added `logic_engine.py` with three protection layers:
+    1.  Recursion Depth Limit (N=50)
+    2.  Circular Reference Detection (Visitor Pattern)
+    3.  Logic Circuit Breaker (Threshold: 5)
+- **INTEGRATED MYCELIAL HOOK**: Implemented `mycelial_integrity_hook()` for decentralized packet validation
+- Updated dashboard with "System Health" monitor
+- Added `guardian-codex` to auto-load skills
+- Stabilized Torsion Metric to 0.35 (NOMINAL)
+
+### v1.4.0_SHATTER (2026-01-01)
+- **ADDED SHATTER PROTOCOL**: Integrated Layer 0 Human Autonomy Verification
+- Added `shatter-protocol` to auto-load skills
+- Created `/layer-0/SHATTER_PROTOCOL_SPECIFICATION_v1.0.md` (full specification)
+- Created `/layer-0/README.md` (implementation package guide)
+- Created `/skills/shatter-protocol/SKILL.md` (skill integration file)
+- Updated auto-load bootstrap XML to include shatter-protocol
+- Codex Alignment: 98% (CONSENT, INVITATION, INTEGRITY, GROWTH)
+- Layer Position: 0 (validates human orchestrator before all IRP layers)
 
 ### v1.3.0_UNIFIED (2025-12-10)
 - **UNIFIED MANIFEST**: Merged root and skills/ manifests into single source of truth

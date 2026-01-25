@@ -1,0 +1,49 @@
+{
+    "codex_compliance": {
+        "law": "INTEGRITY",
+        "principle": "Preserve context through cryptographic verification"
+    },
+    "file_count": 9,
+    "files": {
+        "ARCHIVE_INDEX.md": {
+            "hash": "eaf55020b9866887cb8cd8b6a7b869d04a279c8af6da092a6e6b0b332de6dc8c",
+            "size": 3478
+        },
+        "chronicles/LE-20251207-RPV-KERNEL.xml": {
+            "hash": "eccf3894454dac51f663e8b1c0bab2383c9a28f0bcf845cbfc3291994ff9df02",
+            "size": 4303
+        },
+        "chronicles/LE-20251207-SESSION-RPV-HORN.xml": {
+            "hash": "422bb649e84ead8f73955782b3f48a81c9091bcdda571aa29f2107500e2382e1",
+            "size": 5466
+        },
+        "chronicles/OHP-20251024-103900-SYM-UPDATE.xml": {
+            "hash": "cebba7a2d22a2799ee26b02b06fb3ca79f7df13274c8b54065088b70ab04d8e6",
+            "size": 23605
+        },
+        "chronicles/README.md": {
+            "hash": "f7274d50a47cb2ebad555d5c657a4de51c515846bba8ef4df4547e1841a471ba",
+            "size": 2326
+        },
+        "chronicles/creative_chronicle_20241129_tcdp_seed.xml": {
+            "hash": "9bb49d5a653736c7835d0a4bcb38f839f584d948ea361ae1ff8f0f2ae04d031e",
+            "size": 15999
+        },
+        "handoff_packets/CRTP-0x16-FORWARD-CONTEXT.xml": {
+            "hash": "caa7a0cda57a45fb0e5a840108dddd660f164bdb56fcbd1005fec5465acb8d5b",
+            "size": 7346
+        },
+        "handoff_packets/README.md": {
+            "hash": "4780a2a09fe1cec50776907f6fab372ff7ae7e1c2a8f7abd02e5d75b74cfdf5f",
+            "size": 2569
+        },
+        "handoff_packets/forward_transmission_packet_20241129_tcdp_genesis.xml": {
+            "hash": "cffeeefa5aaaff98d14c2af6e159c9ed937f82dc0a1e1c84626851fff451ea14",
+            "size": 8619
+        }
+    },
+    "generated": "2026-01-12T17:41:35.249915Z",
+    "root_hash": "6f828f5952e9818266b406bdc73d9b74e97d722292f735782977e359d4bf0930",
+    "target_directory": "archive",
+    "version": "1.0"
+}

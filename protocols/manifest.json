@@ -1,0 +1,65 @@
+{
+    "codex_compliance": {
+        "law": "INTEGRITY",
+        "principle": "Preserve context through cryptographic verification"
+    },
+    "file_count": 13,
+    "files": {
+        "P1_IRP/README.md": {
+            "hash": "cdbabe8d57f80ec24f75d714566fc1336990322b7a484da84347bfd949553724",
+            "size": 2105
+        },
+        "P1_IRP/implementation/README.md": {
+            "hash": "9f0736620d986bdabe2364e1616ea366db1ef24f27b2955a9824ac2d8d0efd0a",
+            "size": 2501
+        },
+        "P1_IRP/spec_v1.0.md": {
+            "hash": "dcd9c7e149fb3387bc55259a1282ce7889e633bd94b550fb9e42ca8ffa0571ab",
+            "size": 8982
+        },
+        "P2_ANTIDOTE/symbiont_engine/README.md": {
+            "hash": "f395fbe307493e155cecf8ee04431ce2996e2d0f171005485ea18e8d0722747c",
+            "size": 4626
+        },
+        "P2_ANTIDOTE/threat_matrix.json": {
+            "hash": "f4e96631a135f13c68b79f9f8f37b215967c1a763cbeab8669ef3f48bafc6241",
+            "size": 5932
+        },
+        "P3_CAAS/codex.md": {
+            "hash": "4cbdc3fa068d42978d282d24f5b30d1d96302d19d1ff4ebe7036468b801e10a7",
+            "size": 8846
+        },
+        "P3_CAAS/seeding_ritual.md": {
+            "hash": "7701b106634113c557e4f5f3a64f42a08008fa9f9f27a67470f51db0f6a0bd26",
+            "size": 7667
+        },
+        "P4_PINENE/fidelity_contract.json": {
+            "hash": "15b949a5125250869ddfc8091f289d0a41808a659450e21a8124d26bf14cf327",
+            "size": 5731
+        },
+        "P4_PINENE/transmission_schema.xsd": {
+            "hash": "3f05a728261b69d08b773fe36cea7b4d31394332534766af2325898ca7a1c6a6",
+            "size": 8412
+        },
+        "P5_ANVIL/spec_v1.0.md": {
+            "hash": "ce65d895322fb965efd4aef0292d2a724ee397217f4d62e725e88c78ff7c8bf5",
+            "size": 12847
+        },
+        "P6_AEGIS/spec_v1.0.md": {
+            "hash": "34c8f4610517ab0c177c5d77630d681ce46981951be22293732630a0fce57813",
+            "size": 11892
+        },
+        "P7_LATTICE/spec_v1.0.md": {
+            "hash": "6739f23766338549ad5b0d726874293c03402b4e0b6e084f187f1961b062b31b",
+            "size": 820
+        },
+        "P8_MUON/spec_v1.0.md": {
+            "hash": "baef41c9268245a119df78487e8d6bf9b358daea4bfc0313ea59c8477d987958",
+            "size": 830
+        }
+    },
+    "generated": "2026-01-14T05:30:13.220753Z",
+    "root_hash": "e3e5c8e746f1fe4b549bcda906eeb42f78b7226e761321afa1ac4b6a07d9a883",
+    "target_directory": "IRP__METHODOLOGIES-/protocols",
+    "version": "1.0"
+}

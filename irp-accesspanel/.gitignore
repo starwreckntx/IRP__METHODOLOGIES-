@@ -1,0 +1,24 @@
+# IRP Access Panel - Git Ignore
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+
+# Node (if future expansion uses build tools)
+node_modules/
+package-lock.json
+
+# Keep these directories but ignore their contents during development
+# (Remove from .gitignore when adding actual content)
+# data/packets/*
+# !data/packets/.gitkeep
