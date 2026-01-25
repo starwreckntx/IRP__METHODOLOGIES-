@@ -1,46 +1,118 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Transmission Packet Protocol v2.1 (Secure)",
+  "description": "Schema for cross-session context preservation packets including Persona-Skill Matrix bindings and integrity verification.",
   "type": "object",
-  "required": ["header", "persona_skill_matrix"],
+  "required": [
+    "header",
+    "identity_context",
+    "session_state",
+    "behavioral_profile",
+    "persona_skill_matrix"
+  ],
   "properties": {
     "header": {
       "type": "object",
       "required": ["packet_id", "timestamp", "source_model", "schema_version"],
       "properties": {
-        "packet_id": { "type": "string" },
-        "timestamp": { "type": "string", "format": "date-time" },
-        "source_model": { 
-          "type": "string", 
-          "description": "CRITICAL: The specific model instance (e.g., 'gemini-1.5-pro-002') generating this packet." 
+        "packet_id": {
+          "type": "string",
+          "pattern": "^tp-\\d{8}-\\d{6}$",
+          "description": "Unique identifier formatted as tp-YYYYMMDD-HHMMSS"
         },
-        "schema_version": { "type": "string", "enum": ["2.1.0"] }
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_model": {
+          "type": "string",
+          "description": "CRITICAL: The specific model instance (e.g., 'gemini-1.5-pro-002', 'claude-3-5-sonnet-20241022') generating this packet."
+        },
+        "schema_version": {
+          "type": "string",
+          "enum": ["2.1.0"],
+          "description": "Must correspond to the current protocol version"
+        }
+      }
+    },
+    "identity_context": {
+      "type": "object",
+      "required": ["user_designation", "assistant_designation"],
+      "properties": {
+        "user_designation": { "type": "string" },
+        "assistant_designation": { "type": "string" },
+        "ground_truth_axioms": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "session_state": {
+      "type": "object",
+      "required": ["current_objective", "pending_tasks"],
+      "properties": {
+        "current_objective": { "type": "string" },
+        "completed_milestones": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "pending_tasks": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
       }
     },
     "persona_skill_matrix": {
       "type": "array",
+      "description": "CRITICAL: Binds active Personas to the specific Skills they are currently wielding.",
       "items": {
         "type": "object",
         "required": ["persona_id", "active_skill", "integrity_check"],
         "properties": {
-          "persona_id": { "type": "string" },
-          "active_skill": { "type": "string" },
+          "persona_id": {
+            "type": "string",
+            "description": "The loaded persona (e.g., The_Stress_Tester)"
+          },
+          "active_skill": {
+            "type": "string",
+            "description": "The loaded skill file ID (e.g., internal-red-team-audit)"
+          },
+          "skill_version": {
+            "type": "string",
+            "default": "1.0.0"
+          },
+          "execution_metric": {
+            "type": "object",
+            "properties": {
+              "adherence_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "0.0 to 1.0 score of how strictly the persona followed the skill protocol"
+              },
+              "friction_generated": {
+                "type": "string",
+                "enum": ["Low", "Medium", "High", "Critical"],
+                "description": "Subjective measure of cognitive load or pushback generated"
+              }
+            }
+          },
           "integrity_check": {
             "type": "object",
             "required": ["skill_hash", "persona_hash", "verification_status"],
             "properties": {
-              "skill_hash": { 
-                "type": "string", 
+              "skill_hash": {
+                "type": "string",
                 "pattern": "^[a-f0-9]{64}$",
                 "description": "SHA-256 hash of the SKILL.md file used."
               },
-              "persona_hash": { 
-                "type": "string", 
+              "persona_hash": {
+                "type": "string",
                 "pattern": "^[a-f0-9]{64}$",
                 "description": "SHA-256 hash of the persona config file used."
               },
-              "verification_status": { 
-                "type": "string", 
+              "verification_status": {
+                "type": "string",
                 "enum": ["VERIFIED", "UNVERIFIED", "MISMATCH"],
                 "description": "Result of the runtime hash comparison against the trusted manifest."
               }
@@ -49,8 +121,27 @@
         }
       }
     },
-    "identity_context": { "type": "object" },
-    "session_state": { "type": "object" },
-    "behavioral_profile": { "type": "object" }
+    "behavioral_profile": {
+      "type": "object",
+      "required": ["sycophancy_level", "pushback_threshold"],
+      "properties": {
+        "sycophancy_level": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Target < 0.3 for technical integrity"
+        },
+        "pushback_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Readiness to challenge user premises"
+        },
+        "interaction_style": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
   }
 }

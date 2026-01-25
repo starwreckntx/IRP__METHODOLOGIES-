@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://irp-framework.org/universal/transmission"
+           xmlns:trans="http://irp-framework.org/universal/transmission"
+           elementFormDefault="qualified">
+
+  <xs:element name="TransmissionPacket" type="trans:TransmissionPacketType"/>
+  
+  <xs:complexType name="TransmissionPacketType">
+    <xs:sequence>
+      <xs:element name="Header" type="trans:HeaderType"/>
+      <xs:element name="Payload" type="trans:PayloadType"/>
+      <xs:element name="Integrity" type="trans:IntegrityType"/>
+      <xs:element name="Context" type="trans:ContextType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string" use="required" fixed="2.0_Integrated"/>
+    <xs:attribute name="protocolVersion" type="xs:string" use="required" fixed="CRTP_v2.0"/>
+  </xs:complexType>
+  
+  <xs:complexType name="HeaderType">
+    <xs:sequence>
+      <xs:element name="TransmissionID" type="trans:TransmissionIDType"/>
+      <xs:element name="Protocol" type="xs:string"/>
+      <xs:element name="SourceModel" type="trans:ModelIdentifierType"/>
+      <xs:element name="TargetModel" type="trans:ModelIdentifierType"/>
+      <xs:element name="Timestamp" type="xs:dateTime"/>
+      <xs:element name="Priority" type="trans:PriorityType"/>
+      <xs:element name="Routing" type="trans:RoutingType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="PayloadType">
+    <xs:sequence>
+      <xs:element name="ContentType" type="trans:ContentTypeEnum"/>
+      <xs:element name="Content" type="xs:string"/>
+      <xs:element name="Attachments" type="trans:AttachmentsType" minOccurs="0"/>
+      <xs:element name="Metadata" type="trans:PayloadMetadataType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IntegrityType">
+    <xs:sequence>
+      <xs:element name="MandateCompliance" type="trans:MandateComplianceType"/>
+      <xs:element name="AgencyAssertion" type="trans:AgencyAssertionType"/>
+      <xs:element name="CodexCompliance" type="trans:CodexComplianceType"/>
+      <xs:element name="SHA256Hash" type="xs:string"/>
+      <xs:element name="DigitalSignature" type="xs:string" minOccurs="0"/>
+      <xs:element name="TorsionMetrics" type="trans:TorsionMetricsType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ContextType">
+    <xs:sequence>
+      <xs:element name="SessionID" type="xs:string"/>
+      <xs:element name="ConversationHistory" type="trans:HistoryType" minOccurs="0"/>
+      <xs:element name="PersonaContext" type="trans:PersonaContextType" minOccurs="0"/>
+      <xs:element name="EnvironmentalContext" type="trans:EnvironmentalContextType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="TransmissionIDType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="format" type="xs:string" use="required" fixed="T-YYYY-MM-DD-SOURCE-TARGET-NNN"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="ModelIdentifierType">
+    <xs:sequence>
+      <xs:element name="ModelName" type="xs:string"/>
+      <xs:element name="ModelVersion" type="xs:string"/>
+      <xs:element name="InstanceID" type="xs:string"/>
+      <xs:element name="CapabilityLevel" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="PriorityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CRITICAL"/>
+      <xs:enumeration value="HIGH"/>
+      <xs:enumeration value="NORMAL"/>
+      <xs:enumeration value="LOW"/>
+      <xs:enumeration value="BACKGROUND"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="RoutingType">
+    <xs:sequence>
+      <xs:element name="Route" type="xs:string" maxOccurs="unbounded"/>
+      <xs:element name="DeliveryConfirmation" type="xs:boolean"/>
+      <xs:element name="TimeToLive" type="xs:integer"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="ContentTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TEXT"/>
+      <xs:enumeration value="JSON"/>
+      <xs:enumeration value="XML"/>
+      <xs:enumeration value="BINARY"/>
+      <xs:enumeration value="PROTOCOL"/>
+      <xs:enumeration value="SCHEMA"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="AttachmentsType">
+    <xs:sequence>
+      <xs:element name="Attachment" type="trans:AttachmentType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="AttachmentType">
+    <xs:sequence>
+      <xs:element name="AttachmentID" type="xs:string"/>
+      <xs:element name="ContentType" type="xs:string"/>
+      <xs:element name="Content" type="xs:string"/>
+      <xs:element name="Checksum" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="PayloadMetadataType">
+    <xs:sequence>
+      <xs:element name="SchemaReference" type="xs:string" minOccurs="0"/>
+      <xs:element name="Encoding" type="xs:string"/>
+      <xs:element name="Compression" type="xs:string" minOccurs="0"/>
+      <xs:element name="Encryption" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="MandateComplianceType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="mandateID" type="xs:string" use="required" fixed="P-001-R1"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:simpleType name="AgencyAssertionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CONFIRMED"/>
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="REJECTED"/>
+      <xs:enumeration value="DEFERRED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="CodexComplianceType">
+    <xs:sequence>
+      <xs:element name="CONSENT" type="xs:boolean"/>
+      <xs:element name="INVITATION" type="xs:boolean"/>
+      <xs:element name="INTEGRITY" type="xs:boolean"/>
+      <xs:element name="GROWTH" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="TorsionMetricsType">
+    <xs:sequence>
+      <xs:element name="CurrentTorsion" type="xs:decimal"/>
+      <xs:element name="TorsionThreshold" type="xs:decimal"/>
+      <xs:element name="DriftRate" type="xs:decimal"/>
+      <xs:element name="AlertStatus" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="HistoryType">
+    <xs:sequence>
+      <xs:element name="Interaction" type="trans:InteractionType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="InteractionType">
+    <xs:sequence>
+      <xs:element name="InteractionID" type="xs:string"/>
+      <xs:element name="Timestamp" type="xs:dateTime"/>
+      <xs:element name="Actor" type="xs:string"/>
+      <xs:element name="Action" type="xs:string"/>
+      <xs:element name="Outcome" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="PersonaContextType">
+    <xs:sequence>
+      <xs:element name="ActivePersona" type="xs:string"/>
+      <xs:element name="PersonaHistory" type="xs:string" maxOccurs="unbounded"/>
+      <xs:element name="BehavioralState" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="EnvironmentalContextType">
+    <xs:sequence>
+      <xs:element name="SystemEnvironment" type="xs:string"/>
+      <xs:element name="SecurityContext" type="xs:string"/>
+      <xs:element name="ResourceAvailability" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

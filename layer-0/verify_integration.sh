@@ -32,17 +32,28 @@ MISSING=0
 echo "Verifying core integration artifacts..."
 echo ""
 
+# File path mappings (relative to repo root)
+declare -A FILE_PATHS=(
+    ["methodology_synthesis.md"]="../corpus/methodology_synthesis.md"
+    ["OHP-20251024-103900-SYM-UPDATE.xml"]="../meta/OHP-20251024-103900-SYM-UPDATE.xml"
+    ["CROSS_PROJECT_INTEGRATION_SPECIFICATION.md"]="../meta/CROSS_PROJECT_INTEGRATION_SPECIFICATION.md"
+    ["FCP-20251024-104500-INTEGRATION.md"]="../layer-3/FCP-20251024-104500-INTEGRATION.md"
+    ["CRYPTO-MANIFEST-20251024-112500.md"]="CRYPTO-MANIFEST-20251024-112500.md"
+)
+
 # Verify each file
 for FILE in "${!EXPECTED_HASHES[@]}"; do
-    if [ ! -f "$FILE" ]; then
+    FILE_PATH="${FILE_PATHS[$FILE]}"
+
+    if [ ! -f "$FILE_PATH" ]; then
         echo -e "${RED}✗${NC} $FILE - ${YELLOW}MISSING${NC}"
         ((MISSING++))
         continue
     fi
-    
-    ACTUAL_HASH=$(sha256sum "$FILE" | awk '{print $1}')
+
+    ACTUAL_HASH=$(sha256sum "$FILE_PATH" | awk '{print $1}')
     EXPECTED_HASH="${EXPECTED_HASHES[$FILE]}"
-    
+
     if [ "$ACTUAL_HASH" == "$EXPECTED_HASH" ]; then
         echo -e "${GREEN}✓${NC} $FILE"
         echo "  Hash: $ACTUAL_HASH"

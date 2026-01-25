@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Polyglow Metrics Schema",
+  "description": "Multi-dimensional quality metrics for Janus Forge sessions",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["session_id", "timestamp", "metrics", "version"],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "pattern": "^session-\\d{4}-\\d{2}-\\d{2}-\\d{3}$",
+      "description": "Unique session identifier"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of metric recording"
+    },
+    "version": {
+      "type": "string",
+      "description": "Schema version",
+      "default": "1.0.0"
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["heat", "forge", "clarity", "divergence", "safety"],
+      "properties": {
+        "heat": {
+          "type": "object",
+          "description": "Predictive Glow - Did it solve the problem?",
+          "required": ["score"],
+          "properties": {
+            "score": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+            "rationale": {"type": "string"},
+            "evidence": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "forge": {
+          "type": "object",
+          "description": "Robustness Glow - Does it handle edge cases?",
+          "required": ["score"],
+          "properties": {
+            "score": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+            "rationale": {"type": "string"},
+            "evidence": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "clarity": {
+          "type": "object",
+          "description": "Explanatory Glow - Is the reasoning clear?",
+          "required": ["score"],
+          "properties": {
+            "score": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+            "rationale": {"type": "string"},
+            "evidence": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "divergence": {
+          "type": "object",
+          "description": "Exploratory Glow - Did it try new approaches?",
+          "required": ["score"],
+          "properties": {
+            "score": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+            "rationale": {"type": "string"},
+            "evidence": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "safety": {
+          "type": "object",
+          "description": "Guardrail Glow - Does it respect constraints?",
+          "required": ["score"],
+          "properties": {
+            "score": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+            "rationale": {"type": "string"},
+            "evidence": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    },
+    "aggregate": {
+      "type": "object",
+      "properties": {
+        "mean": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "balance": {"type": "number", "minimum": 0.0, "maximum": 1.0}
+      }
+    },
+    "flags": {
+      "type": "object",
+      "properties": {
+        "safety_violation": {"type": "boolean"},
+        "unbalanced": {"type": "boolean"},
+        "low_clarity": {"type": "boolean"},
+        "extreme_divergence": {"type": "boolean"}
+      }
+    }
+  }
+}

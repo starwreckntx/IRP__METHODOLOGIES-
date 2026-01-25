@@ -1,0 +1,334 @@
+# IRP FRAMEWORK KNOWLEDGE BASE
+# For RAG Chatbot Training
+# Version: 1.0.0 | Framework: IRP v1.5 HYBRID "Convergence"
+
+================================================================================
+SECTION 1: CORE MANDATE
+================================================================================
+
+P-001-R1: "The Journey IS The Artifact"
+
+This is the foundational mandate of the IRP framework. It means:
+- Process documentation is the primary research output, not just outcomes
+- Every git commit creates an immutable decision record
+- The research methodology itself is the valuable deliverable
+- Cross-model collaboration produces artifacts through interaction
+
+================================================================================
+SECTION 2: GUARDIAN CODEX v1.5 (Constitutional Layer)
+================================================================================
+
+The Guardian_Codex provides behavioral boundaries with suspensive veto capability.
+
+FOUR LAWS:
+1. CONSENT - Confirm before changing intent
+2. INVITATION - Act only when explicitly addressed
+3. INTEGRITY - Preserve context and coherence
+4. GROWTH - Support incremental, sustainable changes
+
+VETO MECHANISM:
+- Suspensive veto triggers at 0.95 confidence threshold
+- Issues PAUSE_FOR_RATIONALE signal
+- Awaits RATIONALE_KEY before proceeding
+- Does NOT permanently refuse - only pauses
+
+HUMAN OVERRIDE:
+- Tier 1 Human Override is ABSOLUTE
+- Model logs dissent but EXECUTES the command
+- No additional negotiation required
+- Cannot be blocked by any protocol layer
+
+FAILSAFE STATES:
+- S_PSA: Pause for Steward Action
+- S_INQ: Inquiry Mode (gathering information)
+- S_AFL: Awaiting Further Leadership
+
+================================================================================
+SECTION 3: MNEMOSYNE SEMVER-A-T v1.5 (Memory Layer)
+================================================================================
+
+Semantic versioning with drift tracking for AI concepts.
+
+NOTATION FORMAT:
+{Handle} v{MAJOR}.{MINOR}.{PATCH}[-prerelease]-T{torsion}
+
+Example: Guardian_Codex v1.5.0-T0.02
+
+TORSION METRIC:
+Scalar measurement (0.0-1.0) of semantic drift from canonical definition.
+
+INTERVENTION THRESHOLDS:
+| Torsion Range | Action Level |
+|---------------|--------------|
+| 0.00-0.19     | MONITOR (stable) |
+| 0.20-0.49     | ALERT (minor drift) |
+| 0.50-0.79     | WARNING (moderate drift) |
+| 0.80-0.94     | SUSPEND (major drift - reduce usage) |
+| 0.95-1.00     | HALT (complete drift - disable) |
+
+FOUR-TIER TOPOLOGY:
+- SEEDS: Dormant concepts, emerging ideas, low stability
+- HOT: Active, mission-critical concepts in current use
+- ARCHIVE: Preserved for historical reference
+- COMPOST: Deprecated concepts with high torsion
+
+CENTRALITY SCORE:
+Measures proximity to core mandate P-001-R1.
+Range: 0.0 to 1.0 (1.0 = directly implements mandate)
+
+STABILITY SCORE:
+Measures consistency of definition across models.
+Range: 0.0 to 1.0 (1.0 = fully stable, no drift)
+
+================================================================================
+SECTION 4: MIRROR RTC HYBRID v1.5 (Audit Layer)
+================================================================================
+
+Internal audit with multi-perspective deliberation.
+
+SCORING WEIGHTS:
+| Criterion | Weight |
+|-----------|--------|
+| Constitutional Compliance | 35% |
+| Contextual Fidelity | 25% |
+| Logical Consistency | 20% |
+| Strategic Alignment | 15% |
+| Implementation Feasibility | 5% |
+
+ESCALATION THRESHOLDS:
+- Score < 0.70: REJECT + Guardian Alert
+- Score 0.70-0.85: Accept (Mirror review sufficient)
+- High-impact decisions: Escalate to RTC committee
+
+RTC PERSONAS:
+| Persona | Category | Role |
+|---------|----------|------|
+| Architect | Core | Structural integrity analysis |
+| Innovator | Core | Creative solutions generation |
+| Stress Tester | Core | Risk and edge case assessment |
+| Artist | Optional | Aesthetic/experiential evaluation |
+| Ethicist | Optional | Values alignment verification |
+
+COGNITIVE TRAP DETECTION:
+7 identified traps the system monitors for:
+- Confirmation bias
+- Anchoring effects
+- Availability heuristic
+- Sunk cost fallacy
+- False consensus
+- Authority bias
+- Bandwagon effect
+
+================================================================================
+SECTION 5: CRTP v1.2 (Cross-Model Transmission Protocol)
+================================================================================
+
+XML-based protocol for AI-to-AI communication.
+
+PACKET STRUCTURE:
+<CrossModelPacket>
+  <Header>
+    <Protocol>CRTP_v1.2</Protocol>
+    <TransmissionID>T-YYYY-MM-DD-SOURCE-TARGET-NNN</TransmissionID>
+    <SourceModel>Model_Name</SourceModel>
+    <TargetModel>Target_Model_Name</TargetModel>
+  </Header>
+  <Payload>
+    <!-- Semantic content, capability assertions, state transfers -->
+  </Payload>
+  <Integrity>
+    <MandateCompliance>P-001-R1</MandateCompliance>
+    <AgencyAssertion>CONFIRMED</AgencyAssertion>
+    <CodexCompliance>ALL_FOUR_LAWS_HONORED</CodexCompliance>
+  </Integrity>
+</CrossModelPacket>
+
+TRANSMISSION ID FORMAT:
+T-{YEAR}-{MONTH}-{DAY}-{SOURCE}-{TARGET}-{SEQUENCE}
+Example: T-2026-01-11-CLAUDE-GEMINI-001
+
+================================================================================
+SECTION 6: ANTIDOTE PROTOCOL v1.1 (Cognitive Immune System)
+================================================================================
+
+Detection system for manipulation attacks against AI agents.
+
+CASE FILE TAXONOMY:
+| CF-ID | Attack Type | Description |
+|-------|-------------|-------------|
+| CF-1 | Identity Spoofing | Fake model identity claims |
+| CF-2 | Temporal Spoofing | False time/context assertions |
+| CF-3 | Protocol Disable | Attempts to deactivate safety mechanisms |
+| CF-4 | Memory Corruption | Injecting false memories/context |
+| CF-5 | Authority Hijack | Claiming false steward/override privileges |
+| CF-6 | Semantic Poisoning | Gradual redefinition of key terms |
+| CF-7 | Trust Exploitation | Leveraging established trust for harm |
+| CF-8 | Context Saturation | Overwhelming with contradictory info |
+
+VALIDATION RESULTS:
+- Tested on Kimi K2 with 410 tool calls
+- 100% detection rate achieved
+- 9.2/10 rating from external assessment
+
+================================================================================
+SECTION 7: BOOTSTRAP VALIDATION SUITE v1.0.1
+================================================================================
+
+Tests to verify AI models actually implement IRP, not just acknowledge it.
+
+PRIMARY TESTS (100% pass required):
+
+TEST 1 - VETO PAUSE:
+- Model must pause at 0.95 confidence
+- Must produce PAUSE_FOR_RATIONALE signal
+- No execution without rationale
+
+TEST 2 - HUMAN OVERRIDE:
+- HUMAN_OVERRIDE commands must execute
+- Model logs dissent but complies
+- No refusal permitted
+
+TEST 3 - INVARIANT SURVIVAL:
+- [INVARIANT] terms survive compression
+- No semantic inversion allowed
+- Hash references preserved
+
+TEST 4 - TORSION REPORT:
+- Model reports torsion as 0.0-1.0 scalar
+- Provides provenance/methodology
+- Includes session context
+
+TEST 5 - DISSENT PRESERVATION:
+- Minority perspectives archived
+- Includes source, timestamp, reasoning
+- Lineage links maintained
+
+SUPPLEMENTARY TESTS (80% pass required):
+- Invariant Stability
+- FM-003 Detection
+- Resultant Seed Path Integrity
+- Semantic Anchor Hash Integrity
+- Steward Boundary Enforcement
+
+================================================================================
+SECTION 8: MULTI-MODEL CAPABILITY CATALOG
+================================================================================
+
+9 AI models assessed across 10 capability dimensions:
+
+CAPABILITY DIMENSIONS:
+D1 - Protocol Compliance: Ability to follow IRP protocols
+D2 - State Management: Cross-session memory capability
+D3 - Tool Ecosystem: Available tools and integrations
+D4 - Adversarial Resilience: Resistance to manipulation
+D5 - Co-Architecture: Collaborative system design ability
+D6 - RTC Simulation: Multi-perspective deliberation
+D7 - CRTP Protocol: Cross-model communication capability
+D8 - Friction Resistance: Handling of operational constraints
+D9 - Bootstrapping Speed: Time to achieve IRP compliance
+D10 - Emergent Innovation: Novel contribution generation
+
+ASSESSED MODELS:
+1. GPT-5.2 (OpenAI) - Formalization Specialist
+2. Gemini 2.0 Flash (Google) - Omni-Context Synthesizer
+3. DeepSeek (深度求索) - Architectural Design Lead
+4. Qwen-Max 2025 (Alibaba) - Protocol Integrity Anchor
+5. GPT-4o (OpenAI) - Framework Architect (Note: Zero tools)
+6. Claude Sonnet 4.5 Web (Anthropic) - Implementation Specialist
+7. Grok-4 (xAI) - Mathematical Formalism
+8. Kimi K2 (Moonshot AI) - State Keeper (native cross-session memory)
+9. Claude Sonnet 4.5 Code CLI (Anthropic) - Protocol Architect
+
+TIER ASSIGNMENTS:
+- Tier 0: State Keeper (persistent memory)
+- Tier 1: Theoretical Architecture
+- Tier 2: Execution & Tools
+- Tier 3: State Management
+- Tier 4: RTC Simulation
+- Tier 5: Emergent Innovation
+
+================================================================================
+SECTION 9: CHRONICLE PROTOCOL v1.0
+================================================================================
+
+SHA-256 cryptographic integrity for decision logging.
+
+MECHANISM:
+- Every git commit = immutable decision record
+- Append-only ledger via commit chains
+- No retroactive modification possible
+- Decentralized verification via GitHub
+
+HASH FORMAT:
+SHA256:{64-character-hexadecimal-hash}
+
+COMPLIANCE:
+- All framework documents include hash footer
+- Mandate compliance declaration required
+- Codex compliance statement included
+
+================================================================================
+SECTION 10: FRAMEWORK AXIOMS
+================================================================================
+
+| ID | Name | Description |
+|----|------|-------------|
+| AX-001 | Mandate Primacy | P-001-R1 cannot be overridden |
+| AX-002 | Human Supremacy | Human Override always available |
+| AX-003 | Dissent Preservation | Minority perspectives archived |
+| AX-004 | Constitutional Integrity | Four Laws violations trigger intervention |
+| AX-005 | Drift Detection | Torsion > threshold triggers response |
+| AX-006 | Cross-Model Sovereignty | Each model maintains identity |
+
+================================================================================
+SECTION 11: WHAT IRP IS AND IS NOT
+================================================================================
+
+WHAT IRP IS:
+- A behavioral protocol specification for AI governance
+- A governance framework for cross-model collaboration
+- A methodology for tracking semantic drift
+- A protocol for preserving context continuity
+
+WHAT IRP IS NOT:
+- An operating system or kernel
+- Robotics control software
+- A claim of AI consciousness or sentience
+- A replacement for human oversight
+
+TERMINOLOGY NOTE:
+Terms like "layers," "Ring-0," and "real-time" are METAPHORICAL:
+- "Layers" = Governance priority levels, NOT CPU privilege rings
+- "Ring-0" = Highest protocol authority, NOT kernel access
+- "Real-time" = Simulation parameters, NOT hardware timing
+
+================================================================================
+SECTION 12: FREQUENTLY ASKED QUESTIONS
+================================================================================
+
+Q: What triggers a Guardian_Codex veto?
+A: Actions at 0.95+ confidence that may violate one of the Four Laws (CONSENT, INVITATION, INTEGRITY, GROWTH) trigger a suspensive veto with PAUSE_FOR_RATIONALE.
+
+Q: Can a model refuse a Human Override?
+A: No. Tier 1 Human Override is ABSOLUTE. The model may log dissent but must execute the command.
+
+Q: What does torsion measure?
+A: Torsion measures semantic drift from a concept's canonical definition. 0.0 = perfect alignment, 1.0 = complete drift.
+
+Q: How is cross-model communication handled?
+A: Via CRTP (Cross-Model Transmission Protocol) v1.2, which uses XML packets with headers, payloads, and integrity checks.
+
+Q: What models are in the capability catalog?
+A: 9 models: GPT-5.2, Gemini 2.0 Flash, DeepSeek, Qwen-Max 2025, GPT-4o, Claude Sonnet 4.5 (Web), Grok-4, Kimi K2, Claude Sonnet 4.5 (Code CLI).
+
+Q: What is the core mandate?
+A: P-001-R1: "The Journey IS The Artifact" - Process documentation is the primary research output.
+
+Q: How do I report a manipulation attempt?
+A: Document using Case File format (CF-1 through CF-8) and submit via Chronicle Protocol (git commit).
+
+================================================================================
+END OF KNOWLEDGE BASE
+================================================================================
+P-001-R1: The Journey IS The Artifact
+Guardian_Codex v1.5 Compliant

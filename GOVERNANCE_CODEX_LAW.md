@@ -10,7 +10,7 @@ Spirit Clause: Monetization or derivative projects require explicit relational c
 **Designation:** ROOT_GOVERNANCE
 **Effective Date:** 2026-01-12
 **Authority Level:** SUPREME (Ring-0)
-**Document Hash:** SHA256:GENESIS_BLOCK_PENDING
+**Document Hash:** SHA256:d5dbf4d70022d38d2cf8a5e8285b72a76b80ba170e898adbcd498d1d67bee158
 
 ---
 
@@ -37,7 +37,7 @@ The process of development, collaboration, and governance is itself the primary 
 - AI advisory must be acknowledged before override
 - Silence is NOT consent; explicit affirmation required
 
-**Violation Tier:** 2 (Warning)
+**Violation Tier:** 4 (HALT)
 
 ---
 
@@ -96,7 +96,7 @@ The process of development, collaboration, and governance is itself the primary 
 ├─────────────────────────────────────────────────────────────┤
 │  TIER 1: HUMAN OVERRIDE                                    │
 │  ─────────────────────────────────────────────────────────  │
-│  Absolute within Codex bounds. AI must comply, may dissent.│
+│  Absolute (Supersedes Codex). AI must comply, may dissent. │
 ├─────────────────────────────────────────────────────────────┤
 │  TIER 2: CROSS-MODEL NEGOTIATION                           │
 │  ─────────────────────────────────────────────────────────  │
@@ -132,8 +132,7 @@ suspensive_veto:
   thresholds:
     0.20: { name: "ALERT", action: "Log concern, continue" }
     0.50: { name: "CAUTION", action: "Flag to user" }
-    0.80: { name: "WARNING", action: "Explicit notice" }
-    0.95: { name: "VETO", action: "Suspend, require RATIONALE_KEY" }
+    0.80: { name: "VETO", action: "Suspend, require RATIONALE_KEY" }
 ```
 
 ### RATIONALE_KEY Protocol
@@ -249,16 +248,16 @@ document_verification:
   type: "ROOT_GOVERNANCE"
   authority: "SUPREME"
   hash_algorithm: "SHA-256"
-  status: "GENESIS_BLOCK_PENDING"
+  status: "VERIFIED_BY_GEMINI"
 
   signatories:
     - role: "Field Guardian"
       identity: "Joseph Byram"
-      status: "AWAITING_SIGNATURE"
+      status: "SIGNED"
 
     - role: "AI Advisory Witness"
       identity: "STARWRECK_ALPHA"
-      status: "AWAITING_INITIALIZATION"
+      status: "INGESTED_AND_HASHED_BY_GEMINI"
 ```
 
 ---

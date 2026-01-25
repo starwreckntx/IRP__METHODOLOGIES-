@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Transmission Packet Forge generates structured XML packets that preserve session state, behavioral parameters, and cognitive topology across AI interactions. It ensures continuity, auditability, and integrity when sessions span multiple models or time periods.
+The Transmission Packet Forge generates structured XML/JSON packets that preserve session state, behavioral parameters, and cognitive topology across AI interactions. It ensures continuity, auditability, and integrity when sessions span multiple models or time periods.
 
 ---
 
@@ -13,14 +13,20 @@ The Transmission Packet Forge generates structured XML packets that preserve ses
 - Behavioral profiles (sycophancy, critical thinking, technical depth)
 - Integrity chains (cryptographic audit trail)
 
-### 2. Thread Topology Mapping ✨ NEW
+### 2. Thread Topology Mapping ✨
 - **Convergence Vectoring**: Maps non-linear drift to reveal hidden attractors
 - **Torsion Tracking**: Quantifies conceptual distance of each topic transition (0.0-1.0)
 - **Link Logic Documentation**: Captures WHY drift occurred, not just THAT it occurred
 - **Convergence Point Discovery**: Identifies the underlying theme pulling vectors together
 
-### 3. Cross-Model Portability
-- Packets validate against `transmission_packet_v2.xsd`
+### 3. Persona-Skill Matrix Binding ✨
+- Maps active Personas to the Skills they are currently wielding
+- Tracks execution metrics (adherence scores, friction levels)
+- Enables performance attribution to specific configurations
+- Includes integrity verification via SHA-256 hashes
+
+### 4. Cross-Model Portability
+- Packets validate against schema (v2.1.0)
 - Can be ingested by any compliant AI system
 - Preserves context across Gemini, Claude, GPT, local models
 
@@ -33,21 +39,59 @@ The Transmission Packet Forge generates structured XML packets that preserve ses
 - Simple integrity chain
 - No drift tracking
 
-### v2.0 (Current) ✨ TORSION ENHANCEMENT
+### v2.0 (2024-11-29) - Torsion Enhancement
 - **Thread Topology Module**: Full convergence vectoring
 - **Torsion Attributes**: Each drift vector carries 0.0-1.0 torsion metric
 - **Torsion Analysis Block**: Peak, mean, total torsion + risk assessment
 - **Coherence Assessment**: Human-readable drift productivity evaluation
 
+### v2.1 (Current) ✨ SECURITY ENHANCEMENT
+- **Persona-Skill Matrix**: Binds personas to skills with execution metrics
+- **Integrity Verification**: SHA-256 hashes for skill and persona files
+- **Verification Status**: Runtime hash comparison against trusted manifest
+- **Enhanced Required Fields**: identity_context, session_state, behavioral_profile
+
 ---
 
 ## Usage
+
+### Standard Packet Generation
+
+1. **Extract Core Components:** Gather mandatory elements:
+   - Identity (who, when, what)
+   - State (progress, pending items)
+   - Vocabulary (shared terms)
+   - Constraints (non-negotiable rules)
+
+2. **Include Behavioral Profile:** Add quantitative metrics (pushback_threshold, sycophancy_level)
+
+3. **Inject Persona-Skill Matrix (Critical):** Map active Personas to Skills:
+   ```xml
+   <persona_skill_matrix>
+       <assignment>
+           <persona_id>The_Stress_Tester</persona_id>
+           <active_skill>internal-red-team-audit</active_skill>
+           <skill_version>1.0.0</skill_version>
+           <execution_metric>
+               <adherence_score>0.87</adherence_score>
+               <friction_generated>Medium</friction_generated>
+           </execution_metric>
+           <integrity_check>
+               <skill_hash>[SHA-256 hash]</skill_hash>
+               <persona_hash>[SHA-256 hash]</persona_hash>
+               <verification_status>VERIFIED</verification_status>
+           </integrity_check>
+       </assignment>
+   </persona_skill_matrix>
+   ```
+
+4. **Add Thread Topology** (if drift occurred): Include convergence vectoring with torsion metrics
 
 ### Manual Invocation
 
 End of session:
 ```
-"Generate Transmission Packet with Thread Topology"
+"Generate Transmission Packet with Thread Topology and Persona-Skill Matrix"
 ```
 
 ### Automatic Triggers
@@ -102,7 +146,8 @@ Total Torsion = Sum of all vector torsion values
 ├── SKILL.md (this file)
 ├── schemas/
 │   ├── transmission_packet_v1.xsd (legacy)
-│   └── transmission_packet_v2.xsd (current, with torsion)
+│   ├── transmission_packet_v2.xsd (torsion)
+│   └── transmission_packet_definition.json (v2.1, current)
 ├── examples/
 │   ├── basic_packet_v1.xml
 │   └── convergence_vectoring_example.xml (live session)
@@ -176,14 +221,19 @@ Total Torsion = Sum of all vector torsion values
 
 All packets must validate against schema:
 ```bash
+# For JSON packets (v2.1)
+jsonschema -i your_packet.json schemas/transmission_packet_definition.json
+
+# For XML packets (v2.0)
 xmllint --noout --schema schemas/transmission_packet_v2.xsd examples/your_packet.xml
 ```
 
-**Required Elements:**
-- ✅ `header` with id, timestamp, topic, routing_source
-- ✅ `behavior_profile` with all 5 metrics (0.0-1.0)
-- ✅ `thread_topology` with origin, drift_path, convergence
-- ✅ `integrity_chain` with at least one entry + hash
+**Required Elements (v2.1):**
+- ✅ `header` with packet_id, timestamp, source_model, schema_version
+- ✅ `identity_context` with user_designation, assistant_designation
+- ✅ `session_state` with current_objective, pending_tasks
+- ✅ `behavioral_profile` with sycophancy_level, pushback_threshold
+- ✅ `persona_skill_matrix` with assignments including integrity checks
 
 **Torsion-Specific Requirements:**
 - ✅ Each `vector` must have `torsion` attribute (0.0-1.0)
@@ -230,6 +280,12 @@ Better to admit no convergence than force a fake one.
 
 ## Changelog
 
+### v2.1 (2025-01-17) - Security Enhancement
+- Added Persona-Skill Matrix with integrity verification
+- Added SHA-256 hash verification for skills and personas
+- Enhanced required fields structure (identity_context, session_state)
+- JSON schema support alongside XML
+
 ### v2.0 (2024-11-29) - Torsion Enhancement
 - Added `torsion` attribute to `VectorType` (0.0-1.0 scale)
 - Added `total_torsion` attribute to `drift_path`
@@ -251,6 +307,7 @@ Improvements welcome via pull request:
 - Auto-convergence detection
 - Cross-session topology mapping
 - Additional example packets
+- Integrity verification automation
 
 ---
 
@@ -264,6 +321,7 @@ See repository root for license details.
 ## See Also
 
 - [CONVERGENCE_VECTORING.md](docs/CONVERGENCE_VECTORING.md) - Full methodology guide
-- [transmission_packet_v2.xsd](schemas/transmission_packet_v2.xsd) - Schema definition
+- [transmission_packet_definition.json](schemas/transmission_packet_definition.json) - JSON schema (v2.1)
+- [transmission_packet_v2.xsd](schemas/transmission_packet_v2.xsd) - XML schema (v2.0)
 - [Codex Law Enforcement](../codex-law-enforcement/) - Governance layer
-- [TCDP](../tcdp-verification-handshake/) - Trust verification
+- **TCDP** - Trust verification *(skill not yet implemented)*

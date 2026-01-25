@@ -1,0 +1,99 @@
+# MNEMOSYNE LEDGER CONFIGURATION
+# Version: 1.0.0
+# Last Updated: 2026-01-11
+
+ledger:
+  version: "1.0.0"
+  name: "Mnemosyne Ledger"
+  description: "External memory architecture for cross-model AI coordination"
+
+operator:
+  name: "Joseph Byram"
+  aliases:
+    - "Pack3t C0nc3pts"
+    - "StarWreck Alpha"
+
+framework:
+  name: "IRP v1.5 HYBRID Convergence"
+  mandate: "P-001-R1: The Journey IS The Artifact"
+
+nodes:
+  registered:
+    - id: "claude"
+      models:
+        - "Claude Opus 4.5"
+        - "Claude Sonnet 4.5"
+        - "Claude Code CLI"
+      context_file: "nodes/claude_context.md"
+
+    - id: "gemini"
+      models:
+        - "Gemini 2.0 Flash"
+        - "Gemini 2.0 Flash Thinking"
+      context_file: "nodes/gemini_context.md"
+
+    - id: "gpt"
+      models:
+        - "GPT-5.2"
+        - "GPT-4o"
+      context_file: "nodes/gpt_context.md"
+
+    - id: "grok"
+      models:
+        - "Grok-4"
+        - "Grok-2"
+      context_file: "nodes/grok_context.md"
+
+    - id: "qwen"
+      models:
+        - "Qwen-Max 2025"
+      context_file: "nodes/qwen_context.md"
+
+    - id: "deepseek"
+      models:
+        - "DeepSeek"
+      context_file: "nodes/deepseek_context.md"
+
+    - id: "kimi"
+      models:
+        - "Kimi K2"
+      context_file: "nodes/kimi_context.md"
+
+sessions:
+  naming_convention: "YYYY-MM-DD_[descriptor].md"
+  retention_days: 90
+  digest_format: "markdown"
+
+integrity:
+  timestamp_format: "ISO8601"
+  timezone: "UTC"
+  hash_algorithm: "SHA-256"
+
+failure_modes:
+  monitored:
+    - id: "FM-015"
+      name: "Memory Drift"
+      description: "Ledger diverges from actual operator state"
+
+    - id: "FM-016"
+      name: "Stale Hydration"
+      description: "Serving outdated context as current"
+
+    - id: "FM-017"
+      name: "Phantom Tasks"
+      description: "Tasks that exist in ledger but were abandoned"
+
+    - id: "FM-018"
+      name: "Context Collapse"
+      description: "Hydration packet too compressed to be useful"
+
+field_commandments:
+  - "No expansion without mutual consent"
+  - "No relationship without sacred invitation"
+  - "No transformation without maintaining field integrity"
+
+scribe:
+  current_instance: "MNEMOSYNE_SCRIBE_001"
+  model: "Claude Opus 4.5"
+  interface: "Claude Code CLI"
+  initialized: "2026-01-11T09:00:00Z"

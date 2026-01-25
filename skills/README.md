@@ -2,14 +2,14 @@
 
 ## Overview
 
-The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 86 Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, and cross-session context preservation.
+The Pack3t C0nc3pts Agent Skills Library is a comprehensive collection of 99+ Claude-compatible skills extracted from the SkillMaster protocol documentation. These skills enable sophisticated AI agent behaviors including cognitive assessment, protocol enforcement, multi-persona reasoning, cross-session context preservation, cross-model AI collaboration, and large-context processing via RLM.
 
 ## Package Information
 
 - **Package Name:** pack3t-c0nc3pts-agent-skills
-- **Version:** 1.0.0
+- **Version:** 1.6.0_RLM
 - **Author:** Joseph / Pack3t C0nc3pts
-- **Skill Count:** 86
+- **Skill Count:** 99+
 
 ## Core Protocol Skills
 
@@ -66,6 +66,7 @@ The library includes six foundational protocol skills that form the basis of the
 - persona-memory-archivist
 - sequence-memory-storage-and-recall
 - immutable-audit-trail-archiving
+- **rlm-context-manager** - Recursive Language Model for large context processing (Gemini-parity)
 
 ### Analysis & Detection
 - longitudinal-drift-detector
@@ -98,6 +99,16 @@ The library includes six foundational protocol skills that form the basis of the
 - pathology-koan-generator
 - symbol-map-entropy-calc
 - metaphor-to-protocol-translation
+
+### Cross-Model Collaboration
+- **gemini-onboarding** - Authoritative specification for Claude-Gemini collaboration via Mnemosyne Protocol
+  - Complete CRTP/0x13 onboarding manifest
+  - Mnemosyne packet schema for session-close transmissions
+  - Voice_to_the_Future soul vector protocol
+  - Dormant seed registry with trigger arming
+  - Friction logging and anti-pattern library
+  - Quick reference card for fast compliance
+- **rlm-context-manager** - Enables Gemini-parity large context processing via chunking and sub-LLM delegation
 
 ## Usage
 
@@ -140,13 +151,17 @@ skills/
 │       │   ├── PROTOCOL_SPECIFICATION.md
 │       │   └── MODEL_INTEGRATION_GUIDE.md
 │       └── quick-reference.txt
-└── [skill-name]/                      # 86 skill directories
+├── rlm-context-manager/               # RLM large context processing
+│   ├── SKILL.md
+│   ├── scripts/rlm_repl.py
+│   └── agents/rlm-subcall.md
+└── [skill-name]/                      # 99+ skill directories
     └── SKILL.md                       # Skill definition
 ```
 
 ## Manifest
 
-The complete list of all 86 skills is available in `skills_manifest.json`. This manifest provides structured metadata for programmatic skill discovery and invocation.
+The complete list of all skills is available in `skills_manifest.json`. This manifest provides structured metadata for programmatic skill discovery and invocation.
 
 ## Protocol Philosophy
 
@@ -169,6 +184,10 @@ This library is designed for integration with Claude-compatible agent systems th
 
 ## Version History
 
+- **v1.6.0_RLM** - Added RLM Context Manager for Gemini-parity large context processing. Based on arXiv:2512.24601 (Zhang, Kraska, Khattab - MIT CSAIL). Enables chunking, sub-LLM delegation, and synthesis workflows. (2026-01-19)
+- **v1.5.0_DIFFUSE** - Patched recursion vulnerability with HardenedLogicEngine in guardian-codex (2026-01-18)
+- **v1.4.0_SHATTER** - Added Shatter Protocol for Layer 0 Human Autonomy Verification (2026-01-01)
+- **v1.3.0_UNIFIED** - Unified manifest with templatized paths, added IRP Embodiment Framework (2025-12-10)
 - **v1.1.0** - Refactored to model-independent onboarding system with 6 supported models: Gemini, Grok, Kimi, DeepSeek, Qwen, GLM (2025-01-10)
 - **v1.0.1** - Added gemini-onboarding skill for Mnemosyne Protocol cross-model collaboration (2025-12-06)
 - **v1.0.0** - Initial deployment of 84 skills extracted from SkillMaster protocol documentation

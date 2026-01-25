@@ -1,0 +1,88 @@
+# Lychee Link Checker Configuration
+# https://lychee.cli.rs/
+
+# Maximum number of concurrent requests
+max_concurrency = 32
+
+# Maximum number of retries for network errors
+max_retries = 3
+
+# Request timeout
+timeout = 30
+
+# User agent
+user_agent = "lychee/0.14"
+
+# Accept 2xx, 3xx, 429 (rate limited) status codes
+accept = ["2xx", "3xx", "429"]
+
+# Include file extensions to check
+include_verbatim = true
+
+# Exclude patterns - local/dev URLs that can't be validated in CI
+exclude = [
+    # Local and internal domains
+    ".*\\.local($|/|:).*",
+    "localhost.*",
+    "127\\.0\\.0\\.1.*",
+    "0\\.0\\.0\\.0.*",
+
+    # Internal/dev URLs from this project
+    ".*aether\\.antidote\\.local.*",
+    ".*neutral\\.antidote\\.local.*",
+    ".*antidote\\.dev.*",
+    ".*aether-sandbox\\.asc-dashboard.*",
+    ".*crucible\\.tongyi\\.chain.*",
+    ".*mingguang\\.tongyi\\.chain.*",
+    ".*ai-collaboration\\.org.*",
+
+    # Claude artifacts (require auth)
+    ".*claude\\.ai/public/artifacts.*",
+
+    # Internal schemas that don't resolve externally
+    ".*schemas\\.google\\.com/ai/.*",
+
+    # Known transient/rate-limited domains
+    ".*gnu\\.org/licenses.*",
+    ".*dublincore\\.org.*",
+
+    # File URIs with template variables
+    "file://documents/.*",
+
+    # Placeholder/example URLs
+    ".*username\\.github\\.io.*",
+    ".*hueandlogic\\.abacusai\\.app.*",
+    ".*ledger\\.hueandlogic\\.com.*",
+
+    # OpenAI docs (often return 403)
+    ".*platform\\.openai\\.com/docs.*",
+
+    # Google fonts (return 404 without proper headers)
+    ".*fonts\\.googleapis\\.com.*",
+    ".*fonts\\.gstatic\\.com.*",
+
+    # Incomplete/malformed URLs from logs
+    "http://packe/",
+    "http://googleusercontent\\.com/youtube_content.*",
+    "http://openoffice\\.org/2000/script",
+
+    # GitHub-specific URLs that may not exist yet
+    ".*/tree/main/docs/bootstrap-protocol\\.md",
+    ".*/big/_shoulders"
+]
+
+# Exclude specific files from being checked
+exclude_path = [
+    # Persona extraction results contain many external URLs from logs
+    "Persona/extraction_results/*",
+    "Persona/*.txt",
+    # Transcripts may contain various external URLs
+    "*.transcript*.txt",
+    "jb1982content*.txt"
+]
+
+# Don't check email addresses
+include_mail = false
+
+# Skip checking anchors (fragments)
+skip_missing = false
