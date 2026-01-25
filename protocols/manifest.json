@@ -82,8 +82,8 @@
             "size": 10770
         }
     },
-    "generated": "2026-01-25T17:05:11.568363Z",
+    "generated": "2026-01-25T17:51:41.951609Z",
     "root_hash": "e1943f276bd030b24f6ddad4d6ba0021c997f7fdb5fc129f5d898e358bbf3a81",
-    "target_directory": "/home/user/IRP__METHODOLOGIES-/protocols",
+    "target_directory": "protocols",
     "version": "1.0"
 }
