@@ -324,4 +324,4 @@ See repository root for license details.
 - [transmission_packet_definition.json](schemas/transmission_packet_definition.json) - JSON schema (v2.1)
 - [transmission_packet_v2.xsd](schemas/transmission_packet_v2.xsd) - XML schema (v2.0)
 - [Codex Law Enforcement](../codex-law-enforcement/) - Governance layer
-- [TCDP](../tcdp-verification-handshake/) - Trust verification
+- **TCDP** - Trust verification *(skill not yet implemented)*

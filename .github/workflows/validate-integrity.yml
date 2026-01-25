@@ -168,6 +168,6 @@ jobs:
     - name: Check for broken links
       uses: lycheeverse/lychee-action@v1
       with:
-        args: --verbose --no-progress '**/*.md' '**/*.txt'
+        args: --config .lychee.toml --verbose --no-progress '**/*.md' '**/*.txt'
         fail: true
       continue-on-error: true
