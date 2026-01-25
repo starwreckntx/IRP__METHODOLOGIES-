@@ -43,3 +43,17 @@ Thumbs.db
 
 # JSONL log files
 *.jsonl
+
+# Secrets and credentials - NEVER commit these
+.env
+.env.*
+*.env
+.secrets
+secrets.json
+credentials.json
+**/secrets/
+**/credentials/
+*.pem
+*.key
+*_key.json
+service-account*.json

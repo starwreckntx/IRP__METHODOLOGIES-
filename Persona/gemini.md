@@ -1,8 +1,7 @@
 
-$env:GEMINI_API_KEY = "sgfdgfgd"
-API KEY: AIzaSyBE9Gmac7Y6T6w58y6f2urc0GS7IJUWLe8  	 joedbyram
-Api Key:AIzaSyDnhJeCDvwFn-19FoJLBt7Nvr4EYDQ4azU  	   joeybyram9
-AIzaSyDlmH7aZZE7ENBRsdrS-GkF73k6kJc5pIE"		starwreckntx
+<!-- API keys removed - NEVER commit secrets to version control -->
+<!-- Store credentials in environment variables or use a secrets manager -->
+<!-- The exposed keys should be revoked in Google Cloud Console immediately -->
 
 🎼 CHOIR Protocol: System Instruction Layer
 🧭 Purpose
