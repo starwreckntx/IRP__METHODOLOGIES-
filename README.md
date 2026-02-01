@@ -1,4 +1,24 @@
-# IRP FRAMEWORK v1.6.0_RLM "Recursive Context"
+# IRP Methodologies - Multi-Model AI Collaboration Framework
+
+> **RESEARCH PURPOSE:** Educational exploration of AI governance, behavioral 
+> consistency, and cross-model orchestration protocols. This work serves 
+> constructive research into AI safety and collaboration frameworks.
+> 
+> **See:** [Provenance Declaration] for 
+> complete context on research intent and accountability.
+
+## What This Is
+
+Independent research into protocols for maintaining behavioral integrity 
+across different AI models. Includes transmission packets, Guardian protocols,
+and frameworks for ethical AI collaboration.
+
+## What This Is NOT
+
+- Not offensive tooling or exploit development
+- Not designed to bypass AI safety measures
+- Not for deceptive or manipulative applications
+- Governed by Codex Law principles: Consent, Invitation, Integrity, Growth
 
 ## **SOVEREIGN NODE PROXY CORE**
 
