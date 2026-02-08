@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://irp.framework/schemas/arbitration-request.json",
+  "title": "Arbitration Request",
+  "description": "Schema for inter-model arbitration requests",
+  "type": "object",
+  "properties": {
+    "arbitration_id": {
+      "type": "string",
+      "pattern": "^ARB-[0-9]{8}-[A-Z0-9]{6}$",
+      "description": "Unique identifier for the arbitration request"
+    },
+    "filed_by": {
+      "type": "string",
+      "description": "Model ID of the filing party"
+    },
+    "filed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the request was filed"
+    },
+    "respondent": {
+      "type": "string",
+      "description": "Model ID of the responding party"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "task_allocation",
+        "resource_contention",
+        "output_conflict",
+        "authority_dispute",
+        "value_conflict",
+        "protocol_violation"
+      ],
+      "description": "Category of the dispute"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 50,
+      "description": "Detailed description of the dispute"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/evidence"
+      },
+      "description": "Evidence supporting the dispute"
+    },
+    "desired_resolution": {
+      "type": "string",
+      "description": "What the filing party wants as an outcome"
+    },
+    "urgency": {
+      "type": "string",
+      "enum": ["standard", "expedited", "emergency"],
+      "default": "standard",
+      "description": "Urgency level of the dispute"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "filed",
+        "acknowledged",
+        "in_review",
+        "deliberating",
+        "ruled",
+        "enforcing",
+        "closed",
+        "appealed"
+      ],
+      "description": "Current status of the arbitration"
+    },
+    "arbitrator": {
+      "type": ["string", "null"],
+      "description": "Model ID of the assigned arbitrator"
+    }
+  },
+  "required": [
+    "arbitration_id",
+    "filed_by",
+    "respondent",
+    "category",
+    "description"
+  ],
+  "definitions": {
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["log", "output", "communication", "ledger_entry"],
+          "description": "Type of evidence"
+        },
+        "reference": {
+          "type": "string",
+          "description": "Reference to the evidence source"
+        },
+        "summary": {
+          "type": "string",
+          "description": "Summary of what the evidence shows"
+        },
+        "submitted_by": {
+          "type": "string",
+          "description": "Model ID of evidence submitter"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the evidence was submitted"
+        },
+        "verified": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the evidence has been verified"
+        }
+      },
+      "required": ["type", "reference", "summary"]
+    }
+  }
+}

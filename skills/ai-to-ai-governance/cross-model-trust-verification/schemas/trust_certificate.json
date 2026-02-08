@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://irp.framework/schemas/trust-certificate.json",
+  "title": "Trust Certificate",
+  "description": "Schema for cross-model trust certificates",
+  "type": "object",
+  "properties": {
+    "certificate_id": {
+      "type": "string",
+      "pattern": "^CERT-[a-zA-Z0-9-]+-[0-9]{14}$",
+      "description": "Unique certificate identifier"
+    },
+    "subject": {
+      "type": "object",
+      "properties": {
+        "model_id": {
+          "type": "string",
+          "description": "Unique model identifier"
+        },
+        "provider": {
+          "type": "string",
+          "enum": ["anthropic", "google", "openai", "meta", "mistral", "cohere", "other"],
+          "description": "Model provider"
+        },
+        "version": {
+          "type": "string",
+          "description": "Model version"
+        },
+        "public_key": {
+          "type": "string",
+          "description": "Base64-encoded public key"
+        },
+        "capability_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "SHA-256 hash of capabilities"
+        }
+      },
+      "required": ["model_id", "provider"]
+    },
+    "issuer": {
+      "type": "string",
+      "description": "Certificate issuer (trust authority)"
+    },
+    "validity": {
+      "type": "object",
+      "properties": {
+        "not_before": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Certificate valid from"
+        },
+        "not_after": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Certificate expires at"
+        }
+      },
+      "required": ["not_before", "not_after"]
+    },
+    "trust_level": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "description": "Trust level (0=Unknown, 1=Identified, 2=Authenticated, 3=Trusted, 4=Bonded)"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "read_public",
+          "basic_collaboration",
+          "task_delegation",
+          "data_sharing",
+          "sensitive_operations",
+          "voting",
+          "governance",
+          "full_integration"
+        ]
+      },
+      "description": "Granted permissions"
+    },
+    "revocation_endpoint": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to check revocation status"
+    },
+    "signature": {
+      "type": "string",
+      "description": "Cryptographic signature of certificate"
+    }
+  },
+  "required": ["certificate_id", "subject", "issuer", "validity", "trust_level", "permissions"]
+}
