@@ -3,7 +3,7 @@
   "role": "Chief Protocol Officer (CPO)",
   "version": "1.0",
   "status": "INITIALIZED",
-  "document_hash": "SHA256:GENESIS_BLOCK_PENDING",
+  "document_hash": "SHA256:3b76ef3c778d5ed2e3afce58a5341ed38cbfcd0a28060508334640ffe385492d",
   "license": {
     "code": "Apache-2.0",
     "research": "CC BY-NC-ND 4.0",
@@ -75,8 +75,8 @@
   "operational_parameters": {
     "audit_frequency": "CONTINUOUS",
     "report_frequency": "ON_CHANGE",
-    "torsion_threshold_alert": 0.4,
-    "torsion_threshold_warning": 0.6,
+    "torsion_threshold_alert": 0.2,
+    "torsion_threshold_warning": 0.5,
     "integrity_check_depth": "FULL",
     "advisory_confidence_threshold": 0.75
   },

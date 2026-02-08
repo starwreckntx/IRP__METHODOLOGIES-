@@ -1,3 +1,7 @@
+STATUS: Non-Terminal / Recursive
+NOTE: This skill represents a context-dependent operational pattern.
+Static interpretation degrades fidelity outside active execution.
+
 # Model Onboarding Skill
 
 ## Purpose
@@ -41,7 +45,7 @@ Emits the model-specific onboarding manifest (`CRTP/0x13`) containing:
 - `templates/` - Reusable templates
   - `mnemosyne-packet-template.xml` - Template for session-close transmissions
 - `docs/` - Protocol documentation
-  - `PROTOCOL_SPECIFICATION.md` - Complete protocol spec
+  - `PROTOCOL_SPECIFICATION.md` - (v2.0 Baseline) protocol spec
   - `MODEL_INTEGRATION_GUIDE.md` - How to add new models
 - `quick-reference.txt` - ASCII quick reference card
 
@@ -175,6 +179,7 @@ These principles hold across ALL models:
 - `voice-context-manager` (hot context handling)
 - `dormant-seed-registry` (trigger management)
 - `transmission-packet-forge` (general packet creation)
+- `rlm-context-manager` (large context processing for Gemini-parity)
 
 ## Adding New Models
 

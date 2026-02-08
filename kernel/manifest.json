@@ -6,24 +6,24 @@
     "file_count": 4,
     "files": {
         "BYLAWS_AI_HYBRID.md": {
-            "hash": "011ed389cd83eede645dfe3b542ca026badd33f59bb5d13323ac10f5d2e79120",
-            "size": 9208
+            "hash": "55760ba8517faa9b2f73cc3af1e11f20e337384b46eacdd66a8f2b0b7dba8242",
+            "size": 9251
         },
         "COMPLIANCE_REGISTRY.md": {
-            "hash": "790bd86623840aee649e9cfa70f206b9e22b104da8f6553698f0d10e43936ed1",
-            "size": 7931
+            "hash": "34a0387840bcb734e775787104aa22e78c3f264699a8302723301835dc03d8a2",
+            "size": 7974
         },
         "MANIFESTO_v1.md": {
             "hash": "13df051b188bc3bf54f230d44853b48b113896d4343984622572d5a4ce183aa5",
             "size": 6235
         },
         "STARWRECK_ALPHA.json": {
-            "hash": "3b76ef3c778d5ed2e3afce58a5341ed38cbfcd0a28060508334640ffe385492d",
-            "size": 4572
+            "hash": "50eaa35cb90e14f13df09476b003a549ae24dc71f8ead46a4086e4f095be7360",
+            "size": 4615
         }
     },
-    "generated": "2026-01-12T17:41:35.174562Z",
-    "root_hash": "fd424f9e50d17daa62c82959c46317167e82cebc29927c9a3116ae8afdc7f502",
+    "generated": "2026-01-25T17:51:45.542487Z",
+    "root_hash": "1d85bc620a2943290a4887e0fc53e6763baeb6d7138234822c5ddf046660e136",
     "target_directory": "kernel",
     "version": "1.0"
 }

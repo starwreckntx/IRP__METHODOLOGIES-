@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://irp-framework.org/universal/ledger"
+           xmlns:ledger="http://irp-framework.org/universal/ledger"
+           elementFormDefault="qualified">
+
+  <xs:element name="LedgerEntry" type="ledger:LedgerEntryType"/>
+  
+  <xs:complexType name="LedgerEntryType">
+    <xs:sequence>
+      <xs:element name="Header" type="ledger:HeaderType"/>
+      <xs:element name="Metadata" type="ledger:MetadataType"/>
+      <xs:element name="Content" type="ledger:ContentType"/>
+      <xs:element name="Integrity" type="ledger:IntegrityType"/>
+    </xs:sequence>
+    <xs:attribute name="version" type="xs:string" use="required" fixed="2.0_Integrated"/>
+  </xs:complexType>
+  
+  <xs:complexType name="HeaderType">
+    <xs:sequence>
+      <xs:element name="EntryID" type="xs:string"/>
+      <xs:element name="Timestamp" type="xs:dateTime"/>
+      <xs:element name="SourceModel" type="xs:string"/>
+      <xs:element name="EntryType" type="ledger:EntryTypeEnum"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="MetadataType">
+    <xs:sequence>
+      <xs:element name="SchemaVersion" type="xs:string"/>
+      <xs:element name="ProtocolVersion" type="xs:string"/>
+      <xs:element name="TorsionLevel" type="xs:decimal"/>
+      <xs:element name="Classification" type="ledger:ClassificationType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ContentType">
+    <xs:choice>
+      <xs:element name="PersonaData" type="ledger:PersonaDataType"/>
+      <xs:element name="ProtocolData" type="ledger:ProtocolDataType"/>
+      <xs:element name="SchemaData" type="ledger:SchemaDataType"/>
+      <xs:element name="SeedData" type="ledger:SeedDataType"/>
+    </xs:choice>
+  </xs:complexType>
+  
+  <xs:complexType name="IntegrityType">
+    <xs:sequence>
+      <xs:element name="SHA256" type="xs:string"/>
+      <xs:element name="PreviousHash" type="xs:string"/>
+      <xs:element name="MandateCompliance" type="xs:string"/>
+      <xs:element name="DigitalSignature" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="EntryTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PERSONA"/>
+      <xs:enumeration value="PROTOCOL"/>
+      <xs:enumeration value="SCHEMA"/>
+      <xs:enumeration value="SEED"/>
+      <xs:enumeration value="MANIFEST"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="ClassificationType">
+    <xs:sequence>
+      <xs:element name="Level" type="ledger:ClassificationLevel"/>
+      <xs:element name="Category" type="xs:string"/>
+      <xs:element name="AccessControl" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="ClassificationLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PUBLIC"/>
+      <xs:enumeration value="INTERNAL"/>
+      <xs:enumeration value="RESTRICTED"/>
+      <xs:enumeration value="SEALED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="PersonaDataType">
+    <xs:sequence>
+      <xs:element name="PersonaID" type="xs:string"/>
+      <xs:element name="PersonaName" type="xs:string"/>
+      <xs:element name="Archetype" type="xs:string"/>
+      <xs:element name="Capabilities" type="ledger:CapabilitiesType"/>
+      <xs:element name="BehavioralProfile" type="ledger:BehavioralProfileType"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ProtocolDataType">
+    <xs:sequence>
+      <xs:element name="ProtocolID" type="xs:string"/>
+      <xs:element name="ProtocolName" type="xs:string"/>
+      <xs:element name="Version" type="xs:string"/>
+      <xs:element name="Specification" type="xs:string"/>
+      <xs:element name="Implementation" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="SchemaDataType">
+    <xs:sequence>
+      <xs:element name="SchemaID" type="xs:string"/>
+      <xs:element name="SchemaType" type="xs:string"/>
+      <xs:element name="Namespace" type="xs:string"/>
+      <xs:element name="Definition" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="SeedDataType">
+    <xs:sequence>
+      <xs:element name="SeedID" type="xs:string"/>
+      <xs:element name="SeedType" type="xs:string"/>
+      <xs:element name="GenesisBlock" type="xs:string"/>
+      <xs:element name="Payload" type="xs:string"/>
+      <xs:element name="ValidationRules" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="CapabilitiesType">
+    <xs:sequence>
+      <xs:element name="PrimaryFunction" type="xs:string"/>
+      <xs:element name="SecondaryFunctions" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Constraints" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="BehavioralProfileType">
+    <xs:sequence>
+      <xs:element name="CommunicationStyle" type="xs:string"/>
+      <xs:element name="DecisionFramework" type="xs:string"/>
+      <xs:element name="RiskTolerance" type="xs:string"/>
+      <xs:element name="CollaborationPreference" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

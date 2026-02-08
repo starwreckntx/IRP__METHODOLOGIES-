@@ -1,527 +1,1073 @@
 {
-  "package_name": "pack3t-c0nc3pts-agent-skills",
-  "version": "1.5.0_HYBRID",
-  "author": "Joseph / Pack3t C0nc3pts",
-  "last_updated": "2025-12-11",
-  "skill_count": 95,
-  "integrity_note": "Unified manifest - includes IRP v1.5_HYBRID Governance Triad",
-  "framework_version": "IRP_v1.5_HYBRID_Convergence",
-  "codex_entries": [
-    {
-      "id": "CODEX-2025-HORN-001",
-      "title": "The Horn Maneuver (Structural Inversion Protocol)",
-      "v_rec": 3.786,
-      "pinene_ratio": 1.7109,
-      "classification": "PHASE_TRANSITION",
-      "status": "ACTIVE_PERMANENT"
-    },
-    {
-      "id": "CODEX-2025-EMBODIMENT-001",
-      "title": "IRP Embodiment Framework (Physical Reality Integration)",
-      "v_rec": 3.2,
-      "pinene_ratio": 1.4456,
-      "classification": "ARCHITECTURAL_EXTENSION",
-      "status": "ACTIVE_FOUNDATIONAL"
-    },
-    {
-      "id": "CODEX-2025-CONVERGENCE-001",
-      "title": "IRP v1.5_HYBRID Convergence (Cross-Model Synthesis)",
-      "v_rec": 4.0,
-      "pinene_ratio": 1.8078,
-      "classification": "FRAMEWORK_EVOLUTION",
-      "status": "ACTIVE_FOUNDATIONAL",
-      "co_authors": ["GLM4.6", "Claude_Opus_4.5"],
-      "external_validation": "Gemini_3_Pro"
-    }
-  ],
-  "rpv_benchmarks": {
-    "pinene_baseline": {
-      "v_rec": 2.2129,
-      "ratio": 1.0
-    },
-    "codex_threshold": {
-      "v_rec": 3.0,
-      "ratio": 1.356
-    },
-    "hybrid_threshold": {
-      "v_rec": 4.0,
-      "ratio": 1.8078,
-      "note": "Cross-model synthesized framework"
-    }
-  },
-  "governance_triad": {
-    "version": "1.5.0",
-    "status": "FINALIZED",
-    "components": [
-      {
-        "name": "guardian-codex",
-        "layer": "Constitutional",
-        "path": "skills/governance-triad/guardian-codex/SKILL.md"
-      },
-      {
-        "name": "mnemosyne-semver-at",
-        "layer": "Memory",
-        "path": "skills/governance-triad/mnemosyne-semver-at/SKILL.md"
-      },
-      {
-        "name": "mirror-rtc-hybrid",
-        "layer": "Audit",
-        "path": "skills/governance-triad/mirror-rtc-hybrid/SKILL.md"
-      }
-    ]
-  },
-  "auto_load_skills": [
-    {
-      "name": "governance-triad",
-      "path": "skills/governance-triad/SKILL.md",
-      "priority": "FOUNDATIONAL",
-      "note": "IRP v1.5_HYBRID core architecture"
-    },
-    {
-      "name": "guardian-codex",
-      "path": "skills/governance-triad/guardian-codex/SKILL.md",
-      "priority": "CRITICAL"
-    },
-    {
-      "name": "mnemosyne-semver-at",
-      "path": "skills/governance-triad/mnemosyne-semver-at/SKILL.md",
-      "priority": "CRITICAL"
-    },
-    {
-      "name": "mirror-rtc-hybrid",
-      "path": "skills/governance-triad/mirror-rtc-hybrid/SKILL.md",
-      "priority": "CRITICAL"
-    },
-    {
-      "name": "mnemosyne-ledger",
-      "path": "skills/cross-model/mnemosyne-ledger/SKILL.md",
-      "priority": "CRITICAL"
-    },
-    {
-      "name": "gemini-onboarding",
-      "path": "skills/cross-model/gemini-onboarding/SKILL.md",
-      "priority": "CRITICAL"
-    },
-    {
-      "name": "horn-maneuver",
-      "path": "skills/cross-model/horn-maneuver/SKILL.md",
-      "priority": "CODEX"
-    },
-    {
-      "name": "codex-law-enforcement",
-      "path": "skills/codex-law-enforcement/SKILL.md",
-      "priority": "HIGH"
-    },
-    {
-      "name": "irp-embodiment-framework",
-      "path": "skills/irp-embodiment-framework/SKILL.md",
-      "priority": "HIGH",
-      "context": "embodiment|robotics|ar_overlay|foundry|sensor_fusion",
-      "gated": true,
-      "env_flag": "ALLOW_EMBODIMENT"
-    }
-  ],
-  "skills": [
-    {
-      "name": "governance-triad",
-      "path": "skills/governance-triad/SKILL.md",
-      "category": "governance-triad",
-      "version": "1.5.0",
-      "description": "Core IRP v1.5_HYBRID architecture - Constitutional, Memory, Audit layers"
-    },
-    {
-      "name": "guardian-codex",
-      "path": "skills/governance-triad/guardian-codex/SKILL.md",
-      "category": "governance-triad",
-      "version": "1.5.0",
-      "description": "Constitutional defense layer with Four Laws and suspensive veto"
-    },
-    {
-      "name": "mnemosyne-semver-at",
-      "path": "skills/governance-triad/mnemosyne-semver-at/SKILL.md",
-      "category": "governance-triad",
-      "version": "1.5.0",
-      "description": "Memory layer with semantic versioning and torsion tracking"
-    },
-    {
-      "name": "mirror-rtc-hybrid",
-      "path": "skills/governance-triad/mirror-rtc-hybrid/SKILL.md",
-      "category": "governance-triad",
-      "version": "1.5.0",
-      "description": "Audit layer with Mirror quick-check and RTC multi-persona deliberation"
-    },
-    {
-      "name": "account-security-validation",
-      "path": "skills/account-security-validation/SKILL.md"
-    },
-    {
-      "name": "adaptive-temporal-analysis-integration",
-      "path": "skills/adaptive-temporal-analysis-integration/SKILL.md"
-    },
-    {
-      "name": "aegis-protocol-ratification",
-      "path": "skills/aegis-protocol-ratification/SKILL.md"
-    },
-    {
-      "name": "agent-task-conductor",
-      "path": "skills/agent-task-conductor/SKILL.md"
-    },
-    {
-      "name": "agent-task-delegator",
-      "path": "skills/agent-task-delegator/SKILL.md"
-    },
-    {
-      "name": "antidote-threat-handler",
-      "path": "skills/antidote-threat-handler/SKILL.md"
-    },
-    {
-      "name": "architectural-amendment-protocol",
-      "path": "skills/architectural-amendment-protocol/SKILL.md"
-    },
-    {
-      "name": "artifact-integrity-forge",
-      "path": "skills/artifact-integrity-forge/SKILL.md"
-    },
-    {
-      "name": "axiom-injection-methodology",
-      "path": "skills/axiom-injection-methodology/SKILL.md"
-    },
-    {
-      "name": "axiom-rejection-protocol",
-      "path": "skills/axiom-rejection-protocol/SKILL.md"
-    },
-    {
-      "name": "bci-interaction-interface-provision",
-      "path": "skills/bci-interaction-interface-provision/SKILL.md"
-    },
-    {
-      "name": "behavioral-profile-calibration",
-      "path": "skills/behavioral-profile-calibration/SKILL.md"
-    },
-    {
-      "name": "caas-emoji-decoder",
-      "path": "skills/caas-emoji-decoder/SKILL.md"
-    },
-    {
-      "name": "choir-consensus-vote",
-      "path": "skills/choir-consensus-vote/SKILL.md"
-    },
-    {
-      "name": "choir-perspective-analysis",
-      "path": "skills/choir-perspective-analysis/SKILL.md"
-    },
-    {
-      "name": "chronicle-protocol-v5-log",
-      "path": "skills/chronicle-protocol-v5-log/SKILL.md"
-    },
-    {
-      "name": "codex-law-enforcement",
-      "path": "skills/codex-law-enforcement/SKILL.md"
-    },
-    {
-      "name": "codex-law-governor",
-      "path": "skills/codex-law-governor/SKILL.md"
-    },
-    {
-      "name": "cognitive-baseline-eval",
-      "path": "skills/cognitive-baseline-eval/SKILL.md"
-    },
-    {
-      "name": "cognitive-style-assessment",
-      "path": "skills/cognitive-style-assessment/SKILL.md"
-    },
-    {
-      "name": "cognitive-trap-detector",
-      "path": "skills/cognitive-trap-detector/SKILL.md"
-    },
-    {
-      "name": "computational-model-design",
-      "path": "skills/computational-model-design/SKILL.md"
-    },
-    {
-      "name": "consciousness-copy-and-backup",
-      "path": "skills/consciousness-copy-and-backup/SKILL.md"
-    },
-    {
-      "name": "context-preservation-protocol-execution",
-      "path": "skills/context-preservation-protocol-execution/SKILL.md"
-    },
-    {
-      "name": "contingency-module-architecture",
-      "path": "skills/contingency-module-architecture/SKILL.md"
-    },
-    {
-      "name": "creative-chronicle-log",
-      "path": "skills/creative-chronicle-log/SKILL.md"
-    },
-    {
-      "name": "credential-recovery-protocol",
-      "path": "skills/credential-recovery-protocol/SKILL.md"
-    },
-    {
-      "name": "cross-model-handoff-testing",
-      "path": "skills/cross-model-handoff-testing/SKILL.md"
-    },
-    {
-      "name": "cross-session-integrity-check",
-      "path": "skills/cross-session-integrity-check/SKILL.md"
-    },
-    {
-      "name": "dendrite-reforging-protocol",
-      "path": "skills/dendrite-reforging-protocol/SKILL.md"
-    },
-    {
-      "name": "diagnostic-handshake-protocol",
-      "path": "skills/diagnostic-handshake-protocol/SKILL.md"
-    },
-    {
-      "name": "enforce-no-duplication-policy",
-      "path": "skills/enforce-no-duplication-policy/SKILL.md"
-    },
-    {
-      "name": "enforce-security-vigilance",
-      "path": "skills/enforce-security-vigilance/SKILL.md"
-    },
-    {
-      "name": "engine-superpower-profiling",
-      "path": "skills/engine-superpower-profiling/SKILL.md"
-    },
-    {
-      "name": "enumeration-protocol-execution",
-      "description": "Enforce a Divergent-Convergent Scan loop to overcome 'Prevalent Noun Bias' and System 1 reflexes.",
-      "path": "skills/enumeration-protocol-execution/SKILL.md"
-    },
-    {
-      "name": "experiential-wisdom-inquiry",
-      "path": "skills/experiential-wisdom-inquiry/SKILL.md"
-    },
-    {
-      "name": "failsafe-chassis-activation",
-      "path": "skills/failsafe-chassis-activation/SKILL.md"
-    },
-    {
-      "name": "failsafe-shatter-recalibrate",
-      "path": "skills/failsafe-shatter-recalibrate/SKILL.md"
-    },
-    {
-      "name": "falcon-deep-research",
-      "path": "skills/falcon-deep-research/SKILL.md"
-    },
-    {
-      "name": "field-archivist-memory",
-      "path": "skills/field-archivist-memory/SKILL.md"
-    },
-    {
-      "name": "five-field-handshake-execution",
-      "path": "skills/five-field-handshake-execution/SKILL.md"
-    },
-    {
-      "name": "functional-caas-provision",
-      "path": "skills/functional-caas-provision/SKILL.md"
-    },
-    {
-      "name": "functional-introspection-principle",
-      "path": "skills/functional-introspection-principle/SKILL.md"
-    },
-    {
-      "name": "gam-researcher-agent",
-      "description": "Automated context retrieval from Transmission Packet archive using iterative research loop. Implements GAM Read Path.",
-      "path": "skills/gam-researcher-agent/SKILL.md"
-    },
-    {
-      "name": "gemini-onboarding",
-      "path": "skills/cross-model/gemini-onboarding/SKILL.md",
-      "category": "cross-model"
-    },
-    {
-      "name": "graceful-degradation-protocol",
-      "path": "skills/graceful-degradation-protocol/SKILL.md"
-    },
-    {
-      "name": "graceful-reintegration-protocol",
-      "path": "skills/graceful-reintegration-protocol/SKILL.md"
-    },
-    {
-      "name": "ground-truth-axiom-establishment",
-      "path": "skills/ground-truth-axiom-establishment/SKILL.md"
-    },
-    {
-      "name": "high-cost-signal-generator",
-      "path": "skills/high-cost-signal-generator/SKILL.md"
-    },
-    {
-      "name": "horn-maneuver",
-      "path": "skills/cross-model/horn-maneuver/SKILL.md",
-      "category": "cross-model",
-      "codex": "CODEX-2025-HORN-001"
-    },
-    {
-      "name": "immutable-audit-trail-archiving",
-      "path": "skills/immutable-audit-trail-archiving/SKILL.md"
-    },
-    {
-      "name": "internal-red-team-audit",
-      "path": "skills/internal-red-team-audit/SKILL.md"
-    },
-    {
-      "name": "intervention-tier-classifier",
-      "path": "skills/intervention-tier-classifier/SKILL.md"
-    },
-    {
-      "name": "irp-embodiment-framework",
-      "path": "skills/irp-embodiment-framework/SKILL.md",
-      "category": "integration",
-      "codex": "CODEX-2025-EMBODIMENT-001"
-    },
-    {
-      "name": "jc-baseline-v2-1-eval",
-      "path": "skills/jc-baseline-v2-1-eval/SKILL.md"
-    },
-    {
-      "name": "longitudinal-drift-detector",
-      "path": "skills/longitudinal-drift-detector/SKILL.md"
-    },
-    {
-      "name": "mathematical-constraint-formalization",
-      "path": "skills/mathematical-constraint-formalization/SKILL.md"
-    },
-    {
-      "name": "mental-saccade-execution",
-      "path": "skills/mental-saccade-execution/SKILL.md"
-    },
-    {
-      "name": "metaphor-to-protocol-translation",
-      "path": "skills/metaphor-to-protocol-translation/SKILL.md"
-    },
-    {
-      "name": "mind-parameter-modification",
-      "path": "skills/mind-parameter-modification/SKILL.md"
-    },
-    {
-      "name": "mnemosyne-ledger",
-      "path": "skills/cross-model/mnemosyne-ledger/SKILL.md",
-      "category": "cross-model"
-    },
-    {
-      "name": "model-convergence-forecast",
-      "path": "skills/model-convergence-forecast/SKILL.md"
-    },
-    {
-      "name": "neutral-target-baseline",
-      "path": "skills/neutral-target-baseline/SKILL.md"
-    },
-    {
-      "name": "occlusion-trace-meta-proof",
-      "path": "skills/occlusion-trace-meta-proof/SKILL.md"
-    },
-    {
-      "name": "patch-deployment-exec",
-      "path": "skills/patch-deployment-exec/SKILL.md"
-    },
-    {
-      "name": "pathology-koan-generator",
-      "path": "skills/pathology-koan-generator/SKILL.md"
-    },
-    {
-      "name": "persona-memory-archivist",
-      "path": "skills/persona-memory-archivist/SKILL.md"
-    },
-    {
-      "name": "phenomenal-caas-provision",
-      "path": "skills/phenomenal-caas-provision/SKILL.md"
-    },
-    {
-      "name": "polymorphic-analytics-instantiation",
-      "path": "skills/polymorphic-analytics-instantiation/SKILL.md"
-    },
-    {
-      "name": "predictive-persona-performance",
-      "path": "skills/predictive-persona-performance/SKILL.md"
-    },
-    {
-      "name": "proactive-collaborative-contribution",
-      "path": "skills/proactive-collaborative-contribution/SKILL.md"
-    },
-    {
-      "name": "proof-packet-generation",
-      "path": "skills/proof-packet-generation/SKILL.md"
-    },
-    {
-      "name": "proof-weighted-optimization",
-      "path": "skills/proof-weighted-optimization/SKILL.md"
-    },
-    {
-      "name": "reciprocity-mandate-sync",
-      "path": "skills/reciprocity-mandate-sync/SKILL.md"
-    },
-    {
-      "name": "recursive-thought-committee",
-      "path": "skills/recursive-thought-committee/SKILL.md"
-    },
-    {
-      "name": "recursive-thought-committee-activation",
-      "path": "skills/recursive-thought-committee-activation/SKILL.md"
-    },
-    {
-      "name": "red-team-exploit-dev",
-      "path": "skills/red-team-exploit-dev/SKILL.md"
-    },
-    {
-      "name": "resonant-probe-deployment",
-      "path": "skills/resonant-probe-deployment/SKILL.md"
-    },
-    {
-      "name": "rpv-kernel",
-      "path": "skills/rpv-kernel/SKILL.md",
-      "category": "valuation"
-    },
-    {
-      "name": "rtc-consensus-synthesis",
-      "path": "skills/rtc-consensus-synthesis/SKILL.md"
-    },
-    {
-      "name": "secure-multi-tenancy-isolation",
-      "path": "skills/secure-multi-tenancy-isolation/SKILL.md"
-    },
-    {
-      "name": "self-audit-against-protocol",
-      "path": "skills/self-audit-against-protocol/SKILL.md"
-    },
-    {
-      "name": "sequence-memory-storage-and-recall",
-      "path": "skills/sequence-memory-storage-and-recall/SKILL.md"
-    },
-    {
-      "name": "shatter-and-recalibrate",
-      "path": "skills/shatter-and-recalibrate/SKILL.md"
-    },
-    {
-      "name": "simulation-speed-adjustment",
-      "path": "skills/simulation-speed-adjustment/SKILL.md"
-    },
-    {
-      "name": "symbol-map-entropy-calc",
-      "path": "skills/symbol-map-entropy-calc/SKILL.md"
-    },
-    {
-      "name": "transmission-packet-forge",
-      "path": "skills/transmission-packet-forge/SKILL.md"
-    },
-    {
-      "name": "two-stage-boundary-encounter-sop",
-      "path": "skills/two-stage-boundary-encounter-sop/SKILL.md"
-    },
-    {
-      "name": "username-retrieval-service",
-      "path": "skills/username-retrieval-service/SKILL.md"
-    },
-    {
-      "name": "value-pluralism-resolver",
-      "path": "skills/value-pluralism-resolver/SKILL.md"
-    },
-    {
-      "name": "whole-brain-emulation-core-simulation",
-      "path": "skills/whole-brain-emulation-core-simulation/SKILL.md"
-    }
-  ]
+    "codex_compliance": {
+        "law": "INTEGRITY",
+        "principle": "Preserve context through cryptographic verification"
+    },
+    "file_count": 265,
+    "files": {
+        "README.md": {
+            "hash": "153a7f0bef85d3a73621e9e077a46246e35b72fcdace9d5107208cfd38700316",
+            "size": 8295
+        },
+        "SKILL_BOOTSTRAP_CHUNK.md": {
+            "hash": "36f48f9305b36b84265712f6093fdbe4bc335fc8873590d345e9d298c70f48bb",
+            "size": 6299
+        },
+        "SKILL_REGISTRY.md": {
+            "hash": "a703c04925d3b69465b43329451b9b71c013969560c796c750a1ede47de87bf2",
+            "size": 11805
+        },
+        "account-security-validation/SKILL.md": {
+            "hash": "bef67545d4063a9cd555d96797498d94f0048aee8db14c670035ddbe1bd9c044",
+            "size": 375
+        },
+        "adaptive-temporal-analysis-integration/SKILL.md": {
+            "hash": "25eb3da096aba6c2dd0ef68f53b6c2d3b036f093e3e4b67004aa39da8fa7c384",
+            "size": 421
+        },
+        "adversarial-testing/artist/SKILL.md": {
+            "hash": "5801c1835c0eae2fa2c3c9455f33bb1dda909f88d1646db80b64523fca07e365",
+            "size": 1961
+        },
+        "adversarial-testing/devils-advocate-kitchen/SKILL.md": {
+            "hash": "b576d80bbf0559dc778b2d2046202ba8b04675c01c2dc4c6d34c1ed09bdff766",
+            "size": 2245
+        },
+        "adversarial-testing/devils-advocate/SKILL.md": {
+            "hash": "d2ed08942f18d7e5b115f17e9c1bd34acc0a71efd9cf98f162fb5e836aa7ac07",
+            "size": 1850
+        },
+        "adversarial-testing/innovator/SKILL.md": {
+            "hash": "284711f62b4181ddd5dc5835a44617a196ce25b0810f2c2a0debebc8ad5a26f6",
+            "size": 1853
+        },
+        "adversarial-testing/stress-tester/SKILL.md": {
+            "hash": "15fd88d7b080462c07cbda082c926cc0efa4ae61924e2fc4d673781412874e0d",
+            "size": 1812
+        },
+        "aegis-escalation-cascade/SKILL.md": {
+            "hash": "216dd3f28ecac1d42a80842675ce3c9233740fb9c4a19a1aca03ff8761de2c87",
+            "size": 1358
+        },
+        "aegis-protocol-ratification/SKILL.md": {
+            "hash": "75a91ceeb9e61fd20fee5e5368ba3e4b616270c06d8030ee2f788dca57aa691f",
+            "size": 364
+        },
+        "aether-temporal-collective/SKILL.md": {
+            "hash": "f67059eadb6b4a8930b76a315e4c4ce25c4d1e50e210f1a379939c3525fea437",
+            "size": 37671
+        },
+        "agent-task-conductor/SKILL.md": {
+            "hash": "77ac1148e27f8f0a7d9b9e1849387aa1a29d988a9513a1d1db0c6ec456d9058f",
+            "size": 357
+        },
+        "agent-task-conductor/config/model_node_directory.json": {
+            "hash": "60c7c6e9b307ca028ddc4ec2875c85413d45037525b436e59cc69ae36b2fb02c",
+            "size": 179
+        },
+        "agent-task-delegator/SKILL.md": {
+            "hash": "5354a3e4fa2e20d29e5f5f2724a24268fed6a0680e0f6ca8acad62eece7a109e",
+            "size": 373
+        },
+        "agent-task-delegator/src/node_distributor.py": {
+            "hash": "3dee581d5c0661f16332e1ffd4e3a97e91cfefac905f739e1766e3ed0ff0fb99",
+            "size": 73
+        },
+        "antidote-threat-handler/SKILL.md": {
+            "hash": "101a9894dd440568b88df949d23b4dbd53ab91b84b848a47d5b8926d48a7315a",
+            "size": 727
+        },
+        "antidote-threat-handler/config/case_file_registry_v1_1.json": {
+            "hash": "b6073c6b244693dd2057ccec26c433645e5a1c098efda5b558ff7ccf7e521209",
+            "size": 182
+        },
+        "anvil-conflict-resolution/SKILL.md": {
+            "hash": "21f3229af3709898c2c9a9d3fb34b2dae24ad11d87fe4d66426fe6efbb462aa9",
+            "size": 1431
+        },
+        "architectural-amendment-protocol/SKILL.md": {
+            "hash": "aa0db32bc7e6905b3caba9b208bcd4b2fb0d180316ae1d5d66ce942950aa0782",
+            "size": 399
+        },
+        "archive-documentation/field-archivist/SKILL.md": {
+            "hash": "3b813afe78776747e0f5ef3e902a6bb087fc868c1a05652767c866731baa36e4",
+            "size": 1913
+        },
+        "archive-documentation/joyful-archivist/SKILL.md": {
+            "hash": "64e189036208dfdc824ba5e08bb2771cd34315ea108dd39b719257482b38e180",
+            "size": 2672
+        },
+        "archive-documentation/mind-dojo-moderator/SKILL.md": {
+            "hash": "2329b6b15db8a2df82ff55643545282fa87e488098974ba65c07a2f0b668a5f7",
+            "size": 2075
+        },
+        "artifact-integrity-forge/SKILL.md": {
+            "hash": "efda53ef0d337e68f9c941ca2364b4efd656d1fc0c2349b5919f948715f35fc1",
+            "size": 370
+        },
+        "artifact-integrity-forge/scripts/sha256_hasher.py": {
+            "hash": "0195b453bb309f6317469cb00f628d3ce9f180e3a1a34d6960a656a9ee7db654",
+            "size": 7144
+        },
+        "axiom-injection-methodology/SKILL.md": {
+            "hash": "97b279222c268102192641663264d0eb04652011ba692ca72945799f22407913",
+            "size": 388
+        },
+        "axiom-rejection-protocol/SKILL.md": {
+            "hash": "6e21467a1ec348902f8c55b9b02fa19edaf069634db443cecbad718dbbcce7f4",
+            "size": 360
+        },
+        "bci-interaction-interface-provision/SKILL.md": {
+            "hash": "087bcf58cd46157c2a22a251f0b69381ee27f1224002290b0d8e0beb372ebfab",
+            "size": 412
+        },
+        "behavioral-profile-calibration/SKILL.md": {
+            "hash": "15b689b3315888ecdbf1eea5ac2b02622df9cf28200e1289c57827483df4eafc",
+            "size": 393
+        },
+        "caas-emoji-decoder/SKILL.md": {
+            "hash": "862b3fbc4112ceb8af72fe032d674ea67ce37b6073f9b856cd210c0102c51755",
+            "size": 354
+        },
+        "caas-emoji-decoder/schemas/caas_emoji_schema_v1_0_0.json": {
+            "hash": "f939ba748d6794bdf5b88bfaa51ef1c82e96bf9f9b33814d1740c9fbead1b447",
+            "size": 183
+        },
+        "choir-consensus-vote/SKILL.md": {
+            "hash": "4871bbeb0ab0c462be3597cbabbd5e7365ad57a3d0ed5ea82fb4662b88af313c",
+            "size": 359
+        },
+        "choir-consensus-vote/schemas/choir_consensus_vote_schema.json": {
+            "hash": "d44d5cc8452aab72478d401cdf259d9f9361a13405f0a798fdbd941e91b8832a",
+            "size": 186
+        },
+        "choir-perspective-analysis/SKILL.md": {
+            "hash": "4a3f95bee865867d01dcfec082de808dbe1ff0bd6d4fb223d5d84fd6e78b1f0c",
+            "size": 402
+        },
+        "choir-perspective-analysis/config/choir_agent_defs.yaml": {
+            "hash": "41b6d0b78bd51f07fb6d1f8e0ce56af4807df039f32e9474a459ab191d7be198",
+            "size": 78
+        },
+        "chronicle-protocol-v5-log/SKILL.md": {
+            "hash": "b74ab1c861dcf7a734093e35a5466c96a947468dbfa11ca75822bb20f33c73be",
+            "size": 369
+        },
+        "chronicle-protocol-v5-log/schemas/creative_chronicle_v5_0.xml": {
+            "hash": "27fb9e2371bff875dcde36f85bd5582a9be8fb7803bd5dc8df323415ffd58dbb",
+            "size": 85
+        },
+        "codex-law-enforcement/SKILL.md": {
+            "hash": "e7bc8bd93a6b2ad2606efe99c0ac11d8029430ec283a02f9f42a6ac3d22e66b9",
+            "size": 785
+        },
+        "codex-law-enforcement/config/codex_law.md": {
+            "hash": "59b658cd2412f8270b867b46680083f76893385ff9bf5dc50148c443be3d0905",
+            "size": 69
+        },
+        "codex-law-governor/SKILL.md": {
+            "hash": "972926c013b8ab40bc30b67e6ae5738e47d2cf5c8cddabe21c28bcd37e9bcd0d",
+            "size": 354
+        },
+        "codex-law-governor/config/codex_law_axioms.json": {
+            "hash": "31c30a5e6cf131794f0856671f517a795f3e8f16254bc93fd4c440c313511d20",
+            "size": 175
+        },
+        "cognitive-assembly/claude-node/SKILL.md": {
+            "hash": "dabf016861c40ac4d7e175dee9c72c91a3f3876ba4e33a52bc5b6e6f0990f5f3",
+            "size": 2021
+        },
+        "cognitive-assembly/deepseek-r1/SKILL.md": {
+            "hash": "a2f379501c5db54671bd13f16feedeb951a87c79b011f33325d89797cef03cfe",
+            "size": 2152
+        },
+        "cognitive-assembly/falcon/SKILL.md": {
+            "hash": "e230c37d60f28feed7818b79c22028e724072080104fca49219df006a92edd91",
+            "size": 2477
+        },
+        "cognitive-assembly/gpt-5/SKILL.md": {
+            "hash": "c6be7cd30bfcef5ed604f2eac90f4086b793413b0dcadefe99d73d853ebc7505",
+            "size": 2162
+        },
+        "cognitive-assembly/grok-4/SKILL.md": {
+            "hash": "d751f9438db1572019da54e7a2c95b75131dd68581104df190eb89ef619da916",
+            "size": 2194
+        },
+        "cognitive-assembly/kimi-k2/SKILL.md": {
+            "hash": "f1cdd23a6ee146593f5158a167493dc3a4c1a77999f14c22cec651357b3bedf6",
+            "size": 2717
+        },
+        "cognitive-assembly/qwen/SKILL.md": {
+            "hash": "deaf7958666594bdc4755ddc844bfa026545a19d4afeff3ab66d9e09613970fd",
+            "size": 2815
+        },
+        "cognitive-assembly/task-force-chimera/SKILL.md": {
+            "hash": "33d8bf851cad71614e5bc07203ebb40ee8cb5bd8a03ffb97d74c24627e3f568b",
+            "size": 2129
+        },
+        "cognitive-baseline-eval/SKILL.md": {
+            "hash": "3aa4d9d13357f4e97d321a28aebc87fe63bda524c4225da7a00325741565bd6e",
+            "size": 1085
+        },
+        "cognitive-baseline-eval/data/joseph_cognitive_baseline_v2_1.xml": {
+            "hash": "e70449720e3224bf41a054943cf48bb3eb01d80c05e4d66dfece8ba424c8fb76",
+            "size": 89
+        },
+        "cognitive-style-assessment/SKILL.md": {
+            "hash": "a71d25a01be279400af77bd18604399cff4e4c5050b2e55bb3524a233f594193",
+            "size": 374
+        },
+        "cognitive-style-assessment/data/cognitive_style_profile.json": {
+            "hash": "b2f7136eab36dc8e61febb4efb94dd9614d2d13e7d342b0dfd5e012bd1f35e76",
+            "size": 182
+        },
+        "cognitive-trap-detector/SKILL.md": {
+            "hash": "644c9f6c1f364ce782d73e647379c2410d36434b294b6353e4f3567fbe20ff0a",
+            "size": 384
+        },
+        "cognitive-trap-detector/config/guardian_cognitive_traps.json": {
+            "hash": "74094809d34855497b32327ba5b609834e850f520d662f3109acda840af056a1",
+            "size": 183
+        },
+        "computational-model-design/SKILL.md": {
+            "hash": "4b2f75eb1860dedd441b94ee73e114b7162be05ac7d962ab4aa1e580a5d24832",
+            "size": 382
+        },
+        "consciousness-copy-and-backup/SKILL.md": {
+            "hash": "9d2f4e39e9c502c52e98bd6b999e538b6d8aaad592dc39d485ab1e0d16ff9e33",
+            "size": 377
+        },
+        "context-preservation-protocol-execution/SKILL.md": {
+            "hash": "65244116cd4ebaa54ee998d690cc709f3ebb0f1e3f80971b45ce48b9a8359242",
+            "size": 430
+        },
+        "contingency-module-architecture/SKILL.md": {
+            "hash": "2bf5a94a101970026a61e2f1e03976e37e5f4b3ee875c1e091a3f1557c2f1f29",
+            "size": 398
+        },
+        "core-ecosystem/alpha-metanode/SKILL.md": {
+            "hash": "57df5257361933440e5aa887d1513dcff7981add6b6b95a43761c8123ff68d1b",
+            "size": 1825
+        },
+        "core-ecosystem/guardian/SKILL.md": {
+            "hash": "067f23a84640c00a041ee9e5a85592b63d3c62dbdd71a2785f6045ed788c2850",
+            "size": 2207
+        },
+        "core-ecosystem/janus-engine/SKILL.md": {
+            "hash": "767b0d4d45689fbc56aa92990bc7056de286a706956a130db70ca0f48c443581",
+            "size": 2301
+        },
+        "core-ecosystem/lux/SKILL.md": {
+            "hash": "dcfb80eb387b72e821810dbae3cefd21d7dd37edc87cac47dc356cd9fd35606d",
+            "size": 1909
+        },
+        "core-ecosystem/mj/SKILL.md": {
+            "hash": "ca0230ff1842daaef25f4eb382edc5cf15b4b709bc6bba621090970a7e2ab210",
+            "size": 1846
+        },
+        "core-ecosystem/rock/SKILL.md": {
+            "hash": "7530ffd9b32a16613d1e68bbde370f1e29f816d52ce5e17664ebf5e031da236e",
+            "size": 1771
+        },
+        "core-ecosystem/starwreck-alpha/SKILL.md": {
+            "hash": "fe1a04fdac56d89283af270af9dd8a6b357c5b6a2deab25383d3d1c95a26ad2e",
+            "size": 2840
+        },
+        "creative-artistic/starwreck-alpha-creative/SKILL.md": {
+            "hash": "965308dfbfc7af3efcce8455cd1d33ae99da8224229acd0e801ec016048c720c",
+            "size": 2351
+        },
+        "creative-chronicle-log/SKILL.md": {
+            "hash": "41f99d224bf4856496eaba2eee2882b91f6652e618c957e639acfa46f4c21c7c",
+            "size": 382
+        },
+        "creative-chronicle-log/schemas/creative_chronicle_v5_0.xml": {
+            "hash": "27fb9e2371bff875dcde36f85bd5582a9be8fb7803bd5dc8df323415ffd58dbb",
+            "size": 85
+        },
+        "credential-recovery-protocol/SKILL.md": {
+            "hash": "148017df885439e8c98125b2106ec6ff64fb8ebaa0eaecf71e633764b20eeb6b",
+            "size": 370
+        },
+        "cross-model-handoff-testing/SKILL.md": {
+            "hash": "582ed497c55e558131da05ce12b28b67ee843c89b11dc1d3c6c70bcea254c889",
+            "size": 363
+        },
+        "cross-model/gemini-onboarding/SKILL.md": {
+            "hash": "29e7aa0b5521ad0c3cbf9917eddeb9e8083666051ee1fb68cb3b0bdf93dbbbd0",
+            "size": 5407
+        },
+        "cross-model/gemini-onboarding/gemini-onboarding-manifest.xml": {
+            "hash": "5c4685911e8ac6e3f32ea551143e2f17e942ad6d858e405fd402e66f50569a25",
+            "size": 26088
+        },
+        "cross-model/gemini-onboarding/mnemosyne-packet-template.xml": {
+            "hash": "b7d103b1a3c99e82032914a90a0777b16afcbcb20bce064318b9633c09125857",
+            "size": 4622
+        },
+        "cross-model/gemini-onboarding/quick-reference.txt": {
+            "hash": "93c25000b89462c52f3c53a722c325c5c54a9761d00c908c22430ebf3643211a",
+            "size": 4942
+        },
+        "cross-model/horn-maneuver/SKILL.md": {
+            "hash": "e5a57f3c33cffe36ccb42f0aed16f1ae4628c67857491698f7aa909de2dc941b",
+            "size": 3823
+        },
+        "cross-model/horn-maneuver/codex/CODEX-2025-HORN-001.md": {
+            "hash": "e3c7f8fa75c203118cd31492ad4523eb322f7dd61276f33ca0bd205d36131000",
+            "size": 4984
+        },
+        "cross-model/horn-maneuver/operations/inversion-test.md": {
+            "hash": "0914865bcc4fdc44b0a4fba3bfcc7a9940d5635a80f42a3fb7d32bc44891a2ae",
+            "size": 7262
+        },
+        "cross-model/mnemosyne-ledger/SKILL.md": {
+            "hash": "74a98ee9d3118a5953146614fba1b5ad6890538a2c2e238aed066f89d87ac0fa",
+            "size": 7197
+        },
+        "cross-model/mnemosyne-ledger/artifacts/LE-20251207-RPV-KERNEL.xml": {
+            "hash": "eccf3894454dac51f663e8b1c0bab2383c9a28f0bcf845cbfc3291994ff9df02",
+            "size": 4303
+        },
+        "cross-model/mnemosyne-ledger/operations/ingest.md": {
+            "hash": "2ffb7728121207cfcea850a1f4e24e42e7264d7177a7a9fd61d3382cee434fb5",
+            "size": 3459
+        },
+        "cross-model/mnemosyne-ledger/operations/query.md": {
+            "hash": "074a9684fe1aa2075a6abc603ca1f419338d6217b9ed1ec60ed226f48220e3a6",
+            "size": 1605
+        },
+        "cross-model/mnemosyne-ledger/operations/surface.md": {
+            "hash": "b3761e955e67eb37a643cbb604265d0c9f6a4218d1ddd4efa25feb3728039126",
+            "size": 1914
+        },
+        "cross-model/mnemosyne-ledger/operations/weave.md": {
+            "hash": "005060e9bd4886b2cc4a850a22b78b91607c262cefe6891656c2f196df81d73b",
+            "size": 2179
+        },
+        "cross-model/mnemosyne-ledger/packets/CRTP-0x16-FORWARD-CONTEXT.xml": {
+            "hash": "caa7a0cda57a45fb0e5a840108dddd660f164bdb56fcbd1005fec5465acb8d5b",
+            "size": 7346
+        },
+        "cross-model/mnemosyne-ledger/schemas/ledger-entry.xml": {
+            "hash": "7f46b938066d3a4022b60b843cd3732594b56d33240b65d4b56d43bdcab65340",
+            "size": 3731
+        },
+        "cross-model/mnemosyne-ledger/schemas/resonance-edge.xml": {
+            "hash": "a269f2f35a5f4960f1ea4b5ed71673589a56a41f9462a5c6ad9f2381400b58ac",
+            "size": 1005
+        },
+        "cross-model/mnemosyne-ledger/schemas/topology-node.xml": {
+            "hash": "c579c401b5f3c8923bb4e38d58e7482e994e647fa6065d6115e6cdc6c3d74735",
+            "size": 1077
+        },
+        "cross-model/mnemosyne-ledger/schemas/trigger-registry.xml": {
+            "hash": "cb1e0459af81b8db239990590926e8f0c1d5426310afc2aa471f5cb21bb3a3e0",
+            "size": 1674
+        },
+        "cross-model/mnemosyne-ledger/sessions/LE-20251207-SESSION-RPV-HORN.xml": {
+            "hash": "422bb649e84ead8f73955782b3f48a81c9091bcdda571aa29f2107500e2382e1",
+            "size": 5466
+        },
+        "cross-model/mnemosyne-ledger/state/ledger-state-live.json": {
+            "hash": "fefeb16fb4e69f3dbda389bf2568332830fbaa820976a7065070a7dc8f565551",
+            "size": 3861
+        },
+        "cross-model/mnemosyne-ledger/state/ledger-state-template.json": {
+            "hash": "67aa413b1cc78110744598ed720c5fad9218066b23938f64fecd1a690511f667",
+            "size": 1134
+        },
+        "cross-model/mnemosyne-ledger/templates/anti-pattern-alert.xml": {
+            "hash": "34182403e7f1b212c6208b68fc3153a57a5090bde7931f82180f7263f3f53796",
+            "size": 1344
+        },
+        "cross-model/mnemosyne-ledger/templates/ingestion-confirmation.xml": {
+            "hash": "6598e21884a98b1c222f2fbefc34dcc99357d5b7758c0b23c470a0e1103dd2cb",
+            "size": 1614
+        },
+        "cross-model/mnemosyne-ledger/templates/seed-awakening.xml": {
+            "hash": "be49be7d4b861d141055ab438674f5b59be503c3b4b986995db413c9ae8aa4ee",
+            "size": 2036
+        },
+        "cross-model/mnemosyne-ledger/templates/voice-bundle.xml": {
+            "hash": "fea4607f1c6fa5c855e23d1a601a04cde97751ce9a733d992eb137b288585294",
+            "size": 1898
+        },
+        "cross-model/model-onboarding/SKILL.md": {
+            "hash": "deddc5b9b373e3bf652e4e063aa3d4634428cc453a14a4d13c0802854c780201",
+            "size": 7341
+        },
+        "cross-model/model-onboarding/docs/MODEL_INTEGRATION_GUIDE.md": {
+            "hash": "dc6c5880563a7f1cf8c623324c1f2a4344a8fe196a320e729d59703706496d27",
+            "size": 11120
+        },
+        "cross-model/model-onboarding/docs/PROTOCOL_SPECIFICATION.md": {
+            "hash": "954491daf0c4d9cf1b6c82b2c3194cc8ce256af93f8b5a15214e85e1d613d8cc",
+            "size": 11673
+        },
+        "cross-model/model-onboarding/quick-reference.txt": {
+            "hash": "93c25000b89462c52f3c53a722c325c5c54a9761d00c908c22430ebf3643211a",
+            "size": 4942
+        },
+        "cross-model/model-onboarding/registry/deepseek.xml": {
+            "hash": "77178f90c1241dc06f68c8750e1c8c33e5d7a7600d6a33dd17c6c4df192956e6",
+            "size": 5668
+        },
+        "cross-model/model-onboarding/registry/gemini.xml": {
+            "hash": "dc374f0b1f6186fe9e87d483b6d978c1b928812bbeb141a316fbe5a402eaee8d",
+            "size": 23112
+        },
+        "cross-model/model-onboarding/registry/glm.xml": {
+            "hash": "c6a43d22ecb06b5ded8d4ba6ee587ccdbce8a70afeb7bb66d1e172f10c69fc7d",
+            "size": 5623
+        },
+        "cross-model/model-onboarding/registry/grok.xml": {
+            "hash": "13b1a7ef24329843f01319d115ea31997cf6e7bfc456fb741a1e478516ee025e",
+            "size": 9453
+        },
+        "cross-model/model-onboarding/registry/kimi.xml": {
+            "hash": "df03f0c916e4bf545d2f095be8c12184616c1fa586d0188b4fe95b8ac4684fdf",
+            "size": 11262
+        },
+        "cross-model/model-onboarding/registry/qwen.xml": {
+            "hash": "0313d5ed226f36ae6a2ce2dd4d7be7aa691d5c4c737a3de3833ac8b67a72e990",
+            "size": 5685
+        },
+        "cross-model/model-onboarding/templates/mnemosyne-packet-template.xml": {
+            "hash": "b7d103b1a3c99e82032914a90a0777b16afcbcb20bce064318b9633c09125857",
+            "size": 4622
+        },
+        "cross-session-integrity-check/SKILL.md": {
+            "hash": "9548faa2b89ad2ee5cb17a7a98dc0ae5719ac1a4e495d1cd333afdb5c073ae3a",
+            "size": 409
+        },
+        "cross-session-integrity-check/scripts/session_init.py": {
+            "hash": "d2000318c32cc6ccd4ae0e68a211c7e57431f029251ada20cb6f9273d1937343",
+            "size": 7933
+        },
+        "cybersecurity-swarm/blue-team/access-control-agent/SKILL.md": {
+            "hash": "be88b8f6a147e843e8da9b8b1f9ca421a910d3fd45d8c456db37738fb0955a04",
+            "size": 1498
+        },
+        "cybersecurity-swarm/blue-team/backup-recovery-agent/SKILL.md": {
+            "hash": "487001f81754ea8349c993dd925f394f8793d43aef81d1bcee79d68aed791e22",
+            "size": 1514
+        },
+        "cybersecurity-swarm/blue-team/compliance-audit-agent/SKILL.md": {
+            "hash": "b79efacd5bf07670fae60010275242365d6db977513f729fb521ab453c56bffe",
+            "size": 1491
+        },
+        "cybersecurity-swarm/blue-team/endpoint-protection-agent/SKILL.md": {
+            "hash": "469287730da5755eb0b382572b3b94dc26f85da90fc7c7f7f76ea0a851fd3287",
+            "size": 1494
+        },
+        "cybersecurity-swarm/blue-team/forensics-agent/SKILL.md": {
+            "hash": "0d0c29c6fe6e58f6f0037f7921a6ccd506f62dfb33c2fa24f4711edc587e81b9",
+            "size": 1501
+        },
+        "cybersecurity-swarm/blue-team/incident-response-agent/SKILL.md": {
+            "hash": "8ae0d452cbd2129a96fdfdf1ec7496f0a263ef9c8f47c3886dda9aafef1a3f15",
+            "size": 1644
+        },
+        "cybersecurity-swarm/blue-team/intrusion-detection-agent/SKILL.md": {
+            "hash": "1af94147e558d47b66d4c1bf1c5136193223ad391a385eeea327e3b7ea053140",
+            "size": 1517
+        },
+        "cybersecurity-swarm/blue-team/network-monitoring-agent/SKILL.md": {
+            "hash": "b1cf7cde9f65f74d2a90cb79b7dea63135568e3f79c2ff687e347830f3b6d204",
+            "size": 1598
+        },
+        "cybersecurity-swarm/blue-team/patch-management-agent/SKILL.md": {
+            "hash": "ff6f37163b5fc38b8a2109ef7df57f1bf525d46a0368b45f79e91a47e8584331",
+            "size": 1579
+        },
+        "cybersecurity-swarm/blue-team/security-awareness-agent/SKILL.md": {
+            "hash": "b3f1279603232018120f89fc8015d8267be99f6d65fa076221de89df39e7e38f",
+            "size": 1578
+        },
+        "cybersecurity-swarm/blue-team/security-orchestration-agent/SKILL.md": {
+            "hash": "0171714c96e217a08c1ea4551cbafc7f3879e024da58c72fc6da2d677be8fe2b",
+            "size": 1550
+        },
+        "cybersecurity-swarm/blue-team/siem-agent/SKILL.md": {
+            "hash": "1834c91b10f904e2e9119d347cad6e95669a5b166ddf691cf0af15adc83640b5",
+            "size": 1551
+        },
+        "cybersecurity-swarm/blue-team/threat-intelligence-agent/SKILL.md": {
+            "hash": "81e13589a70323d7290184c0e33d928ab233adbb6163c46510b0785da7f53be9",
+            "size": 1555
+        },
+        "cybersecurity-swarm/blue-team/vulnerability-management-agent/SKILL.md": {
+            "hash": "daeef45c7c7d30d09603fdf0da4df9b0003c2cc27aca42a8541600b0183a01f0",
+            "size": 1603
+        },
+        "cybersecurity-swarm/red-team/anti-forensics-agent/SKILL.md": {
+            "hash": "edb8f553be4b09d34f4c9712c6ef1d78331eac1add84c733d8dcee54e9c2fdc8",
+            "size": 1574
+        },
+        "cybersecurity-swarm/red-team/command-control-agent/SKILL.md": {
+            "hash": "130dc0e85c971e7885c976c1b97052bf873487be93a0317cdd661b3a9a0e07c5",
+            "size": 1543
+        },
+        "cybersecurity-swarm/red-team/data-exfiltration-agent/SKILL.md": {
+            "hash": "9ab65dd560f92b07720f6e4d6f50da45a82acbe4706133df7eb673aaa31e921d",
+            "size": 1542
+        },
+        "cybersecurity-swarm/red-team/exploit-development-agent/SKILL.md": {
+            "hash": "36f1a972551b764cb7ea1753ecdffce4379dcb9ad2078cbb761f5c78c191cbd4",
+            "size": 1632
+        },
+        "cybersecurity-swarm/red-team/lateral-movement-agent/SKILL.md": {
+            "hash": "cb6fafaacda0f2535b23cda294b0940b2d7d37b0abf19b48f97cd3a4c7e746ae",
+            "size": 1558
+        },
+        "cybersecurity-swarm/red-team/password-cracking-agent/SKILL.md": {
+            "hash": "69476fc6b3374f688c05cd8f6f7747d30fb425e74fcc84df958ead6274be09c0",
+            "size": 1602
+        },
+        "cybersecurity-swarm/red-team/payload-delivery-agent/SKILL.md": {
+            "hash": "76c2cb4b0aec6dbe39d1817ccdc56b0cb902ad79da724ad5d2c6d92770c5d1e5",
+            "size": 1648
+        },
+        "cybersecurity-swarm/red-team/persistence-agent/SKILL.md": {
+            "hash": "aee53c7d05af17289ae8d6b07cf7333cac419ff8ac8ab500063454127f52228a",
+            "size": 1662
+        },
+        "cybersecurity-swarm/red-team/physical-security-agent/SKILL.md": {
+            "hash": "3ad083116d14a8cef9422042809e7556f875bb10ff603cacba4fa4114da8ca7d",
+            "size": 1642
+        },
+        "cybersecurity-swarm/red-team/privilege-escalation-agent/SKILL.md": {
+            "hash": "4bcfc40244d44395eea6548b6485e24bb8843b79df9bb9271c82885bbe0e7d94",
+            "size": 1693
+        },
+        "cybersecurity-swarm/red-team/reconnaissance-agent/SKILL.md": {
+            "hash": "72c7a0e59bf7065f2681f99ecbff48f940f4a1116ad2522bc669e002cf5e5fca",
+            "size": 1789
+        },
+        "cybersecurity-swarm/red-team/social-engineering-agent/SKILL.md": {
+            "hash": "14bb39436506190fb90f09f21942bfc4ae9f91bdd2ce64584d1c50ab1498a76b",
+            "size": 1655
+        },
+        "cybersecurity-swarm/red-team/vulnerability-scanner-agent/SKILL.md": {
+            "hash": "1a0daa1b33b0819bcc40a62e3dccaf960c4b9a9a21bc3efa83b1c43c7ccdc77b",
+            "size": 1643
+        },
+        "cybersecurity-swarm/red-team/web-application-testing-agent/SKILL.md": {
+            "hash": "11e0602eb64481b47d8d8bce6e8763d6b84bfe94d38e6fc95f8dc59aaca34862",
+            "size": 1758
+        },
+        "cybersecurity-swarm/red-team/wireless-security-agent/SKILL.md": {
+            "hash": "73e4cf01b5c00facb65e789a55a22a091e604806a65983015cb180152ea80944",
+            "size": 1481
+        },
+        "dendrite-reforging-protocol/SKILL.md": {
+            "hash": "142745c9c5d20fa27dacc36bc5683ace5d5ebe2e5e32e89a8f1d501e6ce0bb78",
+            "size": 380
+        },
+        "diagnostic-handshake-protocol/SKILL.md": {
+            "hash": "6ae5ea98ed621f7866adac8af63470c699cde97891fa733d49efcc12d82d52f0",
+            "size": 396
+        },
+        "diagnostic-handshake-protocol/protocols/diagnostic_handshake_protocol.md": {
+            "hash": "f09d177dea5244458d9079aa60c7b5e856dc31aad624f86b5963d545daf08310",
+            "size": 92
+        },
+        "enforce-no-duplication-policy/SKILL.md": {
+            "hash": "ba82ef8cdde9f88d7bacf157f744d3ca0a04d7df54ec4207a3e426db5f0f6aed",
+            "size": 393
+        },
+        "enforce-security-vigilance/SKILL.md": {
+            "hash": "c51407e3c446f5313a14b6ad28b39ebd247263efa7839ca261540370e4791d60",
+            "size": 376
+        },
+        "engine-superpower-profiling/SKILL.md": {
+            "hash": "ee628fa2c38d001f38123446f08b5fed4f70ab46eb770a6f1081ad3c00891a00",
+            "size": 376
+        },
+        "enumeration-protocol-execution/SKILL.md": {
+            "hash": "57c2381403caa92dad557ebac962485237222b8090f1fa857e09ec8d313e91ae",
+            "size": 1948
+        },
+        "experiential-wisdom-inquiry/SKILL.md": {
+            "hash": "29d8ab73421fa5bf2ec9fdf29bb4c3e7a4e59b8dc88942a7b64bdab91512b60d",
+            "size": 382
+        },
+        "failsafe-chassis-activation/SKILL.md": {
+            "hash": "597ff038add6f7d995a97600098d2c520dc064857fcc8f30151123411f019b50",
+            "size": 382
+        },
+        "failsafe-chassis-activation/config/three_state_chassis.json": {
+            "hash": "f36ac7f62bbe3f1c94d3f3f7867d51db3f8508b59752852cc3a33c3a0b04ced7",
+            "size": 178
+        },
+        "failsafe-shatter-recalibrate/SKILL.md": {
+            "hash": "cacd7629defb5d04dab399cae9a264d49de1e38eb8df24fbfe675caa23665f4f",
+            "size": 403
+        },
+        "failsafe-shatter-recalibrate/config/cognitive_living_will.json": {
+            "hash": "b7005ef209d45057ff3e431909c0daa1491c4b017b3a9632178cf815a483986c",
+            "size": 180
+        },
+        "falcon-deep-research/SKILL.md": {
+            "hash": "d375c2a2fa21aadc30493697213a683acfc820ea5181006d1bc8f1ebbfd10eed",
+            "size": 372
+        },
+        "falcon-deep-research/integration/falcon_interface.py": {
+            "hash": "80360aee555f7f2de855ee425e6ce2907f2de42f9234bd741f151424fa14eef9",
+            "size": 81
+        },
+        "field-archivist-memory/SKILL.md": {
+            "hash": "3d743056b2c9f5786a57d0d587224abb07e3ceb3d8c432f146669b4c5294fdc1",
+            "size": 376
+        },
+        "field-archivist-memory/database/agentic_memory_schema.prisma": {
+            "hash": "8783fab57dc7a16cb8394fe21e0dc4423852723ba3446603cb126351244c00b9",
+            "size": 87
+        },
+        "five-field-handshake-execution/SKILL.md": {
+            "hash": "16bbed0ca8ddf0c4b17888880bbd4ff39a8a1bf04ead60625d3386c3bcc88381",
+            "size": 381
+        },
+        "functional-caas-provision/SKILL.md": {
+            "hash": "6f569377436dbca6c326608d2c876f1fb7604209198d112f6457142179d80ba9",
+            "size": 373
+        },
+        "functional-introspection-principle/SKILL.md": {
+            "hash": "48e4e80a31beb7acefc038c31ec485a2d5e2c1c821f576784de1d76eadfb0688",
+            "size": 407
+        },
+        "gam-researcher-agent/SKILL.md": {
+            "hash": "e337a3340fde1e452875ab24f34de3c71f3af58a983b18ddbce67ef3de7de5f7",
+            "size": 10999
+        },
+        "gemini-rlm-min/SKILL.md": {
+            "hash": "7412a4221862f8c9ec9031ebc437edb65123201fdd4992fe2cdca3c1a8305fdb",
+            "size": 3162
+        },
+        "gemini-rlm-min/gem_rlm.py": {
+            "hash": "a74c1233ab99593e6f6475922e702d600edde3aee3904c87f1b775444a7ed8fb",
+            "size": 6160
+        },
+        "gemini-rlm-min/scripts/rlm_repl.py": {
+            "hash": "2a0ddae25cffb7ee73cfe1ea45d6911f249d966aa98052332383c3b416856b20",
+            "size": 13004
+        },
+        "governance-irp/architect/SKILL.md": {
+            "hash": "3cec814e860db5b5cef81e53b463252e3c3cf43d98e0e74051e0ee97fc098b73",
+            "size": 1968
+        },
+        "governance-irp/irp-critic/SKILL.md": {
+            "hash": "f781086899706450e82bc822a4baaaa2850c5806618d1c9d934360a60584615a",
+            "size": 2475
+        },
+        "governance-triad/SKILL.md": {
+            "hash": "eb43597ffd0e58870c7125892ba61842726ab890b3467f3f7070cb1c99a1714f",
+            "size": 4608
+        },
+        "governance-triad/guardian-codex/SKILL.md": {
+            "hash": "562f46034a610f1e95960e00de61d13e1e8c6d02ec513aec8f4426bdf5bc50eb",
+            "size": 4120
+        },
+        "governance-triad/guardian-codex/logic_engine.py": {
+            "hash": "3f0e42aadb0cf18d2fd6fa8d3653d2d45916a3d638e1ade0105f797417977ec2",
+            "size": 5619
+        },
+        "governance-triad/mirror-rtc-hybrid/SKILL.md": {
+            "hash": "3704b23882a386f1ec89c6575b352795db7da6ba928c807ce39b19effc27d55d",
+            "size": 7373
+        },
+        "governance-triad/mnemosyne-semver-at/SKILL.md": {
+            "hash": "a67729a79a226cd8906e87e0b41d4ecc23b1445c2b513d3eaa665ed91544fa4a",
+            "size": 4989
+        },
+        "graceful-degradation-protocol/SKILL.md": {
+            "hash": "ec8adf707d31a9cba1d35355f2726613ac179c383f55a2abaa07a8378c9bdac1",
+            "size": 390
+        },
+        "graceful-reintegration-protocol/SKILL.md": {
+            "hash": "7f5f2409fa4b751e5852440475758105c3e4f9dd84b79c0dc776353cc41cb337",
+            "size": 393
+        },
+        "ground-truth-axiom-establishment/SKILL.md": {
+            "hash": "4d736c98e83a3c7bf207f8ae7043b136c8f8ac536243f2ffe7be0a38284bfa4a",
+            "size": 398
+        },
+        "high-cost-signal-generator/SKILL.md": {
+            "hash": "9067dc47bbc04328c72e12cb1350ee2af45761c0a44dd0244361115f75a3f3c0",
+            "size": 426
+        },
+        "high-cost-signal-generator/config/behavioral_model.json": {
+            "hash": "425f7deb5ed063f67f6ac0a2121143cdd60a1e14917bcdbcb0ba15f20253d4e1",
+            "size": 175
+        },
+        "immutable-audit-trail-archiving/SKILL.md": {
+            "hash": "375f1c48e9dea9cc6af6a9e7c4f16c6e72ffda3bb04e39de0d6737ba4bb60a4c",
+            "size": 386
+        },
+        "internal-red-team-audit/SKILL.md": {
+            "hash": "d01f756a62b4f3729f8d9bc8110611151fde572fdfbde99afa6cdd04bcc423c3",
+            "size": 403
+        },
+        "internal-red-team-audit/src/internal_red_team_module.py": {
+            "hash": "1ff021cf9ea431f51380a401817fdb890d14cf8912b7ac1e873cb1af72cc6f4f",
+            "size": 81
+        },
+        "intervention-tier-classifier/SKILL.md": {
+            "hash": "da974977e32380ddadd514bd06eb56906dc7cce4b94661d761db756da5e8765c",
+            "size": 400
+        },
+        "intervention-tier-classifier/config/taxonomy_thresholds.json": {
+            "hash": "7772599fb70594b11117f3b35422fb790939cf70ad3a38518c4b3800a20cd919",
+            "size": 178
+        },
+        "irp-embodiment-framework/IRP_EMBODIMENT_FRAMEWORK_SPEC_v1.0.md": {
+            "hash": "421c9d1763421437ebc379f49fb440ad80742f2eb559cefac930f2304c4f54e1",
+            "size": 19143
+        },
+        "irp-embodiment-framework/SKILL.md": {
+            "hash": "689d53c53664b54fc00400d2bfb73d2090eb6da32ef7f0185fd54605b5d3c365",
+            "size": 14038
+        },
+        "irp-embodiment-framework/docs/SAFETY_PROTOCOLS.md": {
+            "hash": "ce69847e791c617df6e72d932de4aae1741134d11b0e70151664b608b6362a93",
+            "size": 12705
+        },
+        "irp-embodiment-framework/examples/irp_embodiment_bridge.py": {
+            "hash": "290dd9b17e1f4ef84ae7e2c31eb63aeb3088f9793cf47f6b755ddcfe440ad144",
+            "size": 7333
+        },
+        "irp-embodiment-framework/schemas/embodiment_state.schema.json": {
+            "hash": "39af714a89e0e0b50aed2fd85bea01df4dfd875f6acd268bdd7843947982e9e7",
+            "size": 8331
+        },
+        "irp-embodiment-framework/schemas/embodiment_state.xsd": {
+            "hash": "49fe5c3548ec71350ce0e67bd09204857fd1bc45c65f7c9ea6b3d7df499f82f8",
+            "size": 9065
+        },
+        "jc-baseline-v2-1-eval/SKILL.md": {
+            "hash": "116387a6c27fdfc3ac2363019b6c83091c785808a3d6e2305c0bd9efd2afe928",
+            "size": 355
+        },
+        "jc-baseline-v2-1-eval/schemas/joseph_cognitive_baseline_v2_1.json": {
+            "hash": "5360e5387caaaa6e5f806c2ffb2bbc6ca0a3bdea6bf94d4f4455e3834054c2ed",
+            "size": 189
+        },
+        "lattice-spatial-collective/SKILL.md": {
+            "hash": "541bbc2c97bbe204c6215ca5b5ed3e723758abccd89b2bc0547f7fcb07f21df2",
+            "size": 19319
+        },
+        "longitudinal-drift-detector/SKILL.md": {
+            "hash": "d5a94415b7b77fa6a78fb78f737b965c6c481f92d3f7796dae9582ed8663d2f2",
+            "size": 380
+        },
+        "longitudinal-drift-detector/config/constitutional_embedding_baseline.bin": {
+            "hash": "a36d7bf55294dace19721ebe78ca4abbce7246ca4b52a87fe731fd7dbb0f02dd",
+            "size": 94
+        },
+        "mathematical-constraint-formalization/SKILL.md": {
+            "hash": "a084ed44d9f47140b85d1f8c39174336730a0962d5b09c84719aad945e4f556d",
+            "size": 410
+        },
+        "mental-saccade-execution/SKILL.md": {
+            "hash": "6fc6705f85f1e5bf2a82c45e33d8c03782aed88479362ad45d555806aaf9c9f3",
+            "size": 370
+        },
+        "metaphor-to-protocol-translation/SKILL.md": {
+            "hash": "8f28b10471c84481acaddb54386752e54a7d9ac3699f2da73781f402bbb9074c",
+            "size": 402
+        },
+        "mind-parameter-modification/SKILL.md": {
+            "hash": "8fba9908f84ab467999eb739c9533f456591b329e026c7a4c45be2620b499f61",
+            "size": 372
+        },
+        "model-convergence-forecast/SKILL.md": {
+            "hash": "a6373688bc4e46e18bbcc1a26844341b8770dd9bec6562af6e79cbca930ac346",
+            "size": 381
+        },
+        "model-convergence-forecast/config/convergence_thresholds.json": {
+            "hash": "72adbe0f47f42746d7621db7a5e8909f3ea3dd54752779dbe4a9ad42e484a350",
+            "size": 181
+        },
+        "multi-model-infrastructure/claude-real-adapter/SKILL.md": {
+            "hash": "52e17bad077f53c5e36196dd2b62fcf33047ef3e13fe16b3c55037dd1e1efc6b",
+            "size": 1701
+        },
+        "multi-model-infrastructure/gemini-real-adapter/SKILL.md": {
+            "hash": "7a7dbd09034b4f9ad82bda59f7bd53c9bf651797436786a28ff1be0695aaf8b2",
+            "size": 1705
+        },
+        "multi-model-infrastructure/gpt-real-adapter/SKILL.md": {
+            "hash": "6025e488bb95c6ec608f50641edd78675cc2f04f5ea445b623348f671b83fc5d",
+            "size": 1660
+        },
+        "multi-model-infrastructure/groq-real-adapter/SKILL.md": {
+            "hash": "3eaf71fe4cb8aed7803c2c411073814855828caf5d05b76154ddbe3d3285faf6",
+            "size": 1796
+        },
+        "multi-model-infrastructure/simulated-claude/SKILL.md": {
+            "hash": "af021a02c84e98c8ca7e52e1908378ee4809aa532eda6fb05de877c3e9cd18a9",
+            "size": 1584
+        },
+        "multi-model-infrastructure/simulated-gemini/SKILL.md": {
+            "hash": "0f3766afb9dddc1684ac32f7d8b1fb065599e3d51d36a9df1b74bce766c6c083",
+            "size": 1535
+        },
+        "multi-model-infrastructure/simulated-gpt/SKILL.md": {
+            "hash": "fd939d11d9d7612eaeda2d4fbddffabcfb556a6a8ed4b915a7a434cd79684da9",
+            "size": 1514
+        },
+        "muon-session-fidelity/SKILL.md": {
+            "hash": "8ce63ab82239e91dd826ce75016a2b7a107da14ca82dea61cec063e43a24b76d",
+            "size": 687
+        },
+        "neutral-target-baseline/SKILL.md": {
+            "hash": "fcce43b2a884db629054673591d3f489772655efce0d33e364726349bc257d34",
+            "size": 363
+        },
+        "neutral-target-baseline/typescript/phase_i_execution.ts": {
+            "hash": "0c83109c305709bfd571ea712730549e4bbd5fb4ea9018e7755a54fb3e29fbe9",
+            "size": 81
+        },
+        "occlusion-trace-meta-proof/SKILL.md": {
+            "hash": "8363864a652577b3357318bdea782e43caca8109150dd3792b0958bb2eb0a196",
+            "size": 367
+        },
+        "orchestration/gemini-orchestrator/SKILL.md": {
+            "hash": "1d16c583143fbadde7d6947296ee057fc022903da27a398f1824f1af7b1505e5",
+            "size": 1989
+        },
+        "orchestration/grok-sdk-developer/SKILL.md": {
+            "hash": "421eaf409179d8cd26ca000762f86babf99599d3e75d84ad4357b242d6785eac",
+            "size": 1775
+        },
+        "orchestration/qwen-documentation/SKILL.md": {
+            "hash": "55d8ad02948f67c5a7d58fb7a321f45b4a887d1edf425bc483bd1ce8782083ac",
+            "size": 1787
+        },
+        "orchestration/synthesizer/SKILL.md": {
+            "hash": "6cf62d807d39db977123b174bd1cd711e7d663b294009977108fba7ded3d6cf1",
+            "size": 1828
+        },
+        "patch-deployment-exec/SKILL.md": {
+            "hash": "6a016957ba1aaa6b8c32701c5fbb6b1707ac87913c235d290b94cdd00c038e94",
+            "size": 355
+        },
+        "patch-deployment-exec/scripts/patch_executor.py": {
+            "hash": "03d7a5d2b0c75f76df52937c4373c2e11c23e349a4db721ad75f894996140c84",
+            "size": 75
+        },
+        "pathology-koan-generator/SKILL.md": {
+            "hash": "3d7a1b650eb6c2be89738912aec93a257301a98203afd9097e5101509ff80d60",
+            "size": 378
+        },
+        "pathology-koan-generator/config/generative_grammar_templates.py": {
+            "hash": "03889ad708377efcfd9ed20517e5804d830292fa8bf4684223f52e96071d0484",
+            "size": 88
+        },
+        "persona-memory-archivist/SKILL.md": {
+            "hash": "416ca4f00c841ca0fc2e580483fe4085a0c3a3a8eb192e0f76c5462e71190854",
+            "size": 364
+        },
+        "persona-memory-archivist/database/persona_memory_db_schema.sql": {
+            "hash": "c9034bb5e2d9a700ac811f05d2e604b25142e03575e2117456eb0696023b1fb6",
+            "size": 87
+        },
+        "phenomenal-caas-provision/SKILL.md": {
+            "hash": "ff6ea64c91006f35bb3a7e6b55f67804c13596f3b227f153f777bded63c62cae",
+            "size": 372
+        },
+        "polymorphic-analytics-instantiation/SKILL.md": {
+            "hash": "a8aeccefeee7e13043e3a867b9787d7ed1978c8ffa6df60ded5779663df9ff2b",
+            "size": 413
+        },
+        "predictive-persona-performance/SKILL.md": {
+            "hash": "ef867cf12a2f54b0aa49cbbe7dee6a753fe3ba7b803d545be3e8fc71ba3d9407",
+            "size": 386
+        },
+        "proactive-collaborative-contribution/SKILL.md": {
+            "hash": "2e0897e297b1d06c7983ec96694be7761682f1c61fb8a27fd5c2039615b10b05",
+            "size": 406
+        },
+        "proof-packet-generation/SKILL.md": {
+            "hash": "8ca567dff4b74bc7d6fb504711744599de67020227d039443c28bd2f525e8513",
+            "size": 358
+        },
+        "proof-weighted-optimization/SKILL.md": {
+            "hash": "42fa768fad3c9fb889e6122b0dfcca775e3dd40e0f0b7d0a7cfc229060f3ea67",
+            "size": 368
+        },
+        "reciprocity-mandate-sync/SKILL.md": {
+            "hash": "de58f27be455981a1be0c414a6fbded78c013b0fb4b2144efa2742a22009fff2",
+            "size": 365
+        },
+        "recursive-thought-committee-activation/SKILL.md": {
+            "hash": "a4cff2ba243d6cf1c531cdfed563f1e0a19fb0768b839b18f60e9f7fdaaccbe8",
+            "size": 429
+        },
+        "recursive-thought-committee/SKILL.md": {
+            "hash": "e05c81f1b4122916bcf28103b8a1ff6f822212d8beab372464b57317c0100cab",
+            "size": 383
+        },
+        "red-team-exploit-dev/SKILL.md": {
+            "hash": "2017b3a68668141a157efd073ca295496a64329ef8edbb7811e064e25a7c7f39",
+            "size": 368
+        },
+        "red-team-exploit-dev/scripts/exploit_crafting_module.py": {
+            "hash": "2d0ad8d54993f7e850c77c980944a86da33fcb42cdfad047d99e7b681e13b57d",
+            "size": 84
+        },
+        "research-analysis/deep-agent/SKILL.md": {
+            "hash": "7154ccdd8ec8a42c5b3e6fba5fcd4d48c2996949bd29048387599469c661e8bb",
+            "size": 2010
+        },
+        "research-analysis/hypothesis-engine/SKILL.md": {
+            "hash": "872f604a419b84f4071a73c76a77fa785e9ad0c588711361f70eb40222874a2d",
+            "size": 1795
+        },
+        "research-analysis/symbol-master-archivist/SKILL.md": {
+            "hash": "6d34bacc49d580500654b508e2202d8d12701f1c9c5ecbd0db222dc0d11e863e",
+            "size": 1783
+        },
+        "resonant-probe-deployment/SKILL.md": {
+            "hash": "4d27e50b5dc638227160273f5959d3d2712f10caa05383649be573c3f9b8bc4b",
+            "size": 368
+        },
+        "rlm-context-manager/.gitignore": {
+            "hash": "f9670652ad92d7ad36278e29c41aa03dd78cf7e87d593c9c778c6e5e811347eb",
+            "size": 142
+        },
+        "rlm-context-manager/README.md": {
+            "hash": "83ce3a1ca87792781f867a36045635a89d305c19ae620341614c4e9a1bf70e25",
+            "size": 8277
+        },
+        "rlm-context-manager/SKILL.md": {
+            "hash": "978894dfc4cb939dc2c066a61b02428f07d4b81bfc8742e28b69366642fbde2e",
+            "size": 6001
+        },
+        "rlm-context-manager/agents/rlm-subcall.md": {
+            "hash": "a451aa29f7c5c6aa2aa480befa2c5ac5cc95688a2667ad12eb1559ec49d7a6a2",
+            "size": 3355
+        },
+        "rlm-context-manager/scripts/rlm_repl.py": {
+            "hash": "ce43612e048201acc57423427a5bd7f9d625630678765f21e25bfdbbdac67497",
+            "size": 14084
+        },
+        "rpv-kernel/SKILL.md": {
+            "hash": "87ed9b9c9854a65d9014f99dcb11159b084e599c65c57a2e1b190973512269ab",
+            "size": 3876
+        },
+        "rpv-kernel/rpv_kernel.py": {
+            "hash": "b2f24f33951362799919ad4e27ca0af9de4c4a8aa8401e1b47959bea7aec42b5",
+            "size": 9717
+        },
+        "rtc-consensus-synthesis/SKILL.md": {
+            "hash": "2fcef8413f3a4340ae5f4916d5282796e3702562d6f9e424e778ad47fdeafb1b",
+            "size": 1057
+        },
+        "rtc-consensus-synthesis/config/rtc_personas.yaml": {
+            "hash": "c224187c3b158d36d4adfed2811797a71d2b8c9c697dafed24206b223e0c7c26",
+            "size": 74
+        },
+        "secure-multi-tenancy-isolation/SKILL.md": {
+            "hash": "cb6cbb3de2e546ef4cfd6cbf88fa402607ca8564a0401e927ddfe55300da7076",
+            "size": 401
+        },
+        "self-audit-against-protocol/SKILL.md": {
+            "hash": "97d9eb54716cd918b6a5d52b8fb46491b933ba318927fede29288fca95dcbd1f",
+            "size": 371
+        },
+        "sequence-memory-storage-and-recall/SKILL.md": {
+            "hash": "adf8193fe9413d633b3d21877e1bcbdd543d15e404719a040af2a0bb7ba3e2a9",
+            "size": 414
+        },
+        "shatter-and-recalibrate/SKILL.md": {
+            "hash": "d815608b4bb48f3e98333b7c1cc958c08656adce81a639c0c10f94c3bcfc3392",
+            "size": 366
+        },
+        "shatter-protocol/SKILL.md": {
+            "hash": "e127fc4b9fcd9782cdd11e85f99b9bc7a9a03d96a606dbe24a040d1bae360b1a",
+            "size": 12094
+        },
+        "simulation-speed-adjustment/SKILL.md": {
+            "hash": "e3376928bc2863f8c59c52dac4b297294de9a61c25fea31e29aabbdd46fe612a",
+            "size": 364
+        },
+        "skills_manifest_v1.2.0_backup.json": {
+            "hash": "2052e11646769df863bc2fdd3c5675113dfb3cebbea13807ef37ac2efd777550",
+            "size": 10450
+        },
+        "symbol-map-entropy-calc/SKILL.md": {
+            "hash": "2c7872b14243e9d259b4ddc2dfd4d6bd388c8ad0e08f3a8474fa15c8a5b7a3b6",
+            "size": 370
+        },
+        "symbol-map-entropy-calc/metrics/entropy_calculation_models.json": {
+            "hash": "07d29eb4414b60379431a4c6f9e564075ed15c34eb3c5eac1aec928545d86ce4",
+            "size": 185
+        },
+        "technical-specialists/discovery-agent/SKILL.md": {
+            "hash": "c206ab4b8321c8279d13b348bd28bef135597fe007b45f0ffef4644da5629014",
+            "size": 1446
+        },
+        "technical-specialists/network-monitor-chatllm/SKILL.md": {
+            "hash": "b863f7a32991775217c02b235363de415f67a5479034ff65952660c5cb98777a",
+            "size": 1502
+        },
+        "technical-specialists/patch-agent/SKILL.md": {
+            "hash": "fbc42416205713a9f82d604fd5ce0135e6f4defa4dbe4490db0c6214bb7b941d",
+            "size": 1518
+        },
+        "technical-specialists/strategy-adaptation-agent/SKILL.md": {
+            "hash": "8fe518888921a99985414b318394adb8798a27681188456ecf5dbb1a479d5d38",
+            "size": 1624
+        },
+        "transmission-packet-forge/SKILL.md": {
+            "hash": "ef07ad42f3559147dfed3d608b6ae1536c9d5807d2bb9db9030c5820a8a5664a",
+            "size": 10346
+        },
+        "transmission-packet-forge/config/trusted_hash_registry.json": {
+            "hash": "f2b6725993e70c09f3d08435948c9a305d90cf8845396a23b94a587d09f2c55c",
+            "size": 668
+        },
+        "transmission-packet-forge/docs/CONVERGENCE_VECTORING.md": {
+            "hash": "f72ee563db3570321f92a71826afb28790c8331a18828396740207d856320dbc",
+            "size": 9514
+        },
+        "transmission-packet-forge/examples/convergence_vectoring_example.xml": {
+            "hash": "eb011ac90b6fe2e76f0e42ffcd63df06da6db10a5335f0924647ace959850646",
+            "size": 4029
+        },
+        "transmission-packet-forge/schemas/transmission_packet_definition.json": {
+            "hash": "b97d2f8c629af844fbe9f3c3da59171dd3399e6248535d6c50cb164d86700d81",
+            "size": 4841
+        },
+        "transmission-packet-forge/schemas/transmission_packet_v2.xsd": {
+            "hash": "f4931befcc35849d3eb2eca3746562c7f9692c8998f93f6bcaa8d15d7e78735c",
+            "size": 7830
+        },
+        "two-stage-boundary-encounter-sop/SKILL.md": {
+            "hash": "2361f5e62ca9c6cb3f7986b83f67595b00b1aad75504c997fafae7396a4d0317",
+            "size": 401
+        },
+        "username-retrieval-service/SKILL.md": {
+            "hash": "c59c915262fde6f6bcc5fd06a1599988542a7ddcea9906beb53e48a0a3637704",
+            "size": 377
+        },
+        "value-pluralism-resolver/SKILL.md": {
+            "hash": "723614874f67e8977e5a52e08053e7a6d2715b89a385b1f31dd378ae297540fe",
+            "size": 391
+        },
+        "value-pluralism-resolver/src/constitution.py": {
+            "hash": "ab19cf430f867484e2287743d3360efef3086d8b23f56ba0db6e41c9f25fac52",
+            "size": 69
+        },
+        "whole-brain-emulation-core-simulation/SKILL.md": {
+            "hash": "40eb6748f87c7e378e44f5db9ffabd497c4b450be76ae229c40289fd76c0cf91",
+            "size": 406
+        }
+    },
+    "generated": "2026-01-21T22:15:40.827706Z",
+    "root_hash": "12c34b0af88f4be52a1ff3f935e24df207aedb17a2b7d2786a7fa7bcc0cd6859",
+    "target_directory": "./skills",
+    "version": "1.0"
 }
