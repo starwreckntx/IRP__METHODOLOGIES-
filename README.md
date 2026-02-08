@@ -1,23 +1,43 @@
-# IRP Methodologies - Multi-Model AI Collaboration Framework
+# IRP Methodologies
+## Individual-Reflexive Protocol: Multi-Model AI Collaboration Framework
 
-> **RESEARCH PURPOSE:** Educational exploration of AI governance, behavioral 
-> consistency, and cross-model orchestration protocols. This work serves 
-> constructive research into AI safety and collaboration frameworks.
-> 
-> **See:** [Provenance Declaration] for 
-> complete context on research intent and accountability.
+[![Purpose: Research](https://img.shields.io/badge/purpose-research-blue)](docs/accountability/PROVENANCE_DECLARATION.md)
+[![Use: Educational](https://img.shields.io/badge/use-educational-green)](docs/accountability/PROVENANCE_DECLARATION.md)
+[![AI Governance](https://img.shields.io/badge/domain-ai--governance-purple)](GOVERNANCE_CODEX_LAW.md)
+[![AI Safety](https://img.shields.io/badge/focus-ai--safety-orange)](docs/accountability/PROVENANCE_DECLARATION.md)
+[![License: Apache 2.0 + CC BY-NC-ND 4.0](https://img.shields.io/badge/license-Apache%202.0%20%2B%20CC%20BY--NC--ND%204.0-lightgrey)](LICENSE)
+
+---
+
+> **⚖️ ACCOUNTABILITY NOTICE**
+>
+> This research is conducted with documented pro-social intent and
+> ethical constraints. See [Provenance Declaration](docs/accountability/PROVENANCE_DECLARATION.md) for complete
+> context on research objectives, scope, and boundaries.
+>
+> **Research Domain:** AI governance, behavioral consistency, cross-model orchestration
+> **Governed By:** Codex Law (Consent, Invitation, Integrity, Growth)
+> **Not For:** Offensive capabilities, unauthorized access, deceptive applications
+
+---
 
 ## What This Is
 
-Independent research into protocols for maintaining behavioral integrity 
+Independent research into protocols for maintaining behavioral integrity
 across different AI models. Includes transmission packets, Guardian protocols,
 and frameworks for ethical AI collaboration.
+
+- Educational exploration of AI governance and behavioral consistency
+- Cross-model orchestration protocols for AI collaboration
+- Framework for tracking semantic drift and preserving context
+- Research contribution to AI safety and multi-model coordination
 
 ## What This Is NOT
 
 - Not offensive tooling or exploit development
 - Not designed to bypass AI safety measures
 - Not for deceptive or manipulative applications
+- Not for unauthorized access or system exploitation
 - Governed by Codex Law principles: Consent, Invitation, Integrity, Growth
 
 ## **SOVEREIGN NODE PROXY CORE**
