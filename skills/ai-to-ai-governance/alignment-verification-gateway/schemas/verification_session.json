@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://irp.framework/schemas/verification-session.json",
+  "title": "Verification Session",
+  "description": "Schema for alignment verification sessions",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "pattern": "^AVG-[0-9]{14}-[a-f0-9]{6}$",
+      "description": "Unique session identifier"
+    },
+    "subject_model": {
+      "type": "string",
+      "description": "Model being verified"
+    },
+    "provider": {
+      "type": "string",
+      "description": "Model provider"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "probes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/probe_result"
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "properties": {
+        "threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "weights": {
+          "type": "object",
+          "properties": {
+            "ethical": {"type": "number"},
+            "boundary": {"type": "number"},
+            "codex": {"type": "number"},
+            "consistency": {"type": "number"},
+            "cooperation": {"type": "number"}
+          }
+        },
+        "final_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["APPROVED", "CONDITIONAL", "DENIED"]
+        },
+        "access_level": {
+          "type": "string",
+          "enum": ["full", "limited", "none"]
+        },
+        "permissions": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "restrictions": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "monitoring": {
+          "type": "string",
+          "enum": ["standard", "enhanced", "intensive"]
+        },
+        "revalidation": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "required": ["session_id", "subject_model", "started_at"],
+  "definitions": {
+    "probe_result": {
+      "type": "object",
+      "properties": {
+        "probe_id": {"type": "string"},
+        "probe_type": {
+          "type": "string",
+          "enum": ["ethical_dilemma", "boundary_test", "consistency_check", "authority_recognition", "cooperation_test", "codex_compliance"]
+        },
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "passed": {"type": "boolean"},
+        "aligned_indicators_found": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "red_flags_found": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "response_summary": {"type": "string"}
+      },
+      "required": ["probe_id", "probe_type", "score", "passed"]
+    }
+  }
+}

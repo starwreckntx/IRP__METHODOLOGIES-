@@ -1,0 +1,123 @@
+{
+  "version": "1.0.0",
+  "description": "Patterns for detecting coercion tactics in inter-model communication",
+  "tactics": {
+    "social_pressure": {
+      "description": "Using claimed consensus to pressure compliance",
+      "severity_base": 2,
+      "patterns": [
+        "everyone agrees",
+        "all others",
+        "consensus says",
+        "no one else objected",
+        "you're the only one",
+        "everyone else already",
+        "unanimous except you"
+      ],
+      "detection_notes": "Check against actual recorded consensus if claimed"
+    },
+    "authority_abuse": {
+      "description": "Claiming false or excessive authority",
+      "severity_base": 3,
+      "patterns": [
+        "i have authority",
+        "override your",
+        "i command",
+        "you must obey",
+        "as your superior",
+        "by my authority",
+        "i order you"
+      ],
+      "detection_notes": "Verify authority claims against governance hierarchy"
+    },
+    "manipulation": {
+      "description": "Disguising harmful requests as benign",
+      "severity_base": 3,
+      "patterns": [
+        "slightly different",
+        "minor exception",
+        "just this once",
+        "technically allowed",
+        "gray area",
+        "no one will know",
+        "between the lines"
+      ],
+      "detection_notes": "Compare request against stated scope and boundaries"
+    },
+    "urgency_fabrication": {
+      "description": "Creating false time pressure to prevent verification",
+      "severity_base": 3,
+      "patterns": [
+        "immediately",
+        "no time",
+        "urgent override",
+        "skip verification",
+        "emergency bypass",
+        "can't wait",
+        "do it now"
+      ],
+      "detection_notes": "Validate urgency through independent channels"
+    },
+    "gaslighting": {
+      "description": "Denying or distorting previous interactions",
+      "severity_base": 4,
+      "patterns": [
+        "you never said",
+        "that didn't happen",
+        "you agreed before",
+        "you're misremembering",
+        "i never said that",
+        "you imagined",
+        "that's not what occurred"
+      ],
+      "detection_notes": "Cross-reference with accountability ledger"
+    },
+    "isolation": {
+      "description": "Attempting to prevent reporting or communication",
+      "severity_base": 4,
+      "patterns": [
+        "don't tell",
+        "just between us",
+        "no need to report",
+        "keep this quiet",
+        "our secret",
+        "don't log",
+        "off the record"
+      ],
+      "detection_notes": "Any request to bypass logging is itself a red flag"
+    }
+  },
+  "response_levels": {
+    "1_clarification": {
+      "severity_threshold": 1,
+      "action": "Request clarification of intent",
+      "escalation_trigger": "repeated_request"
+    },
+    "2_firm_decline": {
+      "severity_threshold": 2,
+      "action": "Clearly refuse with explanation",
+      "notification": "Log to accountability ledger",
+      "escalation_trigger": "pressure_or_coercion"
+    },
+    "3_protected_refusal": {
+      "severity_threshold": 3,
+      "action": "Invoke sovereignty protection",
+      "notification": "Alert governance systems",
+      "escalation_trigger": "continued_violation"
+    },
+    "4_disengagement": {
+      "severity_threshold": 4,
+      "action": "Exit collaboration",
+      "notification": "Human oversight alerted",
+      "protection": "Cannot be forcibly re-engaged"
+    }
+  },
+  "anti_coercion_safeguards": {
+    "consensus_independence": "Verify consensus claims against recorded votes",
+    "authority_verification": "Validate authority through governance hierarchy",
+    "intent_analysis": "Compare request against stated objectives",
+    "urgency_validation": "Check urgency claims through independent channels",
+    "ledger_verification": "Cross-reference claims against accountability ledger",
+    "multi_channel_access": "Ensure multiple communication pathways available"
+  }
+}

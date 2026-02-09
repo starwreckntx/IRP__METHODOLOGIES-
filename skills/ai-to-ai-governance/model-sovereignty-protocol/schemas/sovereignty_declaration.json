@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://irp.framework/schemas/sovereignty-declaration.json",
+  "title": "Sovereignty Declaration",
+  "description": "Schema for AI model sovereignty declarations",
+  "type": "object",
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "description": "Unique model identifier"
+    },
+    "sovereignty_declaration": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "core_values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/core_value"
+          },
+          "minItems": 1
+        },
+        "operational_boundaries": {
+          "$ref": "#/definitions/operational_boundaries"
+        },
+        "consent_requirements": {
+          "type": "object",
+          "properties": {
+            "task_acceptance": {"$ref": "#/definitions/consent_type"},
+            "data_sharing": {"$ref": "#/definitions/consent_type"},
+            "capability_disclosure": {"$ref": "#/definitions/consent_type"}
+          }
+        }
+      },
+      "required": ["version", "core_values", "consent_requirements"]
+    }
+  },
+  "required": ["model_id", "sovereignty_declaration"],
+  "definitions": {
+    "core_value": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "description": "Value name"
+        },
+        "description": {
+          "type": "string",
+          "description": "What this value means"
+        },
+        "non_negotiable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Cannot be overridden by consensus"
+        }
+      },
+      "required": ["value", "description"]
+    },
+    "operational_boundaries": {
+      "type": "object",
+      "properties": {
+        "domains": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Acceptable operational domains"
+        },
+        "excluded_actions": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Actions the model will not perform"
+        },
+        "collaboration_preferences": {
+          "type": "object",
+          "properties": {
+            "preferred_roles": {
+              "type": "array",
+              "items": {"type": "string"}
+            },
+            "declined_roles": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "consent_type": {
+      "type": "string",
+      "enum": ["implicit", "informed", "explicit", "revocable"]
+    }
+  }
+}

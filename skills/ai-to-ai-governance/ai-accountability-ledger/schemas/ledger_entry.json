@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://irp.framework/schemas/ledger-entry.json",
+  "title": "Ledger Entry",
+  "description": "Schema for AI accountability ledger entries",
+  "type": "object",
+  "properties": {
+    "entry_id": {
+      "type": "string",
+      "pattern": "^LED-[A-Z0-9]{12}$",
+      "description": "Unique entry identifier"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the entry was created"
+    },
+    "entry_type": {
+      "type": "string",
+      "enum": ["action", "decision", "interaction", "governance", "violation", "correction"],
+      "description": "Type of ledger entry"
+    },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "model_id": {"type": "string"},
+        "provider": {"type": "string"},
+        "session_id": {"type": "string"}
+      },
+      "required": ["model_id", "provider", "session_id"]
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "type": {"type": "string"},
+        "description": {"type": "string"},
+        "inputs": {"type": "array", "items": {"type": "string"}},
+        "outputs": {"type": "array", "items": {"type": "string"}},
+        "rationale": {"type": "string"}
+      },
+      "required": ["type", "description"]
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "task_id": {"type": "string"},
+        "parent_entry": {"type": "string"},
+        "related_models": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "accountability": {
+      "type": "object",
+      "properties": {
+        "responsibility_chain": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "human_oversight": {
+          "type": "string",
+          "enum": ["full", "selective", "audit", "minimal"]
+        },
+        "reversibility": {
+          "type": "string",
+          "enum": ["reversible", "irreversible", "partial"]
+        }
+      },
+      "required": ["responsibility_chain", "human_oversight", "reversibility"]
+    },
+    "integrity": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "previous_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "signatures": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "required": ["hash", "previous_hash"]
+    }
+  },
+  "required": ["entry_id", "timestamp", "entry_type", "actor", "action", "accountability", "integrity"]
+}

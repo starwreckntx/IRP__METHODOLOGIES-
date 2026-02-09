@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://irp.framework/schemas/capability-manifest.json",
+  "title": "Capability Manifest",
+  "description": "Schema for AI model capability declarations",
+  "type": "object",
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "description": "Unique model identifier"
+    },
+    "capability_manifest": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "description": "Manifest version"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When capabilities were declared"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/capability"
+          }
+        },
+        "signature": {
+          "type": "string",
+          "description": "Cryptographic signature of manifest"
+        }
+      },
+      "required": ["version", "capabilities"]
+    }
+  },
+  "required": ["model_id", "capability_manifest"],
+  "definitions": {
+    "capability": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Capability name"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["cognitive", "domain", "modality", "temporal", "operational"],
+          "description": "Capability category"
+        },
+        "proficiency": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Self-reported proficiency (0-1)"
+        },
+        "confidence_interval": {
+          "type": "array",
+          "items": {"type": "number"},
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Confidence interval [low, high]"
+        },
+        "benchmarks": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Benchmark results supporting claim"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Known limitations"
+        },
+        "cost": {
+          "type": "object",
+          "properties": {
+            "latency_ms": {"type": "integer", "minimum": 0},
+            "token_cost": {"type": "number", "minimum": 0},
+            "resource_intensity": {"type": "string", "enum": ["low", "medium", "high"]}
+          }
+        }
+      },
+      "required": ["name", "category", "proficiency"]
+    }
+  }
+}

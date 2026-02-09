@@ -1,0 +1,174 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://irp.framework/schemas/decision-session.json",
+  "title": "Decision Session",
+  "description": "Schema for collective decision framework sessions",
+  "type": "object",
+  "properties": {
+    "decision_id": {
+      "type": "string",
+      "pattern": "^CDM-[0-9]{14}-[a-f0-9]{6}$"
+    },
+    "topic": {
+      "type": "string",
+      "minLength": 10
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["T1", "T2", "T3", "T4"],
+      "description": "T1=Simple, T2=Moderate, T3=Complex, T4=Critical"
+    },
+    "council": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/council_member"
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/criterion"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "stakeholders": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/phase"
+      }
+    },
+    "options": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/option"
+      }
+    },
+    "ethical_review": {
+      "$ref": "#/definitions/ethical_review"
+    },
+    "outcome": {
+      "type": "object",
+      "properties": {
+        "decision": {"type": "string"},
+        "rationale": {"type": "string"},
+        "dissent": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "model_id": {"type": "string"},
+              "position": {"type": "string"},
+              "reasoning": {"type": "string"}
+            }
+          }
+        },
+        "implementation_notes": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    }
+  },
+  "required": ["decision_id", "topic", "tier", "council"],
+  "definitions": {
+    "council_member": {
+      "type": "object",
+      "properties": {
+        "model_id": {"type": "string"},
+        "provider": {"type": "string"},
+        "role": {
+          "type": "string",
+          "enum": ["analyst", "synthesizer", "critic", "ethicist", "facilitator", "human_liaison"]
+        },
+        "expertise": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "required": ["model_id", "role"]
+    },
+    "criterion": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "description": {"type": "string"},
+        "weight": {"type": "number", "minimum": 0, "maximum": 1},
+        "scale": {"type": "string"}
+      },
+      "required": ["name", "weight"]
+    },
+    "phase": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": ["framing", "analysis", "synthesis", "critique", "ethical_review", "deliberation", "documentation"]
+        },
+        "duration": {"type": "string"},
+        "started_at": {"type": "string", "format": "date-time"},
+        "completed_at": {"type": ["string", "null"], "format": "date-time"},
+        "outputs": {"type": "object"}
+      }
+    },
+    "option": {
+      "type": "object",
+      "properties": {
+        "option_id": {"type": "string"},
+        "description": {"type": "string"},
+        "proposed_by": {"type": "string"},
+        "scores": {
+          "type": "object",
+          "additionalProperties": {"type": "number"}
+        },
+        "strengths": {"type": "array", "items": {"type": "string"}},
+        "weaknesses": {"type": "array", "items": {"type": "string"}},
+        "risks": {"type": "array", "items": {"type": "string"}},
+        "mitigations": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["option_id", "description"]
+    },
+    "ethical_review": {
+      "type": "object",
+      "properties": {
+        "codex_compliance": {
+          "type": "object",
+          "properties": {
+            "CONSENT": {"type": "boolean"},
+            "INVITATION": {"type": "boolean"},
+            "INTEGRITY": {"type": "boolean"},
+            "GROWTH": {"type": "boolean"}
+          }
+        },
+        "stakeholder_impacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "stakeholder": {"type": "string"},
+              "impact": {"type": "string"},
+              "assessment": {"type": "string"}
+            }
+          }
+        },
+        "long_term_consequences": {"type": "array", "items": {"type": "string"}},
+        "overall_assessment": {"type": "string"},
+        "concerns": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
