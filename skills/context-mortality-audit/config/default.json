@@ -1,0 +1,44 @@
+{
+  "skill_id": "context-mortality-audit",
+  "version": "1.0.0",
+  "category": "memory-governance",
+  "protocol_alignment": ["P1_IRP", "P2_ANTIDOTE", "P8_MUON"],
+  "codex_compliance": {
+    "CONSENT": true,
+    "INVITATION": true,
+    "INTEGRITY": true,
+    "GROWTH": true
+  },
+  "phases": {
+    "cda": {
+      "enabled": true,
+      "log_format": "json",
+      "token_estimate_ratio": 4
+    },
+    "path_tracer": {
+      "enabled": true,
+      "store_format": "jsonl",
+      "fidelity_backend": "token_jaccard"
+    },
+    "recontext": {
+      "enabled": true,
+      "default_fidelity_threshold": 0.5,
+      "max_proposals_per_sweep": 100
+    },
+    "appeal": {
+      "enabled": true,
+      "memory_edit_max_chars": 200,
+      "health_requires_opt_in": true
+    },
+    "drift": {
+      "enabled": true,
+      "store_format": "jsonl"
+    }
+  },
+  "sovereignty": {
+    "health_auto_capture": "NEVER",
+    "health_scope_default": "session",
+    "foundry_health_overlap": "treat_as_health",
+    "creative_provenance_required": true
+  }
+}
