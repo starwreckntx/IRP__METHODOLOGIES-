@@ -1,0 +1,31 @@
+[Unit]
+Description=IRP CRTP Provenance Daemon v2.0
+Documentation=https://github.com/starwreckntx/IRP__METHODOLOGIES-
+After=network.target tailscaled.service
+Wants=tailscaled.service
+
+[Service]
+Type=simple
+ExecStart=/opt/irp/irp-crtp-daemon
+EnvironmentFile=-/etc/irp/irp-crtp.env
+Restart=always
+RestartSec=5
+User=root
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=irp-crtp
+
+# Hardening
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/irp /etc/irp
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target

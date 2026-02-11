@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CRTP Provenance Header v2.0",
+  "description": "JSON Schema for CRTP v2.0 provenance headers. Used for application-layer representation of wire-format packet provenance. Part of the IRP Embodiment Framework (Lower Layer).",
+  "type": "object",
+  "required": ["crtp_version", "packet_id", "timestamp", "origin_stack", "execution_context"],
+  "properties": {
+    "crtp_version": {
+      "type": "string",
+      "const": "2.0",
+      "description": "Protocol version identifier"
+    },
+    "packet_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "description": "UUID v4 packet identifier"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of packet creation"
+    },
+    "origin_stack": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "description": "Ordered list of layers from human operator (Layer 0) through execution model (Layer N). Maximum 4 layers per Guardian Codex Article 5.",
+      "items": {
+        "type": "object",
+        "required": ["layer", "entity", "timestamp"],
+        "properties": {
+          "layer": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3,
+            "description": "Position in the provenance stack. 0=human, 1=entry model, 2+=hops/models"
+          },
+          "entity": {
+            "type": "string",
+            "enum": ["human_operator", "model", "tunnel"],
+            "description": "Type of entity at this layer"
+          },
+          "model_id": {
+            "type": "string",
+            "description": "Model identifier (only for entity=model). Placeholder: <MODEL_ID>"
+          },
+          "instance_hash": {
+            "type": "string",
+            "description": "Ephemeral session hash for this model instance. Placeholder: <SESSION_HASH>"
+          },
+          "node": {
+            "type": "string",
+            "description": "Node where this layer executes. Placeholder: <NODE_NAME>"
+          },
+          "fingerprint": {
+            "type": "string",
+            "description": "Cryptographic fingerprint (Layer 0: biometric, others: key hash). Placeholder: <FINGERPRINT>"
+          },
+          "protocol": {
+            "type": "string",
+            "enum": ["SSH", "WireGuard", "Tailscale", "CRTP_DIRECT"],
+            "description": "Tunnel protocol (only for entity=tunnel)"
+          },
+          "hop_from": {
+            "type": "string",
+            "description": "Source address of tunnel hop. Placeholder: <TAILSCALE_IP>"
+          },
+          "hop_to": {
+            "type": "string",
+            "description": "Destination address of tunnel hop. Placeholder: <TAILSCALE_IP>"
+          },
+          "session_key_fingerprint": {
+            "type": "string",
+            "description": "SSH/tunnel session key fingerprint. Placeholder: <SSH_KEY_FINGERPRINT>"
+          },
+          "invocation_method": {
+            "type": "string",
+            "enum": ["API_BRIDGE", "CLI", "OLLAMA", "DIRECT"],
+            "description": "How the model was invoked at this layer"
+          },
+          "tunnel": {
+            "type": ["string", "null"],
+            "description": "Tunnel reference (null if no tunnel at this layer)"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp for this layer's attestation"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": { "entity": { "const": "human_operator" } }
+            },
+            "then": {
+              "required": ["layer", "entity", "node", "fingerprint", "timestamp"]
+            }
+          },
+          {
+            "if": {
+              "properties": { "entity": { "const": "model" } }
+            },
+            "then": {
+              "required": ["layer", "entity", "model_id", "node", "timestamp"]
+            }
+          },
+          {
+            "if": {
+              "properties": { "entity": { "const": "tunnel" } }
+            },
+            "then": {
+              "required": ["layer", "entity", "protocol", "hop_from", "hop_to", "timestamp"]
+            }
+          }
+        ]
+      }
+    },
+    "execution_context": {
+      "type": "object",
+      "required": ["current_layer", "root_authority", "recursion_depth", "chain_hash"],
+      "properties": {
+        "current_layer": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "description": "Layer index of the currently executing entity"
+        },
+        "root_authority": {
+          "type": "string",
+          "const": "human_operator",
+          "description": "Root authority must always be human_operator per Codex Law"
+        },
+        "recursion_depth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "description": "Number of model-to-model hops. Guardian Codex Article 5 enforces max 3."
+        },
+        "chain_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]+$",
+          "description": "Cumulative SHA-256 hash of all layers (H0 through H(n)). Placeholder: sha256:<CUMULATIVE_HASH>"
+        }
+      }
+    },
+    "attestation": {
+      "type": "object",
+      "description": "Cryptographic signatures from model instances",
+      "properties": {
+        "layer_1_sig": {
+          "type": "string",
+          "description": "Entry model's signature over layers 0-1. Placeholder: <ENTRY_MODEL_SIGNATURE>"
+        },
+        "layer_3_sig": {
+          "type": "string",
+          "description": "Execution model's signature over layers 0-N. Placeholder: <EXECUTION_MODEL_SIGNATURE>"
+        },
+        "combined_integrity": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]+$",
+          "description": "Final integrity hash of complete packet. Placeholder: sha256:<FINAL_HASH>"
+        }
+      }
+    }
+  }
+}
