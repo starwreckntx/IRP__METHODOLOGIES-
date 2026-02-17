@@ -1,0 +1,8 @@
+node_modules/
+dist/
+prisma/sovereign.db
+prisma/sovereign.db-journal
+.env
+*.log
+logs/
+public/bootstrap/

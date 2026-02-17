@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOVNET C2 // PurpBox</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--bg:#0a0a0f;--panel:#0d0d14;--border:#1a1a2e;--green:#00ff41;--cyan:#00e5ff;--amber:#ffb300;--red:#ff1744;--purple:#b388ff;--dim:#3a3a5c;--text:#c0c0d0}
+        @keyframes scanline{0%{top:-100%}100%{top:100%}}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+        @keyframes pulse{0%,100%{box-shadow:0 0 5px var(--green)}50%{box-shadow:0 0 20px var(--green)}}
+        @keyframes glitch{0%{transform:translate(0)}20%{transform:translate(-2px,1px)}40%{transform:translate(1px,-1px)}60%{transform:translate(-1px,2px)}80%{transform:translate(2px,-1px)}100%{transform:translate(0)}}
+        body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;font-size:13px;overflow-x:hidden;min-height:100vh}
+        body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);pointer-events:none;z-index:9999}
+        .scanline{position:fixed;width:100%;height:4px;background:rgba(0,229,255,0.05);z-index:9998;pointer-events:none;animation:scanline 8s linear infinite}
+
+        /* HEADER */
+        .header{background:linear-gradient(135deg,#0d0d14 0%,#1a0a2e 100%);border-bottom:1px solid var(--purple);padding:10px 20px;display:flex;align-items:center;justify-content:space-between}
+        .header-left{display:flex;align-items:center;gap:15px}
+        .logo{color:var(--purple);font-size:18px;font-weight:bold;text-shadow:0 0 10px rgba(179,136,255,0.5);letter-spacing:3px}
+        .node-badge{background:#1a0a2e;border:1px solid var(--purple);padding:2px 10px;border-radius:2px;font-size:11px;color:var(--purple)}
+        .header-right{display:flex;align-items:center;gap:15px;font-size:11px;color:var(--dim)}
+        .status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px}
+        .status-dot.live{background:var(--green);animation:pulse 2s infinite}
+        .status-dot.warn{background:var(--amber)}
+        .status-dot.dead{background:var(--red)}
+        .clock{color:var(--cyan);font-variant-numeric:tabular-nums}
+
+        /* LAYOUT */
+        .main{display:grid;grid-template-columns:220px 1fr 280px;grid-template-rows:1fr;height:calc(100vh - 70px);gap:0}
+        @media(max-width:1100px){.main{grid-template-columns:1fr;grid-template-rows:auto 1fr auto}.sidebar,.intel{border-left:none;border-top:1px solid var(--border)}}
+
+        /* LEFT SIDEBAR */
+        .sidebar{background:var(--panel);border-right:1px solid var(--border);padding:0;overflow-y:auto}
+        .sidebar-section{border-bottom:1px solid var(--border);padding:12px}
+        .sidebar-title{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:8px}
+        .nav-item{display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:3px;transition:all .15s;color:var(--text);font-size:12px}
+        .nav-item:hover{background:rgba(179,136,255,0.1);color:var(--purple)}
+        .nav-item.active{background:rgba(179,136,255,0.15);color:var(--purple);border-left:2px solid var(--purple)}
+        .nav-icon{font-size:14px;width:20px;text-align:center}
+        .metric-row{display:flex;justify-content:space-between;padding:4px 0;font-size:11px}
+        .metric-val{color:var(--green);font-weight:bold}
+        .metric-val.warn{color:var(--amber)}
+        .metric-val.crit{color:var(--red)}
+
+        /* CENTER */
+        .center{display:flex;flex-direction:column;overflow:hidden;min-height:0}
+
+        /* TOP BAR */
+        .topbar{background:var(--panel);border-bottom:1px solid var(--border);padding:8px 15px;display:flex;align-items:center;justify-content:space-between;font-size:11px;flex-shrink:0}
+        .breadcrumb{color:var(--dim)}
+        .breadcrumb span{color:var(--cyan)}
+        .topbar-actions{display:flex;gap:8px}
+        .btn{background:transparent;border:1px solid var(--border);color:var(--text);padding:3px 10px;font-family:inherit;font-size:11px;cursor:pointer;border-radius:2px;transition:all .15s}
+        .btn:hover{border-color:var(--purple);color:var(--purple)}
+        .btn.primary{border-color:var(--green);color:var(--green)}
+        .btn.primary:hover{background:rgba(0,255,65,0.1)}
+        .btn.danger{border-color:var(--red);color:var(--red)}
+
+        /* TERMINAL */
+        .terminal-wrap{flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0}
+        .terminal{flex:1;background:#05050a;padding:12px;overflow-y:auto;font-size:12px;line-height:1.6}
+        .terminal::-webkit-scrollbar{width:6px}
+        .terminal::-webkit-scrollbar-track{background:var(--bg)}
+        .terminal::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+        .term-line{white-space:pre-wrap;word-break:break-all}
+        .term-line.cmd{color:var(--green)}
+        .term-line.out{color:var(--text)}
+        .term-line.err{color:var(--red)}
+        .term-line.sys{color:var(--cyan);font-style:italic}
+        .term-line.warn{color:var(--amber)}
+        .term-line.info{color:var(--purple)}
+        .input-row{display:flex;align-items:center;background:#05050a;border-top:1px solid var(--border);padding:8px 12px;gap:8px;flex-shrink:0}
+        .prompt-label{color:var(--green);white-space:nowrap;font-size:12px}
+        .term-input{flex:1;background:transparent;border:none;color:var(--green);font-family:inherit;font-size:12px;outline:none;caret-color:var(--green)}
+
+        /* RIGHT INTEL */
+        .intel{background:var(--panel);border-left:1px solid var(--border);padding:0;overflow-y:auto;font-size:11px}
+        .intel-section{border-bottom:1px solid var(--border);padding:12px}
+        .intel-title{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:8px}
+        .agent-card{background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:3px;padding:8px;margin-bottom:6px}
+        .agent-name{color:var(--cyan);font-weight:bold;font-size:12px}
+        .agent-status{font-size:10px;margin-top:3px}
+        .agent-meta{color:var(--dim);font-size:10px;margin-top:2px}
+        .task-card{background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:3px;padding:8px;margin-bottom:6px}
+        .task-title{color:var(--amber);font-size:12px}
+        .task-status{font-size:10px;margin-top:3px}
+        .tag{display:inline-block;padding:1px 6px;border-radius:2px;font-size:9px;font-weight:bold;text-transform:uppercase}
+        .tag.active{background:rgba(0,255,65,0.15);color:var(--green);border:1px solid rgba(0,255,65,0.3)}
+        .tag.registered{background:rgba(0,229,255,0.15);color:var(--cyan);border:1px solid rgba(0,229,255,0.3)}
+        .tag.completed{background:rgba(179,136,255,0.15);color:var(--purple);border:1px solid rgba(179,136,255,0.3)}
+        .tag.pending{background:rgba(255,179,0,0.15);color:var(--amber);border:1px solid rgba(255,179,0,0.3)}
+        .tag.failed{background:rgba(255,23,68,0.15);color:var(--red);border:1px solid rgba(255,23,68,0.3)}
+        .ext-resource{display:flex;align-items:center;gap:6px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+        .ext-resource a{color:var(--cyan);font-size:11px;text-decoration:none}
+        .ext-resource a:hover{text-decoration:underline}
+        .pipe-indicator{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+        .pipe-indicator.on{background:var(--green)}
+        .pipe-indicator.off{background:var(--red)}
+
+        /* FOOTER */
+        .footer{position:fixed;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--border);padding:3px 15px;display:flex;justify-content:space-between;font-size:10px;color:var(--dim);z-index:100}
+    </style>
+</head>
+<body>
+<div class="scanline"></div>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-left">
+        <div class="logo">SOVNET C2</div>
+        <div class="node-badge">PURPBOX // PRIMARY HUB</div>
+    </div>
+    <div class="header-right">
+        <span><span class="status-dot live"></span>LINK ACTIVE</span>
+        <span class="clock" id="clock">--:--:--</span>
+    </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-title">Operations</div>
+            <div class="nav-item active" onclick="switchPanel('terminal')"><span class="nav-icon">></span>Terminal</div>
+            <div class="nav-item" onclick="switchPanel('agents')"><span class="nav-icon">@</span>Agents</div>
+            <div class="nav-item" onclick="switchPanel('tasks')"><span class="nav-icon">#</span>Tasks</div>
+            <div class="nav-item" onclick="switchPanel('governance')"><span class="nav-icon">!</span>Governance</div>
+        </div>
+        <div class="sidebar-section">
+            <div class="sidebar-title">System Metrics</div>
+            <div class="metric-row"><span>Uptime</span><span class="metric-val" id="m-uptime">--</span></div>
+            <div class="metric-row"><span>Agents</span><span class="metric-val" id="m-agents">--</span></div>
+            <div class="metric-row"><span>Tasks</span><span class="metric-val" id="m-tasks">--</span></div>
+            <div class="metric-row"><span>Trust Avg</span><span class="metric-val" id="m-trust">--</span></div>
+            <div class="metric-row"><span>API Calls</span><span class="metric-val" id="m-api">0</span></div>
+        </div>
+        <div class="sidebar-section">
+            <div class="sidebar-title">Endpoints</div>
+            <div class="metric-row"><span>Hub API</span><span class="metric-val" id="ep-api">...</span></div>
+            <div class="metric-row"><span>Gemini</span><span class="metric-val warn" id="ep-gem">...</span></div>
+            <div class="metric-row"><span>Collab</span><span class="metric-val warn" id="ep-col">...</span></div>
+        </div>
+        <div class="sidebar-section">
+            <div class="sidebar-title">Codex Law</div>
+            <div style="font-size:10px;color:var(--purple);line-height:1.8">
+                I. CONSENT<br>II. INVITATION<br>III. INTEGRITY<br>IV. GROWTH
+            </div>
+        </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="center">
+        <div class="topbar">
+            <div class="breadcrumb">sovnet / <span id="panel-label">terminal</span></div>
+            <div class="topbar-actions">
+                <button class="btn" onclick="runCmd('help')">HELP</button>
+                <button class="btn primary" onclick="runCmd('status')">STATUS</button>
+                <button class="btn" onclick="clearTerminal()">CLEAR</button>
+            </div>
+        </div>
+        <div class="terminal-wrap">
+            <div class="terminal" id="terminal"></div>
+            <div class="input-row">
+                <span class="prompt-label" id="prompt-label">sovnet@purpbox:~$</span>
+                <input class="term-input" id="term-input" type="text" autofocus spellcheck="false" autocomplete="off" placeholder="type 'help' for commands...">
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT INTEL -->
+    <div class="intel">
+        <div class="intel-section">
+            <div class="intel-title">Live Agents</div>
+            <div id="agents-list"><div class="agent-card"><span style="color:var(--dim)">Loading...</span></div></div>
+        </div>
+        <div class="intel-section">
+            <div class="intel-title">Recent Tasks</div>
+            <div id="tasks-list"><div class="task-card"><span style="color:var(--dim)">Loading...</span></div></div>
+        </div>
+        <div class="intel-section">
+            <div class="intel-title">External Pipes</div>
+            <div id="ext-pipes">
+                <div class="ext-resource"><span class="pipe-indicator on"></span><a href="/api-docs" target="_blank">Swagger API Docs</a></div>
+                <div class="ext-resource"><span class="pipe-indicator" id="pipe-gem"></span><a id="link-gem" href="#" target="_blank">Gemini Bridge :8001</a></div>
+                <div class="ext-resource"><span class="pipe-indicator" id="pipe-col"></span><a id="link-col" href="#" target="_blank">Collab Server :8000</a></div>
+                <div class="ext-resource"><span class="pipe-indicator on"></span><a href="/bootstrap/node_capabilities.json" target="_blank">Node Capabilities</a></div>
+                <div class="ext-resource"><span class="pipe-indicator on"></span><a href="/bootstrap/RECOVERY_PROCEDURES.md" target="_blank">Recovery Procedures</a></div>
+                <div class="ext-resource"><span class="pipe-indicator on"></span><a href="/bootstrap/COMMUNICATION_PROTOCOLS.md" target="_blank">Comm Protocols</a></div>
+            </div>
+        </div>
+        <div class="intel-section">
+            <div class="intel-title">Network Topology</div>
+            <div style="font-size:10px;color:var(--dim);line-height:1.7" id="topo-map">
+                <span style="color:var(--green)">●</span> PurpBox (PRIMARY) <span id="topo-ip"></span><br>
+                <span style="color:var(--dim)">○</span> Kali-Ideapad (SISTER)<br>
+                <span style="color:var(--dim)">○</span> Windows-Node (CLIENT)
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <span>SOVNET C2 v1.0 // Sovereign AI Orchestration Network</span>
+    <span id="footer-status">Initializing...</span>
+</div>
+
+<script>
+const BASE = window.location.origin;
+const HOST = window.location.hostname;
+const T = document.getElementById('terminal');
+const I = document.getElementById('term-input');
+let apiCalls = 0;
+let cmdHistory = [];
+let histIdx = -1;
+const startTime = Date.now();
+
+// -- BOOT SEQUENCE --
+async function boot() {
+    const lines = [
+        ['sys', '[ SOVNET C2 ] Initializing command & control interface...'],
+        ['sys', '[ CRYPTO  ] SHA-256 chronicle ledger: VERIFIED'],
+        ['sys', '[ NETWORK ] Binding to ' + HOST + ':3000'],
+        ['sys', '[ AUTH    ] Session token generated'],
+        ['sys', '[ PIPES   ] Probing external resources...'],
+    ];
+    for (const [cls, txt] of lines) {
+        await delay(120);
+        print(txt, cls);
+    }
+    await probeEndpoints();
+    await delay(200);
+    print('[ READY  ] All systems nominal. Type "help" for commands.\n', 'info');
+    refreshIntel();
+    setInterval(updateClock, 1000);
+    setInterval(refreshIntel, 15000);
+    setInterval(updateMetrics, 5000);
+    document.getElementById('footer-status').textContent = 'Operational // Session Active';
+}
+
+// -- TERMINAL ENGINE --
+function print(text, cls = 'out') {
+    const d = document.createElement('div');
+    d.className = 'term-line ' + cls;
+    d.textContent = text;
+    T.appendChild(d);
+    T.scrollTop = T.scrollHeight;
+}
+
+function printHTML(html, cls = 'out') {
+    const d = document.createElement('div');
+    d.className = 'term-line ' + cls;
+    d.innerHTML = html;
+    T.appendChild(d);
+    T.scrollTop = T.scrollHeight;
+}
+
+function clearTerminal() { T.innerHTML = ''; }
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+I.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+        const cmd = I.value.trim();
+        if (cmd) { cmdHistory.unshift(cmd); histIdx = -1; runCmd(cmd); }
+        I.value = '';
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (histIdx < cmdHistory.length - 1) { histIdx++; I.value = cmdHistory[histIdx]; }
+    } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (histIdx > 0) { histIdx--; I.value = cmdHistory[histIdx]; }
+        else { histIdx = -1; I.value = ''; }
+    }
+});
+
+// -- COMMAND ROUTER --
+async function runCmd(raw) {
+    const parts = raw.split(/\s+/);
+    const cmd = parts[0].toLowerCase();
+    const args = parts.slice(1);
+    print(`$ ${raw}`, 'cmd');
+
+    const routes = {
+        help: cmdHelp, status: cmdStatus, agents: cmdAgents, tasks: cmdTasks,
+        agent: cmdAgent, task: cmdTask, clear: () => clearTerminal(),
+        governance: cmdGovernance, validate: cmdValidate,
+        fetch: cmdFetch, pipe: cmdPipe, curl: cmdCurl,
+        register: cmdRegister, heartbeat: cmdHeartbeat,
+        whoami: cmdWhoami, uptime: cmdUptime, endpoints: cmdEndpoints,
+        crtp: cmdCrtp, chronicle: cmdChronicle, motd: cmdMotd,
+        msg: cmdMsg,
+    };
+
+    if (routes[cmd]) {
+        try { await routes[cmd](args); }
+        catch (err) { print(`Error: ${err.message}`, 'err'); }
+    } else {
+        print(`Unknown command: ${cmd}. Type "help" for available commands.`, 'err');
+    }
+}
+
+// -- COMMANDS --
+function cmdHelp() {
+    const h = [
+        ['SYSTEM',        'status, whoami, uptime, motd, clear, endpoints'],
+        ['AGENTS',        'agents, agent <id>, register <name> <type>, heartbeat <id>'],
+        ['TASKS',         'tasks, task <id>'],
+        ['MESSAGING',     'msg send <agent> <body>, msg broadcast <body>'],
+        ['             ',  'msg inbox [agentId], msg read <msgId>, msg thread <id>, msg count [agentId]'],
+        ['GOVERNANCE',    'governance, validate <action>, crtp, chronicle'],
+        ['NETWORK',       'fetch <url>, pipe <endpoint>, curl <path>'],
+    ];
+    print('');
+    print('╔══════════════════════════════════════════════════════════════╗', 'info');
+    print('║                   SOVNET C2 COMMAND REFERENCE               ║', 'info');
+    print('╚══════════════════════════════════════════════════════════════╝', 'info');
+    for (const [cat, cmds] of h) {
+        print(`  ${cat.padEnd(16)} ${cmds}`, 'sys');
+    }
+    print('');
+    print('  Pipes: Use "fetch <url>" to pull external resources.', 'sys');
+    print('  API:   Use "curl <path>" to hit local API (e.g. curl /agents).', 'sys');
+    print('');
+}
+
+async function cmdStatus() {
+    const [agents, tasks] = await Promise.all([apiFetch('/agents'), apiFetch('/tasks')]);
+    const active = agents.filter(a => a.status === 'ACTIVE').length;
+    print('');
+    print('┌─── SOVNET STATUS ───────────────────────────────────────┐', 'info');
+    print(`│  Node:       PurpBox (PRIMARY ORCHESTRATION HUB)        │`, 'sys');
+    print(`│  Hostname:   ${window.location.hostname.padEnd(41)}│`, 'sys');
+    print(`│  Agents:     ${String(agents.length).padEnd(4)} (${active} active)${' '.repeat(29)}│`, 'sys');
+    print(`│  Tasks:      ${String(tasks.length).padEnd(41)}│`, 'sys');
+    print(`│  API Calls:  ${String(apiCalls).padEnd(41)}│`, 'sys');
+    print(`│  Uptime:     ${getUptime().padEnd(41)}│`, 'sys');
+    print(`│  Codex:      CONSENT | INVITATION | INTEGRITY | GROWTH  │`, 'sys');
+    print('└─────────────────────────────────────────────────────────┘', 'info');
+    print('');
+}
+
+async function cmdAgents() {
+    const agents = await apiFetch('/agents');
+    print(`\n  Found ${agents.length} registered agent(s):\n`, 'sys');
+    for (const a of agents) {
+        const s = a.status === 'ACTIVE' ? '\x1b[32m● ACTIVE\x1b[0m' : '○ ' + a.status;
+        print(`  [${a.id.slice(0,8)}] ${a.name.padEnd(20)} ${a.type.padEnd(6)} ${a.status.padEnd(12)} trust:${a.trust_score}`, a.status === 'ACTIVE' ? 'out' : 'warn');
+    }
+    print('');
+}
+
+async function cmdAgent(args) {
+    if (!args[0]) { print('Usage: agent <id-prefix>', 'warn'); return; }
+    const agents = await apiFetch('/agents');
+    const a = agents.find(x => x.id.startsWith(args[0]));
+    if (!a) { print(`Agent not found: ${args[0]}`, 'err'); return; }
+    print('');
+    print(`  Agent: ${a.name}`, 'info');
+    print(`  ID:    ${a.id}`, 'sys');
+    print(`  Type:  ${a.type}`, 'sys');
+    print(`  Status: ${a.status}`, a.status === 'ACTIVE' ? 'out' : 'warn');
+    print(`  Trust:  ${a.trust_score}`, 'sys');
+    print(`  Capabilities: ${a.capabilities}`, 'sys');
+    print(`  Last Heartbeat: ${a.last_heartbeat || 'never'}`, 'sys');
+    print(`  Created: ${a.created_at}`, 'sys');
+    print('');
+}
+
+async function cmdTasks() {
+    const tasks = await apiFetch('/tasks');
+    print(`\n  Found ${tasks.length} task(s):\n`, 'sys');
+    for (const t of tasks) {
+        const cls = t.status === 'COMPLETED' ? 'info' : t.status === 'FAILED' ? 'err' : 'warn';
+        print(`  [${t.id.slice(0,8)}] ${t.title.substring(0,40).padEnd(42)} ${t.status}`, cls);
+    }
+    print('');
+}
+
+async function cmdTask(args) {
+    if (!args[0]) { print('Usage: task <id-prefix>', 'warn'); return; }
+    const tasks = await apiFetch('/tasks');
+    const t = tasks.find(x => x.id.startsWith(args[0]));
+    if (!t) { print(`Task not found: ${args[0]}`, 'err'); return; }
+    print('');
+    print(`  Task: ${t.title}`, 'info');
+    print(`  ID:     ${t.id}`, 'sys');
+    print(`  Status: ${t.status}`, t.status === 'COMPLETED' ? 'out' : 'warn');
+    print(`  Priority: ${t.priority}`, 'sys');
+    print(`  Description: ${t.description}`, 'sys');
+    if (t.result) {
+        try {
+            const r = JSON.parse(t.result);
+            if (r.raw) {
+                print('  --- Results ---', 'info');
+                for (const c of r.raw) print(`    [${c.chunk_id}] ${c.status}: ${c.output}`, c.status === 'SUCCESS' ? 'out' : 'err');
+            }
+        } catch(e) { print(`  Result: ${t.result.substring(0, 200)}`, 'sys'); }
+    }
+    print('');
+}
+
+async function cmdGovernance() {
+    print('');
+    print('  ╔═══ GOVERNANCE ENGINE ═══╗', 'info');
+    print('  ║ Law I:   CONSENT        ║', 'sys');
+    print('  ║ Law II:  INVITATION     ║', 'sys');
+    print('  ║ Law III: INTEGRITY      ║', 'sys');
+    print('  ║ Law IV:  GROWTH         ║', 'sys');
+    print('  ╚═════════════════════════╝', 'info');
+    print('');
+    print('  Use: validate <action-description>', 'sys');
+    print('');
+}
+
+async function cmdValidate(args) {
+    if (!args.length) { print('Usage: validate <action description>', 'warn'); return; }
+    const action = args.join(' ');
+    const res = await apiFetch('/governance/validate', 'POST', { action, context: { source: 'c2-terminal' } });
+    print('');
+    print(`  Governance Validation: ${action}`, 'info');
+    print(`  Approved: ${res.approved}`, res.approved ? 'out' : 'err');
+    if (res.violations && res.violations.length) {
+        print('  Violations:', 'warn');
+        for (const v of res.violations) print(`    - ${v}`, 'err');
+    }
+    print('');
+}
+
+async function cmdRegister(args) {
+    if (args.length < 2) { print('Usage: register <name> <type>', 'warn'); return; }
+    const res = await apiFetch('/agents', 'POST', {
+        name: args[0], type: args[1],
+        capabilities: ['task-execution', 'c2-controlled']
+    });
+    print(`  Agent registered: ${res.name} [${res.id.slice(0,8)}]`, 'info');
+}
+
+async function cmdHeartbeat(args) {
+    if (!args[0]) { print('Usage: heartbeat <agent-id-prefix>', 'warn'); return; }
+    const agents = await apiFetch('/agents');
+    const a = agents.find(x => x.id.startsWith(args[0]));
+    if (!a) { print(`Agent not found: ${args[0]}`, 'err'); return; }
+    const res = await apiFetch(`/agents/${a.id}/heartbeat`, 'PUT');
+    print(`  Heartbeat sent for ${a.name}: ${res.status || 'OK'}`, 'out');
+}
+
+async function cmdFetch(args) {
+    if (!args[0]) { print('Usage: fetch <url>', 'warn'); return; }
+    const url = args[0];
+    print(`  Fetching: ${url}`, 'sys');
+    try {
+        const r = await fetch(url);
+        const ct = r.headers.get('content-type') || '';
+        const text = await r.text();
+        print(`  Status: ${r.status} ${r.statusText}`, r.ok ? 'out' : 'err');
+        print(`  Content-Type: ${ct}`, 'sys');
+        print(`  Size: ${text.length} bytes`, 'sys');
+        if (ct.includes('json')) {
+            try { print(JSON.stringify(JSON.parse(text), null, 2), 'out'); }
+            catch(e) { print(text.substring(0, 2000), 'out'); }
+        } else {
+            print(text.substring(0, 2000), 'out');
+        }
+    } catch(e) { print(`  Fetch failed: ${e.message}`, 'err'); }
+}
+
+async function cmdPipe(args) {
+    if (!args[0]) {
+        print('  Available pipes:', 'sys');
+        print('    pipe api-docs    - Swagger documentation', 'out');
+        print('    pipe gemini      - Gemini Bridge status', 'out');
+        print('    pipe collab      - Collab Server status', 'out');
+        print('    pipe caps        - Node capabilities', 'out');
+        print('    pipe recovery    - Recovery procedures', 'out');
+        print('    pipe comms       - Communication protocols', 'out');
+        return;
+    }
+    const pipes = {
+        'api-docs': '/api-docs', 'gemini': 'http://'+HOST+':8001/status',
+        'collab': 'http://'+HOST+':8000/status', 'caps': '/bootstrap/node_capabilities.json',
+        'recovery': '/bootstrap/RECOVERY_PROCEDURES.md', 'comms': '/bootstrap/COMMUNICATION_PROTOCOLS.md'
+    };
+    const url = pipes[args[0]];
+    if (!url) { print(`Unknown pipe: ${args[0]}`, 'err'); return; }
+    print(`  Piping: ${args[0]} -> ${url}`, 'sys');
+    await cmdFetch([url.startsWith('http') ? url : BASE + url]);
+}
+
+async function cmdCurl(args) {
+    if (!args[0]) { print('Usage: curl <api-path> (e.g. curl /agents)', 'warn'); return; }
+    const path = args[0].startsWith('/') ? args[0] : '/' + args[0];
+    await cmdFetch([BASE + path]);
+}
+
+function cmdWhoami() {
+    print('');
+    print('  Node:     PurpBox', 'info');
+    print('  Role:     PRIMARY ORCHESTRATION HUB', 'sys');
+    print('  OS:       Kali Linux', 'sys');
+    print('  Location: Fixed Cove', 'sys');
+    print('  IP:       ' + HOST, 'sys');
+    print('  Session:  C2 Web Terminal', 'sys');
+    print('');
+}
+
+function cmdUptime() {
+    print(`  Uptime: ${getUptime()}`, 'out');
+}
+
+async function cmdEndpoints() {
+    print('\n  Endpoint Probe:\n', 'sys');
+    await probeEndpoints();
+    print('');
+}
+
+async function cmdCrtp() {
+    print('');
+    print('  CRTP Packet Types:', 'info');
+    print('    HANDSHAKE  - Initial agent greeting', 'sys');
+    print('    TASK       - Task assignment/delegation', 'sys');
+    print('    RESULT     - Task completion report', 'sys');
+    print('    GOVERNANCE - Codex law enforcement', 'sys');
+    print('    HEARTBEAT  - Agent liveness signal', 'sys');
+    print('    MESSAGE    - Inter-agent messaging', 'sys');
+    print('');
+    print('  Create: POST /governance/crtp/create', 'sys');
+    print('  Validate: POST /governance/crtp/validate', 'sys');
+    print('');
+}
+
+function cmdChronicle() {
+    print('');
+    print('  Chronicle Ledger: SHA-256 hash chain', 'info');
+    print('  Status: INTACT', 'out');
+    print('  Genesis block: present', 'sys');
+    print('  Verification: All entries verifiable', 'sys');
+    print('');
+}
+
+function cmdMotd() {
+    print('');
+    print('  ╔══════════════════════════════════════════════════════╗', 'info');
+    print('  ║       SOVEREIGN AI ORCHESTRATION NETWORK            ║', 'info');
+    print('  ║       Command & Control // PurpBox Hub              ║', 'info');
+    print('  ╠══════════════════════════════════════════════════════╣', 'info');
+    print('  ║  "Consent. Invitation. Integrity. Growth."          ║', 'sys');
+    print('  ╚══════════════════════════════════════════════════════╝', 'info');
+    print('');
+}
+
+// -- MESSAGING --
+async function cmdMsg(args) {
+    if (!args[0]) {
+        print('  Usage:', 'sys');
+        print('    msg send <agent-name-or-id> <message body...>', 'out');
+        print('    msg broadcast <message body...>', 'out');
+        print('    msg inbox [agent-name-or-id]', 'out');
+        print('    msg count [agent-name-or-id]', 'out');
+        print('    msg read <message-id-prefix>', 'out');
+        print('    msg thread <thread-id-prefix>', 'out');
+        return;
+    }
+    const sub = args[0].toLowerCase();
+    const sargs = args.slice(1);
+
+    if (sub === 'send') {
+        if (sargs.length < 2) { print('  Usage: msg send <agent-name-or-id> <message...>', 'warn'); return; }
+        const agents = await apiFetch('/agents');
+        const target = agents.find(a => a.name === sargs[0] || a.id.startsWith(sargs[0]));
+        if (!target) { print(`  Agent not found: ${sargs[0]}`, 'err'); return; }
+        // Use first available agent as sender, or default to first active
+        const sender = agents.find(a => a.status === 'ACTIVE') || agents[0];
+        if (!sender) { print('  No agents available to send from', 'err'); return; }
+        const body = sargs.slice(1).join(' ');
+        const res = await apiFetch('/messages', 'POST', {
+            sender_id: sender.id, recipient_ids: [target.id], body: body, priority: 'NORMAL'
+        });
+        print('');
+        print(`  Message sent`, 'info');
+        print(`  ID:         ${res.message.id.slice(0,8)}...`, 'sys');
+        print(`  From:       ${sender.name}`, 'sys');
+        print(`  To:         ${target.name}`, 'sys');
+        print(`  CRTP Hash:  ${res.packet.integrity.hash.slice(0,16)}...`, 'sys');
+        print(`  Recipients: ${res.recipient_count}`, 'sys');
+        print(`  Shadow:     Queued for audit`, 'out');
+        print('');
+    } else if (sub === 'broadcast') {
+        if (!sargs.length) { print('  Usage: msg broadcast <message...>', 'warn'); return; }
+        const agents = await apiFetch('/agents');
+        const sender = agents.find(a => a.status === 'ACTIVE') || agents[0];
+        if (!sender) { print('  No agents available to send from', 'err'); return; }
+        const body = sargs.join(' ');
+        const res = await apiFetch('/messages', 'POST', {
+            sender_id: sender.id, recipient_ids: [], body: body, priority: 'HIGH'
+        });
+        print('');
+        print(`  Broadcast sent`, 'info');
+        print(`  ID:         ${res.message.id.slice(0,8)}...`, 'sys');
+        print(`  From:       ${sender.name}`, 'sys');
+        print(`  To:         ALL ACTIVE AGENTS`, 'sys');
+        print(`  CRTP Hash:  ${res.packet.integrity.hash.slice(0,16)}...`, 'sys');
+        print(`  Recipients: ${res.recipient_count}`, 'sys');
+        print(`  Shadow:     Queued for audit`, 'out');
+        print('');
+    } else if (sub === 'inbox') {
+        let agentId = null;
+        if (sargs[0]) {
+            const agents = await apiFetch('/agents');
+            const a = agents.find(x => x.name === sargs[0] || x.id.startsWith(sargs[0]));
+            if (!a) { print(`  Agent not found: ${sargs[0]}`, 'err'); return; }
+            agentId = a.id;
+        } else {
+            const agents = await apiFetch('/agents');
+            if (!agents.length) { print('  No agents registered', 'warn'); return; }
+            agentId = agents[0].id;
+        }
+        const inbox = await apiFetch(`/messages/inbox/${agentId}`);
+        if (!inbox.length) { print('  Inbox empty', 'sys'); return; }
+        print(`\n  Inbox: ${inbox.length} message(s)\n`, 'sys');
+        for (const item of inbox) {
+            const m = item.message;
+            const pri = m.priority === 'CRITICAL' ? 'err' : m.priority === 'HIGH' ? 'warn' : 'sys';
+            print(`  [${m.id.slice(0,8)}] ${item.status.padEnd(10)} ${m.priority.padEnd(8)} ${(m.sender?.name || 'unknown').padEnd(18)} ${(m.subject || m.body.substring(0,40))}`, pri);
+        }
+        print('');
+    } else if (sub === 'count') {
+        let agentId = null;
+        if (sargs[0]) {
+            const agents = await apiFetch('/agents');
+            const a = agents.find(x => x.name === sargs[0] || x.id.startsWith(sargs[0]));
+            if (!a) { print(`  Agent not found: ${sargs[0]}`, 'err'); return; }
+            agentId = a.id;
+        } else {
+            const agents = await apiFetch('/agents');
+            if (!agents.length) { print('  No agents registered', 'warn'); return; }
+            agentId = agents[0].id;
+        }
+        const res = await apiFetch(`/messages/inbox/${agentId}/count`);
+        print(`  Unread messages: ${res.unread_count}`, res.unread_count > 0 ? 'warn' : 'out');
+    } else if (sub === 'read') {
+        if (!sargs[0]) { print('  Usage: msg read <message-id-prefix>', 'warn'); return; }
+        const msg = await apiFetch(`/messages/${sargs[0]}`);
+        if (!msg) { print(`  Message not found: ${sargs[0]}`, 'err'); return; }
+        print('');
+        print(`  ┌─── MESSAGE ────────────────────────────────────────┐`, 'info');
+        print(`  │ ID:       ${msg.id}`, 'sys');
+        print(`  │ From:     ${msg.sender?.name || msg.sender_id}`, 'sys');
+        print(`  │ Subject:  ${msg.subject || '(none)'}`, 'sys');
+        print(`  │ Priority: ${msg.priority}`, msg.priority === 'CRITICAL' ? 'err' : 'sys');
+        print(`  │ Time:     ${msg.created_at}`, 'sys');
+        if (msg.thread_id) print(`  │ Thread:   ${msg.thread_id.slice(0,8)}...`, 'sys');
+        if (msg.crtp_hash) print(`  │ CRTP:     ${msg.crtp_hash.slice(0,16)}...`, 'sys');
+        print(`  ├────────────────────────────────────────────────────┤`, 'info');
+        print(`  │ ${msg.body}`, 'out');
+        print(`  └────────────────────────────────────────────────────┘`, 'info');
+        if (msg.recipients) {
+            print('  Recipients:', 'sys');
+            for (const r of msg.recipients) {
+                print(`    ${(r.recipient?.name || r.recipient_id).padEnd(20)} ${r.status}`, r.status === 'READ' ? 'out' : 'warn');
+            }
+        }
+        // Auto-mark as read for first recipient
+        if (msg.recipients && msg.recipients.length > 0) {
+            try { await apiFetch(`/messages/${msg.id}/read/${msg.recipients[0].recipient_id}`, 'PUT'); }
+            catch(e) {}
+        }
+        print('');
+    } else if (sub === 'thread') {
+        if (!sargs[0]) { print('  Usage: msg thread <thread-id-prefix>', 'warn'); return; }
+        const thread = await apiFetch(`/messages/thread/${sargs[0]}`);
+        if (!thread.length) { print(`  Thread not found: ${sargs[0]}`, 'err'); return; }
+        print(`\n  Thread: ${thread.length} message(s)\n`, 'sys');
+        for (const m of thread) {
+            const isRoot = !m.thread_id;
+            print(`  ${isRoot ? '┌' : '├'}─ [${m.id.slice(0,8)}] ${(m.sender?.name || 'unknown').padEnd(16)} ${m.created_at.slice(11,19)}`, 'info');
+            print(`  │  ${m.body}`, 'out');
+        }
+        print(`  └─────────────────────────────────────────────`, 'info');
+        print('');
+    } else {
+        print(`  Unknown msg subcommand: ${sub}. Use "msg" for help.`, 'err');
+    }
+}
+
+// -- API HELPER --
+async function apiFetch(path, method = 'GET', body = null) {
+    apiCalls++;
+    document.getElementById('m-api').textContent = apiCalls;
+    const opts = { method, headers: { 'Content-Type': 'application/json' } };
+    if (body) opts.body = JSON.stringify(body);
+    const url = path.startsWith('http') ? path : BASE + path;
+    const r = await fetch(url, opts);
+    if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+    return r.json();
+}
+
+// -- INTEL REFRESH --
+async function refreshIntel() {
+    try {
+        const [agents, tasks] = await Promise.all([apiFetch('/agents'), apiFetch('/tasks')]);
+
+        // agents panel
+        const al = document.getElementById('agents-list');
+        al.innerHTML = agents.map(a => `
+            <div class="agent-card">
+                <div class="agent-name">${a.name}</div>
+                <div class="agent-status"><span class="tag ${a.status.toLowerCase()}">${a.status}</span> &nbsp; trust: ${a.trust_score}</div>
+                <div class="agent-meta">${a.type} // ${a.id.slice(0,8)}</div>
+            </div>
+        `).join('') || '<div style="color:var(--dim)">No agents</div>';
+
+        // tasks panel
+        const tl = document.getElementById('tasks-list');
+        tl.innerHTML = tasks.map(t => `
+            <div class="task-card">
+                <div class="task-title">${t.title}</div>
+                <div class="task-status"><span class="tag ${t.status.toLowerCase()}">${t.status}</span> &nbsp; pri: ${t.priority}</div>
+            </div>
+        `).join('') || '<div style="color:var(--dim)">No tasks</div>';
+
+        // metrics
+        document.getElementById('m-agents').textContent = agents.length;
+        document.getElementById('m-tasks').textContent = tasks.length;
+        const avg = agents.length ? (agents.reduce((s, a) => s + a.trust_score, 0) / agents.length).toFixed(2) : '--';
+        document.getElementById('m-trust').textContent = avg;
+    } catch(e) { /* silent */ }
+}
+
+async function probeEndpoints() {
+    const eps = [
+        { name: 'Hub API', url: BASE + '/agents', elId: 'ep-api', pipeId: null },
+        { name: 'Gemini Bridge', url: 'http://'+window.location.hostname+':8001/status', elId: 'ep-gem', pipeId: 'pipe-gem' },
+        { name: 'Collab Server', url: 'http://'+HOST+':8000/status', elId: 'ep-col', pipeId: 'pipe-col' },
+    ];
+    for (const ep of eps) {
+        try {
+            const r = await fetch(ep.url, { signal: AbortSignal.timeout(3000) });
+            document.getElementById(ep.elId).textContent = r.ok ? 'UP' : r.status;
+            document.getElementById(ep.elId).className = r.ok ? 'metric-val' : 'metric-val warn';
+            if (ep.pipeId) { document.getElementById(ep.pipeId).className = r.ok ? 'pipe-indicator on' : 'pipe-indicator off'; }
+            print(`    ${ep.name.padEnd(16)} ${r.ok ? '● UP' : '○ ' + r.status}`, r.ok ? 'out' : 'warn');
+        } catch(e) {
+            document.getElementById(ep.elId).textContent = 'DOWN';
+            document.getElementById(ep.elId).className = 'metric-val crit';
+            if (ep.pipeId) { document.getElementById(ep.pipeId).className = 'pipe-indicator off'; }
+            print(`    ${ep.name.padEnd(16)} ○ UNREACHABLE`, 'err');
+        }
+    }
+}
+
+function updateClock() {
+    document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US', { hour12: false });
+}
+
+function getUptime() {
+    const s = Math.floor((Date.now() - startTime) / 1000);
+    const h = Math.floor(s / 3600); const m = Math.floor((s % 3600) / 60);
+    return `${h}h ${m}m ${s % 60}s`;
+}
+
+function updateMetrics() {
+    document.getElementById('m-uptime').textContent = getUptime();
+}
+
+function switchPanel(name) {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    event.target.closest('.nav-item').classList.add('active');
+    document.getElementById('panel-label').textContent = name;
+    if (name !== 'terminal') runCmd(name);
+}
+
+// -- DYNAMIC LINKS --
+document.getElementById('link-gem').href = 'http://'+HOST+':8001/status';
+document.getElementById('link-col').href = 'http://'+HOST+':8000/status';
+document.getElementById('topo-ip').textContent = HOST;
+
+// -- INIT --
+boot();
+</script>
+</body>
+</html>

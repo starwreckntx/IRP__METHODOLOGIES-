@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./sovereign.db"
+}
+
+model Agent {
+  id              String   @id @default(uuid())
+  name            String
+  type            String
+  capabilities    String
+  status          String   @default("REGISTERED")
+  endpoint        String?
+  public_key      String?
+  trust_score     Float    @default(0.5)
+  last_heartbeat  DateTime?
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  tasks           Task[]
+  chronicles      Chronicle[]
+  sessions        SessionParticipant[]
+  sent_messages      Message[]          @relation("SentMessages")
+  received_messages  MessageRecipient[] @relation("ReceivedMessages")
+}
+
+model Task {
+  id                String   @id @default(uuid())
+  title             String
+  description       String
+  status            String   @default("PENDING")
+  priority          Int      @default(5)
+  context           String?
+  requirements      String?
+  governance_config String?
+  orchestration_plan String?
+  assigned_agents   String?
+  result            String?
+  creator_id        String
+  creator           Agent    @relation(fields: [creator_id], references: [id])
+  chronicles        Chronicle[]
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+}
+
+model Chronicle {
+  id            String   @id @default(uuid())
+  entry_type    String
+  content       String
+  hash          String
+  previous_hash String?
+  agent_id      String?
+  agent         Agent?   @relation(fields: [agent_id], references: [id])
+  task_id       String?
+  task          Task?    @relation(fields: [task_id], references: [id])
+  created_at    DateTime @default(now())
+}
+
+model GovernanceRule {
+  id          String   @id @default(uuid())
+  law         String
+  description String
+  priority    Int      @default(1)
+  is_active   Boolean  @default(true)
+  created_at  DateTime @default(now())
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  name         String
+  status       String   @default("ACTIVE")
+  floor_holder String?
+  participants SessionParticipant[]
+  messages     SessionMessage[]
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+}
+
+model SessionParticipant {
+  id         String   @id @default(uuid())
+  role       String   @default("PARTICIPANT")
+  joined_at  DateTime @default(now())
+  session_id String
+  session    Session  @relation(fields: [session_id], references: [id])
+  agent_id   String
+  agent      Agent    @relation(fields: [agent_id], references: [id])
+  @@unique([session_id, agent_id])
+}
+
+model SessionMessage {
+  id         String   @id @default(uuid())
+  sender_id  String
+  content    String
+  msg_type   String   @default("MESSAGE")
+  session_id String
+  session    Session  @relation(fields: [session_id], references: [id])
+  created_at DateTime @default(now())
+}
+
+model MnemosyneLedger {
+  id              String   @id @default(uuid())
+  agent_id        String
+  context_hash    String
+  torsion_score   Float    @default(0)
+  drift_detected  Boolean  @default(false)
+  correction_applied String?
+  created_at      DateTime @default(now())
+}
+
+model Message {
+  id            String   @id @default(uuid())
+  sender_id     String
+  sender        Agent    @relation("SentMessages", fields: [sender_id], references: [id])
+  subject       String?
+  body          String
+  priority      String   @default("NORMAL")
+  thread_id     String?
+  thread_parent Message? @relation("Thread", fields: [thread_id], references: [id])
+  thread_replies Message[] @relation("Thread")
+  is_broadcast  Boolean  @default(false)
+  crtp_hash     String?
+  metadata      String?
+  recipients    MessageRecipient[]
+  created_at    DateTime @default(now())
+}
+
+model MessageRecipient {
+  id            String   @id @default(uuid())
+  message_id    String
+  message       Message  @relation(fields: [message_id], references: [id])
+  recipient_id  String
+  recipient     Agent    @relation("ReceivedMessages", fields: [recipient_id], references: [id])
+  status        String   @default("QUEUED")
+  delivered_at  DateTime?
+  read_at       DateTime?
+  @@unique([message_id, recipient_id])
+}
+
+model Skill {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  category    String
+  description String
+  config      String
+  is_active   Boolean  @default(true)
+  created_at  DateTime @default(now())
+}
