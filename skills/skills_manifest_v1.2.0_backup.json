@@ -2,8 +2,8 @@
   "package_name": "pack3t-c0nc3pts-agent-skills",
   "version": "1.2.0_EMBODIMENT_INTEGRATION",
   "author": "Joseph / Pack3t C0nc3pts",
-  "last_updated": "2025-12-07",
-  "skill_count": 89,
+  "last_updated": "2026-02-17",
+  "skill_count": 90,
   "codex_entries": [
     {
       "id": "CODEX-2025-HORN-001",
@@ -121,6 +121,7 @@
     {"name": "architectural-amendment-protocol", "path": "skills/architectural-amendment-protocol/SKILL.md"},
     {"name": "polymorphic-analytics-instantiation", "path": "skills/polymorphic-analytics-instantiation/SKILL.md"},
     {"name": "contingency-module-architecture", "path": "skills/contingency-module-architecture/SKILL.md"},
-    {"name": "dendrite-reforging-protocol", "path": "skills/dendrite-reforging-protocol/SKILL.md"}
+    {"name": "dendrite-reforging-protocol", "path": "skills/dendrite-reforging-protocol/SKILL.md"},
+    {"name": "tailscale-aperture-orchestrator", "path": "skills/tailscale-aperture-orchestrator/SKILL.md", "category": "infrastructure"}
   ]
 }

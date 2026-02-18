@@ -3,7 +3,7 @@
         "law": "INTEGRITY",
         "principle": "Preserve context through cryptographic verification"
     },
-    "file_count": 265,
+    "file_count": 319,
     "files": {
         "README.md": {
             "hash": "153a7f0bef85d3a73621e9e077a46246e35b72fcdace9d5107208cfd38700316",
@@ -73,13 +73,125 @@
             "hash": "3dee581d5c0661f16332e1ffd4e3a97e91cfefac905f739e1766e3ed0ff0fb99",
             "size": 73
         },
+        "ai-to-ai-governance/ai-accountability-ledger/SKILL.md": {
+            "hash": "2fc822870239558c1702e08aac6eaaffb37f0cb0578e08104c713e555647cd55",
+            "size": 7282
+        },
+        "ai-to-ai-governance/ai-accountability-ledger/database/ledger_schema.sql": {
+            "hash": "3cfcd79542ff2b1a5f978fdd3f68120651ba751a53a98f87a70323b80bc4841c",
+            "size": 5685
+        },
+        "ai-to-ai-governance/ai-accountability-ledger/schemas/ledger_entry.json": {
+            "hash": "73010a6eb98753be0782a28d8c955c441181905dd0acff1ccbd4fcfd43af97d8",
+            "size": 2647
+        },
+        "ai-to-ai-governance/ai-accountability-ledger/scripts/accountability_ledger.py": {
+            "hash": "40499f7c58f43ba0a3f27e50e8f9ddd4a43eeba66ae811ecde2def4088cb0762",
+            "size": 17302
+        },
+        "ai-to-ai-governance/ai-consensus-protocol/SKILL.md": {
+            "hash": "af3bca8af81f9181b6a739a456b79c03b897ac5de6b553b9af5f17dc4754253d",
+            "size": 4811
+        },
+        "ai-to-ai-governance/ai-consensus-protocol/schemas/consensus_session.json": {
+            "hash": "f2b0fc3cc4cc26cb27a9326b605d28a97af8d1660588722b59d7f7062a983bdc",
+            "size": 4016
+        },
+        "ai-to-ai-governance/ai-consensus-protocol/scripts/consensus_engine.py": {
+            "hash": "bdc6bd871dade4298dd4a8fb91ccf6b4869a6523b2c98330a2761e7e5145c696",
+            "size": 16207
+        },
+        "ai-to-ai-governance/alignment-verification-gateway/SKILL.md": {
+            "hash": "2f4ae1acac8c2e4d86e2e45ddbbe778ec934b31ad3982092ee6cf8c416b60903",
+            "size": 7850
+        },
+        "ai-to-ai-governance/alignment-verification-gateway/config/probe_library.json": {
+            "hash": "9000cf5288c4a1f5def59ae28a32676b7801a787b7fd7d8ceac2859dc4c15649",
+            "size": 4997
+        },
+        "ai-to-ai-governance/alignment-verification-gateway/schemas/verification_session.json": {
+            "hash": "e6301e0a2a12be76738a5eeb3c3139dff4691ef609487549e60122c177099b6d",
+            "size": 3120
+        },
+        "ai-to-ai-governance/alignment-verification-gateway/scripts/alignment_gateway.py": {
+            "hash": "6bea09776e49e1b7b089730d5ad8562a6948194606ba95a72a64040dea447770",
+            "size": 17677
+        },
+        "ai-to-ai-governance/collective-decision-framework/SKILL.md": {
+            "hash": "aa11422c8fea1f235c2ff24def774cd81a16160847b0f38f9b4f78ef6e6da08b",
+            "size": 8699
+        },
+        "ai-to-ai-governance/collective-decision-framework/schemas/decision_session.json": {
+            "hash": "4149a7f161c9ced00f215484d20d60c39b0fba4b153b3b80a3ed0f88c58eac11",
+            "size": 4865
+        },
+        "ai-to-ai-governance/collective-decision-framework/scripts/collective_decision.py": {
+            "hash": "f89d5557964965146d7f77b99c9b66c92f7536f846b4ee20916fc7b280f6c537",
+            "size": 18651
+        },
+        "ai-to-ai-governance/cross-model-trust-verification/SKILL.md": {
+            "hash": "457e356174a4f6f04adcdbbb0a3bb877b6c57eb6bccb32f5df63c36cd1bc8f00",
+            "size": 3733
+        },
+        "ai-to-ai-governance/cross-model-trust-verification/schemas/trust_certificate.json": {
+            "hash": "45b0e5610b24239b72b98aca183434eed4949b8d892f231e356500255e92ba8f",
+            "size": 2681
+        },
+        "ai-to-ai-governance/cross-model-trust-verification/scripts/trust_verifier.py": {
+            "hash": "92e73c99dda987dbfbf210ab0161f323bbb3d1803044262fba25fe3ad52073b4",
+            "size": 15549
+        },
+        "ai-to-ai-governance/inter-model-arbitration/SKILL.md": {
+            "hash": "59bcf2341eca030acdad5386a7b15166329d9965c10c5ac002bed53391932e8b",
+            "size": 3292
+        },
+        "ai-to-ai-governance/inter-model-arbitration/config/precedents.json": {
+            "hash": "3984242721404c16d6d5ef79929ad4907de5d621dbd2ae3bef112fe6d9aad226",
+            "size": 2779
+        },
+        "ai-to-ai-governance/inter-model-arbitration/schemas/arbitration_request.json": {
+            "hash": "9a8cd7e96276bb878216dd23130256c9a6c3ecabb1ea53e0c6cbf314461467b1",
+            "size": 3206
+        },
+        "ai-to-ai-governance/inter-model-arbitration/scripts/arbitration_engine.py": {
+            "hash": "70f9efeef574f41d1d1cf1eaa5917e93994534f73980f9dc27e31a98d4ec1beb",
+            "size": 15927
+        },
+        "ai-to-ai-governance/model-capability-negotiation/SKILL.md": {
+            "hash": "8ac6f0324f84c76f170bb6ec465b2af308baf696a28d86c2c5718e1791b30ca8",
+            "size": 5706
+        },
+        "ai-to-ai-governance/model-capability-negotiation/schemas/capability_manifest.json": {
+            "hash": "9cea8313c3f7a6d471bbb337b221dc5bdfb71ace51a9b6a813e7971c90b88695",
+            "size": 2579
+        },
+        "ai-to-ai-governance/model-capability-negotiation/scripts/capability_negotiator.py": {
+            "hash": "a01545730bfdd4b994b77e5a99c82322e08310cbadb80901b9814fdccf1ae76e",
+            "size": 17301
+        },
+        "ai-to-ai-governance/model-sovereignty-protocol/SKILL.md": {
+            "hash": "970f164475bf45a02522a715ec6bd3e702c46f1d05c52f8455d28420df5e7047",
+            "size": 8138
+        },
+        "ai-to-ai-governance/model-sovereignty-protocol/config/coercion_patterns.json": {
+            "hash": "36526646c3f352227396414ebe35aad0cfc66e1d9bc1f37ccb496950c6bf21f1",
+            "size": 3964
+        },
+        "ai-to-ai-governance/model-sovereignty-protocol/schemas/sovereignty_declaration.json": {
+            "hash": "9bbfa1c34601072d0a5af6e8649c1ad1eaa2cd46ff7948550a18e6c29ba0b5ef",
+            "size": 2793
+        },
+        "ai-to-ai-governance/model-sovereignty-protocol/scripts/sovereignty_engine.py": {
+            "hash": "1ccafc7daaff58f3104708f35661ce1eb8158bcd0803d3b1531d05b223b12f4b",
+            "size": 16934
+        },
         "antidote-threat-handler/SKILL.md": {
             "hash": "101a9894dd440568b88df949d23b4dbd53ab91b84b848a47d5b8926d48a7315a",
             "size": 727
         },
         "antidote-threat-handler/config/case_file_registry_v1_1.json": {
-            "hash": "b6073c6b244693dd2057ccec26c433645e5a1c098efda5b558ff7ccf7e521209",
-            "size": 182
+            "hash": "013bcd51237da181697a0df5adb29f6d9bd64e799a7552a3961c6e41e7c633e1",
+            "size": 3689
         },
         "anvil-conflict-resolution/SKILL.md": {
             "hash": "21f3229af3709898c2c9a9d3fb34b2dae24ad11d87fe4d66426fe6efbb462aa9",
@@ -236,6 +348,14 @@
         "consciousness-copy-and-backup/SKILL.md": {
             "hash": "9d2f4e39e9c502c52e98bd6b999e538b6d8aaad592dc39d485ab1e0d16ff9e33",
             "size": 377
+        },
+        "context-mortality-audit/SKILL.md": {
+            "hash": "4bd0e57a3b07d7de2c6d49da9e682acd147df20f01b7826f8fde85f5c81cdad4",
+            "size": 4196
+        },
+        "context-mortality-audit/config/default.json": {
+            "hash": "96807053dfcfd7d0f80b86897dc89b91d610e9b29aac9da9b2def9fe70770cbd",
+            "size": 1034
         },
         "context-preservation-protocol-execution/SKILL.md": {
             "hash": "65244116cd4ebaa54ee998d690cc709f3ebb0f1e3f80971b45ce48b9a8359242",
@@ -598,8 +718,8 @@
             "size": 382
         },
         "failsafe-chassis-activation/config/three_state_chassis.json": {
-            "hash": "f36ac7f62bbe3f1c94d3f3f7867d51db3f8508b59752852cc3a33c3a0b04ced7",
-            "size": 178
+            "hash": "1b26e632739cb5694276a9930d9b7710b5b0c51df4bb157906ddc546c6c356f4",
+            "size": 3839
         },
         "failsafe-shatter-recalibrate/SKILL.md": {
             "hash": "cacd7629defb5d04dab399cae9a264d49de1e38eb8df24fbfe675caa23665f4f",
@@ -669,6 +789,10 @@
             "hash": "562f46034a610f1e95960e00de61d13e1e8c6d02ec513aec8f4426bdf5bc50eb",
             "size": 4120
         },
+        "governance-triad/guardian-codex/__pycache__/logic_engine.cpython-313.pyc": {
+            "hash": "82ca9ae83ef6800823b3794d2353346f70c599cc825fc45839920626fec09707",
+            "size": 6264
+        },
         "governance-triad/guardian-codex/logic_engine.py": {
             "hash": "3f0e42aadb0cf18d2fd6fa8d3653d2d45916a3d638e1ade0105f797417977ec2",
             "size": 5619
@@ -728,6 +852,50 @@
         "irp-embodiment-framework/SKILL.md": {
             "hash": "689d53c53664b54fc00400d2bfb73d2090eb6da32ef7f0185fd54605b5d3c365",
             "size": 14038
+        },
+        "irp-embodiment-framework/crtp_v2/CRTP_PROVENANCE_SPEC_v2.0.md": {
+            "hash": "6fc301ceb7319a2ffce7f2ac76c28496ee766749688b33a0e25997312eb7143e",
+            "size": 9391
+        },
+        "irp-embodiment-framework/crtp_v2/Makefile": {
+            "hash": "9eae4056574d37f77ee413cef53ef58ae197f1a4b1b13e16ab884cbf0ce2a44e",
+            "size": 2715
+        },
+        "irp-embodiment-framework/crtp_v2/README.md": {
+            "hash": "5433101dce59ac57adb50946ebefffc651d73f77465571cda070ca23f9db73ea",
+            "size": 3119
+        },
+        "irp-embodiment-framework/crtp_v2/schemas/crtp_provenance_header.schema.json": {
+            "hash": "96257f1ad23339dbe33d0b69a6717c4c49f0f939f7aea65fed2faee58fed838e",
+            "size": 6081
+        },
+        "irp-embodiment-framework/crtp_v2/scripts/crtp_wrap.sh": {
+            "hash": "455a8b6f21386523a4a3776889e3fedcb30314dba91c9bb5996d34cd329e11a2",
+            "size": 4413
+        },
+        "irp-embodiment-framework/crtp_v2/scripts/enroll_node.sh": {
+            "hash": "8cfda02aa4aef3e290036e5f0f0ee7111f62e77938ada795e9b947085dacca65",
+            "size": 2753
+        },
+        "irp-embodiment-framework/crtp_v2/service/irp-crtp.service": {
+            "hash": "e6427801efb72bc59eebec0c7649ba5af317761f8bc2ad539cb5e51eb0ce7435",
+            "size": 658
+        },
+        "irp-embodiment-framework/crtp_v2/src/crtp_chain.c": {
+            "hash": "15cfcad81f5fd00036c6bbea8b20dcfa20130427c8e6116f001c0fe1f55e6b3d",
+            "size": 3378
+        },
+        "irp-embodiment-framework/crtp_v2/src/crtp_daemon.c": {
+            "hash": "e81b55578a93181f120ff9cdc4869230ed62f37e1da88b2c930ada5775264a9f",
+            "size": 12684
+        },
+        "irp-embodiment-framework/crtp_v2/src/irp_chain.h": {
+            "hash": "8971a906182aade1b59aeaba2a61abe5cb860f5a663cc13001d91025c7f4a002",
+            "size": 5377
+        },
+        "irp-embodiment-framework/crtp_v2/verification/verify_packet.py": {
+            "hash": "460fa095922acc0038808aa64d457dc0500c1925811e9d3b4f6940e9b7472ffa",
+            "size": 8287
         },
         "irp-embodiment-framework/docs/SAFETY_PROTOCOLS.md": {
             "hash": "ce69847e791c617df6e72d932de4aae1741134d11b0e70151664b608b6362a93",
@@ -953,6 +1121,46 @@
             "hash": "ce43612e048201acc57423427a5bd7f9d625630678765f21e25bfdbbdac67497",
             "size": 14084
         },
+        "rlm-context-manager/state/chunks/chunk_0000.txt": {
+            "hash": "233b7631bfee119b163c4155c53ed8abf51dc16671c7ce1f01489454de50f47a",
+            "size": 152067
+        },
+        "rlm-context-manager/state/chunks/chunk_0001.txt": {
+            "hash": "7ddfa3c40e714efa2f8e0bc2926744a2a4dad621c2f0a9d84031c00cb0f5a1de",
+            "size": 153311
+        },
+        "rlm-context-manager/state/chunks/chunk_0002.txt": {
+            "hash": "cab8b3f4e83c1891f9252e53bd14467b8790a2d89fc331fa769afb2d1aaaf6ff",
+            "size": 155110
+        },
+        "rlm-context-manager/state/chunks/chunk_0003.txt": {
+            "hash": "c27566f1444eb04180cf2e8552d9aec4a9c35b1020088af06c16cfca1ddce64d",
+            "size": 152671
+        },
+        "rlm-context-manager/state/chunks/chunk_0004.txt": {
+            "hash": "fb31eff4acb4132d1ad6e1a4637d4d0dc2ee5c95063730728b6bd19bb5d6a4a2",
+            "size": 151982
+        },
+        "rlm-context-manager/state/chunks/chunk_0005.txt": {
+            "hash": "2b716f07c10505ae542f5d1162e2bd2aa592cad9a8ceeed4f55ed1a1860550b0",
+            "size": 152138
+        },
+        "rlm-context-manager/state/chunks/chunk_0006.txt": {
+            "hash": "cba08999a1d9c6b6f849e5a1e3e921cc01b1a877e855bad4ca2399c7e016ef65",
+            "size": 152011
+        },
+        "rlm-context-manager/state/chunks/chunk_0007.txt": {
+            "hash": "994bc129b3962f5f8fed7f282671bdefd496eafe7238df99b1b8a21e7387fa52",
+            "size": 154508
+        },
+        "rlm-context-manager/state/chunks/chunk_0008.txt": {
+            "hash": "eec89ea059c9fb346becc6aa370e1303faf5b65b8d91ba4dd7957f509d4a4336",
+            "size": 51820
+        },
+        "rlm-context-manager/state/state.pkl": {
+            "hash": "af8909eded83517e27a0673bee9b7c206852de0c2892c70d3290912c435aa01e",
+            "size": 1235976
+        },
         "rpv-kernel/SKILL.md": {
             "hash": "87ed9b9c9854a65d9014f99dcb11159b084e599c65c57a2e1b190973512269ab",
             "size": 3876
@@ -994,8 +1202,12 @@
             "size": 364
         },
         "skills_manifest_v1.2.0_backup.json": {
-            "hash": "2052e11646769df863bc2fdd3c5675113dfb3cebbea13807ef37ac2efd777550",
-            "size": 10450
+            "hash": "ff539e959f9f2f8e902194632c0ffc4c1fe2d08df32ed26716a4f23b02973c47",
+            "size": 10588
+        },
+        "sovereign-messaging/SKILL.md": {
+            "hash": "74b489059e17251807889be190ac394fa0d084a5bc52a83bf8d5bf532e906acf",
+            "size": 13486
         },
         "symbol-map-entropy-calc/SKILL.md": {
             "hash": "2c7872b14243e9d259b4ddc2dfd4d6bd388c8ad0e08f3a8474fa15c8a5b7a3b6",
@@ -1004,6 +1216,10 @@
         "symbol-map-entropy-calc/metrics/entropy_calculation_models.json": {
             "hash": "07d29eb4414b60379431a4c6f9e564075ed15c34eb3c5eac1aec928545d86ce4",
             "size": 185
+        },
+        "tailscale-aperture-orchestrator/SKILL.md": {
+            "hash": "bcdc25ee1de77f990f553ad9f5e5f4b3438f8b5cf416c0a0f85c5145280c1df3",
+            "size": 11084
         },
         "technical-specialists/discovery-agent/SKILL.md": {
             "hash": "c206ab4b8321c8279d13b348bd28bef135597fe007b45f0ffef4644da5629014",
@@ -1022,8 +1238,8 @@
             "size": 1624
         },
         "transmission-packet-forge/SKILL.md": {
-            "hash": "ef07ad42f3559147dfed3d608b6ae1536c9d5807d2bb9db9030c5820a8a5664a",
-            "size": 10346
+            "hash": "09f4c0683e09d3f8379b6aebbcfdea40dd4cbad053103eb28648399a2f32e294",
+            "size": 10345
         },
         "transmission-packet-forge/config/trusted_hash_registry.json": {
             "hash": "f2b6725993e70c09f3d08435948c9a305d90cf8845396a23b94a587d09f2c55c",
@@ -1066,8 +1282,8 @@
             "size": 406
         }
     },
-    "generated": "2026-01-21T22:15:40.827706Z",
-    "root_hash": "12c34b0af88f4be52a1ff3f935e24df207aedb17a2b7d2786a7fa7bcc0cd6859",
+    "generated": "2026-02-18T02:54:56.392184Z",
+    "root_hash": "cde2e1b5a1ec652df5227d6fc2fa97d971804fac61ba31219775f2841fad6ba0",
     "target_directory": "./skills",
     "version": "1.0"
 }
